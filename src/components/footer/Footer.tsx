@@ -1,122 +1,95 @@
-import React from "react";
-import Link from "next/link";
 import Image from "next/image";
-import Logo from "@../../../public/assets/elmohands__1.png";
-import Logo2 from "@../../../public/assets/elmohands__2.png";
-import { Facebook, Instagram, PhoneCall, Twitter, Youtube } from "lucide-react";
-import NavLogo from "../header/NavLogo";
-import { getTranslations } from "next-intl/server";
-import Copyright from "./Copyright";
-import { FaWhatsapp } from "react-icons/fa6";
-const Footer: React.FC = async () => {
-  const t = await getTranslations("contact");
+import React from "react";
+import Logo from "@../../../public/assets/footer.png";
+import AppStore from "@../../../public/assets/appstore.svg";
+import GooglePlay from "@../../../public/assets/googleplay.svg";
+import { CiFacebook, CiInstagram, CiLinkedin } from "react-icons/ci";
+export const Footer: React.FC = () => {
   return (
-    <footer
-      id="contact"
-      className=" bg-[#F3F3F1] inset-0 bg-gradient-to-b from-black to-transparent text-white font-bold"
-    >
-      <div className="container px-4">
-        {/* Main Content */}
-        <div className=" flex w-full justify-center ">
-          <div className="flex flex-col md:flex-row  md:justify-between py-12 border-b border-[#3E453E] w-[90%] md:w-[80%]">
-            {/* Logo and Description */}
-            <div className="mb-4 md:mb-0 flex flex-col gap-4">
-              <Link href="/">
-                <NavLogo />
-              </Link>
-              <p className="text-wrap break-words max-w-xl">
-                {t("contactContent")}
-              </p>
-              <div className="flex text-sm space-x-4">
-                <p className="">{t("FollowUS")}</p>
-                <a
-                  href="#"
-                  aria-label="Facebook"
-                  className="text-gray-600 hover:text-gray-800"
-                >
-                  <Facebook color="white" size={16} />
-                </a>
-                <a
-                  href="#"
-                  aria-label="Twitter"
-                  className="text-gray-600 hover:text-gray-800"
-                >
-                  <Twitter color="white" size={16} />
-                </a>
-                <a
-                  href="#"
-                  aria-label="Instagram"
-                  className="text-gray-600 hover:text-gray-800"
-                >
-                  <Instagram color="white" size={16} />
-                </a>
-                <a
-                  href="#"
-                  aria-label="YouTube"
-                  className="text-gray-600 hover:text-gray-800"
-                >
-                  <Youtube color="white" size={16} />
-                </a>
-              </div>
-            </div>
-            {/* Main Links */}
-            <div className="flex flex-col md:space-x-16 text-sm">
-              <div className="flex flex-col gap-6 mb-4 md:mb-0">
-                <h4>{t("importsLink")}</h4>
-                <ul className="flex flex-col gap-4">
-                  <li>
-                    <Link href="/">{t("Home")}</Link>
-                  </li>
-                  <li>
-                    <Link href="#projects">{t("FinalWork")}</Link>
-                  </li>
-                  <li>
-                    <Link href="#about">{t("CommonQuestions")}</Link>
-                  </li>
-                  <li>
-                    <Link href="#contact">{t("WhatToBuy")}</Link>
-                  </li>
-                </ul>
-              </div>
-            </div>
+    <div className="bg-[#1C1C1C] text-white w-full">
+      <div
+        className="w-10/12 h-full flex flex-col
+       mx-auto"
+      >
+        <div className="flex flex-wrap justify-between text-[15px]">
+          <ul className="text-sm">
+            <li className="mt-[2rem] flex justify-between">
+              <Image src={Logo} alt="logo" />
+            </li>
 
-            {/* Quick Links */}
-            <div className="flex flex-col md:space-x-16 text-sm">
-              <div className="flex flex-col gap-6 mb-4 md:mb-0">
-                <h4>{t("contactUs")}</h4>
-                <ul className="flex flex-col gap-4">
-                  <li>
-                    <Link
-                      href="tel:+966575645308"
-                      className="  flex items-center justify-center gap-2  "
-                    >
-                      {t("contactNumber")}
-                      <PhoneCall className="animate-ping" size={14} />
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      target="_blank"
-                      href="https://api.whatsapp.com/send/?phone=966575645308&text&type=phone_number&app_absent=0"
-                      className="flex items-center justify-center gap-2"
-                    >
-                      {t("whatsapp")}
-                      <FaWhatsapp className="animate-ping" size={14} />
-                    </Link>{" "}
-                  </li>
-                </ul>
+            <li className="flex  max-w-60 flex-wrap my-[1rem]">
+              <h6>Head Quarters:</h6>
+              <p>
+                1906, Grosvenor Business Bay Tower, Marasi Drive ,Business Bay,
+                Dubai, UAE
+              </p>
+            </li>
+            <li className="flex max-w-52  flex-wrap my-[1rem]">
+              <h6>Our Branches:</h6>
+              <p>
+                12, Ooredoo Building, Alhkoud A Tijary st, Alhkoud, Muscat, Oman
+              </p>
+            </li>
+          </ul>
+          <ul className="my-[2rem]">
+            <div className=" flex flex-col gap-4 ">
+              <div className="text-xl text-lime-50 font-bold leading-none">
+                Services
+              </div>
+              <div className="border-2 w-7"></div>
+              <li>Become a user</li>
+              <li>Become an Accountant</li>
+              <li>Get Certified</li>
+              <li>Become a Company</li>
+              <li>Become an Interviewer</li>
+              <li>Become an Instructor</li>
+              <li>Explore Courses</li>
+              <li>Get a Job</li>
+            </div>
+          </ul>
+          <ul className="my-[2rem]">
+            <div className=" flex flex-col gap-4 text-sm">
+              <div className=" text-xl  text-lime-50 font-bold leading-none">
+                Our Company
+              </div>
+              <div className="border-2 w-7"></div>
+              <li>Contact Us</li>
+              <li>About Us</li>
+              <li>Privacy Policy</li>
+              <li>Terms and Conditions</li>
+              <li>Blogs</li>
+              <li>Careers</li>
+              <li>FAQ</li>
+            </div>
+          </ul>
+          <div className="my-[2rem] min-w-64">
+            <div className="flex flex-col gap-4 ">
+              <div className=" text-xl   text-lime-50   font-bold leading-none">
+                Find Us On Social Media
+              </div>
+              <div className="border-2 w-7"></div>
+              <p className="max-w-64 flex-wrap leading-none">
+                Follow us on social media to get our latest news and updates
+              </p>
+              <div className="flex text-xl gap-2  items-center">
+                <CiFacebook />
+                <CiLinkedin />
+                <CiInstagram />
+                <CiFacebook />
+                <CiLinkedin />
+                <CiInstagram />
+              </div>
+              <div className="flex gap-1 items-center">
+                <Image src={AppStore} alt="logo" />
+                <Image src={GooglePlay} alt="logo" />
               </div>
             </div>
           </div>
         </div>
-
-        {/* Footer Bottom */}
-        <div className="my-2 text-center ">
-          <Copyright />
-        </div>
       </div>
-    </footer>
+      <div className="w-full h-12 flex justify-center items-center mx-auto text-xs bg-[#242424]">
+        <p>Copy Right @ Audit Station</p>
+      </div>
+    </div>
   );
 };
-
-export default Footer;

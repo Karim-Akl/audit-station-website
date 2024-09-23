@@ -8,14 +8,14 @@ import ServiceApply from "@/components/home/ServiceApply";
 export default async function Home() {
   return (
     <>
-      <CustomerService />
+      {/* <CustomerService /> */}
       <Background />
       <div className="container mx-auto z-0 ">
-        <RealAdversting />
+        {/* <RealAdversting />
         <CardHoverEffectDemo />
         <TimelineDemo />
         <AppleCardsCarouselDemo />
-        <ServiceApply />
+        <ServiceApply /> */}
 
         {/*<BeAmbassador />
         <OurPartners partners={fetchedData?.partners} />

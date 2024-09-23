@@ -1,4 +1,4 @@
-import Footer from "@/components/footer/Footer";
+import {Footer} from "@/components/footer/Footer";
 import Navbar from "@/components/header/Navbar";
 import React from "react";
 
@@ -9,8 +9,8 @@ export default async function WebsiteLayout({ children }: LayoutProps) {
   return (
     <>
       <Navbar /> {/* Use fetchedData here */}
-      {/* {children} */}
-      {/* <Footer /> */}
+      {children}
+      <Footer />
     </>
   );
 }

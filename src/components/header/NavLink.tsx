@@ -11,6 +11,8 @@ import { useTranslations } from "next-intl";
 export const NavLink: React.FC = () => {
   const t = useTranslations("header");
   const { pathname } = UseSearchParamsHook();
+  
+  
 
   const links = [
     {
@@ -22,33 +24,33 @@ export const NavLink: React.FC = () => {
     {
       id: 2,
       name: t("finalwork"),
-      href: `/about`,
+      href: `${pathname}/about`,
       activeLink: "about",
     },
     {
       id: 3,
       name: t("whatbuy"),
-      href: "/hoverEffect",
+      href: `${pathname}/hoverEffect`,
       activeLink: "hoverEffect",
     },
 
     {
       id: 4,
       name: t("commonQuestion"),
-      href: "/services",
+      href: `${pathname}/services`,
       activeLink: "services",
     },
     {
       id: 5,
       name: t("contact"),
-      href: "/contact",
+      href: `${pathname}/contact`,
       activeLink: "contact",
     },
   ];
-  function FilterPath() {
-    return pathname.split("/")[1];
-  }
 
+  function FilterPath() {
+    return parseInt(pathname.split("/")[1]) ? '' : pathname.split("/")[1];
+}
   function isActive(active?: string): boolean {
     return active === FilterPath();
   }
@@ -59,7 +61,7 @@ export const NavLink: React.FC = () => {
         <div className="flex items-center  transition duration-800 delay-150 hover:delay-300">
           <Link
             href={link.href}
-            className={` rounded-md flex  items-center relative transition duration-400  hover:text-[#1fa8c9] `}
+            className={` rounded-md flex  items-center relative transition duration-400   hover:text-[#1fa8c9] `}
           >
             <p className=" capitalize leading-relaxed flex items-center ">
               {link.name}
