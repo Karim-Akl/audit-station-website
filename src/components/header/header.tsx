@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React from "react";
 import { FaMapLocationDot } from "react-icons/fa6";
 import { MdOutlineMail } from "react-icons/md";
@@ -22,8 +22,7 @@ export const Header: React.FC = () => {
   };
   const handlechangeCurrency = (value: string) => {
     console.log(value);
-    
-  }
+  };
   return (
     <div className="bg-[#2e2e2e] text-white container  w-full flex-col justify-center items-start gap-2.5 inline-flex">
       <div className="md:container self-stretch  justify-between items-center md:inline-flex">
@@ -54,7 +53,11 @@ export const Header: React.FC = () => {
           <div className="justify-start items-center gap-4 flex">
             <div className="justify-start items-center gap-2 flex border-e  ">
               <Select onValueChange={handlechangeLanguage} defaultValue="en">
-                <SelectTrigger className={cn("bg-blue border-none focus:ring-offset-0 focus:ring-0    ")}>
+                <SelectTrigger
+                  className={cn(
+                    "bg-blue border-none focus:ring-offset-0 focus:ring-0    "
+                  )}
+                >
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
@@ -67,9 +70,13 @@ export const Header: React.FC = () => {
               </Select>
             </div>
             <div className="justify-start items-center gap-2 flex">
-            <Select onValueChange={handlechangeCurrency} defaultValue="USD">
-            <SelectTrigger className={cn("bg-blue border-none focus:ring-offset-0 focus:ring-0    ")}>
-            <SelectValue />
+              <Select onValueChange={handlechangeCurrency} defaultValue="USD">
+                <SelectTrigger
+                  className={cn(
+                    "bg-blue border-none focus:ring-offset-0 focus:ring-0    "
+                  )}
+                >
+                  <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
                   <SelectGroup>
@@ -78,7 +85,7 @@ export const Header: React.FC = () => {
                   </SelectGroup>
                 </SelectContent>
               </Select>
-             </div>
+            </div>
           </div>
         </div>
       </div>
