@@ -24,7 +24,7 @@ export const Header: React.FC = () => {
     console.log(value);
   };
   return (
-    <div className="bg-[#2e2e2e] text-white container  w-full flex-col justify-center items-start gap-2.5 inline-flex">
+    <div className=" text-white container  w-full flex-col justify-center items-start gap-2.5">
       <div className="md:container self-stretch  justify-between items-center md:inline-flex">
         <div className="justify-start  items-center gap-8 flex">
           <div className="justify-start items-center gap-1 flex">

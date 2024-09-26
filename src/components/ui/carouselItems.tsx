@@ -67,7 +67,7 @@ const Carousel: React.FC = () => {
                 src={item.imageSrc.src}
                 alt={`carousel-item-${item.id}`}
               />
-              <div className="py-4 border-s-8 rounded-xl border-[#22B9DD] px-8 ms-20 h-50 z-50 absolute top-80 -right-20 bg-white ">
+              {/* <div className="py-4 border-s-8 rounded-xl border-[#22B9DD] px-8 ms-20 h-50 z-50 absolute top-80 -right-20 bg-white ">
                 <p className=" py-3 text-gray-600 leading-6 border-s border-[#BDBDD1] p-2">
                   {item.description}
                 </p>
@@ -76,7 +76,7 @@ const Carousel: React.FC = () => {
                     {item.name}
                   </p>
                 </div>
-              </div>
+              </div> */}
               {/* Controls */}
               <div className="absolute top-1/2 w-full flex justify-between z-20">
                 <label

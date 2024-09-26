@@ -11,10 +11,17 @@ import { Testimonial } from "@/components/home/Testimonial/Testimonial";
 import { Faqs } from "@/components/home/faqs/Faqs";
 export default async function Home() {
   return (
-    <>
+    <main
+      className="
+    bg-gradient-to-r
+    from-white
+    via-[#22b8dd86]
+    to-white
+    background-animate"
+    >
       {/* <CustomerService /> */}
       <Background />
-      <div className="container mx-auto z-0 ">
+      <div className="md:container mx-auto z-0">
         <AnalyticsStats />
         <StepsComponent />
         <AppleCardsCarouselDemo />
@@ -30,6 +37,6 @@ export default async function Home() {
         <OurPartners partners={fetchedData?.partners} />
          */}
       </div>
-    </>
+    </main>
   );
 }

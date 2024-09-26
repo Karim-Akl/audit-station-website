@@ -8,7 +8,7 @@ interface LayoutProps {
 export default async function WebsiteLayout({ children }: LayoutProps) {
   return (
     <>
-      <Navbar /> {/* Use fetchedData here */}
+      <Navbar /> 
       {children}
       <Footer />
     </>

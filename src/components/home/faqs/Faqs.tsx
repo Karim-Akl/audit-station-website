@@ -62,13 +62,13 @@ export const Faqs: React.FC = () => {
             width={100}
             height={100}
           />
-          <Image
+          {/* <Image
             src={vector}
             className=" w-80 h-52 absolute top-36 left-52 overflow-hidden  "
             alt="pesone"
             width={40}
             height={40}
-          />
+          /> */}
         </div>
         <Button className="bg-white hover:bg-gray-100 m-auto me-20 hover:border border pe-0 w-32  flex justify-between my-4   rounded-full border-[#22B9DD] text-[#22B9DD]">
           <span>See More</span>
