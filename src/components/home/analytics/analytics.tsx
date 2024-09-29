@@ -1,7 +1,7 @@
 export const AnalyticsStats: React.FC = () => {
   return (
-    <div className="bg-white shadow-[#22B9DD] p-6 rounded-lg shadow-md my-10 mx-auto">
-      <div className="flex flex-col sm:flex-row items-center  justify-around divide-x divide-[#22B9DD] text-center">
+    <div className="bg-white shadow-[#22B9DD] p-6 rounded-lg shadow-md mt-10 mx-auto">
+      <div className="flex flex-col sm:flex-row items-center  justify-around md:divide-x  divide-[#22B9DD] text-center">
         {/* Stat 1 */}
         <div className="px-4 py-2">
           <h3 className="text-2xl font-bold text-gray-800">1st</h3>

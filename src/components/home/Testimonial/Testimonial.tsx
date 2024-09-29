@@ -33,7 +33,7 @@ export const Testimonial: React.FC = () => {
           </span>
         </Button>
       </div>
-      <div className="mt-10 md:mt-0 md:w-1/2">
+      <div className="mt-10 md:mt-0 md:w-1/4">
         <Carousel />
       </div>
     </div>

@@ -23,7 +23,8 @@ const config = {
         'footer-texture': "url('/img/footer-texture.png')",
       },
       fontFamily: {
-        sans: ["Tajawal", "'Saira'"],
+        sans: ["'Saira'"],
+        poppins: ["Poppins"],
       },
       colors: {
         border: "hsl(var(--border))",

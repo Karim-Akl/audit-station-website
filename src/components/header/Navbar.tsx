@@ -29,7 +29,7 @@ export default async function Navbar() {
             {/* Mobile Menu */}
           </div>
           <div className="flex ms-0 ps-0 gap-4">
-            <div className="rounded-full border border-[#767676] p-1">
+            <div className="rounded-full border border-[#767676] p-1 transition-all hover:rotate-45 hover:bg-gray-400 ">
               <MdOutlineDarkMode size={22} />
             </div>
             <div className="rounded-full border border-[#767676] p-1">

@@ -22,10 +22,12 @@ interface CarouselProps {
 }
 
 type Card = {
-  src: string;
+  id: number;
+  image: {
+    src: string;
+  };
   title: string;
   category: string;
-  // content: React.ReactNode;
 };
 
 export const CarouselContext = createContext<{
@@ -198,7 +200,7 @@ export const Card = ({
     <>
       <AnimatePresence>
         {open && (
-          <div className="fixed inset-0 h-screen z-50 overflow-auto">
+          <div className="fixed inset-0 h-screen z-50 overflow-auto ">
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -232,33 +234,34 @@ export const Card = ({
               >
                 {card.title}
               </motion.p>
-              {/* <div className="py-10">{card.content}</div> */}
             </motion.div>
           </div>
         )}
       </AnimatePresence>
+
       <motion.button
         layoutId={layout ? `card-${card.title}` : undefined}
-        // onClick={handleOpen} 
-        className="rounded-3xl bg-gray-100 dark:bg-neutral-900 h-80 w-56 md:h-[30rem] md:w-72 overflow-hidden flex flex-col items-start justify-start relative z-10" // Adjusted height and width for 4 cards
+        // onClick={handleOpen}
+        className="rounded-3xl dark:bg-neutral-900 h-80 w-56 md:h-[30rem] md:w-72 overflow-hidden flex flex-col items-start justify-start relative z-10"
       >
-        <div className="absolute h-full top-0 inset-x-0 bg-gradient-to-b from-black/50 via-transparent to-transparent z-30 pointer-events-none" />
-        <div className="relative z-40 p-8">
+        <div className="relative inset-x-0 bg-gradient-to-b from-black/50 via-transparent to-transparent z-30 pointer-events-none" />
+
+        <div className="absolute bottom-0 z-40 h-24  hover:h-full transition-all duration-300 ease-in-out p-6 w-full background-team">
           <motion.p
             layoutId={layout ? `category-${card.category}` : undefined}
-            className="text-white text-sm md:text-base font-medium font-sans text-left"
+            className="text-white text-xl md:text-2xl  font-semibold font-sans text-left"
           >
             {card.category}
           </motion.p>
           <motion.p
             layoutId={layout ? `title-${card.title}` : undefined}
-            className="text-white text-xl md:text-3xl font-semibold max-w-xs text-left [text-wrap:balance] font-sans mt-2"
+            className="text-white text-xl md:text-2xl font-normal max-w-xs text-left [text-wrap:balance] font-sans mt-2"
           >
             {card.title}
           </motion.p>
         </div>
         <BlurImage
-          src={card.src}
+          src={card.image.src}
           alt={card.title}
           fill
           className="object-cover absolute z-10 inset-0"
@@ -271,7 +274,7 @@ export const Card = ({
 export const BlurImage = ({
   height,
   width,
-  src,
+  src = "/images/placeholder.jpg",
   className,
   alt,
   ...rest
@@ -280,7 +283,7 @@ export const BlurImage = ({
   return (
     <Image
       className={cn(
-        "transition duration-300",
+        "transition duration-300 ",
         isLoading ? "blur-sm" : "blur-0",
         className
       )}

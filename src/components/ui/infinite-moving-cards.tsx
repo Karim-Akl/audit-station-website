@@ -83,7 +83,7 @@ export const InfiniteMovingCards = ({
       <ul
         ref={scrollerRef}
         className={cn(
-          " flex min-w-full shrink-0 gap-4 py-4 w-max flex-nowrap",
+          " flex min-w-full shrink-0 gap-2 py-4 w-max flex-nowrap",
           start && "animate-scroll ",
           pauseOnHover && "hover:[animation-play-state:paused]"
         )}
@@ -103,21 +103,24 @@ export const InfiniteMovingCards = ({
                 className="user-select-none -z-1 pointer-events-none absolute -left-0.5 -top-0.5 h-[calc(100%_+_4px)] w-[calc(100%_+_4px)]"
               ></div>
               <div className="bg-white shadow-md shadow-slate-400  rounded-lg p-6 text-center">
-                <div className=" mb-4">
+                <div className="absolute  m-auto left-0 right-0 top-0 bottom-0">
                   <Image
                     src={item.image.src}
-                    className="bg-green-500 p-2 mx-auto rounded-full"
+                    className="bg-green-500 p-2  mx-auto rounded-full"
                     alt="step1"
-                    width={100}
-                    height={100}
+                    width={50}
+                    height={50}
                   />
                 </div>
-                <h3 className="text-lg font-semibold mb-2">{item.title}</h3>
-                <p className="mx-auto max-w-40 text-xl flex-wrap">
-                {item.name}
-                </p>
+                <div className="my-8">
+                  <h3 className="text-lg font-semibold  text-[#2F327D]">
+                    {item.title}
+                  </h3>
+                  <p className="mx-auto max-w-40 text-xl flex-wrap font-semibold text-[#2F327D]">
+                    {item.name}
+                  </p>
+                </div>
               </div>
-              
             </blockquote>
           </li>
         ))}

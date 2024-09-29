@@ -1,14 +1,12 @@
 import { Background } from "@/components/background/Background";
-import CustomerService from "@/components/socialapp/customerService";
-import { TimelineDemo } from "@/components/home/PropertyCard";
-import { CardHoverEffectDemo } from "@/components/home/Properties";
-import RealAdversting from "@/components/home/RealAdversting";
-import ServiceApply from "@/components/home/ServiceApply";
-import { StepsComponent } from "@/components/home/stepsComponent/StepsComponent";
 import { AnalyticsStats } from "@/components/home/analytics/analytics";
-import { AppleCardsCarouselDemo } from "@/components/home/cardsCarousel/CardsCarousel";
-import { Testimonial } from "@/components/home/Testimonial/Testimonial";
+import { Testimonial } from "@/components/home/testimonial/Testimonial";
 import { Faqs } from "@/components/home/faqs/Faqs";
+import { AboutUs } from "@/components/home/aboutUs/AboutUs";
+import { TeamWork } from "@/components/home/teamWork/TeamWork";
+import { Blogs } from "@/components/home/blogs/Blogs";
+import { Steps } from "@/components/home/steps/Steps";
+import { StepsChart } from "@/components/home/stepsChart/StepsChart";
 export default async function Home() {
   return (
     <main
@@ -23,10 +21,14 @@ export default async function Home() {
       <Background />
       <div className="md:container mx-auto z-0">
         <AnalyticsStats />
-        <StepsComponent />
-        <AppleCardsCarouselDemo />
+        <Steps />
+        <StepsChart />
+        <AboutUs />
+        <TeamWork />
         <Testimonial />
         <Faqs />
+        <Blogs />
+
         {/* <RealAdversting />
         <CardHoverEffectDemo />
         <TimelineDemo />

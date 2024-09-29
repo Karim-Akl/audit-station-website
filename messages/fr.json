@@ -1,0 +1,53 @@
+{
+    "HomePage": {
+        "title": "Home Page"
+    },
+    "header": {
+        "home": "Home",
+        "finalwork": "About Us",
+        "commonQuestion": "Blogs",
+        "whatbuy": "Services",
+        "contact": "Contact Us",
+        "arabic": "عربى",
+        "backgroundTitle": "Welcome to the official website of the company",
+        "backgroundDescription": "to buy used furniture in Riyadh",
+        "conectWithUs": "(057) 5645308",
+        "elmohands": "El Mohandas"
+    },
+    "about": {
+        "aboutUs": "About Us",
+        "aboutElmohandas": "The best company that buys used furniture in Riyadh has extensive experience in acquiring furniture in all regions of Riyadh, so if you want to get rid of old furniture easily and at satisfactory prices, you can contact us",
+        "year2024": "The company has provided the best service for buying used furniture in all regions of Riyadh",
+        "yearTitle": "Year 2024",
+        "yearContent": " The company has provided the best service for buying used furniture in all regions of Riyadh  ",
+        "earlyYearTitle": "Early 2014",
+        "earlyYearsContent": "In a bold step, the company entered the market for used equipment in Riyadh in an unprecedented step, El Mohandas Company, one of the leading companies in the field of furniture",
+        "Changelog": "Changelog",
+        "morelastWork": "More of our work",
+        "morelastWorkcontent": ""
+    },
+    "adversting": {
+        "adverstingTitle": "Adversting",
+        "adverstingContent": "Contact us and exchange your old furniture for new furniture and sell your furniture at the best prices",
+        "adverstingButton": "Buy Now",
+        "conectWithUs": "Contact Us",
+        "contactNumber": "(057) 5645308"
+    },
+    "contact": {
+        "contactUs": "Contact Us",
+        "contactDescription": "To contact us, you can call us on the following number",
+        "contactEmail": "elmohandas@orgniz.com",
+        "contactAddress": "Riyadh - Al Naseem District - Al Naseem Street",
+        "copyRight": "All Copyrights are reserved by El Mohandas 2024",
+        "importsLink": "Important Links",
+        "FollowUS": "Follow us on",
+        "contactContent": "We buy used furniture in Riyadh at the best prices, high quality, and excellent service",
+        "Home": "Home",
+        "FinalWork": "Final Work",
+        "CommonQuestions": "Common Questions",
+        "WhatToBuy": "What to Buy?",
+        "ContactUs": "Contact Us",
+        "contactNumber": "(057) 5645308",
+        "whatsapp": "Elmohands"
+    }
+}
