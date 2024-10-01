@@ -4,6 +4,7 @@ import React from 'react'
 import banner from '@/../public/assets/about/logoBanner.svg'
 import { MdOutlineArrowForwardIos } from 'react-icons/md'
 import TitleSubtitle from '@/components/aboutUs/TitleSubtitle'
+import yellowCircle from '@/../public/assets/leftYellowCircle.svg'
 
 export default function About() {
    return (
@@ -27,7 +28,10 @@ export default function About() {
                   title='What We Offer'
                   subTitle='Lorem ipsum dolor sit amet, consectetur dolorili adipiscing elit. Felis donec massa aliqua.Lorem ipsum dolor sit amet, consectetur dolorili adipiscing elit. Felis donec massa aliqua.“Lorem ipsum dolor sit amet, consectetur dolorili adipiscing elit. Felis donec massa aliqua.Lorem ipsum dolor sit amet, consectetur dolorili adipiscing elit. Felis donec massa aliqua.Lorem ipsum dolor sit amet, consectetur dolorili adipiscing elit. Felis donec massa aliqua.Lorem ipsum dolor sit amet, consectetur dolorili adipiscing elit. Felis donec massa aliqua.'
                />
-               <div className="rounded-xl bg-[#E6F7F9] w-full h-72"></div>
+               <div className="relative w-full h-[350px]">
+                  <Image src={yellowCircle} alt='yellow circle' className='absolute right-[-2%] bottom-0 h-[500px]' />
+                  <div className="relative rounded-xl bg-[#E6F7F9] w-full h-full shadow-lg"></div>
+               </div>
             </div>
          </div>
       </div>
