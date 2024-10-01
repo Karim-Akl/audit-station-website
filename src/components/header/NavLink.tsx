@@ -31,15 +31,15 @@ export const NavLink: React.FC = () => {
     {
       id: 3,
       name: t("whatbuy"),
-      href: `${locale}/hoverEffect`,
-      activeLink: "hoverEffect",
+      href: `${locale}/services`,
+      activeLink: "services",
     },
 
     {
       id: 4,
       name: t("commonQuestion"),
-      href: `${locale}/services`,
-      activeLink: "services",
+      href: `${locale}/blogs`,
+      activeLink: "blogs",
     },
     {
       id: 5,
