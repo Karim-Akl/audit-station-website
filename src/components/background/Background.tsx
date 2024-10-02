@@ -19,7 +19,7 @@ export const Background: React.FC = () => {
   return (
     <div className="w-full background-color relative h-screen  bg-fit text-white">
       <div className="flex justify-center items-center ">
-        <div className="p-20 my-10 flex flex-col gap-4 max-w-2xl ">
+        <div className="p-10 md:p-20 my-10 flex flex-col gap-4 max-w-2xl ">
           <h1 className="text-4xl text-[#666] font-bold flex-wrap">
             Register your company today on our leading accounting platform..
           </h1>

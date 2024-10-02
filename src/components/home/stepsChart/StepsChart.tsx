@@ -21,17 +21,23 @@ export function StepsChart() {
         icon={<FaUser className="text-white text-3xl" />}
         title="User"
         description="Browse the platform's sections and increase your experience through our courses."
+        className=" bg-[#21A74F] border-[#21A74F]"
+        style={" hover:shadow-[#21A74F] text-[#21A74F] border-[#21A74F]"}
       />
       <div className="md:flex items-center justify-between">
         <CustomCard
           icon={<PiVideoFill className="text-white text-3xl" />}
           title="Instructor"
           description="Become an instructor on our famous platform in a famous world, and share your experience with partners around the world. Easily upload your courses and achieve agreement while establishing yourself as an expert in your field."
+          className=" bg-cyan-500 border-cyan-500 "
+          style={"  hover:shadow-cyan-500 text-cyan-500 border-cyan-500"}
         />
         <CustomCard
           icon={<GiArchiveRegister className="text-white text-3xl" />}
           title="Company"
           description="Register your company today on our leading accounting platform, and expand your business by accessing the best global competencies and expertise approved by us."
+          className=" bg-cyan-500 border-cyan-500"
+          style={" hover:shadow-cyan-500 text-cyan-500 border-cyan-500"}
         />
       </div>
       <CustomCard
@@ -39,6 +45,8 @@ export function StepsChart() {
         icon={<FaPersonChalkboard className="text-white text-3xl" />}
         title="Accountant"
         description="Browse the platform's sections and increase your experience through our courses."
+        className=" bg-cyan-500 border-cyan-500"
+        style={" hover:shadow-cyan-500 text-cyan-500 border-cyan-500"}
       />
       <CustomCard
         step="3"
@@ -46,9 +54,7 @@ export function StepsChart() {
         title="Certified"
         description="Browse the platform's sections and increase your experience through our courses."
         className=" bg-[#C0C0C0] border-[#C0C0C0]"
-        style={
-          "hover:shadow-xl hover:shadow-[#C0C0C0] text-[#C0C0C0] border-[#C0C0C0]"
-        }
+        style={" hover:shadow-[#C0C0C0] text-[#C0C0C0] border-[#C0C0C0]"}
       />
       <CustomCard
         step="4"
@@ -56,9 +62,7 @@ export function StepsChart() {
         title="Interviewer"
         description="Browse the platform's sections and increase your experience through our courses."
         className=" bg-[#C0C0C0] border-[#C0C0C0]"
-        style={
-          " hover:shadow-xl hover:shadow-[#C0C0C0]  text-[#C0C0C0] border-[#C0C0C0]"
-        }
+        style={" hover:shadow-[#C0C0C0]  text-[#C0C0C0] border-[#C0C0C0]"}
       />
     </div>
   );

@@ -25,7 +25,7 @@ export default async function Home() {
         <StepsChart />
         <AboutUs />
         <TeamWork />
-        <Testimonial />
+        {/* <Testimonial /> */}
         <Faqs />
         <Blogs />
 
