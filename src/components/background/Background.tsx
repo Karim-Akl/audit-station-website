@@ -1,17 +1,21 @@
 "use client";
-import React from "react";
-import Link from "next/link";
-import clsx from "clsx";
+import React, { useState } from "react";
 import Logo1 from "@../../../public/assets/background.png";
 import group from "@../../../public/assets/Group.svg";
 import arrow from "@../../../public/assets/arrow.svg";
 import dots from "@../../../public/assets/dots.png";
-import { useTranslations } from "next-intl";
 import { Button } from "../ui/button";
 import { VscDebugStart } from "react-icons/vsc";
 import Image from "next/image";
+import VideoPlay from "../home/VideoPlay";
 
 export const Background: React.FC = () => {
+  const [isOpen, setIsOpen] = useState(false)
+
+  const openVideo = () => {
+    setIsOpen(true)
+    document.body.style.overflow = 'hidden'
+  }
   return (
     <div className="w-full background-color relative h-screen  bg-fit text-white">
       <div className="flex justify-center items-center ">
@@ -24,16 +28,22 @@ export const Background: React.FC = () => {
             expand your business by accessing the best global competencies and
             expertise approved by us.
           </p>
-          <div className="flex  items-center gap-4">
-            <div className="flex items-center gap-2">
-              <Button className="bg-[#22B9DD] hover:bg-[#22a8dd] text-white rounded-2xl font-semibold">
-                Login As Company
-              </Button>
-              <Button className="bg-[#22B9DD] hover:bg-[#22a8dd] rounded-full text-black ">
-                <VscDebugStart size={22} className=" " />
-              </Button>
-            </div>
-            <p className="text-[#161439] text-md   md:max-w-24 leading-tight">
+          <div className="flex items-center gap-4">
+            <Button className="bg-[#22B9DD] hover:bg-[#22a8dd] text-white rounded-2xl font-semibold">
+              Login As Company
+            </Button>
+
+            <Button className="bg-[#22B9DD] hover:bg-[#22a8dd] rounded-full text-black " onClick={openVideo}>
+              <VscDebugStart size={22} />
+            </Button>
+
+            <VideoPlay
+              isOpen={isOpen}
+              setIsOpen={setIsOpen}
+            />
+
+
+            <p className="text-[#161439] text-md  max-w-20 leading-tight">
               Watch Our Class Demo
             </p>
           </div>
