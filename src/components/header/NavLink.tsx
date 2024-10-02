@@ -57,11 +57,11 @@ export const NavLink: React.FC = () => {
 
   const renderLinks = (links: NavLinkItem[]) => {
     return links.map((link) => (
-      <div key={link.id} className="relative group">
-        <div className="flex items-center  transition duration-800 delay-150 hover:delay-300">
+      <div key={link.id} className="relative  group">
+        <div className="flex items-center   transition duration-800 delay-150 hover:delay-300">
           <Link
             href={link.href}
-            className={` rounded-md flex  items-center relative transition duration-400   hover:text-[#1fa8c9] `}
+            className={` rounded-md flex  items-center relative transition duration-400    hover:text-[#1fa8c9] `}
           >
             <p className=" capitalize leading-relaxed flex items-center ">
               {link.name}
@@ -89,6 +89,6 @@ export const NavLink: React.FC = () => {
   };
 
   return (
-    <nav className="hidden lg:flex space-x-4  gap-4">{renderLinks(links)}</nav>
+    <nav className="hidden lg:flex md:space-x-3 space-x-4  ">{renderLinks(links)}</nav>
   );
 };

@@ -6,7 +6,15 @@ import { GoPerson } from "react-icons/go";
 export const SearchInput: React.FC = () => {
   return (
     <form className="flex items-center  ">
-      <div className="flex border rounded-full p-1 ">
+      <button
+        type="submit"
+        className=" md:hidden top-0 end-0 p-2 text-sm font-medium h-full text-white bg-[#1FA8C9] hover:bg-[#22a8dd] focus:ring-4 focus:outline-none rounded-full focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+      >
+        <CiSearch />
+
+        <span className="sr-only">Search</span>
+      </button>
+      <div className="hidden md:flex border rounded-full p-1 ">
         <label
           htmlFor="search-dropdown"
           className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
@@ -97,7 +105,6 @@ export const SearchInput: React.FC = () => {
           </button>
         </div>
       </div>
-     
     </form>
   );
 };
