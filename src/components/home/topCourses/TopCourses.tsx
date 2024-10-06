@@ -15,7 +15,7 @@ import {
 import prize from "@../../../public/assets/prize.svg";
 import instractor from "@../../../public/assets/instractor.svg";
 
-export default function TopCourses() {
+export  function TopCourses() {
   const [selectedTab, setSelectedTab] = useState("all");
 
   const tabs = [
