@@ -10,7 +10,6 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import prize from "@../../../public/assets/prize.svg";
 import instractor from "@../../../public/assets/instractor.svg";
 
 export function Blogs() {
