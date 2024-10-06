@@ -4,7 +4,7 @@ import Carousel from "@/components/ui/carouselItems";
 import { ArrowRight } from "lucide-react";
 import React from "react";
 
-export const Testimonial: React.FC = () => {
+export  const Testimonial: React.FC = () => {
   return (
     <div className="w-full relative block md:flex md:gap-40 items-center py-20 px-4 md:px-0">
       <div className="md:w-1/2">
