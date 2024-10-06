@@ -1,4 +1,3 @@
-import LoginForm from "@/components/forms/LoginForm";
 import Image from "next/image";
 
 export default function SignPage() {
@@ -13,7 +12,6 @@ export default function SignPage() {
           className="w-full h-full object-cover"
         />
       </div>
-      <LoginForm />
     </section>
   );
 }
