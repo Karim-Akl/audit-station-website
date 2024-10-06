@@ -126,7 +126,7 @@ export  function TopCourses() {
               .map((instructor) => (
                 <CarouselItem
                   key={instructor.id}
-                  className="md:w-full rounded-lg sm:basis-1/2 md:basis-1/3 xl:basis-1/5"
+                  className="md:w-full rounded-lg sm:basis-1/2 md:basis-1/3 xl:basis-1/3"
                 >
                   <Card className="relative  overflow-hidden p-0  bg-white">
                     {instructor.flag && (
