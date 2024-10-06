@@ -60,20 +60,20 @@ const data = [
     id: 1,
     category: "Darrell Sreward",
     title: "E-Marketing Officer",
-    image: personlity,
+    Image: personlity,
   },
   {
     id: 2,
     category: "Darrell Sreward",
     title: "E-Marketing Officer",
-    image: personlity,
+    Image: personlity,
   },
   {
     id: 3,
 
     category: "Darrell Sreward",
     title: "E-Marketing Officer",
-    image: personlity,
+    Image: personlity,
   },
 
   {
@@ -81,25 +81,25 @@ const data = [
 
     category: "Darrell Sreward",
     title: "E-Marketing Officer",
-    image: personlity,
+    Image: personlity,
   },
   {
     id: 5,
 
     category: "Darrell Sreward",
     title: "E-Marketing Officer",
-    image: personlity,
+    Image: personlity,
   },
   {
     id: 6,
     category: "Darrell Sreward",
     title: "E-Marketing Officer",
-    image: personlity,
+    Image: personlity,
   },
   {
     id: 7,
     category: "Darrell Sreward",
     title: "E-Marketing Officer",
-    image: personlity,
+    Image: personlity,
   },
 ];
