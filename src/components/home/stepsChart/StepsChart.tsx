@@ -1,7 +1,5 @@
-"use client";
 import Image from "next/image";
 import React from "react";
-
 import { CustomCard } from "@/components/ui/customCard";
 import { PersonStanding } from "lucide-react";
 import { FaUser } from "react-icons/fa6";
