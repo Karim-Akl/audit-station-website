@@ -32,15 +32,6 @@ export default async function Home() {
         <Blogs />
         <TopCourses />
         <TopInstructors />
-        {/* <RealAdversting />
-        <CardHoverEffectDemo />
-        <TimelineDemo />
-        <AppleCardsCarouselDemo />
-        <ServiceApply /> */}
-
-        {/*<BeAmbassador />
-        <OurPartners partners={fetchedData?.partners} />
-         */}
       </div>
     </main>
   );
