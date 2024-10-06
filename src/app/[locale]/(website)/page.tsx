@@ -8,6 +8,7 @@ import { Blogs } from "@/components/home/blogs/Blogs";
 import { Steps } from "@/components/home/steps/Steps";
 import { StepsChart } from "@/components/home/stepsChart/StepsChart";
 import { TopInstructors } from "@/components/home/topInstructors/TopInstructors";
+import TopCourses from "@/components/home/topCourses/TopCourses";
 export default async function Home() {
   return (
     <main
@@ -29,6 +30,7 @@ export default async function Home() {
         <Testimonial />
         <Faqs />
         <Blogs />
+        <TopCourses />
         <TopInstructors />
         {/* <RealAdversting />
         <CardHoverEffectDemo />
