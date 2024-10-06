@@ -8,7 +8,6 @@ import { Steps } from "@/components/home/steps/Steps";
 import { StepsChart } from "@/components/home/stepsChart/StepsChart";
 import { TopInstructors } from "@/components/home/topInstructors/TopInstructors";
 import { TopCourses } from "@/components/home/topCourses/TopCourses";
-import { Testimonial } from "@/components/home/testimonial/Testimonial";
 export default async function Home() {
   return (
     <main
@@ -27,7 +26,6 @@ export default async function Home() {
         <StepsChart />
         <AboutUs />
         <TeamWork />
-        <Testimonial />
         <Faqs />
         <Blogs />
         <TopCourses />
