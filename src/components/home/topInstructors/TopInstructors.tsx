@@ -92,7 +92,7 @@ export function TopInstructors() {
       </h2>
       <Tabs defaultValue={tabs[0].value} onValueChange={setSelectedTab}>
         <div className="md:flex items-center justify-between">
-          <TabsList className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4 md:border-b py-14 md:my-10">
+          <TabsList className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4 md:border-b pt-14 md:pb-20 pb-36 md:my-10">
             {tabs.map((tab) => (
               <TabsTrigger key={tab.value} value={tab.value}>
                 {tab.title}
