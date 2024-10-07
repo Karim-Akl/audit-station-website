@@ -15,7 +15,7 @@ import {
 import prize from "@../../../public/assets/prize.svg";
 import instractor from "@../../../public/assets/instractor.svg";
 
-export  function TopCourses() {
+export function TopCourses() {
   const [selectedTab, setSelectedTab] = useState("all");
 
   const tabs = [
@@ -97,7 +97,7 @@ export  function TopCourses() {
         className="container"
       >
         <div className="md:flex items-center justify-between">
-          <TabsList className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4 md:border-b py-14 md:my-10">
+          <TabsList className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4 md:border-b pt-14 md:pb-20 pb-36 md:my-10">
             {tabs.map((tab) => (
               <TabsTrigger key={tab.value} value={tab.value}>
                 {tab.title}
@@ -115,9 +115,9 @@ export  function TopCourses() {
           opts={{
             align: "center",
           }}
-          className=" md:my-6 my-2  "
+          className=" md:my-6 my-2  overflow-hidden "
         >
-          <CarouselContent className="ml-0">
+          <CarouselContent className="ml-0 ">
             {instructors
               .filter(
                 (instructor) =>
@@ -126,9 +126,9 @@ export  function TopCourses() {
               .map((instructor) => (
                 <CarouselItem
                   key={instructor.id}
-                  className="md:w-full rounded-lg sm:basis-1/2 md:basis-1/3 xl:basis-1/3"
+                  className="md:w-full rounded-lg sm:basis-1/2 md:basis-1/3 xl:basis-1/3 "
                 >
-                  <Card className="relative  overflow-hidden p-0  bg-white">
+                  <Card className="relative   p-0  bg-white">
                     {instructor.flag && (
                       <div className="absolute top-0 right-0 text-white  flex items-center justify-center ">
                         <Image

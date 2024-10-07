@@ -89,6 +89,6 @@ export const NavLink: React.FC = () => {
   };
 
   return (
-    <nav className="hidden lg:flex md:space-x-3 space-x-4  ">{renderLinks(links)}</nav>
+    <nav className="hidden lg:flex md:space-x-3 space-x-4 text-lg  ">{renderLinks(links)}</nav>
   );
 };
