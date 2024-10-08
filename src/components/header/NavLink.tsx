@@ -6,14 +6,15 @@ import UseSearchParamsHook from "@/hooks/UseSearchParamsHook";
 import { cn } from "@/lib/utils";
 import React from "react";
 import { NavLinkItem, NavLinkProps } from "@/lib/types";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 export const NavLink: React.FC = () => {
   const t = useTranslations("header");
   const { pathname } = UseSearchParamsHook();
-  
-  
+  const locale = useLocale()
 
+
+  console.log(pathname)
   const links = [
     {
       id: 1,
@@ -24,33 +25,33 @@ export const NavLink: React.FC = () => {
     {
       id: 2,
       name: t("finalwork"),
-      href: `${pathname}/about`,
+      href: `${locale}/about`,
       activeLink: "about",
     },
     {
       id: 3,
       name: t("whatbuy"),
-      href: `${pathname}/hoverEffect`,
-      activeLink: "hoverEffect",
+      href: `${locale}/services`,
+      activeLink: "services",
     },
 
     {
       id: 4,
       name: t("commonQuestion"),
-      href: `${pathname}/services`,
-      activeLink: "services",
+      href: `${locale}/blogs`,
+      activeLink: "blogs",
     },
     {
       id: 5,
       name: t("contact"),
-      href: `${pathname}/contact`,
+      href: `${locale}/contact`,
       activeLink: "contact",
     },
   ];
 
   function FilterPath() {
     return parseInt(pathname.split("/")[1]) ? '' : pathname.split("/")[1];
-}
+  }
   function isActive(active?: string): boolean {
     return active === FilterPath();
   }
@@ -60,8 +61,8 @@ export const NavLink: React.FC = () => {
       <div key={link.id} className="relative  group">
         <div className="flex items-center   transition duration-800 delay-150 hover:delay-300">
           <Link
-            href={link.href}
-            className={` rounded-md flex  items-center relative transition duration-400    hover:text-[#1fa8c9] `}
+            href={`/${link.href}`}
+            className={` rounded-md flex  items-center relative transition duration-400   hover:text-[#1fa8c9] `}
           >
             <p className=" capitalize leading-relaxed flex items-center ">
               {link.name}
