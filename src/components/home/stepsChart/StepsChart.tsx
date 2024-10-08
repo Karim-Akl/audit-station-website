@@ -33,10 +33,10 @@ export function StepsChart() {
           <path
             d="M221.874 2.00488C83.8698 2.00488 1.62489 66.1026 1.62489 142.9V272.287"
             stroke="#BAE9F4"
-            stroke-width="3"
-            stroke-miterlimit="10"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeWidth="3"
+            strokeMiterlimit="10"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           />
         </svg>
         <svg
@@ -49,10 +49,10 @@ export function StepsChart() {
           <path
             d="M2.03711 1.70996C141.782 1.70996 218.863 63.1026 218.863 139.9V268.66"
             stroke="#BAE9F4"
-            stroke-width="3"
-            stroke-miterlimit="10"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeWidth="3"
+            strokeMiterlimit="10"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           />
         </svg>
       </div>
@@ -75,10 +75,10 @@ export function StepsChart() {
           <path
             d="M1.59766 2.44336L1.78962 475.106"
             stroke="#BAE9F4"
-            stroke-width="3"
-            stroke-miterlimit="10"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeWidth="3"
+            strokeMiterlimit="10"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           />
         </svg>
         <CustomCard
@@ -116,10 +116,10 @@ export function StepsChart() {
         <path
           d="M3.8877 4.37402V113.742"
           stroke="#C0C0C0"
-          stroke-width="3"
-          stroke-miterlimit="10"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="3"
+          strokeMiterlimit="10"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
       </svg>
       <CustomCard
@@ -149,10 +149,10 @@ export function StepsChart() {
         <path
           d="M3.8877 4.37402V113.742"
           stroke="#C0C0C0"
-          stroke-width="3"
-          stroke-miterlimit="10"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="3"
+          strokeMiterlimit="10"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         />
       </svg>
       <CustomCard
