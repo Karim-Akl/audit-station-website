@@ -128,7 +128,7 @@ export function TopCourses() {
                   key={instructor.id}
                   className="md:w-full rounded-lg sm:basis-1/2 md:basis-1/3 xl:basis-1/3 "
                 >
-                  <Card className="relative   p-0  bg-white">
+                  <Card className="relative  p-0 bg-white">
                     {instructor.flag && (
                       <div className="absolute top-0 right-0 text-white  flex items-center justify-center ">
                         <Image
