@@ -8,7 +8,8 @@ import { Steps } from "@/components/home/steps/Steps";
 import { StepsChart } from "@/components/home/stepsChart/StepsChart";
 import { TopInstructors } from "@/components/home/topInstructors/TopInstructors";
 import { TopCourses } from "@/components/home/topCourses/TopCourses";
-import { Testimonial } from "@/components/home/testimonial/Testimonial";
+import { Testimonial } from "@/components/home/testimonials/Testimonial"; // Updated path
+
 export default async function Home() {
   return (
     <main
