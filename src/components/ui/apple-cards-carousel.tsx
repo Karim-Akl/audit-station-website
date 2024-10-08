@@ -23,7 +23,7 @@ interface CarouselProps {
 
 type Card = {
   id: number;
-  image: {
+  Image: {
     src: string;
   };
   title: string;
@@ -238,7 +238,6 @@ export const Card = ({
           </div>
         )}
       </AnimatePresence>
-
       <motion.button
         layoutId={layout ? `card-${card.title}` : undefined}
         // onClick={handleOpen}
@@ -261,9 +260,10 @@ export const Card = ({
           </motion.p>
         </div>
         <BlurImage
-          src={card.image.src}
+          src={card.Image.src}
           alt={card.title}
           fill
+          sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
           className="object-cover absolute z-10 inset-0"
         />
       </motion.button>

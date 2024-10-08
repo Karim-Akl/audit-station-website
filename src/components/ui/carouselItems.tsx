@@ -59,7 +59,7 @@ const Carousel: React.FC = () => {
               id={`carousel-${item.id}`}
               defaultChecked={item.id === 1}
             />
-            <div className="w-96 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-lg shadow-lg transition-all duration-300 opacity-0 peer-checked:opacity-100 peer-checked:z-10 z-0">
+            <div className="md:w-96 w-80 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-lg shadow-lg transition-all duration-300 opacity-0 peer-checked:opacity-100 peer-checked:z-10 z-0">
               <Image
                 className="rounded-t-lg w-96 h-100 z-40"
                 width={96}

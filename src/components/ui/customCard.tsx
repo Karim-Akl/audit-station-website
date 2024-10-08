@@ -19,30 +19,34 @@ export const CustomCard: React.FC<CardProps> = ({
   style,
 }) => {
   return (
-    <div className="relative flex items-start p-4 md:w-96 mx-auto my-10 hover:scale-105 transition-all ">
+    <div className="relative flex items-start p-4 md:w-96 mx-auto my-10 md:my-0 hover:scale-105 transition-all ">
       {/* Circle with step and icon */}
       <div
-        className={`relative  bg-cyan-500 rounded-full p-7 flex items-center justify-center border-2 border-cyan-500 ${className}`}
+        className={`relative   rounded-full p-7 flex items-center justify-center border-2  ${className}`}
       >
         {icon}
         {/* Circular outline */}
         <div className="absolute inset-0 rounded-full border-2 border-white"></div>
         {step && (
-          <div className="absolute inset-0 rounded-full border-2 border-white ">
-            {step}
+          <div className="absolute inset-0  rounded-full   ">
+            <span
+              className={`bg-white border-2  ring-offset-slate-900 rounded-full p-1 text-xs ${className}`}
+            >
+              {step}
+            </span>
           </div>
         )}
       </div>
       {/* Connecting bar between circle and card */}
       <div
-        className={`absolute ms-16  ps-10 pt-2 top-6 h-50 w-72 text-white bg-cyan-500 rounded-tr-2xl text-xl md:text-3xl  ${className} `}
+        className={`${className} absolute ms-16  ps-10 pt-2 top-6 h-50 w-64  md:w-72 rounded-tr-2xl text-xl md:text-3xl   `}
       >
         {title}
       </div>
 
       {/* Card content */}
       <div
-        className={`p-1 bg-white border border-cyan-500 rounded-lg text-center  shadow-lg w-full mt-14 hover:shadow-xl hover:shadow-cyan-200 ${style}`}
+        className={`${style} p-1 bg-white border  rounded-lg text-center  shadow-lg  mt-14 hover:shadow-xl  `}
       >
         <p className=" text-[16px] mt-1">{description}</p>
       </div>

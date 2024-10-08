@@ -24,33 +24,33 @@ export const Header: React.FC = () => {
     console.log(value);
   };
   return (
-    <div className=" text-white container  w-full flex-col justify-center items-start gap-2.5">
+    <div className="  container  w-full flex-col justify-center items-start gap-2.5">
       <div className="md:container self-stretch  justify-between items-center md:inline-flex">
-        <div className="justify-start  items-center gap-8 flex">
-          <div className="justify-start items-center gap-1 flex">
+        <div className="justify-start  items-center gap-8 md:flex">
+          <div className="md:justify-start justify-center items-center gap-1 flex">
             <FaMapLocationDot size={20} />
             <div className=" text-[13px] font-medium ">
               ul. Skrajna 7, Szczecin 70-886
             </div>
           </div>
-          <div className="justify-start items-center gap-1 flex">
+          <div className="md:justify-start justify-center items-center gap-1 flex">
             <MdOutlineMail size={20} />
             <div className=" text-[13px] font-medium ">
               alma.lawson@example.com
             </div>
           </div>
         </div>
-        <div className="justify-start items-center md:gap-12 flex">
-          <div className="justify-start items-center gap-2 flex">
-            <div className=" text-[13px] font-medium ">Follow Us On :</div>
-            <div className="justify-start text-[#EBEBEB] items-center gap-1 flex">
-              <CiFacebook />
-              <CiLinkedin />
-              <CiInstagram />
-              <CiApple />
+        <div className="md:justify-start justify-between  items-center md:gap-12 flex">
+          <div className="md:justify-start justify-center items-center  md:gap-2 md:flex">
+            <div className=" text-sm font-medium ">Follow Us On :</div>
+            <div className="justify-start  items-center gap-1 flex">
+              <CiFacebook size={24} />
+              <CiLinkedin size={24} />
+              <CiInstagram size={24} />
+              <CiApple size={24} />
             </div>
           </div>
-          <div className="justify-start items-center gap-4 flex">
+          <div className="md:justify-start justify-center  items-center gap-4 flex">
             <div className="justify-start items-center gap-2 flex border-e  ">
               <Select onValueChange={handlechangeLanguage} defaultValue="en">
                 <SelectTrigger

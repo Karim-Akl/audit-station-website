@@ -88,7 +88,7 @@ export const Footer: React.FC = () => {
         </div>
       </div>
       <div className="w-full h-12 flex justify-center items-center mx-auto text-xs bg-[#242424]">
-        <p>Copy Right @ Audit Station</p>
+        <p>CopyRight @ Audit Station</p>
       </div>
     </div>
   );

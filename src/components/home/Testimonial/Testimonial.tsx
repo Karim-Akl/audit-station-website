@@ -1,8 +1,7 @@
-"use client";
+import React from "react";
 import { Button } from "@/components/ui/button";
 import Carousel from "@/components/ui/carouselItems";
 import { ArrowRight } from "lucide-react";
-import React from "react";
 
 export const Testimonial: React.FC = () => {
   return (

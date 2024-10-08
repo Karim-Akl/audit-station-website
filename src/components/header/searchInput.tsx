@@ -1,19 +1,25 @@
 import React from "react";
-import { BiCategoryAlt } from "react-icons/bi";
-import { CiSearch } from "react-icons/ci";
-import { LiaShoppingBasketSolid } from "react-icons/lia";
-import { GoPerson } from "react-icons/go";
+import { BiSearch } from "react-icons/bi";
+
 export const SearchInput: React.FC = () => {
   return (
     <form className="flex items-center  ">
-      <div className="flex border rounded-full p-1 ">
+      <button
+        type="submit"
+        className=" md:hidden top-0 end-0 p-2 text-sm font-medium h-full text-white bg-[#1FA8C9] hover:bg-[#22a8dd] focus:ring-4 focus:outline-none rounded-full focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+      >
+        <BiSearch size={24} />
+
+        <span className="sr-only">Search</span>
+      </button>
+      <div className="hidden md:flex border rounded-full p-1 ">
         <label
           htmlFor="search-dropdown"
           className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
         >
           Your Email
         </label>
-        <button
+        {/* <button
           id="dropdown-button"
           data-dropdown-toggle="dropdown"
           className="flex-shrink-0 z-10 inline-flex gap-1 items-center py-2.5 px-4 text-sm border-e-1  font-bold text-center text-gray-900   border-gray-300 rounded-s-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700 dark:text-white dark:border-gray-600"
@@ -36,7 +42,7 @@ export const SearchInput: React.FC = () => {
               d="m1 1 4 4 4-4"
             />
           </svg>
-        </button>
+        </button> */}
         <div
           id="dropdown"
           className="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700"
@@ -83,21 +89,19 @@ export const SearchInput: React.FC = () => {
           <input
             type="search"
             id="search-dropdown"
-            className=" p-2.5 md:pe-20 w-full z-20 text-sm  "
-            placeholder="Search Mockups, Templates, Design, Logos"
+            className=" p-2.5 md:pe-20 w-full z-20 text-sm focus:border-none  "
+            placeholder="Search Here . . ."
             required
           />
           <button
             type="submit"
-            className="absolute top-0 end-0 p-2.5 text-sm font-medium h-full text-white bg-[#1FA8C9] border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none rounded-full focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            className="absolute top-0 end-0 p-2 text-sm font-medium h-full text-white bg-[#1FA8C9] hover:bg-[#22a8dd] focus:ring-4 focus:outline-none rounded-full focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
           >
-            <CiSearch />
-
+            <BiSearch size={24} />
             <span className="sr-only">Search</span>
           </button>
         </div>
       </div>
-     
     </form>
   );
 };
