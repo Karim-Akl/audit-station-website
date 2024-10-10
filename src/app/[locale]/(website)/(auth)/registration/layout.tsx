@@ -1,8 +1,8 @@
 import React from "react";
 
 export const metadata = {
-    title: "Sign Up",
-    description: "Sign Up Page",
+    title: "Registration",
+    description: "Registration Page",
 };
 
 export default function SignUpLayout({ children }: { children: React.ReactNode }) {
