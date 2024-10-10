@@ -89,7 +89,7 @@ export const SearchInput: React.FC = () => {
           <input
             type="search"
             id="search-dropdown"
-            className=" p-2.5 md:pe-20 w-full z-20 text-sm focus:border-none  "
+            className=" p-2.5 md:pe-20 w-full z-20 text-sm focus:border-none bg-none "
             placeholder="Search Here . . ."
             required
           />

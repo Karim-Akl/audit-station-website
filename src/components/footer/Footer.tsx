@@ -6,7 +6,7 @@ import GooglePlay from "@../../../public/assets/googleplay.svg";
 import { CiFacebook, CiInstagram, CiLinkedin } from "react-icons/ci";
 export const Footer: React.FC = () => {
   return (
-    <div className="bg-[#1C1C1C] text-white w-full">
+    <div className="bg-[#F5F5F5] text-black w-full">
       <div
         className="w-10/12 h-full flex flex-col
        mx-auto"
@@ -87,7 +87,7 @@ export const Footer: React.FC = () => {
           </div>
         </div>
       </div>
-      <div className="w-full h-12 flex justify-center items-center mx-auto text-xs bg-[#242424]">
+      <div className="w-full h-12 flex justify-center items-center mx-auto text-xs bg-[#EEE]">
         <p>CopyRight @ Audit Station</p>
       </div>
     </div>

@@ -13,18 +13,18 @@ import { VerifyCertificate } from "./VerifyCertificate";
 
 export default async function Navbar() {
   return (
-    <div className="top-0  left w-full relative">
+    <div className="top-0   left w-full relative">
       <div className="bg-[#EEE] w-full">
         <Header />
       </div>
-      <nav className=" top-0 left-0 right-0 z-10">
-        <div className="flex my-4 justify-center gap-4 md:gap-8 items-center transition">
+      <nav className=" top-0 left-0 right-0 z-10 bg-[#F5F5F5]">
+        <div className="flex py-4  justify-center gap-4 md:gap-8 items-center  transition">
           <Link href="/">
             <Image height={150} width={150} src={Logo} alt="enlogo" />
           </Link>
           <NavLink />
           <SearchInput />
-          <VerifyCertificate />
+          <VerifyCertificate  />
           <div>
             {/* Mobile Menu */}
             <MobileMenu />
@@ -38,7 +38,7 @@ export default async function Navbar() {
               <LiaShoppingBasketSolid size={22} />
             </div>
             <div className="rounded-full border border-[#767676] p-1 hover:bg-gray-400 hover:cursor-pointer">
-              <GoPerson size={22} />
+              <Link href="/en/login"> <GoPerson size={22} /></Link>
             </div>
           </div>
         </div>

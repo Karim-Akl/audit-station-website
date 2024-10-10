@@ -1,19 +1,19 @@
 import React from "react";
-import yellowCircle from "../../public/assets/yellowCircle.svg";
+import yellowCircle from "@../../../public/assets/yellowCircle.svg";
+
 import bottomBlueCircle from "@../../../public/assets/bottomBlueCircle.svg";
 import leftBlueCircle from "@../../../public/assets/leftBlueCircle.svg";
-import leftDots from "../../public/assets/leftDots.svg";
-import rightDots from "../../public/assets/rightDots.svg";
+import leftDots from "@../../../public/assets/leftDots.svg";
+import rightDots from "@../../../public/assets/rightDots.svg";
 import Image from "next/image";
 import { MdKeyboardArrowLeft, MdOutlineArrowForwardIos } from "react-icons/md";
 import Link from "next/link";
+import GlobalBreadcrumbHeader from "./breadcrumb";
 
 interface IProps {
   title: string;
-  pageRoute: JSX.Element;
 }
-
-const HeroBackground = ({ title, pageRoute }: IProps) => {
+const HeroBackground = ({ title }: IProps) => {
   return (
     <main className="relative overflow-hidden">
       <div className="w-[100vw]  h-[270px]">
@@ -54,9 +54,7 @@ const HeroBackground = ({ title, pageRoute }: IProps) => {
             </Link>
             <h2 className="text-4xl font-semibold capitalize">{title}</h2>
           </div>
-          <p className="flex items-center gap-1 ml-10 mt-5 capitalize">
-            {pageRoute}
-          </p>
+          <GlobalBreadcrumbHeader MainLink="/" MainTitle="Home" items={[{title : "toogle" , link : "goole"}]} />
         </div>
       </div>
     </main>
