@@ -17,17 +17,19 @@ import {
 } from "@/components/ui/dropdown-menu";
 import Link from "next/link";
 import UseSearchParamsHook from "@/hooks/UseSearchParamsHook";
-import type { UrlObject } from 'url';
 import { Url } from 'url';
+
 interface BreadcrumbItemProps {
   title: string;
   link: string;
 }
+
 interface BreadcrumbHeaderProps {
   MainTitle?: string;
   MainLink?: Url | string;
   items?: BreadcrumbItemProps[];
 }
+
 const GlobalBreadcrumbHeader: FC<BreadcrumbHeaderProps> = ({
   MainTitle,
   MainLink,
@@ -41,7 +43,11 @@ const GlobalBreadcrumbHeader: FC<BreadcrumbHeaderProps> = ({
       <Breadcrumb className="font-semibold font-sans text-xl">
         <BreadcrumbList>
           <BreadcrumbItem>
-            <Link href={MainLink}>{MainTitle}</Link>
+            {MainLink ? (
+              <Link href={MainLink}>{MainTitle}</Link>
+            ) : (
+              <span>{MainTitle}</span>
+            )}
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           <BreadcrumbItem>
