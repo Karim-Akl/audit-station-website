@@ -10,7 +10,6 @@ export default function Services() {
       <main className='mb-20'>
          <HeroBackground
             title='Contact'
-            pageRoute={<>home <MdOutlineArrowForwardIos /> Contact</>}
          />
          <div className="mx-[2%] mt-10 relative">
             <div className="absolute top-0 right-[-2%] -z-10">
