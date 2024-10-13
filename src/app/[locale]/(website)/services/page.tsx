@@ -6,14 +6,15 @@ import Image from "next/image";
 import blueCircle from "@/../public/assets/services/rightBlueCircle.svg";
 import yellowCircle from "@/../public/assets/services/leftYellowCircle.svg";
 import { topServicesItems } from ".";
-
+import { bottomServicesItems } from "../shoppingCart";
+export const metadata = {
+  title: "Services",
+  description: "Services Page",
+};
 export default function Services() {
   return (
     <main className="mb-20">
-      <HeroBackground
-        title="Services"
-       
-      />
+      <HeroBackground title="Services" />
       <div className="mx-[2%] mt-10 relative">
         <div className="absolute top-0 right-[-2%] -z-10">
           <Image src={blueCircle} alt="blue circle" />
@@ -27,7 +28,7 @@ export default function Services() {
           streamlined platform designed to enhance efficiency, collaboration,
           and success.{" "}
         </p>
-        {/* <div className="my-6 grid grid-cols-4">
+        <div className="my-6 grid lg:grid-cols-4 md:grid-cols-3 ">
           {topServicesItems.map(({ id, logo, title, paragraph }, index) => {
             return (
               <div
@@ -58,7 +59,7 @@ export default function Services() {
               </div>
             );
           })}
-        </div> */}
+        </div>
       </div>
     </main>
   );

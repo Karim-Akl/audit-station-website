@@ -10,8 +10,10 @@ import { LiaShoppingBasketSolid } from "react-icons/lia";
 import { GoPerson } from "react-icons/go";
 import { MdOutlineDarkMode } from "react-icons/md";
 import { VerifyCertificate } from "./VerifyCertificate";
+import { getLocale } from "next-intl/server";
 
 export default async function Navbar() {
+  const locale = await getLocale();  
   return (
     <div className="top-0   left w-full relative">
       <div className="bg-[#EEE] w-full">
@@ -24,7 +26,7 @@ export default async function Navbar() {
           </Link>
           <NavLink />
           <SearchInput />
-          <VerifyCertificate  />
+          <VerifyCertificate />
           <div>
             {/* Mobile Menu */}
             <MobileMenu />
@@ -35,10 +37,16 @@ export default async function Navbar() {
               <MdOutlineDarkMode size={22} />
             </div>
             <div className="rounded-full border border-[#767676] p-1 hover:bg-gray-400 hover:cursor-pointer">
-              <LiaShoppingBasketSolid size={22} />
+              <Link href={`/${locale}/shoppingCart`}>
+                {" "}
+                <LiaShoppingBasketSolid size={22} />
+              </Link>
             </div>
             <div className="rounded-full border border-[#767676] p-1 hover:bg-gray-400 hover:cursor-pointer">
-              <Link href="/en/login"> <GoPerson size={22} /></Link>
+              <Link href={ `/${locale}/login`}>
+                {" "}
+                <GoPerson size={22} />
+              </Link>
             </div>
           </div>
         </div>

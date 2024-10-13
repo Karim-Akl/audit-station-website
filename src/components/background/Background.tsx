@@ -8,14 +8,15 @@ import { Button } from "../ui/button";
 import { VscDebugStart } from "react-icons/vsc";
 import Image from "next/image";
 import VideoPlay from "../home/VideoPlay";
+import { VideoPlayer } from "../helper/videoPlayer";
 
 export const Background: React.FC = () => {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
 
   const openVideo = () => {
-    setIsOpen(true)
-    document.body.style.overflow = 'hidden'
-  }
+    setIsOpen(true);
+    document.body.style.overflow = "hidden";
+  };
   return (
     <div className="w-full background-color relative h-[calc(100vh-50px)] text-white overflow-hidden">
       <div className="flex justify-center items-center h-full">
@@ -33,15 +34,7 @@ export const Background: React.FC = () => {
               Login As Company
             </Button>
 
-            <Button className="bg-[#22B9DD] hover:bg-[#22a8dd] rounded-full text-black " onClick={openVideo}>
-              <VscDebugStart size={22} />
-            </Button>
-
-            <VideoPlay
-              isOpen={isOpen}
-              setIsOpen={setIsOpen}
-            />
-
+            <VideoPlayer />
 
             <p className="text-[#161439] text-md  max-w-20 leading-tight">
               Watch Our Class Demo

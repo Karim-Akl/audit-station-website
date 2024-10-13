@@ -13,7 +13,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import prize from "@../../../public/assets/prize.svg";
-import instractor from "@../../../public/assets/instractor.svg";
+import topcourses from "@../../../public/assets/topcourse.svg";
 
 export function TopCourses() {
   const [selectedTab, setSelectedTab] = useState("all");
@@ -34,9 +34,9 @@ export function TopCourses() {
       title: "Software Engineer",
       rating: 4.5,
       students: 1200,
-      imageUrl: instractor,
+      imageUrl: topcourses,
       category: "development",
-      flag: true,
+      flag: false,
     },
     {
       id: 2,
@@ -44,7 +44,7 @@ export function TopCourses() {
       title: "Product Manager",
       rating: 4.7,
       students: 1500,
-      imageUrl: instractor,
+      imageUrl: topcourses,
       category: "management",
       flag: false,
     },
@@ -54,7 +54,7 @@ export function TopCourses() {
       title: "IT Specialist",
       rating: 4.6,
       students: 1100,
-      imageUrl: instractor,
+      imageUrl: topcourses,
       category: "it",
       flag: false,
     },
@@ -64,7 +64,7 @@ export function TopCourses() {
       title: "Business Analyst",
       rating: 4.8,
       students: 1300,
-      imageUrl: instractor,
+      imageUrl: topcourses,
       category: "business",
       flag: false,
     },
@@ -74,9 +74,9 @@ export function TopCourses() {
       title: "Accountant",
       rating: 4.9,
       students: 1400,
-      imageUrl: instractor,
+      imageUrl: topcourses,
       category: "accounting",
-      flag: true,
+      flag: false,
     },
     // ... other instructors
   ];

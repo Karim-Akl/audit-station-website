@@ -1,9 +1,10 @@
 import Image from "next/image";
 import React from "react";
-import Logo from "@../../../public/assets/footer.png";
+import Logo from "@../../../public/assets/footer.svg";
 import AppStore from "@../../../public/assets/appstore.svg";
 import GooglePlay from "@../../../public/assets/googleplay.svg";
 import { CiFacebook, CiInstagram, CiLinkedin } from "react-icons/ci";
+import { FloatingDockDemo } from "../helper/FloatingDock";
 export const Footer: React.FC = () => {
   return (
     <div className="bg-[#F5F5F5] text-black w-full">
@@ -24,7 +25,7 @@ export const Footer: React.FC = () => {
                 Dubai, UAE
               </p>
             </li>
-            <li className="flex max-w-52  flex-wrap my-[1rem]">
+            <li className="flex max-w-52 flex-wrap my-[1rem]">
               <h6>Our Branches:</h6>
               <p>
                 12, Ooredoo Building, Alhkoud A Tijary st, Alhkoud, Muscat, Oman
@@ -33,10 +34,8 @@ export const Footer: React.FC = () => {
           </ul>
           <ul className="my-[2rem]">
             <div className=" flex flex-col gap-4 ">
-              <div className="text-xl text-lime-50 font-bold leading-none">
-                Services
-              </div>
-              <div className="border-2 w-7"></div>
+              <div className="text-xl  font-bold leading-none">Services</div>
+              <div className="border-2 w-7 border-[#1C1C1C]"></div>
               <li>Become a user</li>
               <li>Become an Accountant</li>
               <li>Get Certified</li>
@@ -49,10 +48,10 @@ export const Footer: React.FC = () => {
           </ul>
           <ul className="my-[2rem]">
             <div className=" flex flex-col gap-4 text-sm">
-              <div className=" text-xl  text-lime-50 font-bold leading-none">
+              <div className=" text-xl   font-bold leading-none">
                 Our Company
               </div>
-              <div className="border-2 w-7"></div>
+              <div className="border-2 w-7 border-[#1C1C1C]"></div>
               <li>Contact Us</li>
               <li>About Us</li>
               <li>Privacy Policy</li>
@@ -64,20 +63,21 @@ export const Footer: React.FC = () => {
           </ul>
           <div className="my-[2rem] min-w-64">
             <div className="flex flex-col gap-4 ">
-              <div className=" text-xl   text-lime-50   font-bold leading-none">
+              <div className=" text-xl font-bold leading-none">
                 Find Us On Social Media
               </div>
-              <div className="border-2 w-7"></div>
+              <div className="border-2 w-7 border-[#1C1C1C]"></div>
               <p className="max-w-64 flex-wrap leading-none">
                 Follow us on social media to get our latest news and updates
               </p>
               <div className="flex text-xl gap-2  items-center">
-                <CiFacebook />
+                <FloatingDockDemo />
+                {/* <CiFacebook />
                 <CiLinkedin />
                 <CiInstagram />
                 <CiFacebook />
                 <CiLinkedin />
-                <CiInstagram />
+                <CiInstagram /> */}
               </div>
               <div className="flex gap-1 items-center">
                 <Image src={AppStore} alt="logo" />
