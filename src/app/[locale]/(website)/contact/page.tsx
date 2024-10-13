@@ -15,6 +15,7 @@ import { FiPhoneCall } from "react-icons/fi";
 import { HiOutlineMail } from "react-icons/hi";
 import { TfiLocationPin } from "react-icons/tfi";
 import { GoogleMapComponent } from "@/components/helper/googleMap/GoogleMapComponent";
+import { FaArrowRight } from "react-icons/fa6";
 
 export const metadata = {
   title: "Contact",
@@ -89,8 +90,8 @@ export default function Contact() {
               />
             </CardContent>
             <CardFooter>
-              <Button className="bg-[#22B9DD] text-black font-bold  hover:bg-[#22b8dd86] ">
-                Submit Now
+              <Button className="bg-[#22B9DD] gap-1 text-black font-bold border border-black shadow-md shadow-black rounded-full hover:bg-[#22b8dd86] ">
+                Submit Now <FaArrowRight />
               </Button>
             </CardFooter>
           </Card>
