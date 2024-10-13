@@ -5,7 +5,10 @@ import banner from "@/../public/assets/about/logoBanner.svg";
 import { MdOutlineArrowForwardIos } from "react-icons/md";
 import TitleSubtitle from "@/components/aboutUs/TitleSubtitle";
 import yellowCircle from "@/../public/assets/leftYellowCircle.svg";
-
+export const metadata = {
+  title: "About",
+  description: "About Page",
+};
 export default function About() {
   return (
     <div className="mb-20">

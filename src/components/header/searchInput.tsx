@@ -1,5 +1,6 @@
 import React from "react";
 import { BiSearch } from "react-icons/bi";
+import { Input } from "../ui/input";
 
 export const SearchInput: React.FC = () => {
   return (
@@ -19,77 +20,13 @@ export const SearchInput: React.FC = () => {
         >
           Your Email
         </label>
-        {/* <button
-          id="dropdown-button"
-          data-dropdown-toggle="dropdown"
-          className="flex-shrink-0 z-10 inline-flex gap-1 items-center py-2.5 px-4 text-sm border-e-1  font-bold text-center text-gray-900   border-gray-300 rounded-s-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700 dark:text-white dark:border-gray-600"
-          type="button"
-        >
-          <BiCategoryAlt color="#1FA8C9" size={18} />
-          Categories
-          <svg
-            className="w-2.5 h-2.5 ms-2.5"
-            aria-hidden="true"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 10 6"
-          >
-            <path
-              stroke="currentColor"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="m1 1 4 4 4-4"
-            />
-          </svg>
-        </button> */}
-        <div
-          id="dropdown"
-          className="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700"
-        >
-          <ul
-            className="py-2 text-sm text-gray-700 dark:text-gray-200"
-            aria-labelledby="dropdown-button"
-          >
-            <li>
-              <button
-                type="button"
-                className="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-              >
-                Mockups
-              </button>
-            </li>
-            <li>
-              <button
-                type="button"
-                className="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-              >
-                Templates
-              </button>
-            </li>
-            <li>
-              <button
-                type="button"
-                className="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-              >
-                Design
-              </button>
-            </li>
-            <li>
-              <button
-                type="button"
-                className="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-              >
-                Logos
-              </button>
-            </li>
-          </ul>
-        </div>
+
         <div className="relative w-full">
-          <input
+          <Input
             type="search"
             id="search-dropdown"
-            className=" p-2.5 md:pe-20 w-full z-20 text-sm focus:border-none bg-none "
+            className=" p-2 md:pe-20 w-full z-20 text-sm rounded-xl focus:outline-none bg-none "
+            style={{ background: "none" }}
             placeholder="Search Here . . ."
             required
           />

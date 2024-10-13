@@ -3,7 +3,7 @@ import { ArrowRight, ChevronRight } from "lucide-react";
 import Image from "next/image";
 import React from "react";
 import aboutus from "@../../../public/assets/aboutus.svg";
-import { MdPlayArrow } from "react-icons/md";
+import { VideoPlayer } from "@/components/helper/videoPlayer";
 
 export const AboutUs: React.FC = () => {
   return (
@@ -59,9 +59,7 @@ export const AboutUs: React.FC = () => {
           />
 
           <div className="absolute inset-0 flex justify-center z-30 items-center">
-            <Button className="p-2 bg-white rounded-full shadow-lg">
-              <MdPlayArrow className="text-red-500" size={29} />
-            </Button>
+            <VideoPlayer />
           </div>
         </div>
         <div className="absolute md:bottom-6 left-0  md:w-96 w-72 h-96 rounded-full border border-blue-300 z-0 "></div>

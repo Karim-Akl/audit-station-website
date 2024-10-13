@@ -1,46 +1,171 @@
-import HeroBackground from '@/components/helper/HeroBackground'
-import React from 'react'
-import { MdOutlineArrowForwardIos } from 'react-icons/md'
-import Image from 'next/image'
-import blueCircle from '@/../public/assets/services/rightBlueCircle.svg'
-import yellowCircle from '@/../public/assets/services/leftYellowCircle.svg'
+import React from "react";
+import Image from "next/image";
+import instractor from "@../../../public/assets/instractor.svg";
+import { Card, CardContent } from "@/components/ui/card";
+import { link } from "fs";
 
-export default function Services() {
-   return (
-      <main className='mb-20'>
-         <HeroBackground
-            title='Blogs'         />
-         <div className="mx-[2%] mt-10 relative">
-            <div className="absolute top-0 right-[-2%] -z-10">
-               <Image src={blueCircle} alt='blue circle' />
+export const metadata = {
+  title: "Blogs",
+  description: "Blogs Page",
+};
+export default function Blogs() {
+  
+  return (
+    <div className="w-full grid grid-cols-3 gap-3">
+      {instructors.map((instructor) => (
+        <Card
+          key={instructor.id}
+          className="relative  overflow-hidden p-0  bg-white"
+        >
+          <div className="absolute top-4 right-4 text-white bg-[#22B9DD] px-4 py-2 rounded-md  flex items-center justify-center ">
+            {instructor.category}
+          </div>
+
+          <CardContent className="p-2">
+            <Image
+              src={instructor.imageUrl}
+              width={100}
+              height={100}
+              alt={instructor.name}
+              className="w-full h-auto "
+            />
+            <div className="flex justify-between py-2  items-center">
+              <div className="flex items-center">
+                <svg
+                  className="w-5 h-5 text-yellow-500"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path d="M9.049 2.927c-.3-.921-1.598-.921-1.898 0L5.317 6.23l-3.905.568c-1.011.147-1.416 1.392-.683 2.104l2.828 2.758-.668 3.892c-.172 1.002.883 1.753 1.785 1.284L10 15.347l3.49 1.834c.902.469 1.957-.282 1.785-1.284l-.668-3.892 2.828-2.758c.733-.712.328-1.957-.683-2.104l-3.905-.568-1.834-3.303z" />
+                </svg>
+                <span className="ml-2">{instructor.rating}</span>
+              </div>
+              <p className="text-sm text-gray-600">
+                {instructor.students} Students
+              </p>
             </div>
-            <div className="absolute bottom-[-90px] left-[-2%] -z-10">
-               <Image src={yellowCircle} alt='yellow circle' />
+            <div className="">
+              <div className="font-bold text-xl mb-2">{instructor.name}</div>
+              {/* <p className="text-gray-700 text-base">
+                      {instructor.title}
+                    </p> */}
             </div>
-            <p className="font-bold text-center w-[95%] mb-5">We provide comprehensive solutions for accounting, instructor management, student engagement, and employment services, all in one streamlined platform designed to enhance efficiency, collaboration, and success. </p>
-            {/* <div className="my-6 grid grid-cols-4">
-               {topServicesItems.map(({ id, logo, title, paragraph }, index) => {
-                  return <div
-                     className='border border-[#F4F4F4] py-6 px-4'
-                     style={{ backgroundColor: index % 2 === 0 ? 'white' : '#F4F4F4', }}
-                     key={id} >
-                     <Image src={logo} alt='logo' className='mx-auto' />
-                     <h4 className='text-center font-semibold mt-3'>{title}</h4>
-                     <p className="mt-8 text-center">{paragraph}</p>
-                  </div>
-               })}
-               {bottomServicesItems.map(({ id, logo, title, paragraph }, index) => {
-                  return <div
-                     className='border border-[#F4F4F4] py-6 px-4'
-                     style={{ backgroundColor: index % 2 !== 0 ? 'white' : '#F4F4F4', }}
-                     key={id} >
-                     <Image src={logo} alt='logo' className='mx-auto' />
-                     <h4 className='text-center font-semibold mt-3'>{title}</h4>
-                     <p className="mt-8 text-center">{paragraph}</p>
-                  </div>
-               })}
-            </div> */}
-         </div>
-      </main>
-   )
+          </CardContent>
+        </Card>
+      ))}
+    </div>
+  );
 }
+const instructors = [
+   {
+     id: 1,
+     name: "Lorem ipsum dolor sit amet.",
+     title: "Software Engineer",
+     rating: 4.5,
+     students: 1200,
+     imageUrl: instractor,
+     category: "NEWS",
+     flag: true,
+   },
+   {
+     id: 2,
+     name: "Lorem ipsum dolor sit amet.",
+     title: "Product Manager",
+     rating: 4.7,
+     students: 1500,
+     imageUrl: instractor,
+     category: "NEWS",
+     flag: false,
+   },
+   {
+     id: 3,
+     name: "Lorem ipsum dolor sit amet.",
+     title: "IT Specialist",
+     rating: 4.6,
+     students: 1100,
+     imageUrl: instractor,
+     category: "NEWS",
+     flag: false,
+   },
+   {
+     id: 4,
+     name: "Lorem ipsum dolor sit amet.",
+     title: "Business Analyst",
+     rating: 4.8,
+     students: 1300,
+     imageUrl: instractor,
+     category: "NEWS",
+     flag: false,
+   },
+   {
+     id: 5,
+     name: "Lorem ipsum dolor sit amet.",
+     title: "Accountant",
+     rating: 4.9,
+     students: 1400,
+     imageUrl: instractor,
+     category: "NEWS",
+     flag: true,
+   },
+   {
+      id: 6,
+      name: "Lorem ipsum dolor sit amet.",
+      title: "Accountant",
+      rating: 4.9,
+      students: 1400,
+      imageUrl: instractor,
+      category: "NEWS",
+      flag: true,
+    },
+    {
+      id: 7,
+      name: "Lorem ipsum dolor sit amet.",
+      title: "Accountant",
+      rating: 4.9,
+      students: 1400,
+      imageUrl: instractor,
+      category: "NEWS",
+      flag: true,
+    },
+    {
+      id: 8,
+      name: "Lorem ipsum dolor sit amet.",
+      title: "Accountant",
+      rating: 4.9,
+      students: 1400,
+      imageUrl: instractor,
+      category: "NEWS",
+      flag: true,
+    },
+    {
+      id: 9,
+      name: "Lorem ipsum dolor sit amet.",
+      title: "Accountant",
+      rating: 4.9,
+      students: 1400,
+      imageUrl: instractor,
+      category: "NEWS",
+      flag: true,
+    },
+    {
+      id: 10,
+      name: "Lorem ipsum dolor sit amet.",
+      title: "Accountant",
+      rating: 4.9,
+      students: 1400,
+      imageUrl: instractor,
+      category: "NEWS",
+      flag: true,
+    },
+    {
+      id: 11,
+      name: "Lorem ipsum dolor sit amet.",
+      title: "Accountant",
+      rating: 4.9,
+      students: 1400,
+      imageUrl: instractor,
+      category: "NEWS",
+      flag: true,
+    },
+   // ... other instructors
+ ];

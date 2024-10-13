@@ -49,7 +49,7 @@ const GlobalBreadcrumbHeader: FC<BreadcrumbHeaderProps> = ({
               <span>{MainTitle}</span>
             )}
           </BreadcrumbItem>
-          <BreadcrumbSeparator />
+          {/* <BreadcrumbSeparator />
           <BreadcrumbItem>
             <DropdownMenu>
               <DropdownMenuTrigger className="flex items-center gap-1">
@@ -64,7 +64,7 @@ const GlobalBreadcrumbHeader: FC<BreadcrumbHeaderProps> = ({
                 ))}
               </DropdownMenuContent>
             </DropdownMenu>
-          </BreadcrumbItem>
+          </BreadcrumbItem> */}
           <BreadcrumbSeparator />
           <BreadcrumbItem className="capitalize">
             <span>{lastPath}</span>
@@ -76,3 +76,4 @@ const GlobalBreadcrumbHeader: FC<BreadcrumbHeaderProps> = ({
 };
 
 export default GlobalBreadcrumbHeader;
+  

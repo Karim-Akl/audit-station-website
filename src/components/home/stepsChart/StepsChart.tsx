@@ -20,7 +20,7 @@ export function StepsChart() {
         title="User"
         description="Browse the platform's sections and increase your experience through our courses."
         className=" bg-[#21A74F] border-[#21A74F]"
-        style={" hover:shadow-[#21A74F] text-[#21A74F] border-[#21A74F]"}
+        style={"hover:shadow-[#21A74F] hover:shadow-cyan-500 text-[#21A74F] border-[#21A74F]"}
       />
       <div className="absolute top-52 right-0 left-0 content-center hidden md:flex gap-5 justify-around mx-auto ">
         <svg
