@@ -14,8 +14,11 @@ import {
 } from "@/components/ui/carousel";
 import prize from "@../../../public/assets/prize.svg";
 import topcourses from "@../../../public/assets/topcourse.svg";
+import Link from "next/link";
+import { useLocale } from "next-intl";
 
 export function TopCourses() {
+  const locale = useLocale();
   const [selectedTab, setSelectedTab] = useState("all");
 
   const tabs = [
@@ -104,12 +107,14 @@ export function TopCourses() {
               </TabsTrigger>
             ))}
           </TabsList>
-          <Button className="bg-white md:flex hidden hover:bg-gray-200 hover:border border pe-0 md:h-14 md:mt-12 justify-between md:w-72 rounded-full border-[#22B9DD] text-[#22B9DD]">
-            <span>See More</span>
-            <span className="rounded-full border p-2 border-[#22B9DD]">
-              <ArrowRight />
-            </span>
-          </Button>
+          <Link href={`/${locale}/top-courses`}>
+            <Button className="bg-white md:flex hidden hover:bg-gray-200 hover:border border pe-0 md:h-14 md:mt-12 justify-between md:w-72 rounded-full border-[#22B9DD] text-[#22B9DD]">
+              <span>See More</span>
+              <span className="rounded-full border p-2 border-[#22B9DD]">
+                <ArrowRight />
+              </span>
+            </Button>
+          </Link>
         </div>
         <Carousel
           opts={{

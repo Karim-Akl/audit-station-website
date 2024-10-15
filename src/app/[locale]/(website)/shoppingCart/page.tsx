@@ -2,7 +2,10 @@ import HeroBackground from "@/components/helper/HeroBackground";
 import React from "react";
 import Image from "next/image";
 import cartempaty from "@/../public/assets/cartempaty.svg";
-
+export const metadata = {
+  title: "Shopping Cart",
+  description: "Shopping Cart Page",
+};
 export default function ShoppingCart() {
   return (
     <main className="mb-20">

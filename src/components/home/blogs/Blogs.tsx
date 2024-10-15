@@ -11,8 +11,12 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import instractor from "@../../../public/assets/instractor.svg";
+import Link from "next/link";
+import { getLocale } from "next-intl/server";
 
-export function Blogs() {
+export async function Blogs() {
+  const locale = await getLocale();
+
   const instructors = [
     {
       id: 1,
@@ -64,7 +68,6 @@ export function Blogs() {
       category: "NEWS",
       flag: true,
     },
-    // ... other instructors
   ];
 
   return (
@@ -134,12 +137,15 @@ export function Blogs() {
         <CarouselNext />
       </Carousel>
       <div className="flex items-center justify-end">
-        <Button className="bg-white hover:bg-gray-200 hover:border border pe-0 md:h-14 md:mt-12 justify-between md:w-72 rounded-full border-[#22B9DD] text-[#22B9DD]">
-          <span>See More</span>
-          <span className="rounded-full border p-2 border-[#22B9DD]">
-            <ArrowRight />
-          </span>
-        </Button>
+        <Link href={`/${locale}/blogs`}>
+          {" "}
+          <Button className="bg-white hover:bg-gray-200 hover:border border pe-0 md:h-14 md:mt-12 justify-between md:w-72 rounded-full border-[#22B9DD] text-[#22B9DD]">
+            <span>See More</span>
+            <span className="rounded-full border p-2 border-[#22B9DD]">
+              <ArrowRight />
+            </span>
+          </Button>
+        </Link>
       </div>
     </div>
   );
