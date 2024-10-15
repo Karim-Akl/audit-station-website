@@ -14,8 +14,11 @@ import {
 } from "@/components/ui/carousel";
 import prize from "@../../../public/assets/prize.svg";
 import instractor from "@../../../public/assets/instractor.svg";
+import Link from "next/link";
+import { useLocale } from "next-intl";
 
 export function TopInstructors() {
+  const locale = useLocale();
   const [selectedTab, setSelectedTab] = useState("all");
 
   const tabs = [
@@ -99,12 +102,6 @@ export function TopInstructors() {
               </TabsTrigger>
             ))}
           </TabsList>
-          <Button className="bg-white md:flex hidden hover:bg-gray-200 hover:border border pe-0 md:h-14 md:mt-12 justify-between md:w-72 rounded-full border-[#22B9DD] text-[#22B9DD]">
-            <span>See More</span>
-            <span className="rounded-full border p-2 border-[#22B9DD]">
-              <ArrowRight />
-            </span>
-          </Button>
         </div>
         <Carousel
           opts={{
@@ -121,52 +118,54 @@ export function TopInstructors() {
               .map((instructor) => (
                 <CarouselItem
                   key={instructor.id}
-                  className="md:w-full rounded-lg sm:basis-1/2 md:basis-1/3 xl:basis-1/5"
+                  className="md:w-full rounded-lg sm:basis-1/2 md:basis-1/3 xl:basis-1/5  "
                 >
-                  <Card className="relative  overflow-hidden p-0  bg-white">
-                    {instructor.flag && (
-                      <div className="absolute top-0 right-0 text-white  flex items-center justify-center ">
+                  <Link  href={`/${locale}/top-instructors/${instructor.id}`} className="hover:shadow-[#3B82F6] hover:shadow-xl">
+                    <Card className="relative  overflow-hidden p-0  bg-white">
+                      {instructor.flag && (
+                        <div className="absolute top-0 right-0 text-white  flex items-center justify-center ">
+                          <Image
+                            src={prize}
+                            width={50}
+                            height={50}
+                            alt={"Instructor"}
+                          />
+                        </div>
+                      )}
+                      <CardContent className="p-2">
                         <Image
-                          src={prize}
-                          width={50}
-                          height={50}
-                          alt={"Instructor"}
+                          src={instructor.imageUrl}
+                          width={100}
+                          height={100}
+                          alt={instructor.name}
+                          className="w-full py-2 "
                         />
-                      </div>
-                    )}
-                    <CardContent className="p-2">
-                      <Image
-                        src={instructor.imageUrl}
-                        width={100}
-                        height={100}
-                        alt={instructor.name}
-                        className="w-full py-2 "
-                      />
-                      <div className="py-4  ">
-                        <div className="font-bold text-xl mb-2">
-                          {instructor.name}
+                        <div className="py-4  ">
+                          <div className="font-bold text-xl mb-2">
+                            {instructor.name}
+                          </div>
+                          <p className="text-gray-700 text-base">
+                            {instructor.title}
+                          </p>
                         </div>
-                        <p className="text-gray-700 text-base">
-                          {instructor.title}
-                        </p>
-                      </div>
-                      <div className="pt-4 pb-2 flex justify-between font-semibold border-t items-center">
-                        <div className="flex items-center">
-                          <svg
-                            className="w-5 h-5 text-yellow-500"
-                            fill="currentColor"
-                            viewBox="0 0 20 20"
-                          >
-                            <path d="M9.049 2.927c-.3-.921-1.598-.921-1.898 0L5.317 6.23l-3.905.568c-1.011.147-1.416 1.392-.683 2.104l2.828 2.758-.668 3.892c-.172 1.002.883 1.753 1.785 1.284L10 15.347l3.49 1.834c.902.469 1.957-.282 1.785-1.284l-.668-3.892 2.828-2.758c.733-.712.328-1.957-.683-2.104l-3.905-.568-1.834-3.303z" />
-                          </svg>
-                          <span className="ml-2">{instructor.rating}</span>
+                        <div className="pt-4 pb-2 flex justify-between font-semibold border-t items-center">
+                          <div className="flex items-center">
+                            <svg
+                              className="w-5 h-5 text-yellow-500"
+                              fill="currentColor"
+                              viewBox="0 0 20 20"
+                            >
+                              <path d="M9.049 2.927c-.3-.921-1.598-.921-1.898 0L5.317 6.23l-3.905.568c-1.011.147-1.416 1.392-.683 2.104l2.828 2.758-.668 3.892c-.172 1.002.883 1.753 1.785 1.284L10 15.347l3.49 1.834c.902.469 1.957-.282 1.785-1.284l-.668-3.892 2.828-2.758c.733-.712.328-1.957-.683-2.104l-3.905-.568-1.834-3.303z" />
+                            </svg>
+                            <span className="ml-2">{instructor.rating}</span>
+                          </div>
+                          <p className="text-sm  text-gray-600">
+                            {instructor.students} Students
+                          </p>
                         </div>
-                        <p className="text-sm  text-gray-600">
-                          {instructor.students} Students
-                        </p>
-                      </div>
-                    </CardContent>
-                  </Card>
+                      </CardContent>
+                    </Card>
+                  </Link>
                 </CarouselItem>
               ))}
           </CarouselContent>

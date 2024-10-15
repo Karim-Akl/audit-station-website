@@ -17,7 +17,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import Link from "next/link";
 import UseSearchParamsHook from "@/hooks/UseSearchParamsHook";
-import { Url } from 'url';
+import { Url } from "url";
 
 interface BreadcrumbItemProps {
   title: string;
@@ -36,8 +36,19 @@ const GlobalBreadcrumbHeader: FC<BreadcrumbHeaderProps> = ({
   items,
 }) => {
   const { pathname } = UseSearchParamsHook();
-  const lastPath = pathname.split("/").filter(Boolean).pop();
-
+  const pathSegments = pathname.split("/").filter(Boolean);
+  const secondLastPath =
+    pathSegments.length > 1
+      ? pathSegments[pathSegments.length - 2]
+      :  pathSegments[pathSegments.length - 3];
+  const lastPath =
+    pathSegments.length > 2
+      ? pathSegments[pathSegments.length - 1]
+      : undefined;
+  const thirdLastPath =
+    pathSegments.length > 3
+      ? pathSegments[pathSegments.length - 4]
+      : undefined;
   return (
     <div className=" flex items-center gap-1 ml-10 mt-5 capitalize">
       <Breadcrumb className="font-semibold font-sans text-xl">
@@ -65,10 +76,31 @@ const GlobalBreadcrumbHeader: FC<BreadcrumbHeaderProps> = ({
               </DropdownMenuContent>
             </DropdownMenu>
           </BreadcrumbItem> */}
-          <BreadcrumbSeparator />
-          <BreadcrumbItem className="capitalize">
-            <span>{lastPath}</span>
-          </BreadcrumbItem>
+
+          {secondLastPath && (
+            <>
+              <BreadcrumbSeparator />
+              <BreadcrumbItem className="capitalize">
+                <span>{secondLastPath}</span>
+              </BreadcrumbItem>
+            </>
+          )}
+          {lastPath && (
+            <>
+              <BreadcrumbSeparator />
+              <BreadcrumbItem className="capitalize">
+                <span>{lastPath}</span>
+              </BreadcrumbItem>
+            </>
+          )}
+          {thirdLastPath && (
+            <>
+              <BreadcrumbSeparator />
+              <BreadcrumbItem className="capitalize">
+                <span>{lastPath}</span>
+              </BreadcrumbItem>
+            </>
+          )}
         </BreadcrumbList>
       </Breadcrumb>
     </div>
@@ -76,4 +108,3 @@ const GlobalBreadcrumbHeader: FC<BreadcrumbHeaderProps> = ({
 };
 
 export default GlobalBreadcrumbHeader;
-  

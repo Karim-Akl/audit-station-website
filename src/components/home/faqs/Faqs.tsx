@@ -10,7 +10,10 @@ import Image from "next/image";
 import React from "react";
 import unspalch from "@../../../public/assets/unsplash.svg";
 import vector from "@../../../public/assets/vector3.svg";
-export const Faqs: React.FC = () => {
+import Link from "next/link";
+import { getLocale } from "next-intl/server";
+export const Faqs: React.FC = async () => {
+  const locale = await getLocale();
   return (
     <div className="w-full relative block md:flex md:gap-40 items-center py-20 px-4 md:px-0">
       <div className="w-full md:w-1/2">
@@ -69,12 +72,14 @@ export const Faqs: React.FC = () => {
             height={40}
           /> */}
         </div>
-        <Button className="bg-white hover:bg-gray-100 m-auto me-20 hover:border border pe-0 w-32  flex justify-between my-4   rounded-full border-[#22B9DD] text-[#22B9DD]">
-          <span>See More</span>
-          <span className="rounded-full border p-2 border-[#22B9DD]">
-            <ArrowRight />
-          </span>
-        </Button>
+        <Link href={`/${locale}/faqs`}>
+          <Button className="bg-white hover:bg-gray-100 m-auto me-20 hover:border border pe-0 w-32  flex justify-between my-4   rounded-full border-[#22B9DD] text-[#22B9DD]">
+            <span>See More</span>
+            <span className="rounded-full border p-2 border-[#22B9DD]">
+              <ArrowRight />
+            </span>
+          </Button>
+        </Link>
       </div>
     </div>
   );
