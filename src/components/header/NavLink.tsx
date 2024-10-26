@@ -6,51 +6,13 @@ import UseSearchParamsHook from "@/hooks/UseSearchParamsHook";
 import { cn } from "@/lib/utils";
 import React from "react";
 import { NavLinkItem, NavLinkProps } from "@/lib/types";
-import { useLocale, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 
-export const NavLink: React.FC = () => {
-  const t = useTranslations("header");
+export const NavLink: React.FC<NavLinkProps> = ({  links }) => {
   const { pathname } = UseSearchParamsHook();
-  const locale = useLocale()
-
-
-  console.log(pathname)
-  const links = [
-    {
-      id: 1,
-      name: t("home"),
-      href: "/",
-      activeLink: "",
-    },
-    {
-      id: 2,
-      name: t("finalwork"),
-      href: `${locale}/about`,
-      activeLink: "about",
-    },
-    {
-      id: 3,
-      name: t("whatbuy"),
-      href: `${locale}/services`,
-      activeLink: "services",
-    },
-
-    {
-      id: 4,
-      name: t("commonQuestion"),
-      href: `${locale}/blogs`,
-      activeLink: "blogs",
-    },
-    {
-      id: 5,
-      name: t("contact"),
-      href: `${locale}/contact`,
-      activeLink: "contact",
-    },
-  ];
 
   function FilterPath() {
-    return parseInt(pathname.split("/")[1]) ? '' : pathname.split("/")[1];
+    return parseInt(pathname.split("/")[1]) ? "" : pathname.split("/")[1];
   }
   function isActive(active?: string): boolean {
     return active === FilterPath();
@@ -90,6 +52,8 @@ export const NavLink: React.FC = () => {
   };
 
   return (
-    <nav className="hidden lg:flex md:space-x-3 space-x-4 text-lg  ">{renderLinks(links)}</nav>
+    <nav className="hidden lg:flex md:space-x-3 space-x-4 text-lg  ">
+      {renderLinks(links)}
+    </nav>
   );
 };

@@ -120,10 +120,10 @@ export function TopInstructors() {
                   key={instructor.id}
                   className="md:w-full rounded-lg sm:basis-1/2 md:basis-1/3 xl:basis-1/5  "
                 >
-                  <Link  href={`/${locale}/top-instructors/${instructor.id}`} className="hover:shadow-[#3B82F6] hover:shadow-xl">
-                    <Card className="relative  overflow-hidden p-0  bg-white">
+                  <Link  href={`/${locale}/top-instructors/${instructor.id}`} className="bg-white shadow-3xl shadow-black rounded-2xl border-1 border-[#E2E8F0] ">
+                    <Card className="relative  overflow-hidden p-0      ">
                       {instructor.flag && (
-                        <div className="absolute top-0 right-0 text-white  flex items-center justify-center ">
+                        <div className="absolute top-0 right-0 text-white  flex items-center justify-center hover:scale-105 ">
                           <Image
                             src={prize}
                             width={50}

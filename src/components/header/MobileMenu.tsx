@@ -6,61 +6,64 @@ import { Button } from "../ui/button";
 import UseSearchParamsHook from "@/hooks/UseSearchParamsHook";
 import { GlobalLanguage } from "./GolablLanguage";
 import { useTranslations } from "next-intl";
+import Image from "next/image";
+import Logo from "@../../../public/assets/vector.svg";
+import { NavLinkProps } from "@/lib/types";
+import { GoPerson } from "react-icons/go";
+import { LiaShoppingBasketSolid } from "react-icons/lia";
+import { MdOutlineDarkMode } from "react-icons/md";
+import { SearchInput } from "./searchInput";
+import { VerifyCertificate } from "./VerifyCertificate";
 
-const MobileMenu: React.FC = () => {
+const MobileMenu: React.FC<NavLinkProps> = ({ locale, links }) => {
   const { pathname } = UseSearchParamsHook();
   const t = useTranslations("header");
-  const NavItems =[
-    {
-      id: 1,
-      name: t("home"),
-      href: "/",
-      activeLink: "",
-    },
-    {
-      id: 2,
-      name: t("finalwork"),
-      href: `#about`,
-      activeLink: "about",
-    },
-    {
-      id: 3,
-      name: t("whatbuy"),
-      href: "#hoverEffect",
-      activeLink: "hoverEffect"
-    },
 
-    {
-      id: 4,
-      name: t("commonQuestion"),
-      href: "#services",
-      activeLink: "services",
-    },
-    {
-      id: 5,
-      name: t("contact"),
-      href: "#contact",
-      activeLink: "contact",
-    },
-  ];
   const [open, setOpen] = useState(false);
   return (
-    <div className="top-0 right w-full relative 	">
-      <Button
-        onClick={() => setOpen(!open)}
-        className={`md:hidden fixed top-4  ${
-          pathname === "/ar" ? "left-4" : "right-4 "
-        }  items-end justify-end p-2  bg-black  border `}
-      >
-        <AlignJustify size={20} />
-      </Button>
-
+    <div className="md:hidden  p-2  w-full   	">
+      <div className="flex justify-between gap-2 mb-2 ">
+        <div className="flex items-center gap-2">
+          <Button
+            onClick={() => setOpen(!open)}
+            className={` bg-white   top-4  ${
+              pathname === "/ar" ? "left-4" : "right-4 "
+            }  items-end justify-end p-2    border `}
+          >
+            <AlignJustify color="#666666" size={20} />
+          </Button>
+          <Link href="/">
+            <Image height={120} width={120} src={Logo} alt="enlogo" />
+          </Link>
+        </div>
+        <div className="flex ms-0 ps-0 gap-2">
+          <div className="rounded-full border border-[#767676] p-2 transition-all hover:rotate-45 hover:cursor-pointer hover:bg-gray-400 ">
+            <MdOutlineDarkMode size={20} />
+          </div>
+          <div className="rounded-full border border-[#767676] p-2 hover:bg-gray-400 hover:cursor-pointer">
+            <Link href={`/${locale}/shoppingCart`}>
+              {" "}
+              <LiaShoppingBasketSolid size={20} />
+            </Link>
+          </div>
+          <div className="rounded-full border border-[#767676] p-2 hover:bg-gray-400 hover:cursor-pointer">
+            <Link href={`/${locale}/login`}>
+              {" "}
+              <GoPerson size={20} />
+            </Link>
+          </div>
+        </div>
+      </div>
+      <div className="flex justify-between  items-center">
+        <SearchInput />
+        <VerifyCertificate locale={locale} />
+      </div>
       {/* Mobile Menu */}
       {open && (
-        <div className="lg:hidden fixed  top-20 left-4 right-4 z-40 py-8 bg-black text-white drop-shadow-md">
-          <div className="flex flex-col items-center space-y-6  font-bold">
-          <GlobalLanguage className="lg:hidden flex" />
-            {NavItems.map((item) => (
+        <div className="absolute top-30 w-full left-4 right-4 z-40 py-4    drop-shadow-md">
+          <div className="flex flex-col items-center space-y-6 p-4 w-80  bg-[#666666] font-bold">
+            <GlobalLanguage className="lg:hidden flex" />
+            {links.map((item) => (
               <Link
                 key={item.id}
                 onClick={() => setOpen(!open)}

@@ -9,6 +9,7 @@ import { StepsChart } from "@/components/home/stepsChart/StepsChart";
 import { TopInstructors } from "@/components/home/topInstructors/TopInstructors";
 import { TopCourses } from "@/components/home/topCourses/TopCourses";
 import { Testimonial } from "@/components/home/testimonials/Testimonial"; // Updated path
+import NavigationControls from "@/components/home/navigationControls/NavigationControls";
 
 export default async function Home() {
   return (
@@ -33,6 +34,7 @@ export default async function Home() {
         <Blogs />
         <TopCourses />
         <TopInstructors />
+        <NavigationControls />
       </div>
     </main>
   );

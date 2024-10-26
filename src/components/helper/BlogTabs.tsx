@@ -2,15 +2,24 @@
 import React, { useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { IoIosArrowForward } from "react-icons/io";
+import UseSearchParamsHook from "@/hooks/UseSearchParamsHook";
 
 export function BlogsTabs() {
-  const [selectedTab, setSelectedTab] = useState("all");
+  const { pathname, router, searchParams } = UseSearchParamsHook();
+  const pushTaptoParams = (e: string) => {
+    const params = new URLSearchParams();
+    params.set("category", e);
+    router.push(`${pathname}?${params.toString()}`);
+    // router.push(selectedTab);
+  };
 
   return (
     <Tabs
       className="inline-block   "
       defaultValue={tabs[0].value}
-      onValueChange={setSelectedTab}
+      onValueChange={(e) => {
+        pushTaptoParams(e);
+      }}
     >
       <TabsList className="flex flex-col gap-5 items-start justify-end ">
         <h2 className="font-bold text-xl text-[#0F1A29] ">Category</h2>
@@ -21,7 +30,7 @@ export function BlogsTabs() {
             key={tab.value}
             value={tab.value}
           >
-            <IoIosArrowForward  color="#22B9DD" className="inline-block mr-2" />
+            <IoIosArrowForward color="#22B9DD" className="inline-block mr-2" />
             {tab.title}
           </TabsTrigger>
         ))}

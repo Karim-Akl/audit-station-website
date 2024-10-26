@@ -7,8 +7,12 @@ export interface NavLinkItem {
   children?: NavLinkItem[];
 }
 
+export interface LoacaleProps {
+  locale: string;
+}
 export interface NavLinkProps {
   links: NavLinkItem[];
+  locale: string;
 }
 
 export interface FormData {

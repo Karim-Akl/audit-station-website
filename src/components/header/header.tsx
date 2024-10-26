@@ -26,21 +26,21 @@ export const Header: React.FC = () => {
   return (
     <div className="container w-full flex-col justify-center items-start gap-2.5">
       <div className="md:container self-stretch  md:justify-between items-center md:inline-flex">
-        <div className="justify-start  items-center gap-8 md:flex ">
+        <div className="justify-start  items-center gap-8 flex ">
           <div className="md:justify-start justify-center items-center gap-1 flex">
             <FaMapLocationDot size={20} />
-            <div className=" text-[13px] font-medium ">
+            <div className=" md:text-[13px] text-[10px] md:font-medium ">
               ul. Skrajna 7, Szczecin 70-886
             </div>
           </div>
           <div className="md:justify-start justify-center items-center gap-1 flex">
             <MdOutlineMail size={20} />
-            <div className=" text-[13px] font-medium ">
+            <div className=" md:text-[13px] text-[10px] md:font-medium ">
               alma.lawson@example.com
             </div>
           </div>
         </div>
-        <div className="md:justify-start justify-around  items-center md:gap-12 flex">
+        <div className="md:justify-start justify-around  items-center md:gap-12 md:flex hidden">
           <div className="md:justify-start justify-center items-center  md:gap-2 md:flex">
             <div className=" text-sm font-medium ">Follow Us On :</div>
             <div className="justify-start  items-center gap-1 flex">
