@@ -7,7 +7,8 @@ import { CiFacebook, CiInstagram, CiLinkedin } from "react-icons/ci";
 import { FloatingDockDemo } from "../helper/FloatingDock";
 export const Footer: React.FC = () => {
   return (
-    <div className="bg-[#F5F5F5] text-black w-full">
+    <div className="relative bg-[#F5F5F5] text-black w-full">
+      
       <div
         className="w-10/12 h-full flex flex-col
        mx-auto"

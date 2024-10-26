@@ -54,7 +54,11 @@ const HeroBackground = ({ title }: IProps) => {
             </Link>
             <h2 className="text-4xl font-semibold capitalize">{title}</h2>
           </div>
-          <GlobalBreadcrumbHeader MainLink="/" MainTitle="Home" items={[{title : "toogle" , link : "goole"}]} />
+          <GlobalBreadcrumbHeader
+            MainLink="/"
+            MainTitle="Home"
+            items={[{ title: "toogle", link: "goole" }]}
+          />
         </div>
       </div>
     </main>

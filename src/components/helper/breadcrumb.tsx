@@ -38,17 +38,11 @@ const GlobalBreadcrumbHeader: FC<BreadcrumbHeaderProps> = ({
   const { pathname } = UseSearchParamsHook();
   const pathSegments = pathname.split("/").filter(Boolean);
   const secondLastPath =
-    pathSegments.length > 1
-      ? pathSegments[pathSegments.length - 2]
-      :  pathSegments[pathSegments.length - 3];
+    pathSegments.length > 1 ? pathSegments[1] : pathSegments[2];
   const lastPath =
-    pathSegments.length > 2
-      ? pathSegments[pathSegments.length - 1]
-      : undefined;
+    pathSegments.length > 2 ? pathSegments[pathSegments.length - 1] : undefined;
   const thirdLastPath =
-    pathSegments.length > 3
-      ? pathSegments[pathSegments.length - 4]
-      : undefined;
+    pathSegments.length > 3 ? pathSegments[pathSegments.length - 4] : undefined;
   return (
     <div className=" flex items-center gap-1 ml-10 mt-5 capitalize">
       <Breadcrumb className="font-semibold font-sans text-xl">
