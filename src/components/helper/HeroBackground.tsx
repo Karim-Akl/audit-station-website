@@ -9,6 +9,7 @@ import Image from "next/image";
 import { MdKeyboardArrowLeft, MdOutlineArrowForwardIos } from "react-icons/md";
 import Link from "next/link";
 import GlobalBreadcrumbHeader from "./breadcrumb";
+import { BackButton } from "./backButton";
 
 interface IProps {
   title: string;
@@ -49,9 +50,7 @@ const HeroBackground = ({ title }: IProps) => {
         />
         <div className="absolute left-20 top-1/2 -translate-y-1/2 z-50">
           <div className="flex items-center">
-            <Link href={"/"} className="w-10">
-              <MdKeyboardArrowLeft className="text-3xl" />
-            </Link>
+            <BackButton />
             <h2 className="text-4xl font-semibold capitalize">{title}</h2>
           </div>
           <GlobalBreadcrumbHeader
