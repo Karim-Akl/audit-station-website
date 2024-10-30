@@ -4,7 +4,7 @@ import { GoPerson } from "react-icons/go";
 import { CiLogin } from "react-icons/ci";
 import { useLocale } from "next-intl";
 export default function AuthIconCheck() {
-  const token = localStorage.getItem("token");
+  const token = localStorage?.getItem("token");
   const locale = useLocale();
   return (
     <>
@@ -14,7 +14,7 @@ export default function AuthIconCheck() {
           <CiLogin size={22} />
         </Link>
       ) : (
-        <Link href={`/${locale}/profile`}>
+        <Link href={`/${locale}/profile/dashboard`}>
           {" "}
           <GoPerson size={22} />
         </Link>

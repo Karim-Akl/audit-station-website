@@ -26,6 +26,10 @@ const config = {
         sans: ["'Saira'"],
         poppins: ["Poppins"],
       },
+      boxShadow: {
+        "box-shadow": "0px 0px 8px 0px rgba(34, 185, 221, 0.25)",
+        "shadow_hover": "11px 10px 0px 0px #D9D9D9",
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

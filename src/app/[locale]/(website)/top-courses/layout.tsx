@@ -1,7 +1,7 @@
 import { SearchInput } from "@/components/header/searchInput";
 import HeroBackground from "@/components/helper/HeroBackground";
 import React from "react";
-import { BlogsTabs } from "@/components/helper/BlogTabs";
+import { BlogsTabs } from "@/components/helper/Tabs";
 import { PopularPosts } from "@/components/helper/PopularPosts";
 
 export const metadata = {
