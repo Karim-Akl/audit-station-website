@@ -7,8 +7,10 @@ import { PiVideoFill } from "react-icons/pi";
 import { HiOutlineVideoCamera } from "react-icons/hi2";
 import { FaPersonChalkboard } from "react-icons/fa6";
 import { GiArchiveRegister } from "react-icons/gi";
+import { getLocale } from "next-intl/server";
 
-export function StepsChart() {
+export async function StepsChart() {
+  const locale = await getLocale();
   return (
     <div className="relative w-full h-full py-20 bg-white  ">
       <h2 className="max-w-7xl p-4 mx-auto text-xl md:text-4xl font-bold text-[#242424] dark:text-neutral-200 font-sans">
@@ -20,9 +22,14 @@ export function StepsChart() {
         title="User"
         description="Browse the platform's sections and increase your experience through our courses."
         className=" bg-[#21A74F] border-[#21A74F]"
-        style={"hover:shadow-[#21A74F] hover:shadow-cyan-500 text-[#21A74F] border-[#21A74F]"}
+        style={
+          "hover:shadow-[#21A74F] hover:shadow-cyan-500 text-[#21A74F] border-[#21A74F]"
+        }
       />
-      <div className="absolute top-52 right-0 left-0 content-center hidden md:flex gap-5 justify-around mx-auto ">
+      <div
+        dir={`${locale == "ar" ? "ltr" : ""}`}
+        className="absolute  top-52 right-0 left-0 content-center hidden md:flex gap-5 justify-around mx-auto "
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="224"

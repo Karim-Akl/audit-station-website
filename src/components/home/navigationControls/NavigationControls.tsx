@@ -1,4 +1,5 @@
 "use client";
+import { useLocale } from "next-intl";
 import React, { useState } from "react";
 import {
   AiOutlineArrowUp,
@@ -9,6 +10,7 @@ import { IoChatbubbleEllipsesOutline } from "react-icons/io5";
 
 const NavigationControls: React.FC = () => {
   const [showIcons, setShowIcons] = useState(false);
+  const locale = useLocale();
 
   // Scroll to top function
   const scrollToTop = () => {
@@ -38,7 +40,11 @@ const NavigationControls: React.FC = () => {
         </button>
 
         {/* The wrapper for icons */}
-        <div className="absolute bottom-12 left-0 flex flex-col items-center space-y-2">
+        <div
+          className={`absolute bottom-12 ${
+            locale == "ar" ? "right-0" : "left-0"
+          } flex flex-col items-center space-y-2`}
+        >
           <button
             className={`flex items-center justify-center p-2 bg-blue-500 
       hover:bg-blue-600 text-white rounded-full

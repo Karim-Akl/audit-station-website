@@ -14,6 +14,7 @@ import { CiLogin } from "react-icons/ci";
 import { VerifyCertificate } from "./VerifyCertificate";
 import { getLocale, getTranslations } from "next-intl/server";
 import AuthIconCheck from "./authIconCheck";
+import { ModeToggle } from "./ModeToggle";
 
 export default async function Navbar() {
   const locale = await getLocale();
@@ -72,7 +73,7 @@ export default async function Navbar() {
           <VerifyCertificate locale={locale} />
           <div className="flex ms-0 ps-0 gap-4">
             <div className="rounded-full border border-[#767676] p-1 transition-all hover:rotate-45 hover:cursor-pointer hover:bg-gray-400 ">
-              <MdOutlineDarkMode size={22} />
+              <ModeToggle />
             </div>
             <div className="rounded-full border border-[#767676] p-1 hover:bg-gray-400 hover:cursor-pointer">
               <Link href={`/${locale}/shoppingCart`}>

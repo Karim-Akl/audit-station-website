@@ -3,8 +3,10 @@ import React, { useEffect, useState } from "react";
 import FristCard from "@../../../public/assets/Icon1.svg";
 import SecCard from "@../../../public/assets/Icon2.svg";
 import ThirdCard from "@../../../public/assets/Icon3.svg";
+import { getLocale } from "next-intl/server";
 
-export function Steps() {
+export async function Steps() {
+  const locale = await getLocale();
   return (
     <div className="h-[40rem] w-full rounded-md flex flex-col antialiased   dark:bg-grid-white/[0.05] items-center justify-center relative overflow-hidden">
       <div className="mb-8 text-center">
@@ -19,7 +21,7 @@ export function Steps() {
       </div>
       <InfiniteMovingCards
         items={testimonials}
-        direction="right"
+        direction={`${locale == "ar" ? "left" : "right"}`}
         speed="slow"
       />
     </div>
