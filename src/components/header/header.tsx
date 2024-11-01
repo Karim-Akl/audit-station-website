@@ -2,8 +2,8 @@
 import React from "react";
 import { FaMapLocationDot } from "react-icons/fa6";
 import { MdOutlineMail } from "react-icons/md";
-import { CiApple, CiFacebook, CiInstagram, CiLinkedin } from "react-icons/ci";
-
+import { CiFacebook, CiInstagram, CiLinkedin } from "react-icons/ci";
+import { FaXTwitter } from "react-icons/fa6";
 import {
   Select,
   SelectContent,
@@ -44,10 +44,10 @@ export const Header: React.FC = () => {
           <div className="md:justify-start justify-center items-center  md:gap-2 md:flex">
             <div className=" text-sm font-medium ">Follow Us On :</div>
             <div className="justify-start  items-center gap-1 flex">
-              <CiFacebook size={24} className="hover:text-[blue]"  />
+              <CiFacebook size={24} className="hover:text-[blue]" />
               <CiLinkedin size={24} className="hover:text-[#0A66C2]" />
               <CiInstagram size={24} />
-              <CiApple size={24} />
+              <FaXTwitter size={24} />
             </div>
           </div>
           <div className="md:justify-start justify-center  items-center gap-4 flex">

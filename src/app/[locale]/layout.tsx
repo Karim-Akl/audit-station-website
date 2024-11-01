@@ -5,6 +5,7 @@ import { Tajawal, Saira } from "next/font/google";
 import { Toaster } from "@/components/ui/sonner";
 import { getMessages } from "next-intl/server";
 import "./globals.css";
+import { ThemeProvider } from "@/components/theme-provider/theme-provider";
 
 const inter = Saira({
   subsets: ["latin"],
@@ -41,9 +42,16 @@ export default async function LocaleLayout({
 
         {/* Removed invalid date meta tag */}
       </Head>
-      <body >
+      <body>
         <NextIntlClientProvider messages={messages}>
-          {children}
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            {children}
+          </ThemeProvider>
           <Toaster />
         </NextIntlClientProvider>
       </body>
