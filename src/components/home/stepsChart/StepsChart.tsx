@@ -21,19 +21,17 @@ export async function StepsChart() {
         icon={<FaUser className="text-white text-3xl" />}
         title="User"
         description="Browse the platform's sections and increase your experience through our courses."
-        className=" bg-[#21A74F] border-[#21A74F]"
-        style={
-          "hover:shadow-[#21A74F] hover:shadow-cyan-500 text-[#21A74F] border-[#21A74F]"
-        }
+        className=" bg-cyan-500 border-cyan-500 "
+        style={"  hover:shadow-cyan-500 text-cyan-500 border-cyan-500"}
       />
       <div
         dir={`${locale == "ar" ? "ltr" : ""}`}
-        className="absolute  top-52 right-0 left-0 content-center hidden md:flex gap-5 justify-around mx-auto "
+        className="absolute top-52 right-0 left-0 content-center hidden md:flex gap-5 justify-around mx-auto "
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          width="224"
-          height="210"
+          width="236"
+          height="235"
           viewBox="0 0 224 274"
           fill="none"
         >
@@ -48,8 +46,8 @@ export async function StepsChart() {
         </svg>
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          width="221"
-          height="210"
+           width="236"
+          height="235"
           viewBox="0 0 221 271"
           fill="none"
         >

@@ -6,6 +6,8 @@ import { Toaster } from "@/components/ui/sonner";
 import { getMessages } from "next-intl/server";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider/theme-provider";
+import { cn } from "@/lib/utils";
+import {Sira} from "@/fonts";
 
 const inter = Saira({
   subsets: ["latin"],
@@ -35,7 +37,11 @@ export default async function LocaleLayout({
   const messages = await getMessages();
 
   return (
-    <html dir={locale === "ar" ? "rtl" : "ltr"} lang={locale}>
+    <html
+      className={cn(Sira.variable)}
+      dir={locale === "ar" ? "rtl" : "ltr"}
+      lang={locale}
+    >
       <Head>
         <title>{metadata.title.default ?? "Default Title"}</title>
         <meta name="description" content={metadata.description ?? ""} />

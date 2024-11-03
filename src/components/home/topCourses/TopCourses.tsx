@@ -108,9 +108,9 @@ export function TopCourses() {
             ))}
           </TabsList>
           <Link href={`/${locale}/top-courses`}>
-            <Button className="bg-white md:flex hidden hover:bg-gray-200 hover:border border pe-0 md:h-14 md:mt-12 justify-between md:w-72 rounded-full border-[#22B9DD] text-[#22B9DD]">
-              <span>See More</span>
-              <span className="rounded-full border p-2 border-[#22B9DD]">
+          <Button className="bg-transparent hover:bg-gray-200 hover:border border pe-0 md:h-14 md:mt-12 justify-between md:w-72 rounded-full border-[#22B9DD] text-[#22B9DD]">
+          <span>See More</span>
+              <span className="rounded-full border p-3 border-[#22B9DD]">
                 <ArrowRight />
               </span>
             </Button>

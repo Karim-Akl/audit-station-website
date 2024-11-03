@@ -8,7 +8,6 @@ import { FloatingDockDemo } from "../helper/FloatingDock";
 export const Footer: React.FC = () => {
   return (
     <div className="relative bg-[#F5F5F5] text-black w-full">
-      
       <div
         className="w-10/12 h-full flex flex-col
        mx-auto"
@@ -73,12 +72,6 @@ export const Footer: React.FC = () => {
               </p>
               <div className="flex text-xl gap-2  items-center">
                 <FloatingDockDemo />
-                {/* <CiFacebook />
-                <CiLinkedin />
-                <CiInstagram />
-                <CiFacebook />
-                <CiLinkedin />
-                <CiInstagram /> */}
               </div>
               <div className="flex gap-1 items-center">
                 <Image src={AppStore} alt="logo" />
