@@ -14,6 +14,7 @@ import { LiaShoppingBasketSolid } from "react-icons/lia";
 import { MdOutlineDarkMode } from "react-icons/md";
 import { SearchInput } from "./searchInput";
 import { VerifyCertificate } from "./VerifyCertificate";
+import { ModeToggle } from "./ModeToggle";
 
 const MobileMenu: React.FC<NavLinkProps> = ({ locale, links }) => {
   const { pathname } = UseSearchParamsHook();
@@ -38,7 +39,7 @@ const MobileMenu: React.FC<NavLinkProps> = ({ locale, links }) => {
         </div>
         <div className="flex ms-0 ps-0 gap-2">
           <div className="rounded-full border border-[#767676] p-2 transition-all hover:rotate-45 hover:cursor-pointer hover:bg-gray-400 ">
-            <MdOutlineDarkMode size={20} />
+            <ModeToggle />
           </div>
           <div className="rounded-full border border-[#767676] p-2 hover:bg-gray-400 hover:cursor-pointer">
             <Link href={`/${locale}/shoppingCart`}>
