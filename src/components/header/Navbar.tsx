@@ -72,16 +72,15 @@ export default async function Navbar() {
           <SearchInput />
           <VerifyCertificate locale={locale} />
           <div className="flex ms-0 ps-0 gap-4">
-            <div className="rounded-full border border-[#767676] p-1 transition-all hover:rotate-45 hover:cursor-pointer hover:bg-gray-400 ">
+            <div className="rounded-full border border-[#767676] p-2 hover:bg-gray-400 hover:cursor-pointer">
               <ModeToggle />
             </div>
-            <div className="rounded-full border border-[#767676] p-1 hover:bg-gray-400 hover:cursor-pointer">
+            <div className="rounded-full border border-[#767676] p-2 hover:bg-gray-400 hover:cursor-pointer">
               <Link href={`/${locale}/shoppingCart`}>
-                {" "}
                 <LiaShoppingBasketSolid size={22} />
               </Link>
             </div>
-            <div className="rounded-full border border-[#767676] p-1 hover:bg-gray-400 hover:cursor-pointer">
+            <div className="rounded-full border border-[#767676] p-2 hover:bg-gray-400 hover:cursor-pointer">
               <AuthIconCheck />
             </div>
           </div>

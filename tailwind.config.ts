@@ -1,13 +1,13 @@
-import type { Config } from "tailwindcss"
+import type { Config } from "tailwindcss";
 
 const config = {
   darkMode: ["class"],
   content: [
-    './pages/**/*.{ts,tsx}',
-    './components/**/*.{ts,tsx}',
-    './app/**/*.{ts,tsx}',
-    './src/**/*.{ts,tsx}',
-	],
+    "./pages/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}",
+  ],
   prefix: "",
   theme: {
     container: {
@@ -19,16 +19,16 @@ const config = {
     },
     extend: {
       backgroundImage: {
-        'hero-pattern': "url('../../public/assets/background.png')",
-        'footer-texture': "url('/img/footer-texture.png')",
+        "hero-pattern": "url('../../public/assets/background.png')",
+        "footer-texture": "url('/img/footer-texture.png')",
       },
       fontFamily: {
-        sans: ["'Saira'"],
         poppins: ["Poppins"],
+        sans: ["var(--font-Sira)"],
       },
       boxShadow: {
         "box-shadow": "0px 0px 8px 0px rgba(34, 185, 221, 0.25)",
-        "shadow_hover": "11px 10px 0px 0px #D9D9D9",
+        shadow_hover: "11px 10px 0px 0px #D9D9D9",
       },
       colors: {
         border: "hsl(var(--border))",
@@ -89,11 +89,11 @@ const config = {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         scroll:
-        "scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite",
+          "scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite",
       },
     },
   },
   plugins: [require("tailwindcss-animate")],
-} satisfies Config
+} satisfies Config;
 
-export default config
+export default config;

@@ -73,9 +73,9 @@ export const Faqs: React.FC = async () => {
           /> */}
         </div>
         <Link href={`/${locale}/faqs`}>
-          <Button className="bg-white hover:bg-gray-100 m-auto me-20 hover:border border pe-0 w-32  flex justify-between my-4   rounded-full border-[#22B9DD] text-[#22B9DD]">
-            <span>See More</span>
-            <span className="rounded-full border p-2 border-[#22B9DD]">
+        <Button className="bg-transparent hover:bg-gray-200 hover:border border pe-0 md:h-14 md:mt-12 justify-between md:w-72 rounded-full border-[#22B9DD] text-[#22B9DD]">
+        <span>See More</span>
+            <span className="rounded-full border p-3 border-[#22B9DD]">
               <ArrowRight />
             </span>
           </Button>
