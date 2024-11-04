@@ -11,6 +11,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { MoonIcon, SunIcon } from "lucide-react";
+import { BiMoon, BiSun } from "react-icons/bi";
 
 export function ModeToggle() {
   const { setTheme } = useTheme();
@@ -21,11 +22,16 @@ export function ModeToggle() {
         <Button
           variant="outline"
           size="icon"
-          className=" rounded-none p-0 w-5 h-5 content-center items-center justify-center"
+          className="bg-[#f9f9f9] dark:bg-[#333] dark:text-white"
         >
-          <SunIcon className=" rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-          <MoonIcon className="absolute  rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-          <span className="sr-only">Toggle theme</span>
+          <BiSun
+            size={22}
+            className=" rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0"
+          />
+          <BiMoon
+            size={22}
+            className="absolute rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100"
+          />
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">

@@ -42,10 +42,10 @@ export const Header: React.FC = () => {
         </div>
         <div className="md:justify-start justify-around  items-center md:gap-12 md:flex hidden">
           <div className="md:justify-start justify-center items-center  md:gap-2 md:flex">
-            <div className=" text-sm font-medium ">Follow Us On :</div>
+            <div className=" text-[13px] font-medium ">Follow Us On :</div>
             <div className="justify-start  items-center gap-1 flex">
-              <CiFacebook size={24} className="hover:text-[blue]" />
-              <CiLinkedin size={24} className="hover:text-[#0A66C2]" />
+              <CiFacebook size={24} />
+              <CiLinkedin size={24} />
               <CiInstagram size={24} />
               <FaXTwitter size={24} />
             </div>
