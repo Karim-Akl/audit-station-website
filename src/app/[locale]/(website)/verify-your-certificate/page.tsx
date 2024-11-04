@@ -1,5 +1,4 @@
 import React from "react";
-import Image from "next/image";
 import instractor from "@../../../public/assets/instractor.svg";
 import { Card, CardContent } from "@/components/ui/card";
 import { link } from "fs";
@@ -14,7 +13,7 @@ export default function VerifyCertificate() {
   return (
     <main className="mb-20 relitive">
       <HeroBackground title="Verify your certificate" />
-      <section className="container my-4 grid grid-cols-3 gap-4  "></section>
+      <section className="container my-4 grid grid-cols-3 gap-4  ">VerifyCertificate</section>
     </main>
   );
 }

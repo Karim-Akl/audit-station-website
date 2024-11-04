@@ -24,7 +24,7 @@ export default async function Navbar() {
       id: 1,
       name: t("home"),
       href: "/",
-      activeLink: "",
+      activeLink: "/",
     },
     {
       id: 2,
@@ -71,8 +71,8 @@ export default async function Navbar() {
           <NavLink locale={locale} links={links} />
           <SearchInput />
           <VerifyCertificate locale={locale} />
-          <div className="flex ms-0 ps-0 gap-4">
-            <div className="rounded-full border border-[#767676] p-2 hover:bg-gray-400 hover:cursor-pointer">
+          <div className="flex ms-0 ps-0 gap-4 text-[#767676]">
+            <div className="">
               <ModeToggle />
             </div>
             <div className="rounded-full border border-[#767676] p-2 hover:bg-gray-400 hover:cursor-pointer">

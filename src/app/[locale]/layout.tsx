@@ -7,7 +7,7 @@ import { getMessages } from "next-intl/server";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider/theme-provider";
 import { cn } from "@/lib/utils";
-import {Sira} from "@/fonts";
+import { Sira } from "@/fonts";
 
 const inter = Saira({
   subsets: ["latin"],
@@ -42,12 +42,7 @@ export default async function LocaleLayout({
       dir={locale === "ar" ? "rtl" : "ltr"}
       lang={locale}
     >
-      <Head>
-        <title>{metadata.title.default ?? "Default Title"}</title>
-        <meta name="description" content={metadata.description ?? ""} />
-
-        {/* Removed invalid date meta tag */}
-      </Head>
+     
       <body>
         <NextIntlClientProvider messages={messages}>
           <ThemeProvider
