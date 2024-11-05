@@ -17,10 +17,10 @@ const ForgotPassword: FC = () => {
   return (
     <div className="flex justify-center items-center h-screen ">
       <div className="bg-white p-8 rounded-lg shadow-lg max-w-lg w-full">
-        <h2 className="text-2xl font-bold text-center mb-2">
+        <h2 className="text-[31px] font-semibold text-center mb-2">
           Forgot your password?
         </h2>
-        <p className="text-xs text-center">
+        <p className="text-[16px] font-medium text-center">
           Enter your email address and we will sent you an OTP to reset your
           password
         </p>

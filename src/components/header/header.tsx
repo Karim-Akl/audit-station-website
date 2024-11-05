@@ -51,7 +51,7 @@ export const Header: React.FC = () => {
             </div>
           </div>
           <div className="md:justify-start justify-center  items-center gap-4 flex">
-            <div className="justify-start items-center gap-2 flex border-e  ">
+            <div className="justify-start items-center gap-2 flex border-e   ">
               <Select onValueChange={handlechangeLanguage} defaultValue="en">
                 <SelectTrigger
                   className={cn(

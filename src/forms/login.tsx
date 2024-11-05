@@ -21,7 +21,7 @@ const Login: FC = () => {
   return (
     <div className="flex justify-center items-center h-screen ">
       <div className="bg-white p-8 rounded-lg shadow-lg max-w-lg w-full">
-        <h2 className="text-2xl font-bold text-center mb-6">Welcome Back!</h2>
+        <h2 className="text-[31px] font-semibold text-center mb-6">Welcome Back!</h2>
         <form onSubmit={handleLogin}>
           <div className="mb-4">
             <label className="block text-gray-700 text-sm mb-2" htmlFor="email">

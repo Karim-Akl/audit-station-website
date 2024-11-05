@@ -2,7 +2,6 @@
 import React, { useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Image from "next/image";
-import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import {
@@ -16,6 +15,8 @@ import prize from "@../../../public/assets/prize.svg";
 import topcourses from "@../../../public/assets/topcourse.svg";
 import Link from "next/link";
 import { useLocale } from "next-intl";
+import { IoIosArrowRoundForward } from "react-icons/io";
+import { BsArrowRightShort } from "react-icons/bs";
 
 export function TopCourses() {
   const locale = useLocale();
@@ -33,59 +34,64 @@ export function TopCourses() {
   const instructors = [
     {
       id: 1,
-      name: "John Doe",
-      title: "Software Engineer",
+      title: "Modern Front-End Development with js",
+      name: "Software Engineer",
       rating: 4.5,
-      students: 1200,
+      department: "Enstrumentals",
       imageUrl: topcourses,
       category: "development",
+      price : "50",
       flag: false,
     },
     {
       id: 2,
-      name: "Jane Doe",
-      title: "Product Manager",
+      title: "Modern Front-End Development with js",
+      name: "Product Manager",
       rating: 4.7,
-      students: 1500,
+      department: "Enstrumentals",
       imageUrl: topcourses,
       category: "management",
+      price : "50",
       flag: false,
     },
     {
       id: 3,
-      name: "Alice Smith",
-      title: "IT Specialist",
+      title: "Modern Front-End Development with js",
+      name: "IT Specialist",
       rating: 4.6,
-      students: 1100,
+      department: "Enstrumentals",
       imageUrl: topcourses,
       category: "it",
-      flag: false,
+      price : "50",flag: 
+      false,
     },
     {
       id: 4,
-      name: "Bob Johnson",
-      title: "Business Analyst",
+      title: "Modern Front-End Development with js",
+      name: "Business Analyst",
       rating: 4.8,
-      students: 1300,
+      department: "Enstrumentals",
       imageUrl: topcourses,
       category: "business",
+      price : "50",
       flag: false,
     },
     {
       id: 5,
-      name: "Charlie Brown",
-      title: "Accountant",
+      title: "Modern Front-End Development with js",
+      name: "Accountant",
       rating: 4.9,
-      students: 1400,
+      department: "Enstrumentals",
       imageUrl: topcourses,
       category: "accounting",
+      price : "50",
       flag: false,
     },
     // ... other instructors
   ];
 
   return (
-    <div className=" content-center w-full h-full py-20 m-auto">
+    <div className=" content-center w-full h-full py-16 m-auto">
       <div className="flex items-center justify-center space-x-2 pl-4 py-6">
         <span className="block w-12 h-[2px] bg-blue-200"></span>
         <span className="text-blue-400 text-sm">Top Courses</span>
@@ -108,10 +114,10 @@ export function TopCourses() {
             ))}
           </TabsList>
           <Link href={`/${locale}/top-courses`}>
-          <Button className="bg-transparent hover:bg-gray-200 hover:border border pe-0 md:h-14 md:mt-12 justify-between md:w-72 rounded-full border-[#22B9DD] text-[#22B9DD]">
-          <span>See More</span>
-              <span className="rounded-full border p-3 border-[#22B9DD]">
-                <ArrowRight />
+            <Button className="bg-transparent hover:bg-gray-200 hover:border border pe-0 md:h-14 md:mt-12 justify-between md:w-48 rounded-full border-[#22B9DD] text-[#22B9DD]">
+              <span>See More</span>
+              <span className="rounded-full border p-4 border-[#22B9DD]">
+                <BsArrowRightShort  size={22}/>
               </span>
             </Button>
           </Link>
@@ -133,7 +139,7 @@ export function TopCourses() {
                   key={instructor.id}
                   className="md:w-full rounded-lg sm:basis-1/2 md:basis-1/3 xl:basis-1/3 "
                 >
-                  <Card className="relative  p-0 bg-white">
+                  <Card className="relative  p-0 bg-white rounded-xl">
                     {instructor.flag && (
                       <div className="absolute top-0 right-0 text-white  flex items-center justify-center ">
                         <Image
@@ -141,26 +147,22 @@ export function TopCourses() {
                           width={50}
                           height={50}
                           alt={"Instructor"}
+                          lazyBoundary={""}
                         />
                       </div>
                     )}
-                    <CardContent className="p-2">
+                    <CardContent className="p-6">
                       <Image
                         src={instructor.imageUrl}
                         width={100}
                         height={100}
                         alt={instructor.name}
-                        className="w-full py-2 "
+                        className="w-full  "
                       />
-                      <div className="py-4  ">
-                        <div className="font-bold text-xl mb-2">
-                          {instructor.name}
-                        </div>
-                        <p className="text-gray-700 text-base">
-                          {instructor.title}
+                      <div className="pt-4 pb-2 flex justify-between px-2 font-semibold items-center">
+                        <p className="text-sm  text-gray-600 rounded-full bg-[#EBEBEB] p-2">
+                          {instructor.department} 
                         </p>
-                      </div>
-                      <div className="pt-4 pb-2 flex justify-between font-semibold border-t items-center">
                         <div className="flex items-center">
                           <svg
                             className="w-5 h-5 text-yellow-500"
@@ -171,8 +173,22 @@ export function TopCourses() {
                           </svg>
                           <span className="ml-2">{instructor.rating}</span>
                         </div>
-                        <p className="text-sm  text-gray-600">
-                          {instructor.students} Students
+                      </div>
+                      <div className="py-4">
+                        <div className="font-bold text-xl max-w-[18rem] text-wrap mb-4">
+                          {instructor.title}
+                        </div>
+                        <p className="text-gray-700 text-base">
+                         By {instructor.name}
+                        </p>
+                      </div>
+                      <div className="pt-4 pb-2 flex  justify-between   items-center ">
+                        <Button className="flex items-center p-2 rounded-full font-semibold text-[#0F1A29] text-[16px] bg-[#22B9DD] ">
+                          <span className="ml-2">Add to Cart </span>
+                          <BsArrowRightShort size={20}/>
+                        </Button>
+                        <p className="text-xl font-bold  text-gray-600">
+                          {instructor.price} C
                         </p>
                       </div>
                     </CardContent>
