@@ -1,7 +1,7 @@
 import type { Config } from "tailwindcss";
 
 const config = {
-  darkMode: ["class" , '[data-mode="dark"]'],
+  darkMode: ["class", '[data-mode="dark"]'],
   content: [
     "./pages/**/*.{ts,tsx}",
     "./components/**/*.{ts,tsx}",
@@ -25,6 +25,7 @@ const config = {
       fontFamily: {
         poppins: ["Poppins"],
         sans: ["var(--font-Sira)"],
+        serif: ["var(--font-Tajawal)"],
       },
       boxShadow: {
         "box-shadow": "0px 0px 8px 0px rgba(34, 185, 221, 0.25)",

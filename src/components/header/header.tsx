@@ -42,7 +42,7 @@ export const Header: React.FC = () => {
         </div>
         <div className="md:justify-start justify-around  items-center md:gap-12 md:flex hidden">
           <div className="md:justify-start justify-center items-center  md:gap-2 md:flex">
-            <div className=" text-[13px] font-medium ">Follow Us On :</div>
+            <div className=" text-[13px] font-medium font-sans">Follow Us On :</div>
             <div className="justify-start  items-center gap-1 flex">
               <CiFacebook size={24} />
               <CiLinkedin size={24} />
