@@ -74,9 +74,17 @@ const GlobalBreadcrumbHeader: FC<BreadcrumbHeaderProps> = ({
           {secondLastPath && (
             <>
               <BreadcrumbSeparator />
-              <BreadcrumbItem className="capitalize">
-                <span>{secondLastPath}</span>
-              </BreadcrumbItem>
+              {lastPath ? (
+                <Link href={secondLastPath}>
+                  <BreadcrumbItem className="capitalize">
+                    <span>{secondLastPath}</span>
+                  </BreadcrumbItem>
+                </Link>
+              ) : (
+                <BreadcrumbItem className="capitalize">
+                  <span>{secondLastPath}</span>
+                </BreadcrumbItem>
+              )}
             </>
           )}
           {lastPath && (

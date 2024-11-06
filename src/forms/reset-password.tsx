@@ -17,7 +17,7 @@ const ResetPassword: FC = () => {
   return (
     <div className="flex justify-center items-center h-screen ">
       <div className="bg-white p-8 rounded-lg shadow-lg max-w-lg w-full">
-        <h2 className="text-2xl font-bold text-center mb-2">Reset Password</h2>
+        <h2 className="text-[31px] font-semibold text-center mb-2">Reset Password</h2>
 
         <form onSubmit={handleResetPassword}>
           <div className="mb-4">

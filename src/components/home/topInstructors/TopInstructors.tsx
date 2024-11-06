@@ -2,8 +2,6 @@
 import React, { useState } from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Image from "next/image";
-import { ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import {
   Carousel,
@@ -16,10 +14,12 @@ import prize from "@../../../public/assets/prize.svg";
 import instractor from "@../../../public/assets/instractor.svg";
 import Link from "next/link";
 import { useLocale } from "next-intl";
+import { AnimatePresence, motion } from "framer-motion";
 
 export function TopInstructors() {
   const locale = useLocale();
   const [selectedTab, setSelectedTab] = useState("all");
+  let [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   const tabs = [
     { id: 1, title: "All", value: "all" },
@@ -120,7 +120,29 @@ export function TopInstructors() {
                   key={instructor.id}
                   className="md:w-full rounded-lg sm:basis-1/2 md:basis-1/3 xl:basis-1/5  "
                 >
-                  <Link  href={`/${locale}/top-instructors/${instructor.id}`} className="bg-white shadow-3xl shadow-black rounded-2xl border-1 border-[#E2E8F0] ">
+                  <Link
+                    onMouseEnter={() => setHoveredIndex(instructor.id)}
+                    onMouseLeave={() => setHoveredIndex(null)}
+                    href={`/${locale}/top-instructors/${instructor.id}`}
+                    className="bg-white shadow-3xl shadow-black rounded-2xl border-1 border-[#E2E8F0] "
+                  >
+                    <AnimatePresence>
+                      {hoveredIndex === instructor.id && (
+                        <motion.span
+                          className="absolute inset-0 h-full w-full bg-neutral-200 dark:bg-slate-800/[0.8] block  rounded-3xl"
+                          layoutId="hoverBackground"
+                          initial={{ opacity: 0 }}
+                          animate={{
+                            opacity: 1,
+                            transition: { duration: 0.15 },
+                          }}
+                          exit={{
+                            opacity: 0,
+                            transition: { duration: 0.15, delay: 0.2 },
+                          }}
+                        />
+                      )}
+                    </AnimatePresence>
                     <Card className="relative  overflow-hidden p-0      ">
                       {instructor.flag && (
                         <div className="absolute top-0 right-0 text-white  flex items-center justify-center hover:scale-105 ">

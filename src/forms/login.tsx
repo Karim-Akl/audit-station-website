@@ -1,18 +1,51 @@
 "use client";
 import { Input } from "@/components/ui/input";
+import { loginDataSchema } from "@/lib/schemas";
+import { signInWithSSOProvider } from "@/lib/utils";
 import { useLocale } from "next-intl";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+
 // pages/login.tsx
 import { FC, useState } from "react";
 import { AiOutlineMail, AiOutlineLock } from "react-icons/ai"; // Icons
 import { FaGoogle, FaLinkedin } from "react-icons/fa";
+import { useLogin } from "@/hooks/useLogin";
+import { setSession } from "@/app/[locale]/actions/setSession";
+import { toast } from "sonner";
+import { FaApple } from "react-icons/fa6";
+interface LoginFormValues {
+  username_or_email_or_mobile: string;
+  password: string;
+}
 
 const Login: FC = () => {
   const locale = useLocale();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
+  const router = useRouter();
 
+  //   event?.preventDefault();
+  //   loginMutation(
+  //     { route: "login", loginData: data },
+  //     {
+  //       onSuccess: (user) => {
+  //         if (user?.access) {
+  //           setSession(user);
+  //           reset();
+  //           toast.success("You have been logged in successfully");
+  //         } else {
+  //           setUserData({
+  //             email: data.username_or_email_or_mobile,
+  //             userId: user.user_id,
+  //           });
+  //           router.push(`/`);
+  //         }
+  //       },
+  //     }
+  //   );
+  // };
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
     // Handle login logic
@@ -21,7 +54,9 @@ const Login: FC = () => {
   return (
     <div className="flex justify-center items-center h-screen ">
       <div className="bg-white p-8 rounded-lg shadow-lg max-w-lg w-full">
-        <h2 className="text-2xl font-bold text-center mb-6">Welcome Back!</h2>
+        <h2 className="text-[31px] font-semibold text-center mb-6">
+          Welcome Back!
+        </h2>
         <form onSubmit={handleLogin}>
           <div className="mb-4">
             <label className="block text-gray-700 text-sm mb-2" htmlFor="email">
@@ -62,7 +97,10 @@ const Login: FC = () => {
               />
             </div>
             <div className="text-right mt-2">
-              <Link href="forgot-password" className="text-sm text-[#2695B3] hover:underline">
+              <Link
+                href="forgot-password"
+                className="text-sm text-[#2695B3] hover:underline"
+              >
                 Forgot Password?
               </Link>
             </div>
@@ -95,15 +133,17 @@ const Login: FC = () => {
           <div className="flex justify-center space-x-4 mb-4">
             <button
               type="button"
+              onClick={() => signInWithSSOProvider("google")}
               className="border border-gray-300 rounded-md p-2 hover:bg-gray-100 transition duration-300"
             >
               <FaGoogle className="text-red-500" />
             </button>
             <button
               type="button"
+              onClick={() => signInWithSSOProvider("apple")}
               className="border border-gray-300 rounded-md p-2 hover:bg-gray-100 transition duration-300"
             >
-              <FaLinkedin className="text-blue-600" />
+              <FaApple className="text-black" />
             </button>
           </div>
 

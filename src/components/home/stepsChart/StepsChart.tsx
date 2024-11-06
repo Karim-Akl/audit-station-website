@@ -13,7 +13,7 @@ export async function StepsChart() {
   const locale = await getLocale();
   return (
     <div className="relative w-full h-full py-20 bg-white  ">
-      <h2 className="max-w-7xl p-4 mx-auto text-xl md:text-4xl font-bold text-[#242424] dark:text-neutral-200 font-sans">
+      <h2 className="max-w-7xl p-4 mx-auto text-xl md:text-4xl font-bold text-[#242424] dark:text-neutral-200 font-sans bg-[#E9F8FC]">
         Select Your Next Step To Upgrade Your Profile
       </h2>
       <CustomCard
