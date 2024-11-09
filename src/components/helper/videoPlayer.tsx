@@ -14,10 +14,10 @@ export const VideoPlayer: React.FC = () => {
   return (
     <div>
       <Button
-        className="p-2 bg-white rounded-full shadow-lg"
+        className="p-2 bg-[#22B9DD] hover:bg-[#22a8dd] rounded-full shadow-lg"
         onClick={openVideo}
       >
-        <MdPlayArrow className="text-red-500" size={29} />
+        <MdPlayArrow color="black" size={29} />
       </Button>
 
       <VideoPlay isOpen={isOpen} setIsOpen={setIsOpen} />

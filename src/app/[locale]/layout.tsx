@@ -1,20 +1,14 @@
 import type { Metadata } from "next";
-import Head from "next/head";
 import { NextIntlClientProvider } from "next-intl";
-import { Tajawal, Saira } from "next/font/google";
 import { Toaster } from "@/components/ui/sonner";
 import { getMessages } from "next-intl/server";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider/theme-provider";
 import { cn } from "@/lib/utils";
-import { Sira } from "@/fonts";
-
-const inter = Saira({
-  subsets: ["latin"],
-  variable: "--font-inter",
-  display: "swap",
-  weight: "200",
-});
+import { Saira, Tajawal } from "@/fonts";
+import { getSession } from "@/lib/authSession";
+import { SessionProvider } from "next-auth/react";
+import Providers from "@/lib/query-provider";
 export const metadata: Metadata & {
   title: { template: string; default: string };
 } = {
@@ -38,11 +32,10 @@ export default async function LocaleLayout({
 
   return (
     <html
-      className={cn(Sira.variable)}
+      className={locale === "ar" ? cn(Tajawal.variable) : cn(Saira.variable)}
       dir={locale === "ar" ? "rtl" : "ltr"}
       lang={locale}
     >
-     
       <body>
         <NextIntlClientProvider messages={messages}>
           <ThemeProvider
@@ -51,7 +44,7 @@ export default async function LocaleLayout({
             enableSystem
             disableTransitionOnChange
           >
-            {children}
+            <Providers>{children}</Providers>
           </ThemeProvider>
           <Toaster />
         </NextIntlClientProvider>

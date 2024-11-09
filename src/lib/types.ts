@@ -7,6 +7,21 @@ export interface NavLinkItem {
   children?: NavLinkItem[];
 }
 
+export interface LoginResponse {
+  success: boolean;
+  message: string;
+  data: {
+    token: string;
+    user: {
+      id: number;
+      full_name: string;
+      email: string;
+      phone: string;
+      image: string;
+      role: string;
+    };
+  };
+}
 export interface LoacaleProps {
   locale: string;
 }
@@ -69,7 +84,6 @@ export interface contactUsFormState {
   message: string;
   phone_number: string;
 }
-
 
 export interface NavbarProps {
   data?: any; // يمكنك تحديد النوع المناسب للبيانات

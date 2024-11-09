@@ -38,7 +38,6 @@ export default async function Navbar() {
       href: `${locale}/services`,
       activeLink: "services",
     },
-
     {
       id: 4,
       name: t("commonQuestion"),
@@ -66,7 +65,7 @@ export default async function Navbar() {
         </div>
         <div className="md:flex hidden py-4  justify-center  gap-4 md:gap-8 items-center  transition">
           <Link href="/">
-            <Image height={150} width={150} src={Logo} alt="enlogo" />
+            <Image height={200} width={200} src={Logo} alt="enlogo" />
           </Link>
           <NavLink locale={locale} links={links} />
           <SearchInput />

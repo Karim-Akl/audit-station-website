@@ -5,9 +5,7 @@ import group from "@../../../public/assets/Group.svg";
 import arrow from "@../../../public/assets/arrow.svg";
 import dots from "@../../../public/assets/dots.png";
 import { Button } from "../ui/button";
-import { VscDebugStart } from "react-icons/vsc";
 import Image from "next/image";
-import VideoPlay from "../home/VideoPlay";
 import { VideoPlayer } from "../helper/videoPlayer";
 
 export const Background: React.FC = () => {
@@ -36,7 +34,7 @@ export const Background: React.FC = () => {
 
             <VideoPlayer />
 
-            <p className="text-[#161439] text-md  max-w-20 leading-tight">
+            <p className="text-[#161439] text-md  max-w-24 leading-tight">
               Watch Our Class Demo
             </p>
           </div>
@@ -107,9 +105,9 @@ export const Background: React.FC = () => {
                 <path
                   d="M6.89209 20.9435H5.33161C4.18251 20.9435 3.25098 20.012 3.25098 18.8629V4.29841C3.25098 3.14931 4.18251 2.21777 5.33161 2.21777H19.8961C21.0452 2.21777 21.9767 3.14931 21.9767 4.29841V18.8629C21.9767 20.012 21.0452 20.9435 19.8961 20.9435H18.3356M12.6138 19.9032C14.3375 19.9032 15.7348 18.5059 15.7348 16.7822C15.7348 15.0586 14.3375 13.6613 12.6138 13.6613C10.8902 13.6613 9.49288 15.0586 9.49288 16.7822C9.49288 18.5059 10.8902 19.9032 12.6138 19.9032ZM12.6138 19.9032L12.6361 19.903L9.31465 23.2245L6.37218 20.282L9.51333 17.1408M12.6138 19.9032L15.9354 23.2245L18.8778 20.282L15.7367 17.1408M9.49288 6.37904H15.7348M7.41225 10.0202H17.8154"
                   stroke="#35D2FC"
-                  stroke-width="2.08064"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="2.08064"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
               </svg>
               <div className="flex flex-col space-y-6">

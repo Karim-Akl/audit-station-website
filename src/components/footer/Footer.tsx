@@ -2,12 +2,11 @@ import Image from "next/image";
 import React from "react";
 import Logo from "@../../../public/assets/footer.svg";
 import AppStore from "@../../../public/assets/appstore.svg";
-import GooglePlay from "@../../../public/assets/googleplay.svg";
-import { CiFacebook, CiInstagram, CiLinkedin } from "react-icons/ci";
+import GooglePlay from "@../../../public/assets/playStore.svg";
 import { FloatingDockDemo } from "../helper/FloatingDock";
 export const Footer: React.FC = () => {
   return (
-    <div className="relative bg-[#F5F5F5] text-black w-full">
+    <div className="relative bg-[#F5F5F5] text-black w-full dark:bg[#171616]">
       <div
         className="w-10/12 h-full flex flex-col
        mx-auto"

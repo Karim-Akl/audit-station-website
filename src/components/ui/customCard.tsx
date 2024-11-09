@@ -30,7 +30,7 @@ export const CustomCard: React.FC<CardProps> = ({
         {step && (
           <div className="absolute inset-0  rounded-full   ">
             <span
-              className={`bg-white border-2  ring-offset-slate-900 rounded-full p-1 text-xs ${className}`}
+              className={`bg-white border-4  ring-offset-slate-900 rounded-full p-1  text-xs ${className}`}
             >
               {step}
             </span>
