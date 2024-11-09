@@ -1,4 +1,4 @@
-import { ValidateCouponResponseMessage } from "../types";
+// import { ValidateCouponResponseMessage } from "../types";
 import {
   IMembershipCreatedResponse,
   IMembershipList,
@@ -91,33 +91,33 @@ export const createMembershipCashPayment = async (values: {
   }
 };
 
-export const validateMembershipCoupon = async (values: {
-  coupon_code: string;
-  membership_order_id: number;
-}): Promise<ValidateCouponResponseMessage> => {
-  const response = await fetch(
-    `${BASE_URL}/memberships/validate-membership-coupon/`,
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(values),
-    }
-  );
-  if (!response.ok) {
-    // Parse the response body as JSON
-    const errorData = await response.json();
-    // console.log(errorData);
-    // Throw an error with the response data
-    throw new Error(
-      JSON.stringify(errorData.message ? errorData.message : "Invalid coupon")
-    );
-  }
+// export const validateMembershipCoupon = async (values: {
+//   coupon_code: string;
+//   membership_order_id: number;
+// }): Promise<ValidateCouponResponseMessage> => {
+//   const response = await fetch(
+//     `${BASE_URL}/memberships/validate-membership-coupon/`,
+//     {
+//       method: "POST",
+//       headers: {
+//         "Content-Type": "application/json",
+//       },
+//       body: JSON.stringify(values),
+//     }
+//   );
+//   if (!response.ok) {
+//     // Parse the response body as JSON
+//     const errorData = await response.json();
+//     // console.log(errorData);
+//     // Throw an error with the response data
+//     throw new Error(
+//       JSON.stringify(errorData.message ? errorData.message : "Invalid coupon")
+//     );
+//   }
 
-  const res = await response.json();
-  return res;
-};
+//   const res = await response.json();
+//   return res;
+// };
 
 export const applyOrRemoveMembershipCoupon = async (values: {
   coupon: number | null;
