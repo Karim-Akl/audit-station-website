@@ -1,4 +1,3 @@
-import { SocialIconName } from "@/components/svg-icons/SvgIcons";
 
 export interface ISingleArticle {
   id: number;
@@ -56,7 +55,7 @@ export interface ISingleArticleDetails {
 }
 
 export type SocialLinkType = {
-  iconName: SocialIconName;
+  iconName: string;
   url: string;
 };
 
