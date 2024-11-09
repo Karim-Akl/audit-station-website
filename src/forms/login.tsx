@@ -1,6 +1,4 @@
 "use client";
-import { Input } from "@/components/ui/input";
-import { loginDataSchema } from "@/lib/schemas";
 import { signInWithSSOProvider } from "@/lib/utils";
 import { useLocale } from "next-intl";
 import Link from "next/link";
