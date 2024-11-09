@@ -1,5 +1,6 @@
 "use client";
 import { Input } from "@/components/ui/input";
+import { PhoneInput } from "@/components/ui/phone-input";
 import { useLocale } from "next-intl";
 import Link from "next/link";
 // pages/Register.tsx
@@ -65,7 +66,13 @@ const Register: FC = () => {
               />
             </div>
           </div>
-
+          <PhoneInput 
+          placeholder="Enter a phone number" 
+          value={phone}
+          onChange={setPhone}
+          
+           
+           />
           <div className="mb-4">
             <label
               className="block text-gray-700 text-sm mb-2"
@@ -118,7 +125,9 @@ const Register: FC = () => {
             />
             <label htmlFor="rememberMe" className="text-sm text-gray-700">
               By Signing Up, you agree to our{" "}
-              <Link href={`/${locale}/registration/conditions-and-privacy-policy`}>
+              <Link
+                href={`/${locale}/registration/conditions-and-privacy-policy`}
+              >
                 <span className="text-[#1FA8C9]">
                   Conditions and Privacy Policy
                 </span>{" "}

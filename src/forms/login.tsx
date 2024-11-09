@@ -14,6 +14,7 @@ import { useLogin } from "@/hooks/useLogin";
 import { setSession } from "@/app/[locale]/actions/setSession";
 import { toast } from "sonner";
 import { FaApple } from "react-icons/fa6";
+import { BASE_URL } from "@/lib/constants/constants";
 interface LoginFormValues {
   username_or_email_or_mobile: string;
   password: string;
@@ -24,31 +25,35 @@ const Login: FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
 
-  //   event?.preventDefault();
-  //   loginMutation(
-  //     { route: "login", loginData: data },
-  //     {
-  //       onSuccess: (user) => {
-  //         if (user?.access) {
-  //           setSession(user);
-  //           reset();
-  //           toast.success("You have been logged in successfully");
-  //         } else {
-  //           setUserData({
-  //             email: data.username_or_email_or_mobile,
-  //             userId: user.user_id,
-  //           });
-  //           router.push(`/`);
-  //         }
-  //       },
-  //     }
-  //   );
-  // };
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle login logic
+    setLoading(true);
+    try {
+      const response = await fetch(`${BASE_URL}/login`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+      });
+      console.log(response);
+
+      if (!response.ok) {
+        throw new Error("Login failed");
+      }
+      setLoading(false);
+      const user = await response.json();
+      setSession(user);
+      toast.success("You have been logged in successfully");
+      router.push(`/`);
+    } catch (error) {
+      setLoading(false);
+      toast.error("Login failed. Please check your credentials and try again.");
+      console.error("Login error:", error);
+    }
   };
 
   return (
@@ -123,7 +128,7 @@ const Login: FC = () => {
             type="submit"
             className="bg-[#22B9DD] w-full py-2 text-white rounded-md hover:bg-[#22b8dd94] transition duration-300"
           >
-            Login
+            {loading ? "Loading..." : "Login"}
           </button>
 
           <div className="my-4 text-center text-sm text-gray-600">
