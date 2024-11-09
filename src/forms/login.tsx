@@ -10,7 +10,6 @@ import { useRouter } from "next/navigation";
 import { FC, useState } from "react";
 import { AiOutlineMail, AiOutlineLock } from "react-icons/ai"; // Icons
 import { FaGoogle, FaLinkedin } from "react-icons/fa";
-import { useLogin } from "@/hooks/useLogin";
 import { setSession } from "@/app/[locale]/actions/setSession";
 import { toast } from "sonner";
 import { FaApple } from "react-icons/fa6";
