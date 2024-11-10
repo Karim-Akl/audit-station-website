@@ -6,7 +6,7 @@ import GooglePlay from "@../../../public/assets/playStore.svg";
 import { FloatingDockDemo } from "../helper/FloatingDock";
 export const Footer: React.FC = () => {
   return (
-    <div className="relative bg-[#F5F5F5] text-black w-full dark:bg[#171616]">
+    <div className="relative   w-full ">
       <div
         className="w-10/12 h-full flex flex-col
        mx-auto"
@@ -80,7 +80,7 @@ export const Footer: React.FC = () => {
           </div>
         </div>
       </div>
-      <div className="w-full h-12 flex justify-center items-center mx-auto text-xs bg-[#EEE]">
+      <div className="w-full h-12 flex justify-center items-center mx-auto text-xs ">
         <p>CopyRight @ Audit Station</p>
       </div>
     </div>

@@ -109,7 +109,7 @@ export function TopInstructors() {
           }}
           className="overflow-hidden md:my-6 my-2 "
         >
-          <CarouselContent className="ml-0">
+          <CarouselContent className="ml-0 ">
             {instructors
               .filter(
                 (instructor) =>
@@ -118,38 +118,19 @@ export function TopInstructors() {
               .map((instructor) => (
                 <CarouselItem
                   key={instructor.id}
-                  className="md:w-full rounded-lg sm:basis-1/2 md:basis-1/3 xl:basis-1/5  "
+                  className="md:w-full rounded-lg  sm:basis-1/2 md:basis-1/3 xl:basis-1/5  "
                 >
                   <Link
-                    onMouseEnter={() => setHoveredIndex(instructor.id)}
-                    onMouseLeave={() => setHoveredIndex(null)}
                     href={`/${locale}/top-instructors/${instructor.id}`}
-                    className="bg-white shadow-3xl shadow-black rounded-2xl border-1 border-[#E2E8F0] "
+                    className="bg-white  rounded-2xl border-1 border-[#E2E8F0] "
                   >
-                    <AnimatePresence>
-                      {hoveredIndex === instructor.id && (
-                        <motion.span
-                          className="absolute inset-0 h-full w-full bg-neutral-200 dark:bg-slate-800/[0.8] block  rounded-3xl"
-                          layoutId="hoverBackground"
-                          initial={{ opacity: 0 }}
-                          animate={{
-                            opacity: 1,
-                            transition: { duration: 0.15 },
-                          }}
-                          exit={{
-                            opacity: 0,
-                            transition: { duration: 0.15, delay: 0.2 },
-                          }}
-                        />
-                      )}
-                    </AnimatePresence>
-                    <Card className="relative  overflow-hidden p-0      ">
+                    <Card className="relative  p-0 hover:border-8 hover:border-[#5C5C5C] hover:border-opacity-5 transition-all">
                       {instructor.flag && (
-                        <div className="absolute top-0 right-0 text-white  flex items-center justify-center hover:scale-105 ">
+                        <div className="absolute  -top-1 right-0 text-white m-1  flex items-center justify-center hover:scale-105 ">
                           <Image
                             src={prize}
-                            width={50}
-                            height={50}
+                            width={70}
+                            height={70}
                             alt={"Instructor"}
                           />
                         </div>
