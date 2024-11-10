@@ -26,7 +26,7 @@ export const Header: React.FC = () => {
   return (
     <div className="container w-full flex-col justify-center items-start gap-2.5">
       <div className="md:container self-stretch  md:justify-between items-center md:inline-flex">
-        <div className="justify-start  items-center gap-8 flex ">
+        <div className="justify-start items-center gap-8 flex ">
           <div className="md:justify-start justify-center items-center gap-1 flex">
             <FaMapLocationDot size={20} />
             <div className=" md:text-[13px] text-[10px] md:font-medium ">
