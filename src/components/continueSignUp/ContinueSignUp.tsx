@@ -8,23 +8,23 @@ import { getLocale } from "next-intl/server";
 import { Button } from "../ui/button";
 import Link from "next/link";
 
-const ConditionsPrivacyPolicy = async () => {
+const ContinueSignUp = async () => {
   const locale = await getLocale();
   return (
-    <div className="relative  h-full py-20 bg-white  ">
-      <div className=" items-center justify-center content-center">
-        <div className=" text-center">
-          <h2 className="text-lg md:text-2xl text-center w-full  font-bold text-[#242424] dark:text-neutral-200 font-sans bg-[#E9F8FC]">
+    <div className="relative h-full py-20 ">
+      <div className=" items-center justify-center content-center ">
+        <div className=" mx-auto ms-10 flex">
+          <h2 className="text-lg md:text-2xl text-center   font-bold text-[#242424] dark:text-neutral-200 font-sans bg-[#E9F8FC]">
             Select Your Next Step To Upgrade Your Profile
           </h2>
         </div>
-        <div>
+        <div className="md:mt-10 px-16  ">
           <CustomCard
             step="1"
             icon={<FaUser className="text-white text-3xl" />}
             title="User"
             description="Browse the platform's sections and increase your experience through our courses."
-            className=" bg-cyan-500 border-cyan-500 "
+            className=" bg-cyan-500 border-cyan-500 text-cyan-500"
             style={"  hover:shadow-cyan-500 text-cyan-500 border-cyan-500"}
           />
           <div
@@ -33,8 +33,8 @@ const ConditionsPrivacyPolicy = async () => {
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="236"
-              height="235"
+              width="224"
+              height="274"
               viewBox="0 0 224 274"
               fill="none"
             >
@@ -49,8 +49,8 @@ const ConditionsPrivacyPolicy = async () => {
             </svg>
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="236"
-              height="235"
+              width="221"
+              height="271"
               viewBox="0 0 221 271"
               fill="none"
             >
@@ -64,21 +64,21 @@ const ConditionsPrivacyPolicy = async () => {
               />
             </svg>
           </div>
-          <div className="md:flex items-center justify-between ">
+          <div className="md:flex items-center justify-between">
             <CustomCard
               icon={<PiVideoFill className="text-white text-3xl" />}
               title="Instructor"
               description="Become an instructor on our famous platform in a famous world, and share your experience with partners around the world. Easily upload your courses and achieve agreement while establishing yourself as an expert in your field."
-              className=" bg-cyan-500 border-cyan-500 "
-              style={"hover:shadow-cyan-500 text-cyan-500 border-cyan-500"}
+              className=" bg-cyan-500 border-cyan-500 text-cyan-500 "
+              style={"  hover:shadow-cyan-500 text-cyan-500 border-cyan-500"}
             />
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="8"
+              width="4"
               height="477"
               viewBox="0 0 4 477"
               fill="none"
-              className="hidden md:flex mx-auto"
+              className="hidden md:flex"
             >
               <path
                 d="M1.59766 2.44336L1.78962 475.106"
@@ -93,7 +93,7 @@ const ConditionsPrivacyPolicy = async () => {
               icon={<GiArchiveRegister className="text-white text-3xl" />}
               title="Company"
               description="Register your company today on our leading accounting platform, and expand your business by accessing the best global competencies and expertise approved by us."
-              className=" bg-cyan-500 border-cyan-500"
+              className=" bg-cyan-500 border-cyan-500 text-cyan-500"
               style={" hover:shadow-cyan-500 text-cyan-500 border-cyan-500"}
             />
           </div>
@@ -102,7 +102,7 @@ const ConditionsPrivacyPolicy = async () => {
             icon={<FaPersonChalkboard className="text-white text-3xl" />}
             title="Accountant"
             description="Browse the platform's sections and increase your experience through our courses."
-            className=" bg-cyan-500 border-cyan-500"
+            className=" bg-cyan-500 border-cyan-500 text-cyan-500"
             style={" hover:shadow-cyan-500 text-cyan-500 border-cyan-500"}
           />
           <svg
@@ -135,7 +135,7 @@ const ConditionsPrivacyPolicy = async () => {
             icon={<PiVideoFill className="text-white text-3xl" />}
             title="Certified"
             description="Browse the platform's sections and increase your experience through our courses."
-            className=" bg-[#C0C0C0] border-[#C0C0C0]"
+            className=" bg-[#C0C0C0] border-[#C0C0C0] text-[#C0C0C0]"
             style={" hover:shadow-[#C0C0C0] text-[#C0C0C0] border-[#C0C0C0]"}
           />
           <svg
@@ -168,16 +168,25 @@ const ConditionsPrivacyPolicy = async () => {
             icon={<HiOutlineVideoCamera className="text-white text-3xl" />}
             title="Interviewer"
             description="Browse the platform's sections and increase your experience through our courses."
-            className=" bg-[#C0C0C0] border-[#C0C0C0]"
+            className=" bg-[#C0C0C0] border-[#C0C0C0] text-[#C0C0C0]"
             style={" hover:shadow-[#C0C0C0]  text-[#C0C0C0] border-[#C0C0C0]"}
           />
         </div>
-        <Button className="bg-[#1FA8C9]">
-          <Link href={"/"}>Become an instructor</Link>
-        </Button>
+
+        <div className="flex flex-col justify-center items-center text-xl font-semibold mt-3 w-full space-y-4">
+          <Button className="bg-[#1FA8C9] text-xl px-18 py-6 w-96 ">
+            <Link href={`/${locale}/registration-as-instructor`}>Become an instructor</Link>
+          </Button>{" "}
+          <Button className="bg-[#1FA8C9] text-xl px-18 py-6 w-96 ">
+            <Link href={`/${locale}/registration-as-instructor`}> Become an assistant</Link>
+          </Button>{" "}
+          <Button className="bg-[#1FA8C9] text-xl px-18 py-6 w-96 ">
+            <Link href={`/${locale}/registration-as-instructor`}> Become a company</Link>
+          </Button>
+        </div>
       </div>
     </div>
   );
 };
 
-export default ConditionsPrivacyPolicy;
+export default ContinueSignUp;
