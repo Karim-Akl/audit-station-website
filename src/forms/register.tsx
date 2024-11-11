@@ -66,13 +66,12 @@ const Register: FC = () => {
               />
             </div>
           </div>
-          <PhoneInput 
-          placeholder="Enter a phone number" 
-          value={phone}
-          onChange={setPhone}
-          
-           
-           />
+          <PhoneInput
+            placeholder="Enter a phone number"
+            value={phone}
+            onChange={setPhone}
+            defaultCountry="AE"
+          />
           <div className="mb-4">
             <label
               className="block text-gray-700 text-sm mb-2"

@@ -23,7 +23,7 @@ export const SearchInput: React.FC = () => {
           />
           <button
             type="submit"
-            className="absolute top-0 end-0 p-2 text-xs font-medium h-full text-white bg-[#1FA8C9] hover:bg-[#22a8dd] focus:ring-4 focus:outline-none rounded-full focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            className="absolute top-1 bottom-1 end-1 p-2 text-xs font-medium  text-white bg-[#1FA8C9] hover:bg-[#22a8dd] focus:ring-4 focus:outline-none rounded-full focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
           >
             <BiSearch size={20} />
             <span className="sr-only">Search</span>

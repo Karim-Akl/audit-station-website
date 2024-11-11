@@ -56,7 +56,7 @@ export const Faqs: React.FC = async () => {
         </div>
       </div>
       <div className="w-full md:w-1/4  md:mt-0  ">
-        <div className="relative ">
+        <div className="relative">
           <Image
             src={unspalch}
             className=" w-full h-80 z-10 "
@@ -64,17 +64,17 @@ export const Faqs: React.FC = async () => {
             width={100}
             height={100}
           />
-          {/* <Image
+          <Image
             src={vector}
-            className=" w-80 h-52 absolute top-36 left-52 overflow-hidden  "
+            className="absolute -bottom-5 -right-5 overflow-hidden  "
             alt="pesone"
-            width={40}
-            height={40}
-          /> */}
+            width={200}
+            height={200}
+          />
         </div>
         <Link href={`/${locale}/faqs`}>
-        <Button className="bg-transparent hover:bg-gray-200 hover:border border pe-0 md:h-14 md:mt-12 justify-between md:w-72 rounded-full border-[#22B9DD] text-[#22B9DD]">
-        <span>See More</span>
+          <Button className="bg-transparent hover:bg-gray-200 hover:border border pe-0 md:h-14 md:mt-12 justify-between md:w-72 rounded-full border-[#22B9DD] text-[#22B9DD]">
+            <span>See More</span>
             <span className="rounded-full border p-3 border-[#22B9DD]">
               <ArrowRight />
             </span>

@@ -16,17 +16,16 @@ import { FloatingDock } from "../ui/floating-dock";
 export function FloatingDockDemo() {
   const links = [
     {
-      title: "WhatsApp",
-      icon: (
-        <IconBrandWhatsapp className="h-full w-full text-neutral-500 dark:text-neutral-300" />
-      ),
-      href: "#",
-    },
-
-    {
       title: "Facebook",
       icon: (
         <IconBrandFacebook className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+      ),
+      href: "#",
+    },
+    {
+      title: "WhatsApp",
+      icon: (
+        <IconBrandWhatsapp className="h-full w-full text-neutral-500 dark:text-neutral-300" />
       ),
       href: "#",
     },

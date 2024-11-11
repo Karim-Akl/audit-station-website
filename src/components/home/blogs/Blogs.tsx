@@ -92,44 +92,49 @@ export async function Blogs() {
               key={instructor.id}
               className="md:w-full rounded-lg  sm:basis-1/2 md:basis-1/3 xl:basis-1/5"
             >
-              <Card className="relative  overflow-hidden p-0  bg-white">
-                <div className="absolute top-4 right-4 text-white bg-[#22B9DD] px-4 py-2 rounded-md  flex items-center justify-center ">
-                  {instructor.category}
-                </div>
-
-                <CardContent className="p-2">
-                  <Image
-                    src={instructor.imageUrl}
-                    width={100}
-                    height={100}
-                    alt={instructor.name}
-                    className="w-full h-auto "
-                  />
-                  <div className="flex justify-between py-2  items-center">
-                    <div className="flex items-center">
-                      <svg
-                        className="w-5 h-5 text-yellow-500"
-                        fill="currentColor"
-                        viewBox="0 0 20 20"
-                      >
-                        <path d="M9.049 2.927c-.3-.921-1.598-.921-1.898 0L5.317 6.23l-3.905.568c-1.011.147-1.416 1.392-.683 2.104l2.828 2.758-.668 3.892c-.172 1.002.883 1.753 1.785 1.284L10 15.347l3.49 1.834c.902.469 1.957-.282 1.785-1.284l-.668-3.892 2.828-2.758c.733-.712.328-1.957-.683-2.104l-3.905-.568-1.834-3.303z" />
-                      </svg>
-                      <span className="ml-2">{instructor.rating}</span>
-                    </div>
-                    <p className="text-sm text-gray-600">
-                      {instructor.students} Students
-                    </p>
+              <Link
+                href={`/${locale}/blogs/${instructor.id}`}
+                className="bg-white  rounded-2xl border-1 border-[#E2E8F0] "
+              >
+                <Card className="relative p-0  bg-white hover:border-6 hover:border-[#5C5C5C] hover:border-opacity-5 transition-all">
+                  <div className="absolute top-4 right-4 text-white bg-[#22B9DD] px-4 py-2 rounded-md  flex items-center justify-center ">
+                    {instructor.category}
                   </div>
-                  <div className="">
-                    <div className="font-bold text-xl mb-2">
-                      {instructor.name}
+
+                  <CardContent className="p-2">
+                    <Image
+                      src={instructor.imageUrl}
+                      width={100}
+                      height={100}
+                      alt={instructor.name}
+                      className="w-full h-auto "
+                    />
+                    <div className="flex justify-between py-2  items-center">
+                      <div className="flex items-center">
+                        <svg
+                          className="w-5 h-5 text-yellow-500"
+                          fill="currentColor"
+                          viewBox="0 0 20 20"
+                        >
+                          <path d="M9.049 2.927c-.3-.921-1.598-.921-1.898 0L5.317 6.23l-3.905.568c-1.011.147-1.416 1.392-.683 2.104l2.828 2.758-.668 3.892c-.172 1.002.883 1.753 1.785 1.284L10 15.347l3.49 1.834c.902.469 1.957-.282 1.785-1.284l-.668-3.892 2.828-2.758c.733-.712.328-1.957-.683-2.104l-3.905-.568-1.834-3.303z" />
+                        </svg>
+                        <span className="ml-2">{instructor.rating}</span>
+                      </div>
+                      <p className="text-sm text-gray-600">
+                        {instructor.students} Students
+                      </p>
                     </div>
-                    {/* <p className="text-gray-700 text-base">
+                    <div className="">
+                      <div className="font-bold text-xl mb-2">
+                        {instructor.name}
+                      </div>
+                      {/* <p className="text-gray-700 text-base">
                       {instructor.title}
                     </p> */}
-                  </div>
-                </CardContent>
-              </Card>
+                    </div>
+                  </CardContent>
+                </Card>
+              </Link>
             </CarouselItem>
           ))}
         </CarouselContent>
@@ -140,7 +145,7 @@ export async function Blogs() {
         <Link href={`/${locale}/blogs`}>
           {" "}
           <Button className="bg-transparent hover:bg-gray-200 hover:border border pe-0 md:h-14 md:mt-12 justify-between md:w-72 rounded-full border-[#22B9DD] text-[#22B9DD]">
-          <span>See More</span>
+            <span>See More</span>
             <span className="rounded-full border p-3 border-[#22B9DD]">
               <ArrowRight />
             </span>
