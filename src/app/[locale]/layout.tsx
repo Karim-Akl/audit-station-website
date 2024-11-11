@@ -6,8 +6,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider/theme-provider";
 import { cn } from "@/lib/utils";
 import { Saira, Tajawal } from "@/fonts";
-import { getSession } from "@/lib/authSession";
-import { SessionProvider } from "next-auth/react";
+
 import Providers from "@/lib/query-provider";
 export const metadata: Metadata & {
   title: { template: string; default: string };

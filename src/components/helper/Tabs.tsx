@@ -79,7 +79,7 @@ export function ProfileTabs({ Name }: { Name: string }) {
         </p>
 
         {profiletabs.map((tab) => (
-          <Link key={tab.value} href={`/${locale}/profile/${tab.value}`}>
+          <Link key={tab.value} href={`/${locale}/user/${tab.value}`}>
             <TabsTrigger
               className="data-[state=active]:border-none data-[state=active]:font-bold data-[state=active]:bg-[#22B9DD] data-[state=active]:text-white w-full  items-center justify-start bordre-b-0 px-4 gap-2 text-lg font-medium  text-[#151515]"
               value={tab.value}

@@ -28,13 +28,13 @@ export const CustomCard: React.FC<CardProps> = ({
         {/* Circular outline */}
         <div className="absolute inset-0 rounded-full  border-2 border-white"></div>
         {step && (
-          <div className="absolute inset-0  rounded-full   ">
+            <div className="absolute inset-0  rounded-full">
             <span
-              className={`bg-white border-4  ring-offset-slate-900 rounded-full p-1  text-xs ${className}`}
+              className={`bg-white border-4 h-8 w-8 flex items-center justify-center rounded-full text-lg font-bold ${className}`}
             >
               {step}
             </span>
-          </div>
+            </div>
         )}
       </div>
       {/* Connecting bar between circle and card */}

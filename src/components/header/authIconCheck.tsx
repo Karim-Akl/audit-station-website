@@ -20,7 +20,7 @@ export default function AuthIconCheck() {
           <CiLogin size={22} />
         </Link>
       ) : (
-        <Link href={`/${locale}/profile/dashboard`}>
+        <Link href={`/${locale}/user/dashboard`}>
           {" "}
           <GoPerson size={22} />
         </Link>
