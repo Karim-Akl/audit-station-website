@@ -48,7 +48,7 @@ const payments = [
   },
 ];
 export const metadata = {
-  title: "Payments | Audit Station",
+  title: "Payments | User",
   description: "Payments Page",
 };
 export default async function ProfilePayment() {

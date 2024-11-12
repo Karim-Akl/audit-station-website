@@ -33,9 +33,9 @@ const BecomeAnInstructor: FC = () => {
 
   return (
     <div className="flex justify-center items-center h-screen ">
-      <div className="bg-white p-8 rounded-lg shadow-lg max-w-lg w-full">
-        <h2 className="text-2xl font-semibold text-center mb-6">
-          Become an Instructor
+      <div className=" p-8 rounded-lg shadow-lg max-w-lg w-full">
+        <h2 className="text-[31px] text-[#333] font-semibold text-center mb-6">
+          Become an instructor
         </h2>
         <form onSubmit={handleRegister}>
           <div className="mb-4">
@@ -46,7 +46,6 @@ const BecomeAnInstructor: FC = () => {
               Nationality
             </label>
             <div className="flex items-center border border-gray-300 rounded-md ps-3 ">
-              <AiOutlineHome className="text-gray-400 mr-2" />
               <Select defaultValue="Ae">
                 <SelectTrigger
                   className={cn(
@@ -71,7 +70,6 @@ const BecomeAnInstructor: FC = () => {
               Main Address
             </label>
             <div className="flex items-center border border-gray-300 rounded-md px-3 py-2">
-              <AiOutlineMail className="text-gray-400 mr-2" />
               <input
                 id="academicQualification"
                 type="text"
@@ -88,7 +86,6 @@ const BecomeAnInstructor: FC = () => {
               Academic qualification
             </label>
             <div className="flex items-center border border-gray-300 rounded-md px-3 py-2">
-              <AiOutlineMail className="text-gray-400 mr-2" />
               <input
                 id="academicQualification"
                 type="text"
@@ -105,7 +102,6 @@ const BecomeAnInstructor: FC = () => {
               Previous work{" "}
             </label>
             <div className="flex items-center border border-gray-300 rounded-md px-3 py-2">
-              <AiOutlineMail className="text-gray-400 mr-2" />
               <input
                 id="previouWork"
                 type="text"
@@ -122,7 +118,6 @@ const BecomeAnInstructor: FC = () => {
               Bio{" "}
             </label>
             <div className="flex items-center border border-gray-300 rounded-md px-3 py-2">
-              <AiOutlineMail className="text-gray-400 mr-2" />
               <textarea
                 id="academicQualification"
                 value={bio}

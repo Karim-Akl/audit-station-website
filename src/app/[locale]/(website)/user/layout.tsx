@@ -5,13 +5,13 @@ import SecondHeroBackground from "@/components/helper/SecondHeroBackground";
 import type { Metadata } from "next";
 
 // Dynamic import for lazy loading
-const LazyProfileTabs = dynamic(() =>
-  import("@/components/helper/Tabs").then((module) => module.ProfileTabs)
+const LazyUserTabs = dynamic(() =>
+  import("@/components/helper/Tabs").then((module) => module.UserTabs)
 );
 
 export const metadata: Metadata = {
-  title: "Profile",
-  description: "Profile Page",
+  title: "User",
+  description: "User Page",
 };
 export default function SignInLayout({
   children,
@@ -29,7 +29,7 @@ export default function SignInLayout({
           <div className="md:col-span-1 col-span-4 space-y-4 rounded-lg">
             <div className="bg-[#fff] shadow-md rounded-lg p-5">
               <Suspense fallback={<div>Loading...</div>}>
-                <LazyProfileTabs Name="John Doe" />
+                <LazyUserTabs Name="John Doe" />
               </Suspense>
             </div>
           </div>

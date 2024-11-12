@@ -12,7 +12,7 @@ import { cn } from "@/lib/utils";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { Button } from "@/components/ui/button";
 export const metadata = {
-  title: "Notfication | Profile",
+  title: "Notfication | Instructor",
   description: "Notfication Page",
 };
 export default function About() {
