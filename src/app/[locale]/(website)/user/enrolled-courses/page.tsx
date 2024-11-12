@@ -1,7 +1,7 @@
 import React from "react";
 import { SearchInput } from "@/components/header/searchInput";
 export const metadata = {
-  title: "Enrolled Courses | Profile",
+  title: "Enrolled Courses | User",
   description: "Enrolled Courses Page",
 };
 export default function About() {

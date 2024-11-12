@@ -5,7 +5,7 @@ import secondIcon from "@/../public/assets/profile/Background+Border (1).svg";
 import thirdIcon from "@/../public/assets/profile/Background+Border (2).svg";
 import fourthIcon from "@/../public/assets/profile/Background+Border (3).svg";
 export const metadata = {
-  title: "Dashboard | Profile",
+  title: "Dashboard | Instructor",
   description: "dashboard Page",
 };
 export default function ProfileDashboard() {
@@ -19,26 +19,38 @@ export default function ProfileDashboard() {
         <div className="flex flex-col gap-4 items-center justify-center  py-10 px-14 hover:bg-[#22B9DD] text-[#333333] shadow-box-shadow  hover:shadow_hover hover:text-white ">
           <Image src={fristIcon} alt="logo" width={100} height={100} />
 
-          <p className=" text-3xl font-semibold">10</p>
+          <p className=" text-3xl font-semibold">500</p>
+          <h3 className="text-2xl  font-semibold">Total Courses</h3>
+        </div>
+        <div className="flex flex-col gap-4 items-center justify-center  py-10 px-14 hover:bg-[#22B9DD] text-[#333333] shadow-box-shadow  hover:shadow_hover hover:text-white ">
+          <Image src={fristIcon} alt="logo" width={100} height={100} />
+
+          <p className=" text-3xl font-semibold">450</p>
+          <h3 className="text-2xl  font-semibold">Total Students</h3>
+        </div>
+        <div className="flex flex-col gap-4 items-center justify-center  py-10 px-14 hover:bg-[#22B9DD] text-[#333333] shadow-box-shadow  hover:shadow_hover hover:text-white ">
+          <Image src={fristIcon} alt="logo" width={100} height={100} />
+
+          <p className=" text-3xl font-semibold">500</p>
           <h3 className="text-2xl  font-semibold">Enrolled Courses</h3>
         </div>
         <div className="flex flex-col gap-4 items-center justify-center  py-10 px-14 hover:bg-[#22B9DD] text-[#333333] shadow-box-shadow  hover:shadow_hover hover:text-white ">
           <Image src={secondIcon} alt="logo" width={100} height={100} />
 
-          <p className=" text-3xl font-semibold">10</p>
-          <h3 className="text-2xl  font-semibold">Coins</h3>
+          <p className=" text-3xl font-semibold">500</p>
+          <h3 className="text-2xl  font-semibold">Active Students</h3>
         </div>
         <div className="flex flex-col gap-4 items-center justify-center  py-10 px-14 hover:bg-[#22B9DD] text-[#333333] shadow-box-shadow  hover:shadow_hover   hover:text-white ">
           <Image src={thirdIcon} alt="logo" width={100} height={100} />
 
-          <p className=" text-3xl font-semibold">10</p>
-          <h3 className="text-2xl  font-semibold">Certificates</h3>
+          <p className=" text-3xl font-semibold  font-sans">300</p>
+          <h3 className="text-2xl  font-semibold font-sans">Course Feedbacks</h3>
         </div>
         <div className="flex flex-col gap-4 items-center justify-center  py-10 px-14 hover:bg-[#22B9DD] text-[#333333]  shadow-box-shadow  hover:shadow_hover hover:text-white ">
           <Image src={fourthIcon} alt="logo" width={100} height={100} />
 
-          <p className=" text-3xl font-semibold">10</p>
-          <h3 className="text-2xl  font-semibold">Order History</h3>
+          <p className=" text-3xl font-semibold">500</p>
+          <h3 className="text-2xl  font-semibold">Active Courses</h3>
         </div>
       </div>
     </div>

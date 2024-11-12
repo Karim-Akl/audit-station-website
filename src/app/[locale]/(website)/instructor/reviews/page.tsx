@@ -31,7 +31,7 @@ const revivew = [
   
 ];
 export const metadata = {
-  title: " Review | Profile",
+  title: " Review | Instructor",
   description: "Review Page",
 };
 export default function Review() {

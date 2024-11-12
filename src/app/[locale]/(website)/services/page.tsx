@@ -6,7 +6,7 @@ import Image from "next/image";
 import blueCircle from "@/../public/assets/services/rightBlueCircle.svg";
 import yellowCircle from "@/../public/assets/services/leftYellowCircle.svg";
 import { topServicesItems } from ".";
-import { bottomServicesItems } from "../shoppingCart";
+import { bottomServicesItems } from ".";
 export const metadata = {
   title: "Services",
   description: "Services Page",

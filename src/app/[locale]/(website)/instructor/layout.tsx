@@ -4,11 +4,11 @@ import Head from "next/head";
 import SecondHeroBackground from "@/components/helper/SecondHeroBackground";
 
 // Dynamic import for lazy loading
-const LazyProfileTabs = dynamic(() =>
-  import("@/components/helper/Tabs").then((module) => module.ProfileTabs)
+const LazyInstructorTabs = dynamic(() =>
+  import("@/components/helper/Tabs").then((module) => module.InstructorTabs)
 );
 
-export default function SignInLayout({
+export default function InstructorLayout({
   children,
 }: {
   children: React.ReactNode;
@@ -16,8 +16,8 @@ export default function SignInLayout({
   return (
     <>
       <Head>
-        <title>Profile</title>
-        <meta name="description" content="Profile Page" />
+        <title>Instructor</title>
+        <meta name="description" content="Instructor Page" />
       </Head>
       <main className="mb-20 relative">
         <SecondHeroBackground
@@ -26,9 +26,9 @@ export default function SignInLayout({
         />
         <section className="container my-4 grid grid-cols-4 gap-4">
           <div className="md:col-span-1 col-span-4 space-y-4 rounded-lg">
-            <div className="bg-[#fff] shadow-md rounded-lg p-5">
+            <div className=" shadow-md rounded-lg p-5">
               <Suspense fallback={<div>Loading...</div>}>
-                <LazyProfileTabs Name="John Doe" />
+                <LazyInstructorTabs Name="John Doe" />
               </Suspense>
             </div>
           </div>
