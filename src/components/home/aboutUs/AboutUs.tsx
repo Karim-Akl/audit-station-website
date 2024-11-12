@@ -41,7 +41,8 @@ export const AboutUs: React.FC = () => {
             </div>
           </div>
         </div>
-        <Button className="bg-white hover:bg-gray-200 hover:border border pe-0 h-12   justify-between  w-72 rounded-full border-[#22B9DD] text-[#22B9DD]">
+        <Button className="bg-white hover:bg-gray-200 hover:border border pe-0 h-12   justify-between  w-72 rounded-full border-[#22B9DD] text-[#22B9DD]"
+        >
           <span>Get More About Us</span>
           <span className="rounded-full border p-3 border-[#22B9DD]">
             <ArrowRight />

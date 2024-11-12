@@ -21,7 +21,7 @@ export default function Blogs({ searchParams }: any) {
         .map((instructor) => (
           <Card
             key={instructor.id}
-            className="relati</div>ve  overflow-hidden p-0  bg-white"
+            className="relative  overflow-hidden p-0  bg-white"
           >
             <div className="absolute top-4 right-4 text-white bg-[#22B9DD] px-4 py-2 rounded-md  flex items-center justify-center ">
               {instructor.category}
