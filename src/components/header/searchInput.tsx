@@ -5,7 +5,7 @@ import { Input } from "../ui/input";
 export const SearchInput: React.FC = () => {
   return (
     <form className="flex items-center  ">
-      <div className="flex  rounded-full p-1 ">
+      <div className="flex  rounded-full p-1 w-full">
         <label
           htmlFor="search-dropdown"
           className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"

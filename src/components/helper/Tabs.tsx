@@ -10,12 +10,18 @@ import {
   BsPersonVideo3,
 } from "react-icons/bs";
 import { GiTwoCoins } from "react-icons/gi";
-import { PiCertificate } from "react-icons/pi";
+import { PiCertificate, PiCoins } from "react-icons/pi";
 import { TfiAnnouncement } from "react-icons/tfi";
-import { MdOutlineLogout, MdOutlineNotificationsActive } from "react-icons/md";
+import {
+  MdHistory,
+  MdOutlineAnnouncement,
+  MdOutlineLogout,
+  MdOutlineNotificationsActive,
+} from "react-icons/md";
 import { Button } from "../ui/button";
 import Link from "next/link";
 import { useLocale } from "next-intl";
+import { GrAnnounce } from "react-icons/gr";
 
 export function BlogsTabs() {
   const { pathname, router, searchParams } = UseSearchParamsHook();
@@ -28,7 +34,7 @@ export function BlogsTabs() {
 
   return (
     <Tabs
-      className="inline-block   "
+      className="inline-block "
       defaultValue={Blogtabs[0].value}
       onValueChange={(e) => {
         pushTaptoParams(e);
@@ -39,7 +45,7 @@ export function BlogsTabs() {
 
         {Blogtabs.map((tab) => (
           <TabsTrigger
-            className="data-[state=active]:border-none data-[state=active]:font-bold items-start justify-start bordre-b-0 p-0 text-[16px] font-normal text-[#5C5C5C]"
+            className="data-[state=active]:border-none data-[state=active]:font-bold items-start justify-start bordre-b-0 p-0 text-[16px] font-normal "
             key={tab.value}
             value={tab.value}
           >
@@ -62,7 +68,7 @@ const Blogtabs = [
   { id: 6, title: "Strategies", value: "strategies" },
   { id: 6, title: "Technology", value: "technology" },
 ];
-export function ProfileTabs({ Name }: { Name: string }) {
+export function UserTabs({ Name }: { Name: string }) {
   const { pathname, router } = UseSearchParamsHook();
   const lastRoute = pathname.split("/").pop();
 
@@ -78,7 +84,7 @@ export function ProfileTabs({ Name }: { Name: string }) {
           Hello , <span>{Name}</span>
         </p>
 
-        {profiletabs.map((tab) => (
+        {userTabs.map((tab) => (
           <Link key={tab.value} href={`/${locale}/user/${tab.value}`}>
             <TabsTrigger
               className="data-[state=active]:border-none data-[state=active]:font-bold data-[state=active]:bg-[#22B9DD] data-[state=active]:text-white w-full  items-center justify-start bordre-b-0 px-4 gap-2 text-lg font-medium  text-[#151515]"
@@ -103,7 +109,7 @@ export function ProfileTabs({ Name }: { Name: string }) {
     </Tabs>
   );
 }
-const profiletabs = [
+const userTabs = [
   {
     id: 1,
     title: "Dashboard",
@@ -132,4 +138,92 @@ const profiletabs = [
   },
   { id: 6, title: "Chat", value: "chat", icon: <BsChatDots /> },
   { id: 6, title: "Profile", value: "profile", icon: <BsPersonVcard /> },
+];
+
+export function InstructorTabs({ Name }: { Name: string }) {
+  const { pathname, router } = UseSearchParamsHook();
+  const lastRoute = pathname.split("/").pop();
+
+  const locale = useLocale();
+  const handleLogOut = () => {
+    localStorage.removeItem("token");
+    router.push("/");
+  };
+  return (
+    <Tabs className="inline-block " defaultValue={lastRoute}>
+      <TabsList className="flex flex-col gap-5 items-start justify-end  ">
+        <p className="text-[16px] text-[#0F1A29] ">
+          Hello , <span>{Name}</span>
+        </p>
+
+        {instructortabs.map((tab) => (
+          <Link key={tab.value} href={`/${locale}/instructor/${tab.value}`}>
+            <TabsTrigger
+              className="data-[state=active]:border-none data-[state=active]:font-bold data-[state=active]:bg-[#22B9DD] data-[state=active]:text-white w-full  items-center justify-start bordre-b-0 px-4 gap-2 text-lg font-medium  text-[#151515]"
+              value={tab.value}
+            >
+              {tab.icon}
+              {tab.title}
+            </TabsTrigger>
+          </Link>
+        ))}
+        <Button
+          className="bg-white hover:bg-white items-center justify-start bordre-b-0 px-4 gap-2 text-lg font-medium  text-[#F55157]"
+          value="logout"
+          onClick={() => {
+            handleLogOut();
+          }}
+        >
+          <MdOutlineLogout />
+          Log out
+        </Button>
+      </TabsList>
+    </Tabs>
+  );
+}
+const instructortabs = [
+  {
+    id: 1,
+    title: "Dashboard",
+    value: "dashboard",
+    icon: <BsPersonVideo3 />,
+  },
+  {
+    id: 2,
+    title: "Courses",
+    value: "courses",
+    icon: <BsCollectionPlay />,
+  },
+  {
+    id: 3,
+    title: "Payments",
+    value: "payments",
+    icon: <PiCoins />,
+  },
+  {
+    id: 4,
+    title: "Announcements",
+    value: "announcements",
+    icon: <MdOutlineAnnouncement />,
+  },
+  {
+    id: 5,
+    title: "Reviews",
+    value: "reviews",
+    icon: <GrAnnounce />,
+  },
+  {
+    id: 6,
+    title: "History",
+    value: "history",
+    icon: <MdHistory />,
+  },
+  {
+    id: 7,
+    title: "Notifications",
+    value: "notifications",
+    icon: <MdOutlineNotificationsActive />,
+  },
+  { id: 8, title: "Chat", value: "chat", icon: <BsChatDots /> },
+  { id: 9, title: "Profile", value: "profile", icon: <BsPersonVcard /> },
 ];
