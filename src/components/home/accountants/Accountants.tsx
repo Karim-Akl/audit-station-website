@@ -3,14 +3,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { Card, CardContent } from '@/components/ui/card';
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from '@/components/ui/carousel';
-import accountant from '@../../../public/assets/accountant/70278e6d82e489fd32c29f83406622cb.jpg';
+import accountant from '@../../../public/assets/accountant/accountant.jpg';
 import { SearchInput } from '@/components/header/searchInput';
 import FilteringSelectMenu from '@/components/filteringSelectMenu/FilteringSelectMenu';
 import { SelectChangeEvent } from '@mui/material';
