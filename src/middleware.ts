@@ -7,6 +7,7 @@ import {
   publicNestedRoutes,
   publicRoutes,
 } from "./routes";
+import { getLocale } from "next-intl/server";
 
 const intlMiddleware = createMiddleware({
   // A list of all locales that are supported
@@ -22,17 +23,26 @@ export const config = {
 
 export async function middleware(request: NextRequest) {
   const { nextUrl } = request;
-  const isLoggedIn = !!(await getSession());
+  console.log("middleware", nextUrl);
+  
+  const session = await getSession();
+  const isLoggedIn = !!session;
   const isPublicRoute = publicRoutes.includes(nextUrl.pathname);
   const isPublicNestedRoute = publicNestedRoutes.some((route) =>
     nextUrl.pathname.startsWith(route)
   );
   const isAuthRoute = authRoutes.includes(nextUrl.pathname);
+
+  console.log(
+    "middleware",
+    { isLoggedIn, isPublicRoute, isPublicNestedRoute, isAuthRoute, session }
+  );
+
   if (isAuthRoute) {
-    return NextResponse.next();
-  }
-  if (isLoggedIn) {
-    return NextResponse.redirect(new URL(DEFAULT_LOGIN_REDIRECT, nextUrl));
+    if (isLoggedIn) {
+      return NextResponse.redirect(new URL(DEFAULT_LOGIN_REDIRECT, request.url));
+    }
+    return;
   }
   // If not logged in and trying to access a protected route, redirect to login
   // if (!isLoggedIn && !isPublicRoute && !isPublicNestedRoute) {

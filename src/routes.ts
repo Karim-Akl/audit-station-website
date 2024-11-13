@@ -7,6 +7,7 @@ export const publicRoutes = [
   "/services",
   "/blogs",
   "/about",
+  "/contact",
   "/authError",
   "/privacy-policy",
   "/api/refresh-token",
@@ -23,7 +24,7 @@ export const publicNestedRoutes = ["/blogs", "/services"];
  * @type {string}
  */
 export const authRoutes = [
-  "/login",
+  "/en/login",
   "/registration",
   "/forgot-password",
   "/reset-password",
@@ -34,9 +35,10 @@ export const authRoutes = [
  * The prefix for the authentication API
  * @type {string}
  */
+export const apiAuthPrefix = "/api/auth";
 
 /**
  * The default redirect path after a successful login
  * @type {string}
  */
-export const DEFAULT_LOGIN_REDIRECT = `/en}`;
+export const DEFAULT_LOGIN_REDIRECT = `/`;

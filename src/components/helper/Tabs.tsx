@@ -22,6 +22,8 @@ import { Button } from "../ui/button";
 import Link from "next/link";
 import { useLocale } from "next-intl";
 import { GrAnnounce } from "react-icons/gr";
+import { useSession } from "next-auth/react";
+import { logOutAction } from "@/app/[locale]/actions/logout";
 
 export function BlogsTabs() {
   const { pathname, router, searchParams } = UseSearchParamsHook();
@@ -73,9 +75,10 @@ export function UserTabs({ Name }: { Name: string }) {
   const lastRoute = pathname.split("/").pop();
 
   const locale = useLocale();
-  const handleLogOut = () => {
-    localStorage.removeItem("token");
-    router.push("/");
+  const { status } = useSession();
+
+  const handleLogOut = async () => {
+    await logOutAction(status);
   };
   return (
     <Tabs className="inline-block " defaultValue={lastRoute}>

@@ -12,19 +12,22 @@ export const metadata = {
 };
 export default async function About() {
   const { data, message } = await GetDataInServerSide({
-    End_Point: `/about_us`,
+    End_Point: `/public/about_us`,
     ISAddAuthHeaders: false,
     ExtraMethod: {
       next: { revalidate: revalidateTime }, // Revalidate every 5 minutes
     },
   });
-  // if (!data) {
-  //   return (
-  //     <p className='flex h-screen w-full items-center justify-center bg-secondary-500 font-coachella text-4xl text-primary-400 md:text-[72px] '>
-  //       {message}
-  //     </p>
-  //   );
-  // }
+
+
+  if (!data) {
+    return (
+      <p className="flex h-screen w-full items-center justify-center bg-secondary-500 font-coachella text-4xl text-primary-400 md:text-[72px] ">
+        {message}
+      </p>
+    );
+  }
+
   return (
     <div className='mb-20'>
       <HeroBackground title='about us' />
