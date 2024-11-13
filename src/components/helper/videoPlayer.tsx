@@ -4,7 +4,7 @@ import { Button } from "../ui/button";
 import VideoPlay from "../home/VideoPlay";
 import { useState } from "react";
 
-export const VideoPlayer: React.FC = () => {
+export const VideoPlayer = ({link}: {link: string}) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const openVideo = () => {
@@ -20,7 +20,7 @@ export const VideoPlayer: React.FC = () => {
         <MdPlayArrow color="black" size={29} />
       </Button>
 
-      <VideoPlay isOpen={isOpen} setIsOpen={setIsOpen} />
+      <VideoPlay link = {link} isOpen={isOpen} setIsOpen={setIsOpen} />
     </div>
   );
 };

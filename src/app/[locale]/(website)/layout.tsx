@@ -1,7 +1,7 @@
-import { Footer } from "@/components/footer/Footer";
-import Navbar from "@/components/header/Navbar";
-import React from "react";
-import { getSession } from "@/lib/authSession";
+import { Footer } from '@/components/footer/Footer';
+import Navbar from '@/components/header/Navbar';
+import React from 'react';
+import { getSession } from '@/lib/authSession';
 
 interface LayoutProps {
   children: React.ReactNode;

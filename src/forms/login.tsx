@@ -1,13 +1,12 @@
 "use client";
 import { signInWithSSOProvider } from "@/lib/utils";
-import { useLocale } from "next-intl";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 // pages/login.tsx
 import { FC, useState } from "react";
 import { AiOutlineMail, AiOutlineLock } from "react-icons/ai"; // Icons
-import { FaGoogle, FaLinkedin } from "react-icons/fa";
+import { FaGoogle } from "react-icons/fa";
 import { setSession } from "@/app/[locale]/actions/setSession";
 import { toast } from "sonner";
 import { FaApple } from "react-icons/fa6";
@@ -18,7 +17,6 @@ interface LoginFormValues {
 }
 
 const Login: FC = () => {
-  const locale = useLocale();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
