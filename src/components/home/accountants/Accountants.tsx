@@ -1,16 +1,9 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { Card, CardContent } from '@/components/ui/card';
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from '@/components/ui/carousel';
-import accountant from '@../../../public/assets/accountant/70278e6d82e489fd32c29f83406622cb.jpg';
+import accountant from '@../../../public/assets/accountant/accountant.jpg';
 import { SearchInput } from '@/components/header/searchInput';
 import FilteringSelectMenu from '@/components/filteringSelectMenu/FilteringSelectMenu';
 import { SelectChangeEvent } from '@mui/material';
@@ -18,8 +11,13 @@ import { SlLocationPin } from 'react-icons/sl';
 import { MdOutlineArrowRightAlt } from 'react-icons/md';
 import HeroBackground from '@/components/helper/HeroBackground';
 import PaginationComponent from '@/components/pagination/PaginationComponent';
+import { useDispatch } from 'react-redux';
+import { AppDispatch } from '@/lip/redux/store';
 
 export default function Accountants() {
+  const dispatch = useDispatch<AppDispatch>();
+  const [currentPage, setCurrentPage] = useState(1);
+  const [search, setSearch] = useState('');
   const [value, setValue] = React.useState('option1');
 
   const instructors = [
@@ -152,6 +150,15 @@ export default function Accountants() {
     },
   ];
 
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+    // dispatch(getAccountants({ page: currentPage, search }));
+  };
+
+  useEffect(() => {
+    // dispatch(getAccountants({ page: currentPage, search }));
+  }, [dispatch, currentPage, search]);
+
   const handleValueChange = (event: SelectChangeEvent) => {
     setValue(event.target.value);
   };
@@ -244,7 +251,12 @@ export default function Accountants() {
           </div>
         </div>
         <div className='w-screen flex justify-center items-center mt-16 mb-12'>
-          <PaginationComponent />
+          <PaginationComponent
+            // totalPages={blogs?.meta?.last_page}
+            totalPages={10}
+            currentPage={currentPage}
+            onPageChange={handlePageChange}
+          />
         </div>
       </div>
     </>

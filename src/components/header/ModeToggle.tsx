@@ -10,7 +10,6 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { MoonIcon, SunIcon } from "lucide-react";
 import { BiMoon, BiSun } from "react-icons/bi";
 
 export function ModeToggle() {
@@ -22,7 +21,7 @@ export function ModeToggle() {
         <Button
           variant="outline"
           size="icon"
-          className="bg-[#f9f9f9] dark:bg-[#333] dark:text-white"
+          className=" rounded-full"
         >
           <BiSun
             size={22}

@@ -1,170 +1,181 @@
-import React from "react";
-import Image from "next/image";
-import topcourse from "@../../../public/assets/topcourse.svg";
-import { Card, CardContent } from "@/components/ui/card";
+import React from 'react';
+import Image from 'next/image';
+import topCourse from '@../../../public/assets/topCourse.svg';
+import { Card, CardContent } from '@/components/ui/card';
+import Stars from '@/components/stars/Stars';
+import { MdOutlineArrowRightAlt } from 'react-icons/md';
+import { useRouter } from 'next/navigation';
+import { getLocale } from 'next-intl/server';
+import Link from 'next/link';
 
 export const metadata = {
-  title: "Blogs",
-  description: "Blogs Page",
+  title: 'top-courses',
+  description: 'top-courses Page',
 };
-export default function Blogs() {
-  
-  return (
-    <div className="w-full grid grid-cols-3 gap-3">
-      {instructors.map((instructor) => (
-        <Card
-          key={instructor.id}
-          className="relative  overflow-hidden p-0  bg-white"
-        >
-          <div className="absolute top-4 right-4 text-white bg-[#22B9DD] px-4 py-2 rounded-md  flex items-center justify-center ">
-            {instructor.category}
-          </div>
 
-          <CardContent className="p-2">
-            <Image
-              src={instructor.imageUrl}
-              width={100}
-              height={100}
-              alt={instructor.name}
-              className="w-full h-auto "
-            />
-            <div className="flex justify-between py-2  items-center">
-              <div className="flex items-center">
-                <svg
-                  className="w-5 h-5 text-yellow-500"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                >
-                  <path d="M9.049 2.927c-.3-.921-1.598-.921-1.898 0L5.317 6.23l-3.905.568c-1.011.147-1.416 1.392-.683 2.104l2.828 2.758-.668 3.892c-.172 1.002.883 1.753 1.785 1.284L10 15.347l3.49 1.834c.902.469 1.957-.282 1.785-1.284l-.668-3.892 2.828-2.758c.733-.712.328-1.957-.683-2.104l-3.905-.568-1.834-3.303z" />
-                </svg>
-                <span className="ml-2">{instructor.rating}</span>
-              </div>
-              <p className="text-sm text-gray-600">
-                {instructor.students} Students
-              </p>
-            </div>
-            <div className="">
-              <div className="font-bold text-xl mb-2">{instructor.name}</div>
-              {/* <p className="text-gray-700 text-base">
-                      {instructor.title}
-                    </p> */}
-            </div>
-          </CardContent>
-        </Card>
+const courses = [
+  {
+    id: 1,
+    imageUrl: topCourse,
+    name: 'Course Name.',
+    instructor: 'By Instructor Name ',
+    rating: 4.5,
+    numberOfRatings: 1200,
+    courseTime: '22 Total Hours. 155',
+    courseLevel: 'Lectures. Beginner',
+    price: '$182.00',
+  },
+  {
+    id: 2,
+    imageUrl: topCourse,
+    name: 'Course Name.',
+    instructor: 'By Instructor Name ',
+    rating: 4.5,
+    numberOfRatings: 1200,
+    courseTime: '22 Total Hours. 155',
+    courseLevel: 'Lectures. Beginner',
+    price: '$182.00',
+  },
+  {
+    id: 3,
+    imageUrl: topCourse,
+    name: 'Course Name.',
+    instructor: 'By Instructor Name ',
+    rating: 4.5,
+    numberOfRatings: 1200,
+    courseTime: '22 Total Hours. 155',
+    courseLevel: 'Lectures. Beginner',
+    price: '$182.00',
+  },
+  {
+    id: 4,
+    imageUrl: topCourse,
+    name: 'Course Name.',
+    instructor: 'By Instructor Name ',
+    rating: 4.5,
+    numberOfRatings: 1200,
+    courseTime: '22 Total Hours. 155',
+    courseLevel: 'Lectures. Beginner',
+    price: '$182.00',
+  },
+  {
+    id: 5,
+    imageUrl: topCourse,
+    name: 'Course Name.',
+    instructor: 'By Instructor Name ',
+    rating: 4.5,
+    numberOfRatings: 1200,
+    courseTime: '22 Total Hours. 155',
+    courseLevel: 'Lectures. Beginner',
+    price: '$182.00',
+  },
+  {
+    id: 6,
+    imageUrl: topCourse,
+    name: 'Course Name.',
+    instructor: 'By Instructor Name ',
+    rating: 4.5,
+    numberOfRatings: 1200,
+    courseTime: '22 Total Hours. 155',
+    courseLevel: 'Lectures. Beginner',
+    price: '$182.00',
+  },
+  {
+    id: 7,
+    imageUrl: topCourse,
+    name: 'Course Name.',
+    instructor: 'By Instructor Name ',
+    rating: 4.5,
+    numberOfRatings: 1200,
+    courseTime: '22 Total Hours. 155',
+    courseLevel: 'Lectures. Beginner',
+    price: '$182.00',
+  },
+  {
+    id: 8,
+    imageUrl: topCourse,
+    name: 'Course Name.',
+    instructor: 'By Instructor Name ',
+    rating: 4.5,
+    numberOfRatings: 1200,
+    courseTime: '22 Total Hours. 155',
+    courseLevel: 'Lectures. Beginner',
+    price: '$182.00',
+  },
+  {
+    id: 9,
+    imageUrl: topCourse,
+    name: 'Course Name.',
+    instructor: 'By Instructor Name ',
+    rating: 4.5,
+    numberOfRatings: 1200,
+    courseTime: '22 Total Hours. 155',
+    courseLevel: 'Lectures. Beginner',
+    price: '$182.00',
+  },
+  {
+    id: 10,
+    imageUrl: topCourse,
+    name: 'Course Name.',
+    instructor: 'By Instructor Name ',
+    rating: 4.5,
+    numberOfRatings: 1200,
+    courseTime: '22 Total Hours. 155',
+    courseLevel: 'Lectures. Beginner',
+    price: '$182.00',
+  },
+
+  // ... other courses
+];
+export default async function topCourses() {
+  const locale = await getLocale();
+  return (
+    <div className='w-full grid grid-cols-3 gap-3'>
+      {courses.map((course) => (
+        <>
+          <Link href={`/${locale}/top-courses/${course.id}`}>
+            <Card
+              key={course.id}
+              className='relative  overflow-hidden p-0  bg-white'
+            >
+              <CardContent className='p-2'>
+                <Image
+                  src={course.imageUrl}
+                  width={100}
+                  height={100}
+                  alt={course.name}
+                  className='w-full h-auto '
+                />
+                <div className='flex flex-col gap-1 mt-3'>
+                  <span className='text-lg font-semibold'>{course.name}</span>
+                  <span>{course.instructor}</span>
+                  <div className='flex items-center gap-2'>
+                    <span>
+                      {' '}
+                      <Stars rating={course.rating} />
+                    </span>
+                    <span>({course.numberOfRatings} Ratings)</span>
+                  </div>
+                  <div className='flex justify-start gap-2'>
+                    <span className='whitespace-nowrap text-sm'>{course.courseTime}</span>
+                    <span className='whitespace-nowrap text-sm'>{course.courseLevel}</span>
+                  </div>
+                  <div className='flex justify-between items-center mt-2'>
+                    <button className='px-3 py-2  bg-[#22B9DD] text-white rounded-full flex items-center justify-center gap-2 font-semibold shadow-sm shadow-black'>
+                      Add To Cart
+                      <MdOutlineArrowRightAlt size={20} />
+                    </button>{' '}
+                    <span className='font-semibold'>{course.price}</span>
+                  </div>
+                </div>
+                <div className='flex justify-between py-2  items-center'>
+                  <div className='flex items-center'></div>
+                </div>
+              </CardContent>
+            </Card>
+          </Link>
+        </>
       ))}
     </div>
   );
 }
-const instructors = [
-   {
-     id: 1,
-     name: "Lorem ipsum dolor sit amet.",
-     title: "Software Engineer",
-     rating: 4.5,
-     students: 1200,
-     imageUrl: topcourse,
-     category: "NEWS",
-     flag: true,
-   },
-   {
-     id: 2,
-     name: "Lorem ipsum dolor sit amet.",
-     title: "Product Manager",
-     rating: 4.7,
-     students: 1500,
-     imageUrl: topcourse,
-     category: "NEWS",
-     flag: false,
-   },
-   {
-     id: 3,
-     name: "Lorem ipsum dolor sit amet.",
-     title: "IT Specialist",
-     rating: 4.6,
-     students: 1100,
-     imageUrl: topcourse,
-     category: "NEWS",
-     flag: false,
-   },
-   {
-     id: 4,
-     name: "Lorem ipsum dolor sit amet.",
-     title: "Business Analyst",
-     rating: 4.8,
-     students: 1300,
-     imageUrl: topcourse,
-     category: "NEWS",
-     flag: false,
-   },
-   {
-     id: 5,
-     name: "Lorem ipsum dolor sit amet.",
-     title: "Accountant",
-     rating: 4.9,
-     students: 1400,
-     imageUrl: topcourse,
-     category: "NEWS",
-     flag: true,
-   },
-   {
-      id: 6,
-      name: "Lorem ipsum dolor sit amet.",
-      title: "Accountant",
-      rating: 4.9,
-      students: 1400,
-      imageUrl: topcourse,
-      category: "NEWS",
-      flag: true,
-    },
-    {
-      id: 7,
-      name: "Lorem ipsum dolor sit amet.",
-      title: "Accountant",
-      rating: 4.9,
-      students: 1400,
-      imageUrl: topcourse,
-      category: "NEWS",
-      flag: true,
-    },
-    {
-      id: 8,
-      name: "Lorem ipsum dolor sit amet.",
-      title: "Accountant",
-      rating: 4.9,
-      students: 1400,
-      imageUrl: topcourse,
-      category: "NEWS",
-      flag: true,
-    },
-    {
-      id: 9,
-      name: "Lorem ipsum dolor sit amet.",
-      title: "Accountant",
-      rating: 4.9,
-      students: 1400,
-      imageUrl: topcourse,
-      category: "NEWS",
-      flag: true,
-    },
-    {
-      id: 10,
-      name: "Lorem ipsum dolor sit amet.",
-      title: "Accountant",
-      rating: 4.9,
-      students: 1400,
-      imageUrl: topcourse,
-      category: "NEWS",
-      flag: true,
-    },
-    {
-      id: 11,
-      name: "Lorem ipsum dolor sit amet.",
-      title: "Accountant",
-      rating: 4.9,
-      students: 1400,
-      imageUrl: topcourse,
-      category: "NEWS",
-      flag: true,
-    },
-   // ... other instructors
- ];

@@ -11,16 +11,16 @@ import { getLocale, getTranslations } from "next-intl/server";
 import AuthIconCheck from "./authIconCheck";
 import { ModeToggle } from "./ModeToggle";
 import { NavbarProps } from "@/lib/types/nav-bar";
+import { useTheme } from "next-themes";
 
 export const Navbar: React.FC<NavbarProps> = async ({
   isAuthenticated,
   username,
   image,
 }) => {
-  console.log("Navbar", isAuthenticated, username, image);
-  
   const locale = await getLocale();
   const t = await getTranslations("header");
+
   const links = [
     {
       id: 1,
@@ -56,13 +56,21 @@ export const Navbar: React.FC<NavbarProps> = async ({
 
   return (
     <div className="top-0   left w-full relative">
-      <div className=" w-full">
-        <Header />
-      </div>
+      <Header />
       <nav className=" top-0 left-0 right-0 z-10 ">
         <div className="flex">
           {/* Mobile Menu */}
-          <MobileMenu links={links} locale={locale} />
+          <MobileMenu
+            links={links}
+            locale={locale}
+            icon={
+              <AuthIconCheck
+                username={username}
+                image={image}
+                isAuthenticated={isAuthenticated}
+              />
+            }
+          />
           {/* Mobile Menu */}
         </div>
         <div className="md:flex hidden py-4  justify-center  gap-4 md:gap-8 items-center  transition">
@@ -81,7 +89,7 @@ export const Navbar: React.FC<NavbarProps> = async ({
                 <LiaShoppingBasketSolid size={22} />
               </Link>
             </div>
-            <div className="rounded-full border border-[#767676] p-2 hover:bg-gray-400 hover:cursor-pointer">
+            <div className="">
               <AuthIconCheck
                 username={username}
                 image={image}

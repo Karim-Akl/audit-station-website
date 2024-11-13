@@ -24,7 +24,7 @@ export default async function AuthIconCheck({
   ) : (
     <Link href={`/${locale}/user/dashboard`}>
       {" "}
-      <Avatar className="w-5 h-5 bg-[#F9FAFB]">
+      <Avatar className="rounded-full border border-[#767676]  hover:bg-gray-400 hover:cursor-pointer">
         <AvatarImage src={image ? image : ""} alt="user avatar" />
         <AvatarFallback>{username ? username?.at(0) : "U"}</AvatarFallback>
       </Avatar>

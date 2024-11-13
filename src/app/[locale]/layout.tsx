@@ -8,6 +8,7 @@ import { cn } from "@/lib/utils";
 import { Saira, Tajawal } from "@/fonts";
 
 import Providers from "@/lib/query-provider";
+import ReduxProvider from "@/lip/redux/ReduxProvider";
 export const metadata: Metadata & {
   title: { template: string; default: string };
 } = {
@@ -36,17 +37,19 @@ export default async function LocaleLayout({
       lang={locale}
     >
       <body>
+        <ReduxProvider >
         <NextIntlClientProvider messages={messages}>
-          <ThemeProvider
+            <ThemeProvider
             attribute="class"
             defaultTheme="system"
             enableSystem
             disableTransitionOnChange
-          >
+            >
             <Providers>{children}</Providers>
           </ThemeProvider>
           <Toaster />
         </NextIntlClientProvider>
+        </ReduxProvider>
       </body>
     </html>
   );
