@@ -23,7 +23,9 @@ export default async function instructorsDetailsPage({ params: { blogsId } }: Bl
           <Image
             src={data?.author?.image}
             alt='topCourse'
-            height={400}
+            width={0}
+            height={0}
+            layout='responsive'
             className='object-cover rounded-lg'
           />
         </div>
@@ -81,7 +83,7 @@ export default async function instructorsDetailsPage({ params: { blogsId } }: Bl
             src={data?.author?.image}
             alt='author'
             width={0}
-            height={0}
+            height={100}
             layout='responsive'
             className='rounded-full'
           />
