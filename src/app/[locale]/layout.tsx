@@ -37,12 +37,12 @@ export default async function LocaleLayout({
     >
       <body>
         <NextIntlClientProvider messages={messages}>
-          <ThemeProvider
+            <ThemeProvider
             attribute="class"
             defaultTheme="system"
             enableSystem
             disableTransitionOnChange
-          >
+            >
             <Providers>{children}</Providers>
           </ThemeProvider>
           <Toaster />

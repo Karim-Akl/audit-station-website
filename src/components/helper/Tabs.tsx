@@ -24,9 +24,12 @@ import { useLocale } from "next-intl";
 import { GrAnnounce } from "react-icons/gr";
 import { useSession } from "next-auth/react";
 import { logOutAction } from "@/app/[locale]/actions/logout";
+import { useTheme } from "next-themes";
 
 export function BlogsTabs() {
   const { pathname, router, searchParams } = UseSearchParamsHook();
+  const { theme } = useTheme();
+
   const pushTaptoParams = (e: string) => {
     const params = new URLSearchParams();
     params.set("category", e);
@@ -43,7 +46,13 @@ export function BlogsTabs() {
       }}
     >
       <TabsList className="flex flex-col gap-5 items-start justify-end ">
-        <h2 className="font-bold text-xl text-[#0F1A29] ">Category</h2>
+        <h2
+          className={`font-bold text-xl ${
+            theme == "dark" ? " text-white" : "text-[#0F1A29]"
+          }   `}
+        >
+          Category
+        </h2>
 
         {Blogtabs.map((tab) => (
           <TabsTrigger
@@ -73,7 +82,7 @@ const Blogtabs = [
 export function UserTabs({ Name }: { Name: string }) {
   const { pathname, router } = UseSearchParamsHook();
   const lastRoute = pathname.split("/").pop();
-
+  const { theme } = useTheme();
   const locale = useLocale();
   const { status } = useSession();
 
@@ -83,14 +92,21 @@ export function UserTabs({ Name }: { Name: string }) {
   return (
     <Tabs className="inline-block " defaultValue={lastRoute}>
       <TabsList className="flex flex-col gap-5 items-start justify-end  ">
-        <p className="text-[16px] text-[#0F1A29] ">
+        <p
+          className={`text-[16px] ${
+            theme == "dark" ? " text-white" : "text-[#0F1A29]"
+          }   `}
+        >
           Hello , <span>{Name}</span>
         </p>
 
         {userTabs.map((tab) => (
           <Link key={tab.value} href={`/${locale}/user/${tab.value}`}>
             <TabsTrigger
-              className="data-[state=active]:border-none data-[state=active]:font-bold data-[state=active]:bg-[#22B9DD] data-[state=active]:text-white w-full  items-center justify-start bordre-b-0 px-4 gap-2 text-lg font-medium  text-[#151515]"
+              className={`data-[state=active]:border-none data-[state=active]:font-bold data-[state=active]:bg-[#22B9DD] data-[state=active]:text-white w-full  items-center justify-start
+                 bordre-b-0 px-4 gap-2 text-lg font-medium  ${
+                   theme == "dark" ? " text-white" : "text-[#151515]"
+                 } `}
               value={tab.value}
             >
               {tab.icon}
@@ -146,6 +162,7 @@ const userTabs = [
 export function InstructorTabs({ Name }: { Name: string }) {
   const { pathname, router } = UseSearchParamsHook();
   const lastRoute = pathname.split("/").pop();
+  const { theme } = useTheme();
 
   const locale = useLocale();
   const handleLogOut = () => {
@@ -155,14 +172,21 @@ export function InstructorTabs({ Name }: { Name: string }) {
   return (
     <Tabs className="inline-block " defaultValue={lastRoute}>
       <TabsList className="flex flex-col gap-5 items-start justify-end  ">
-        <p className="text-[16px] text-[#0F1A29] ">
+        <p
+          className={`text-[16px] ${
+            theme == "dark" ? " text-white" : "text-[#0F1A29]"
+          }   `}
+        >
           Hello , <span>{Name}</span>
         </p>
 
         {instructortabs.map((tab) => (
           <Link key={tab.value} href={`/${locale}/instructor/${tab.value}`}>
             <TabsTrigger
-              className="data-[state=active]:border-none data-[state=active]:font-bold data-[state=active]:bg-[#22B9DD] data-[state=active]:text-white w-full  items-center justify-start bordre-b-0 px-4 gap-2 text-lg font-medium  text-[#151515]"
+              className={`data-[state=active]:border-none data-[state=active]:font-bold data-[state=active]:bg-[#22B9DD] data-[state=active]:text-white w-full  items-center justify-start
+    bordre-b-0 px-4 gap-2 text-lg font-medium  ${
+      theme == "dark" ? " text-white" : "text-[#151515]"
+    } `}
               value={tab.value}
             >
               {tab.icon}

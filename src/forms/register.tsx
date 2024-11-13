@@ -4,31 +4,56 @@ import { PhoneInput } from "@/components/ui/phone-input";
 import { useLocale } from "next-intl";
 import Link from "next/link";
 // pages/Register.tsx
-import { FC, useState } from "react";
+import { FC, FormEvent, useState } from "react";
 import { AiOutlineMail, AiOutlineLock, AiOutlineHome } from "react-icons/ai"; // Icons
 import { FaGoogle, FaLinkedin } from "react-icons/fa";
+import { BASE_URL } from "@/lib/constants/constants";
+import { toast } from "sonner";
+import { FaApple } from "react-icons/fa6";
+import { signInWithSSOProvider } from "@/lib/utils";
 
 const Register: FC = () => {
   const locale = useLocale();
-  const [fullname, setFullname] = useState("");
-  const [phone, setPhone] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmpassword, setConfirmPassword] = useState("");
-  const [rememberMe, setRememberMe] = useState(false);
 
-  const handleRegister = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Handle Register logic
-  };
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
+  async function onSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    setIsLoading(true);
+
+    try {
+      const formData = new FormData(event.currentTarget);
+      console.log("formData", formData);
+
+      const response = await fetch(`${BASE_URL}/auth/register/user`, {
+        method: "POST",
+        body: formData,
+      });
+
+      // Handle response if necessary
+      const data = await response.json();
+      console.log(data);
+      if (data.type === "success") {
+        toast.success(data.message);
+      }
+      if (data.type === "error") {
+        toast.warning(data.message);
+      }
+      setIsLoading(false);
+    } catch (error) {
+      setIsLoading(false);
+      toast.error((error as Error).message);
+    } finally {
+      setIsLoading(false); // Set loading to false when the request completes
+    }
+  }
   return (
     <div className="flex justify-center items-center h-screen ">
-      <div className="bg-white p-8 rounded-lg shadow-lg max-w-lg w-full">
+      <div className=" p-8 rounded-lg shadow-lg max-w-lg w-full">
         <h2 className="text-[31px] font-semibold text-center mb-6">
           Create your account
         </h2>
-        <form onSubmit={handleRegister}>
+        <form onSubmit={onSubmit}>
           <div className="mb-4">
             <label
               className="block text-gray-700 text-sm mb-2"
@@ -40,9 +65,8 @@ const Register: FC = () => {
               <AiOutlineHome className="text-gray-400 mr-2" />
               <input
                 id="fullname"
+                name="name"
                 type="text"
-                value={fullname}
-                onChange={(e) => setFullname(e.target.value)}
                 className="outline-none w-full text-sm"
                 placeholder="Enter your Full Name"
                 required
@@ -58,20 +82,23 @@ const Register: FC = () => {
               <input
                 id="email"
                 type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                name="email"
                 className="outline-none w-full text-sm"
                 placeholder="Enter your email"
                 required
               />
             </div>
           </div>
-          <PhoneInput
-            placeholder="Enter a phone number"
-            value={phone}
-            onChange={setPhone}
-            defaultCountry="AE"
-          />
+          <div className="mb-4">
+            <label className="block text-gray-700 text-sm mb-2" htmlFor="email">
+              Phone Number
+            </label>
+            <PhoneInput
+              placeholder="Enter a phone number"
+              name="phone"
+              defaultCountry="AE"
+            />
+          </div>
           <div className="mb-4">
             <label
               className="block text-gray-700 text-sm mb-2"
@@ -85,8 +112,7 @@ const Register: FC = () => {
                 itemScope
                 id="password"
                 type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                name="password"
                 className="outline-none w-full text-sm"
                 placeholder="Enter your password"
                 required
@@ -105,9 +131,8 @@ const Register: FC = () => {
               <input
                 itemScope
                 id="confirmpassword"
+                name="password_confirmation"
                 type="password"
-                value={confirmpassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
                 className="outline-none w-full text-sm"
                 placeholder="Enter your password"
                 required
@@ -115,13 +140,7 @@ const Register: FC = () => {
             </div>
           </div>
           <div className="flex items-center mb-4">
-            <input
-              id="rememberMe"
-              type="checkbox"
-              checked={rememberMe}
-              onChange={(e) => setRememberMe(e.target.checked)}
-              className="mr-2"
-            />
+            <input id="rememberMe" type="checkbox" className="mr-2" />
             <label htmlFor="rememberMe" className="text-sm text-gray-700">
               By Signing Up, you agree to our{" "}
               <Link
@@ -138,25 +157,26 @@ const Register: FC = () => {
             type="submit"
             className="bg-[#22B9DD] w-full py-2 text-white rounded-md hover:bg-[#22b8dd94] transition duration-300"
           >
-            Sign Up
+            {isLoading ? "Loading..." : " Sign Up"}
           </button>
 
           <div className="my-4 text-center text-sm text-gray-600">
             Or Register with
           </div>
-
           <div className="flex justify-center space-x-4 mb-4">
             <button
               type="button"
+              onClick={() => signInWithSSOProvider("google")}
               className="border border-gray-300 rounded-md p-2 hover:bg-gray-100 transition duration-300"
             >
               <FaGoogle className="text-red-500" />
             </button>
             <button
               type="button"
+              onClick={() => signInWithSSOProvider("apple")}
               className="border border-gray-300 rounded-md p-2 hover:bg-gray-100 transition duration-300"
             >
-              <FaLinkedin className="text-blue-600" />
+              <FaApple className="text-black" />
             </button>
           </div>
 

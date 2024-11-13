@@ -25,10 +25,10 @@ export const publicNestedRoutes = ["/blogs", "/services"];
  */
 export const authRoutes = [
   "/en/login",
-  "/registration",
-  "/forgot-password",
-  "/reset-password",
-  "/otp",
+  "/en/registration",
+  "/en/forgot-password",
+  "/en/reset-password",
+  "/en/otp",
 ];
 
 /**

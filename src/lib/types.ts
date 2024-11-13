@@ -1,4 +1,4 @@
-import { ChangeEvent } from "react";
+import { ChangeEvent, FC } from "react";
 export interface NavLinkItem {
   id: number;
   name: string;
@@ -25,6 +25,12 @@ export interface LoginResponse {
 export interface LoacaleProps {
   locale: string;
 }
+export interface NavLinkMobileProps {
+  links: NavLinkItem[];
+  locale: string;
+  icon : JSX.Element;
+}
+
 export interface NavLinkProps {
   links: NavLinkItem[];
   locale: string;

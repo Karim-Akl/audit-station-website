@@ -4,6 +4,7 @@ import Logo from "@../../../public/assets/footer.svg";
 import AppStore from "@../../../public/assets/appstore.svg";
 import GooglePlay from "@../../../public/assets/playStore.svg";
 import { FloatingDockDemo } from "../helper/FloatingDock";
+import Copyright from "./Copyright";
 export const Footer: React.FC = () => {
   return (
     <div className="relative   w-full ">
@@ -80,9 +81,7 @@ export const Footer: React.FC = () => {
           </div>
         </div>
       </div>
-      <div className="w-full h-12 flex justify-center items-center mx-auto text-xs ">
-        <p>CopyRight @ Audit Station</p>
-      </div>
+      <Copyright />
     </div>
   );
 };

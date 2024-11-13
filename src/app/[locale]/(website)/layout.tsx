@@ -13,8 +13,8 @@ export default async function WebsiteLayout({ children }: LayoutProps) {
     <>
       <Navbar
         isAuthenticated={!!session}
-        username={session?.user?.username}
-        image={session?.user?.image}
+        username={session?.user?.data?.username}
+        image={session?.user?.data?.avatar}
       />
       {children}
       <Footer />
