@@ -19,6 +19,7 @@ interface LoginFormValues {
 
 const Login: FC = () => {
   const locale = useLocale();
+  const [type, setType] = useState(6);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
@@ -29,13 +30,15 @@ const Login: FC = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      const response = await fetch(`${BASE_URL}/login`, {
+      const response = await fetch(`${BASE_URL}/auth/login/mobile`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify({ type, email, password }),
       });
+      console.log("response", response);
+
       if (!response.ok) {
         throw new Error("Login failed");
       }
@@ -46,8 +49,8 @@ const Login: FC = () => {
       router.push(`/`);
     } catch (error) {
       setLoading(false);
-      toast.error("Login failed. Please check your credentials and try again.");
-      console.error("Login error:", error);
+      toast.error((error as Error).message);
+      // toast.error("Login failed. Please check your credentials and try again.");
     }
   };
 

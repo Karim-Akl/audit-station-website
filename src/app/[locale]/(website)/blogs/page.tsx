@@ -17,7 +17,6 @@ export default function Blogs({ searchParams }: any) {
       {instructors
         .filter((instructor) => {
           instructor.category == params;
-          
         })
         .map((instructor) => (
           <Link

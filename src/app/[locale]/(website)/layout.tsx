@@ -1,5 +1,5 @@
 import { Footer } from "@/components/footer/Footer";
-import Navbar from "@/components/header/Navbar";
+import {Navbar} from "@/components/header/Navbar";
 import React from "react";
 import { getSession } from "@/lib/authSession";
 
@@ -11,7 +11,11 @@ export default async function WebsiteLayout({ children }: LayoutProps) {
 
   return (
     <>
-      <Navbar />
+      <Navbar
+        isAuthenticated={!!session}
+        username={session?.user?.username}
+        image={session?.user?.image}
+      />
       {children}
       <Footer />
     </>

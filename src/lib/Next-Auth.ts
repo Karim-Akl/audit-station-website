@@ -34,7 +34,7 @@ function createUserData(user: User, authProvider: string | null) {
 }
 
 async function registerUserWithSSoProvider(userData: UserDetails) {
-  const response: Response = await fetch(BASE_URL + "/auth/sso-register/", {
+  const response: Response = await fetch(BASE_URL + "/auth/social_auth/user", {
     method: "POST",
     body: JSON.stringify(userData),
     headers: { "Content-Type": "application/json" },

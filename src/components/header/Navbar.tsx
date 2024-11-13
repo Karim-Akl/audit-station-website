@@ -10,13 +10,19 @@ import { LiaShoppingBasketSolid } from "react-icons/lia";
 import { GoPerson } from "react-icons/go";
 import { MdOutlineDarkMode } from "react-icons/md";
 import { CiLogin } from "react-icons/ci";
-
 import { VerifyCertificate } from "./VerifyCertificate";
 import { getLocale, getTranslations } from "next-intl/server";
 import AuthIconCheck from "./authIconCheck";
 import { ModeToggle } from "./ModeToggle";
+import { NavbarProps } from "@/lib/types/nav-bar";
 
-export default async function Navbar() {
+export const Navbar: React.FC<NavbarProps> = async ({
+  isAuthenticated,
+  username,
+  image,
+}) => {
+  console.log("Navbar", isAuthenticated, username, image);
+  
   const locale = await getLocale();
   const t = await getTranslations("header");
   const links = [
@@ -80,11 +86,15 @@ export default async function Navbar() {
               </Link>
             </div>
             <div className="rounded-full border border-[#767676] p-2 hover:bg-gray-400 hover:cursor-pointer">
-              <AuthIconCheck />
+              <AuthIconCheck
+                username={username}
+                image={image}
+                isAuthenticated={isAuthenticated}
+              />
             </div>
           </div>
         </div>
       </nav>
     </div>
   );
-}
+};
