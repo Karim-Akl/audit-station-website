@@ -39,12 +39,12 @@ export default async function LocaleLayout({
       <body>
         <ReduxProvider >
         <NextIntlClientProvider messages={messages}>
-          <ThemeProvider
+            <ThemeProvider
             attribute="class"
             defaultTheme="system"
             enableSystem
             disableTransitionOnChange
-          >
+            >
             <Providers>{children}</Providers>
           </ThemeProvider>
           <Toaster />

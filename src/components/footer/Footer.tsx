@@ -6,6 +6,7 @@ import GooglePlay from '@../../../public/assets/playStore.svg';
 import { FloatingDockDemo } from '../helper/FloatingDock';
 import Link from 'next/link';
 import { getLocale } from 'next-intl/server';
+import Copyright from './Copyright';
 export const Footer: React.FC = async () => {
   const locale = await getLocale();
   return (
@@ -87,9 +88,7 @@ export const Footer: React.FC = async () => {
           </div>
         </div>
       </div>
-      <div className='w-full h-12 flex justify-center items-center mx-auto text-xs '>
-        <p>CopyRight @ Audit Station</p>
-      </div>
+      <Copyright />
     </div>
   );
 };

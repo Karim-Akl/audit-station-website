@@ -8,7 +8,7 @@ import { GlobalLanguage } from "./GolablLanguage";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import Logo from "@../../../public/assets/vector.svg";
-import { NavLinkProps } from "@/lib/types";
+import { NavLinkMobileProps } from "@/lib/types";
 import { GoPerson } from "react-icons/go";
 import { LiaShoppingBasketSolid } from "react-icons/lia";
 import { MdOutlineDarkMode } from "react-icons/md";
@@ -16,7 +16,7 @@ import { SearchInput } from "./searchInput";
 import { VerifyCertificate } from "./VerifyCertificate";
 import { ModeToggle } from "./ModeToggle";
 
-const MobileMenu: React.FC<NavLinkProps> = ({ locale, links }) => {
+const MobileMenu: React.FC<NavLinkMobileProps> = ({ locale, links, icon }) => {
   const { pathname } = UseSearchParamsHook();
   const t = useTranslations("header");
 
@@ -38,7 +38,7 @@ const MobileMenu: React.FC<NavLinkProps> = ({ locale, links }) => {
           </Link>
         </div>
         <div className="flex ms-0 ps-0 gap-2">
-          <div className="rounded-full border border-[#767676] p-2 transition-all hover:rotate-45 hover:cursor-pointer hover:bg-gray-400 ">
+          <div className="rounded-full border border-[#767676]  transition-all hover:rotate-45 hover:cursor-pointer hover:bg-gray-400 ">
             <ModeToggle />
           </div>
           <div className="rounded-full border border-[#767676] p-2 hover:bg-gray-400 hover:cursor-pointer">
@@ -47,12 +47,7 @@ const MobileMenu: React.FC<NavLinkProps> = ({ locale, links }) => {
               <LiaShoppingBasketSolid size={20} />
             </Link>
           </div>
-          <div className="rounded-full border border-[#767676] p-2 hover:bg-gray-400 hover:cursor-pointer">
-            <Link href={`/${locale}/login`}>
-              {" "}
-              <GoPerson size={20} />
-            </Link>
-          </div>
+          {icon}
         </div>
       </div>
       <div className="flex justify-between  items-center">
