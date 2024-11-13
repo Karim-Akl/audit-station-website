@@ -1,15 +1,11 @@
 import Link from "next/link";
 import MobileMenu from "./MobileMenu";
-import { GlobalLanguage } from "./GolablLanguage";
 import { NavLink } from "./NavLink";
 import Image from "next/image";
 import Logo from "@../../../public/assets/vector.svg";
 import { SearchInput } from "./searchInput";
 import { Header } from "./header";
 import { LiaShoppingBasketSolid } from "react-icons/lia";
-import { GoPerson } from "react-icons/go";
-import { MdOutlineDarkMode } from "react-icons/md";
-import { CiLogin } from "react-icons/ci";
 import { VerifyCertificate } from "./VerifyCertificate";
 import { getLocale, getTranslations } from "next-intl/server";
 import AuthIconCheck from "./authIconCheck";

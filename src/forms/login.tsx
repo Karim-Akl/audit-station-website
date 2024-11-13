@@ -1,17 +1,17 @@
 "use client";
 import { signInWithSSOProvider } from "@/lib/utils";
-import { useLocale } from "next-intl";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 // pages/login.tsx
 import { FC, FormEvent, useState } from "react";
 import { AiOutlineMail, AiOutlineLock } from "react-icons/ai"; // Icons
-import { FaGoogle, FaLinkedin } from "react-icons/fa";
+import { FaGoogle } from "react-icons/fa";
 import { setSession } from "@/app/[locale]/actions/setSession";
 import { toast } from "sonner";
 import { FaApple } from "react-icons/fa6";
 import { BASE_URL } from "@/lib/constants/constants";
+import { useLocale } from "next-intl";
 interface LoginFormValues {
   username_or_email_or_mobile: string;
   password: string;
