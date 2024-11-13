@@ -1,4 +1,3 @@
-
 /**
  * An array of routes that are public
  * @type {string[]}
@@ -7,9 +6,7 @@ export const publicRoutes = [
   "/en",
   "/services",
   "/blogs",
-  "/memberships",
-  "/gallery",
-  "/about-us",
+  "/about",
   "/authError",
   "/privacy-policy",
   "/api/refresh-token",
@@ -26,10 +23,11 @@ export const publicNestedRoutes = ["/blogs", "/services"];
  * @type {string}
  */
 export const authRoutes = [
-  "auth=login",
-  "auth=signup",
-  "auth=verify",
-  "auth=login-with-otp",
+  "/login",
+  "/registration",
+  "/forgot-password",
+  "/reset-password",
+  "/otp",
 ];
 
 /**

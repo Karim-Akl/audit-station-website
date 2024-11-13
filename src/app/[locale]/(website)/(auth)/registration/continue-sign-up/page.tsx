@@ -1,4 +1,4 @@
-import ConditionsPrivacyPolicy from "@/components/continueSignUp/ContinueSignUp";
+import ContinueSignUp from "@/components/continueSignUp/ContinueSignUp";
 import HeroBackground from "@/components/helper/HeroBackground";
 
 export default function LoginPage() {
@@ -6,7 +6,7 @@ export default function LoginPage() {
     <main className="relative overflow-hidden">
       <HeroBackground title=" Continue Sign Up" />
       <div>
-        <ConditionsPrivacyPolicy />
+        <ContinueSignUp />
       </div>
     </main>
   );

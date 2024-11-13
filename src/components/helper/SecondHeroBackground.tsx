@@ -20,10 +20,17 @@ import { getLocale } from "next-intl/server";
 import { BackButton } from "./backButton";
 
 interface IProps {
-  title: string;
-  email: string;
+  title?: string;
+  email?: string;
+  imageShow?: boolean;
+  upgradeshow?: boolean;
 }
-const SecondHeroBackground = async ({ title, email }: IProps) => {
+const SecondHeroBackground = async ({
+  title,
+  email,
+  imageShow = true,
+  upgradeshow = true,
+}: IProps) => {
   const locale = await getLocale();
   return (
     <main className="relative overflow-hidden">
@@ -61,13 +68,16 @@ const SecondHeroBackground = async ({ title, email }: IProps) => {
         <div className="content-center container h-full">
           <div className="md:flex justify-between   items-center ">
             <div className="flex space-x-3  items-center z-50">
-              <Image
-                src={Ellipse}
-                alt="yellow circle"
-                width={100}
-                height={100}
-                className="rounded-full"
-              />
+              {imageShow && (
+                <Image
+                  src={Ellipse}
+                  alt="yellow circle"
+                  width={100}
+                  height={100}
+                  className="rounded-full"
+                />
+              )}
+
               <div className="flex flex-col gap-2">
                 <h2 className="text-4xl font-semibold capitalize">{title}</h2>
                 <div className="flex items-center gap-2">
@@ -81,12 +91,14 @@ const SecondHeroBackground = async ({ title, email }: IProps) => {
                 </div>
               </div>
             </div>
-            <div className=" z-50">
-              <Button className="bg-[#22B9DD] space-x-2 text-white rounded-full ">
-                <span>Upgrade Profile</span>
-                <FaArrowRight className="" />
-              </Button>
-            </div>
+            {upgradeshow && (
+              <div className=" z-50">
+                <Button className="bg-[#22B9DD] space-x-2 text-white rounded-full ">
+                  <span>Upgrade Profile</span>
+                  <FaArrowRight className="" />
+                </Button>
+              </div>
+            )}
           </div>
         </div>
       </div>

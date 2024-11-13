@@ -1,6 +1,5 @@
 import HeroBackground from "@/components/helper/HeroBackground";
 import Register from "@/forms/register";
-import Image from "next/image";
 
 export default function RegistrationPage() {
   return (
