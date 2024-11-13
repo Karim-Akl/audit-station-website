@@ -32,7 +32,7 @@ const certificates = [
  
 ];
 export const metadata = {
-  title: "Certificates | Profile",
+  title: "Certificates | Instructor",
   description: "Certificates Page",
 };
 export default function Certificates() {

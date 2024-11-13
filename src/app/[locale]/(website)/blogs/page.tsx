@@ -9,6 +9,7 @@ import { formatDateTime } from '@/lib/date/formatDateTime';
 import { CgProfile } from 'react-icons/cg';
 import PaginationComponent from '@/components/pagination/PaginationComponent';
 
+
 export const metadata = {
   title: 'Blogs',
   description: 'Blogs Page',
@@ -71,3 +72,4 @@ export default async function Blogs() {
     </>
   );
 }
+

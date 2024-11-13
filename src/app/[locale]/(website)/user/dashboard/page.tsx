@@ -5,7 +5,7 @@ import secondIcon from "@/../public/assets/profile/Background+Border (1).svg";
 import thirdIcon from "@/../public/assets/profile/Background+Border (2).svg";
 import fourthIcon from "@/../public/assets/profile/Background+Border (3).svg";
 export const metadata = {
-  title: "Dashboard | Profile",
+  title: "Dashboard | User",
   description: "dashboard Page",
 };
 export default function ProfileDashboard() {

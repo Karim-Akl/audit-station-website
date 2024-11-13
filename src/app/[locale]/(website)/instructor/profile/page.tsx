@@ -6,7 +6,7 @@ import TitleSubtitle from "@/components/aboutUs/TitleSubtitle";
 import yellowCircle from "@/../public/assets/leftYellowCircle.svg";
 import SecondHeroBackground from "@/components/helper/SecondHeroBackground";
 export const metadata = {
-  title: "Certificates | Profile",
+  title: "Certificates | Instructor",
   description: "Certificates Page",
 };
 export default function About() {
