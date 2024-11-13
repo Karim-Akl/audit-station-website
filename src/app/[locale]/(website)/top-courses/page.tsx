@@ -132,47 +132,49 @@ export default async function topCourses() {
   return (
     <div className='w-full grid grid-cols-3 gap-3'>
       {courses.map((course) => (
-        <Link href={`${locale}/top-courses/${course.id}`}>
-          <Card
-            key={course.id}
-            className='relative  overflow-hidden p-0  bg-white'
-          >
-            <CardContent className='p-2'>
-              <Image
-                src={course.imageUrl}
-                width={100}
-                height={100}
-                alt={course.name}
-                className='w-full h-auto '
-              />
-              <div className='flex flex-col gap-1 mt-3'>
-                <span className='text-lg font-semibold'>{course.name}</span>
-                <span>{course.instructor}</span>
-                <div className='flex items-center gap-2'>
-                  <span>
-                    {' '}
-                    <Stars rating={course.rating} />
-                  </span>
-                  <span>({course.numberOfRatings} Ratings)</span>
+        <>
+          <Link href={`/${locale}/top-courses/${course.id}`}>
+            <Card
+              key={course.id}
+              className='relative  overflow-hidden p-0  bg-white'
+            >
+              <CardContent className='p-2'>
+                <Image
+                  src={course.imageUrl}
+                  width={100}
+                  height={100}
+                  alt={course.name}
+                  className='w-full h-auto '
+                />
+                <div className='flex flex-col gap-1 mt-3'>
+                  <span className='text-lg font-semibold'>{course.name}</span>
+                  <span>{course.instructor}</span>
+                  <div className='flex items-center gap-2'>
+                    <span>
+                      {' '}
+                      <Stars rating={course.rating} />
+                    </span>
+                    <span>({course.numberOfRatings} Ratings)</span>
+                  </div>
+                  <div className='flex justify-start gap-2'>
+                    <span className='whitespace-nowrap text-sm'>{course.courseTime}</span>
+                    <span className='whitespace-nowrap text-sm'>{course.courseLevel}</span>
+                  </div>
+                  <div className='flex justify-between items-center mt-2'>
+                    <button className='px-3 py-2  bg-[#22B9DD] text-white rounded-full flex items-center justify-center gap-2 font-semibold shadow-sm shadow-black'>
+                      Add To Cart
+                      <MdOutlineArrowRightAlt size={20} />
+                    </button>{' '}
+                    <span className='font-semibold'>{course.price}</span>
+                  </div>
                 </div>
-                <div className='flex justify-start gap-2'>
-                  <span className='whitespace-nowrap text-sm'>{course.courseTime}</span>
-                  <span className='whitespace-nowrap text-sm'>{course.courseLevel}</span>
+                <div className='flex justify-between py-2  items-center'>
+                  <div className='flex items-center'></div>
                 </div>
-                <div className='flex justify-between items-center mt-2'>
-                  <button className='px-3 py-2  bg-[#22B9DD] text-white rounded-full flex items-center justify-center gap-2 font-semibold shadow-sm shadow-black'>
-                    Add To Cart
-                    <MdOutlineArrowRightAlt size={20} />
-                  </button>{' '}
-                  <span className='font-semibold'>{course.price}</span>
-                </div>
-              </div>
-              <div className='flex justify-between py-2  items-center'>
-                <div className='flex items-center'></div>
-              </div>
-            </CardContent>
-          </Card>
-        </Link>
+              </CardContent>
+            </Card>
+          </Link>
+        </>
       ))}
     </div>
   );
