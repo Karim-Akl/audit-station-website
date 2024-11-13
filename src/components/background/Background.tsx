@@ -32,7 +32,7 @@ export const Background: React.FC = () => {
               Login As Company
             </Button>
 
-            <VideoPlayer />
+            <VideoPlayer link="" />
 
             <p className="text-[#161439] text-md  max-w-24 leading-tight">
               Watch Our Class Demo
