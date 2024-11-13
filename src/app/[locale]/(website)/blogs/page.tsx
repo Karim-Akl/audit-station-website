@@ -21,6 +21,7 @@ export default function Blogs({ searchParams }: any) {
         .map((instructor) => (
           <Link
             key={instructor.id}
+
             href={`/${locale}/instructor/${instructor.id}`}
           >
             <Card className="relative  overflow-hidden p-0  bg-white">
