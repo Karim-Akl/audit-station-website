@@ -1,25 +1,53 @@
 "use client";
+import { BASE_URL } from "@/lib/constants/constants";
 import { useLocale } from "next-intl";
 
-import { FC, useState } from "react";
+import { FC, FormEvent, useState } from "react";
 import { AiOutlineMail, AiOutlineLock } from "react-icons/ai"; // Icons
 import { FaGoogle, FaLinkedin } from "react-icons/fa";
+import { toast } from "sonner";
 
 const ResetPassword: FC = () => {
   const locale = useLocale();
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const handleResetPassword = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Handle ForgotPassword logic
-  };
+
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+
+  async function onSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    setIsLoading(true);
+
+    try {
+      const formData = new FormData(event.currentTarget);
+
+      const response = await fetch(`${BASE_URL}/auth/password/reset_password`, {
+        method: "POST",
+        body: formData,
+      });
+
+      // Handle response if necessary
+      const data = await response.json();
+      console.log(data);
+      if (data.type === "success") {
+        toast.success(data.message);
+      }
+      if (data.type === "error") {
+        toast.warning(data.message);
+      }
+      setIsLoading(false);
+    } catch (error) {
+      setIsLoading(false);
+      toast.error((error as Error).message);
+    } finally {
+      setIsLoading(false); // Set loading to false when the request completes
+    }
+  }
 
   return (
     <div className="flex justify-center items-center h-screen ">
       <div className="bg-white p-8 rounded-lg shadow-lg max-w-lg w-full">
         <h2 className="text-[31px] font-semibold text-center mb-2">Reset Password</h2>
 
-        <form onSubmit={handleResetPassword}>
+        <form onSubmit={onSubmit}>
           <div className="mb-4">
             <label
               className="block text-gray-700 text-sm mb-2"
@@ -33,8 +61,7 @@ const ResetPassword: FC = () => {
                 itemScope
                 id="password"
                 type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                name="password"
                 className="outline-none w-full text-sm"
                 placeholder="Enter your password"
                 required
@@ -54,8 +81,7 @@ const ResetPassword: FC = () => {
                 itemScope
                 id="confirm-password"
                 type="password"
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
+                name="password_confirmation"
                 className="outline-none w-full text-sm"
                 placeholder="Enter your Confirm Password"
                 required
@@ -67,7 +93,9 @@ const ResetPassword: FC = () => {
             type="submit"
             className="bg-[#22B9DD] w-full py-2 text-white rounded-md hover:bg-[#22b8dd94] transition duration-300"
           >
-            Login
+            
+            {isLoading ? "Loading..." : " Reset Password"}
+
           </button>
 
           {/* <div className="text-center text-sm">

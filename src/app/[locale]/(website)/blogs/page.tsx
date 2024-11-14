@@ -1,5 +1,4 @@
 import BlogsComponent from '@/components/blogs/BlogsComponent';
-import axios from 'axios';
 import React from 'react';
 
 export const metadata = {

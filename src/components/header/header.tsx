@@ -15,8 +15,10 @@ import {
 } from "@/components/ui/select";
 import { cn } from "@/lib/utils";
 import UseSearchParamsHook from "@/hooks/UseSearchParamsHook";
+import { useTheme } from "next-themes";
 export const Header: React.FC = () => {
   const { pathname, router } = UseSearchParamsHook();
+  const {theme} = useTheme();
   const handlechangeLanguage = (value: string) => {
     router.push(`/${value}`);
   };
@@ -24,6 +26,7 @@ export const Header: React.FC = () => {
     console.log(value);
   };
   return (
+    <div className={` w-full ${theme == "dark" ? "bg-[#1A1A1A]" : "bg-[#eee]"}`}>
     <div className="container w-full flex-col justify-center items-start gap-2.5">
       <div className="md:container self-stretch  md:justify-between items-center md:inline-flex">
         <div className="justify-start items-center gap-8 flex ">
@@ -89,6 +92,7 @@ export const Header: React.FC = () => {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 };

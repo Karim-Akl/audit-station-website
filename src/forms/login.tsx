@@ -4,58 +4,61 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 // pages/login.tsx
-import { FC, useState } from "react";
+import { FC, FormEvent, useState } from "react";
 import { AiOutlineMail, AiOutlineLock } from "react-icons/ai"; // Icons
 import { FaGoogle } from "react-icons/fa";
 import { setSession } from "@/app/[locale]/actions/setSession";
 import { toast } from "sonner";
 import { FaApple } from "react-icons/fa6";
 import { BASE_URL } from "@/lib/constants/constants";
+import { useLocale } from "next-intl";
 interface LoginFormValues {
   username_or_email_or_mobile: string;
   password: string;
 }
 
 const Login: FC = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [rememberMe, setRememberMe] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const router = useRouter();
+  const locale = useLocale();
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  const handleLogin = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setLoading(true);
+  async function onSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    setIsLoading(true);
+
     try {
-      const response = await fetch(`${BASE_URL}/login`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email, password }),
-      });
-      if (!response.ok) {
-        throw new Error("Login failed");
-      }
-      setLoading(false);
-      const user = await response.json();
-      setSession(user);
-      toast.success("You have been logged in successfully");
-      router.push(`/`);
-    } catch (error) {
-      setLoading(false);
-      toast.error("Login failed. Please check your credentials and try again.");
-      console.error("Login error:", error);
-    }
-  };
+      const formData = new FormData(event.currentTarget);
+      console.log(formData);
 
+      const response = await fetch(`${BASE_URL}/auth/login/mobile`, {
+        method: "POST",
+        body: formData,
+      });
+
+      // Handle response if necessary
+      const data = await response.json();
+      if (data.type === "success") {
+        toast.success(data.message);
+        setSession(data);
+      }
+      if (data.type === "error") {
+        toast.warning(data.message);
+      }
+
+      setIsLoading(false);
+    } catch (error) {
+      setIsLoading(false);
+      toast.error((error as Error).message);
+    } finally {
+      setIsLoading(false); // Set loading to false when the request completes
+    }
+  }
   return (
     <div className="flex justify-center items-center h-screen ">
-      <div className="bg-white p-8 rounded-lg shadow-lg max-w-lg w-full">
+      <div className=" p-8 rounded-lg shadow-lg max-w-lg w-full">
         <h2 className="text-[31px] font-semibold text-center mb-6">
           Welcome Back!
         </h2>
-        <form onSubmit={handleLogin}>
+        <form onSubmit={onSubmit}>
           <div className="mb-4">
             <label className="block text-gray-700 text-sm mb-2" htmlFor="email">
               Email
@@ -65,8 +68,7 @@ const Login: FC = () => {
               <input
                 id="email"
                 type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                name="email"
                 className="outline-none w-full text-sm"
                 placeholder="Enter your email"
                 required
@@ -87,13 +89,13 @@ const Login: FC = () => {
                 itemScope
                 id="password"
                 type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                name="password"
                 className="outline-none w-full text-sm"
                 placeholder="Enter your password"
                 required
               />
             </div>
+            <input id="type" type="number" name="type" value={6} hidden />
             <div className="text-right mt-2">
               <Link
                 href="forgot-password"
@@ -105,13 +107,7 @@ const Login: FC = () => {
           </div>
 
           <div className="flex items-center mb-4">
-            <input
-              id="rememberMe"
-              type="checkbox"
-              checked={rememberMe}
-              onChange={(e) => setRememberMe(e.target.checked)}
-              className="mr-2"
-            />
+            <input id="rememberMe" type="checkbox" className="mr-2" />
             <label htmlFor="rememberMe" className="text-sm text-gray-700">
               Remember me
             </label>
@@ -121,7 +117,7 @@ const Login: FC = () => {
             type="submit"
             className="bg-[#22B9DD] w-full py-2 text-white rounded-md hover:bg-[#22b8dd94] transition duration-300"
           >
-            {loading ? "Loading..." : "Login"}
+            {isLoading ? "Loading..." : "Login"}
           </button>
 
           <div className="my-4 text-center text-sm text-gray-600">

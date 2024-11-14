@@ -20,7 +20,7 @@ export const metadata = {
 export default async function About() {
   const aboutUs = await axios.get(`${BASE_URL}/api/public/about_us`);
   const { data, message } = await GetDataInServerSide({
-    End_Point: `/about_us`,
+    End_Point: `/public/about_us`,
     ISAddAuthHeaders: false,
     ExtraMethod: {
       next: { revalidate: revalidateTime }, // Revalidate every 5 minutes

@@ -1,30 +1,33 @@
-"use client";
 import Link from "next/link";
 import { GoPerson } from "react-icons/go";
 import { CiLogin } from "react-icons/ci";
-import { useLocale } from "next-intl";
-import { useEffect, useState } from "react";
-export default function AuthIconCheck() {
-  const [token, setToken] = useState<string | null>(null);
-  const locale = useLocale();
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      setToken(localStorage?.getItem("token"));
-    }
-  }, []);
-  return (
-    <>
-      {!token ? (
-        <Link href={`/${locale}/login`}>
-          {" "}
-          <CiLogin size={22} />
-        </Link>
-      ) : (
-        <Link href={`/${locale}/user/dashboard`}>
-          {" "}
-          <GoPerson size={22} />
-        </Link>
-      )}
-    </>
+import { getLocale } from "next-intl/server";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+
+interface UserAvatarDropDownProps {
+  username: string;
+  image: string | undefined;
+  isAuthenticated: boolean;
+}
+
+export default async function AuthIconCheck({
+  username,
+  image,
+  isAuthenticated,
+}: UserAvatarDropDownProps) {
+  const locale = await getLocale();
+  return !isAuthenticated ? (
+    <Link href={`/${locale}/login`}>
+      {" "}
+      <CiLogin size={22} />
+    </Link>
+  ) : (
+    <Link href={`/${locale}/user/dashboard`}>
+      {" "}
+      <Avatar className="rounded-full border border-[#767676]  hover:bg-gray-400 hover:cursor-pointer">
+        <AvatarImage src={image ? image : ""} alt="user avatar" />
+        <AvatarFallback>{username ? username?.at(0) : "U"}</AvatarFallback>
+      </Avatar>
+    </Link>
   );
 }

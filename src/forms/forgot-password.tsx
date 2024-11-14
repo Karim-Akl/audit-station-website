@@ -1,18 +1,46 @@
 "use client";
+import { BASE_URL } from "@/lib/constants/constants";
 import { useLocale } from "next-intl";
 
-import { FC, useState } from "react";
+import { FC, FormEvent, useState } from "react";
 import { AiOutlineMail, AiOutlineLock } from "react-icons/ai"; // Icons
 import { FaGoogle, FaLinkedin } from "react-icons/fa";
+import { toast } from "sonner";
 
 const ForgotPassword: FC = () => {
-  const locale = useLocale();
-  const [email, setEmail] = useState("");
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  const handleForgotPassword = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Handle ForgotPassword logic
-  };
+  async function onSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    setIsLoading(true);
+
+    try {
+      const formData = new FormData(event.currentTarget);
+      const response = await fetch(
+        `${BASE_URL}/auth/password/forgot_password`,
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
+
+      // Handle response if necessary
+      const data = await response.json();
+      console.log(data);
+      if (data.type === "success") {
+        toast.success(data.message);
+      }
+      if (data.type === "error") {
+        toast.warning(data.message);
+      }
+      setIsLoading(false);
+    } catch (error) {
+      setIsLoading(false);
+      toast.error((error as Error).message);
+    } finally {
+      setIsLoading(false); // Set loading to false when the request completes
+    }
+  }
 
   return (
     <div className="flex justify-center items-center h-screen ">
@@ -24,7 +52,7 @@ const ForgotPassword: FC = () => {
           Enter your email address and we will sent you an OTP to reset your
           password
         </p>
-        <form onSubmit={handleForgotPassword}>
+        <form onSubmit={onSubmit}>
           <div className="my-6">
             <label className="block text-gray-700 text-sm mb-2" htmlFor="email">
               Email
@@ -34,8 +62,7 @@ const ForgotPassword: FC = () => {
               <input
                 id="email"
                 type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                name="handle"
                 className="outline-none w-full text-sm"
                 placeholder="Enter your email"
                 required
@@ -47,15 +74,8 @@ const ForgotPassword: FC = () => {
             type="submit"
             className="bg-[#22B9DD] w-full py-2 text-white rounded-md hover:bg-[#22b8dd94] transition duration-300"
           >
-            Send OTP
+            {isLoading ? "Loading..." : " Send OTP"}
           </button>
-
-          {/* <div className="text-center text-sm">
-            have an account?{" "}
-            <Link href={`login`} className="text-blue-500 hover:underline">
-              login
-            </Link>
-          </div> */}
         </form>
       </div>
     </div>
