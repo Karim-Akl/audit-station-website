@@ -15,10 +15,10 @@ import prize from "@../../../public/assets/prize.svg";
 import topcourses from "@../../../public/assets/topcourse.svg";
 import Link from "next/link";
 import { useLocale } from "next-intl";
-import { IoIosArrowRoundForward } from "react-icons/io";
 import { BsArrowRightShort } from "react-icons/bs";
 
 export function TopCourses() {
+// const topCourses = useSelector((state: RootState) => state.topCourses);
   const locale = useLocale();
   const [selectedTab, setSelectedTab] = useState("all");
 
