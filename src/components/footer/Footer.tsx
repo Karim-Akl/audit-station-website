@@ -61,7 +61,9 @@ export const Footer: React.FC = async () => {
               </Link>
               <li>Blogs</li>
               <li>Careers</li>
+              <Link href={`/${locale}/faqs`}>
               <li>FAQ</li>
+              </Link>
             </div>
           </ul>
           <div className='my-[2rem] min-w-64'>

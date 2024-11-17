@@ -9,6 +9,7 @@ import { VideoPlayer } from '@/components/helper/videoPlayer';
 import { AppDispatch } from '@/lip/redux/store';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAboutUs } from './aboutUsSlice/aboutUsSlice';
+import FormattedText from '@/components/formattedText/FormattedText';
 
 export const AboutUs: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -37,7 +38,7 @@ export const AboutUs: React.FC = () => {
             solutions designed specially to meet your business needs. We do that
             while keeping a satisfaction rate of 100% by all our 200+ clients
             all over the world, sepcially in the GCC countries. */}
-            {aboutUs?.description}
+            <FormattedText htmlText={aboutUs?.description} />
           </p>
           <div className='w-full text-[#161439] flex flex-col gap-4 text-sm md:text-lg  font-semibold font-poppins'>
             {aboutUs?.items.map((item: any, index: number) => (

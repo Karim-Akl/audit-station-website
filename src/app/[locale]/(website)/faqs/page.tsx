@@ -1,65 +1,41 @@
-import React from "react";
-import Image from "next/image";
-import instractor from "@../../../public/assets/instractor.svg";
-import { Card, CardContent } from "@/components/ui/card";
-import { link } from "fs";
+import React from 'react';
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/ui/accordion";
+} from '@/components/ui/accordion';
+import { BASE_URL } from '@/lib/actions/actions';
+import axios from 'axios';
+import { formatDateTime } from '@/lib/date/formatDateTime';
 
-export default function Blogs() {
+export default async function Blogs() {
+  const FAQs = await axios.get(`${BASE_URL}/api/public/faqs`);
+  const data = FAQs?.data?.data;
   return (
-    <div className="w-full grid grid-cols-1 gap-6">
-      <Accordion type="single" collapsible className="space-y-6 w-full">
-        <AccordionItem value="item-1">
-          <AccordionTrigger className="text-xl font-semibold text-[#1C1C1C]">
-            What We Offer?
-          </AccordionTrigger>
-          <AccordionContent>
-            Yes. It adheres to the WAI-ARIA design pattern.
-          </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="item-2">
-          <AccordionTrigger className="text-xl font-semibold text-[#1C1C1C]">
-            What We Offer?
-          </AccordionTrigger>
-          <AccordionContent>
-            Yes. It comes with default styles that matches the other
-            components&apos; aesthetic.
-          </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="item-3">
-          <AccordionTrigger className="text-xl font-semibold text-[#1C1C1C]">
-            What We Offer?
-          </AccordionTrigger>
-          <AccordionContent>
-            Yes. It&apos;s animated by default, but you can disable it if you
-            prefer.
-          </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="item-4">
-          <AccordionTrigger className="text-xl font-semibold text-[#1C1C1C]">
-            What We Offer?
-          </AccordionTrigger>
-          <AccordionContent>
-            Yes. It&apos;s animated by default, but you can disable it if you
-            prefer.
-          </AccordionContent>
-        </AccordionItem>
-        <AccordionItem value="item-5">
-          <AccordionTrigger className="text-xl font-semibold text-[#1C1C1C]">
-            What We Offer?
-          </AccordionTrigger>
-          <AccordionContent>
-            Yes. It&apos;s animated by default, but you can disable it if you
-            prefer.
-          </AccordionContent>
-        </AccordionItem>
-        
-      </Accordion>
+    <div className='w-full grid grid-cols-1 gap-6'>
+      {data &&
+        data.map((faq: any) => (
+          <div key={faq.id}>
+            <Accordion
+              type='single'
+              collapsible
+              className='space-y-6 w-full'
+            >
+              <AccordionItem value='item-1'>
+                <AccordionTrigger className='text-xl font-semibold text-[#1C1C1C]'>
+                  {faq?.question}
+                </AccordionTrigger>
+                <AccordionContent>
+                  <div className='flex flex-col gap-2'>
+                    <span>{faq.answer} </span>
+                    <span>{formatDateTime(faq.created_at)}</span>
+                  </div>
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
+          </div>
+        ))}
     </div>
   );
 }

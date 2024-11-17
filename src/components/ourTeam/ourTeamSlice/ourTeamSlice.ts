@@ -2,15 +2,18 @@ import { BASE_URL } from '@/lib/actions/actions';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-export const getOurTeam = createAsyncThunk('ourTeam/getOurTeam', async ({page, search}: {page: number, search: string}) => {
-  try {
-    const response = await axios.get(`${BASE_URL}/public/our_team?page=${page}&search=${search}`);
-    return response.data;
-  } catch (error) {
-    console.error(error);
-    return error;
-  }
-});
+export const getOurTeam = createAsyncThunk(
+  'ourTeam/getOurTeam',
+  async ({ page, search }: { page: number; search: string }) => {
+    try {
+      const response = await axios.get(`${BASE_URL}/public/our_team?page=${page}&search=${search}`);
+      return response.data;
+    } catch (error) {
+      console.error(error);
+      return error;
+    }
+  },
+);
 
 const initialState = {
   ourTeam: {
@@ -18,6 +21,14 @@ const initialState = {
       {
         id: null,
         name: '',
+        facebook: null,
+        instagram: null,
+        twitter: null,
+        telegram: null,
+        whatsapp: null,
+        snapchat: null,
+        tiktok: null,
+        github: null,
         image: '',
         section: {
           id: null,
@@ -39,12 +50,10 @@ const ourTeamSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder
-    .addCase(getOurTeam.fulfilled, (state, action) => {
-        state.ourTeam = action.payload;
-      }) 
+    builder.addCase(getOurTeam.fulfilled, (state, action) => {
+      state.ourTeam = action.payload;
+    });
   },
 });
 
-export default ourTeamSlice.reducer;    
-
+export default ourTeamSlice.reducer;
