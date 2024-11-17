@@ -22,7 +22,9 @@ export async function fetchData({ endPoint, page, perPage, search }: { endPoint:
       throw new Error(`Failed to fetch data from ${endPoint}. Status: ${response.status}`);
     }
 
-    return await response.json();
+    const data = await response.json();
+    return data?.data
+    
   } catch (error) {
     console.error('API Request Error: ', error);
     throw new Error('An error occurred while fetching the data.');
