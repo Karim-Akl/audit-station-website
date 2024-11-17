@@ -32,6 +32,7 @@ const config = {
         shadow_hover: "11px 10px 0px 0px #D9D9D9",
       },
       colors: {
+        footerBackground: 'hsl(var(--footer-background))',
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

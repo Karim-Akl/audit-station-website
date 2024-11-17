@@ -11,20 +11,20 @@ import { BASE_URL } from "@/lib/constants/constants";
 import { toast } from "sonner";
 import { FaApple } from "react-icons/fa6";
 import { signInWithSSOProvider } from "@/lib/utils";
+import { useRouter } from "next/navigation";
 
 const Register: FC = () => {
   const locale = useLocale();
-
+  const router = useRouter();
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setIsLoading(true);
-
     try {
       const formData = new FormData(event.currentTarget);
-      console.log("formData", formData);
-
+      const phone = formData.get("phone")?.toString().replace(/\s+/g, "");
+      formData.set("phone", phone || "");
       const response = await fetch(`${BASE_URL}/auth/register/user`, {
         method: "POST",
         body: formData,
@@ -35,6 +35,7 @@ const Register: FC = () => {
       console.log(data);
       if (data.type === "success") {
         toast.success(data.message);
+        router.push(`/${locale}/otp?email=${formData.get("email")}`);
       }
       if (data.type === "error") {
         toast.warning(data.message);
@@ -59,7 +60,7 @@ const Register: FC = () => {
               className="block text-gray-700 text-sm mb-2"
               htmlFor="fullname"
             >
-              Full Name
+              Full Name <span className="text-red-600">*</span>
             </label>
             <div className="flex items-center border border-gray-300 rounded-md px-3 py-2">
               <AiOutlineHome className="text-gray-400 mr-2" />
@@ -75,7 +76,7 @@ const Register: FC = () => {
           </div>
           <div className="mb-4">
             <label className="block text-gray-700 text-sm mb-2" htmlFor="email">
-              Email
+              Email <span className="text-red-600">*</span>
             </label>
             <div className="flex items-center border border-gray-300 rounded-md px-3 py-2">
               <AiOutlineMail className="text-gray-400 mr-2" />
@@ -91,7 +92,7 @@ const Register: FC = () => {
           </div>
           <div className="mb-4">
             <label className="block text-gray-700 text-sm mb-2" htmlFor="email">
-              Phone Number
+              Phone Number<span className="text-red-600">*</span>
             </label>
             <PhoneInput
               placeholder="Enter a phone number"
@@ -104,7 +105,7 @@ const Register: FC = () => {
               className="block text-gray-700 text-sm mb-2"
               htmlFor="password"
             >
-              Password
+              Password<span className="text-red-600">*</span>
             </label>
             <div className="flex items-center border border-gray-300 rounded-md px-3 py-2">
               <AiOutlineLock className="text-gray-400 mr-2" />
@@ -124,7 +125,7 @@ const Register: FC = () => {
               className="block text-gray-700 text-sm mb-2"
               htmlFor="confirmpassword"
             >
-              Confirm Password
+              Confirm Password<span className="text-red-900">*</span>
             </label>
             <div className="flex items-center border border-gray-300 rounded-md px-3 py-2">
               <AiOutlineLock className="text-gray-400 mr-2" />
@@ -140,7 +141,7 @@ const Register: FC = () => {
             </div>
           </div>
           <div className="flex items-center mb-4">
-            <input id="rememberMe" type="checkbox" className="mr-2" />
+            <input id="rememberMe" type="checkbox" required className="mr-2" />
             <label htmlFor="rememberMe" className="text-sm text-gray-700">
               By Signing Up, you agree to our{" "}
               <Link

@@ -24,6 +24,7 @@ export const config = {
 export async function middleware(request: NextRequest) {
   const { nextUrl } = request;
   const session = await getSession();
+  const acceptLanguage = request.headers.get("accept-language");
   const isLoggedIn = !!session;
   const isPublicRoute = publicRoutes.includes(nextUrl.pathname);
   const isPublicNestedRoute = publicNestedRoutes.some((route) =>
@@ -31,21 +32,12 @@ export async function middleware(request: NextRequest) {
   );
   const isAuthRoute = authRoutes.includes(nextUrl.pathname);
 
-  // console.log("middleware", {
-  //   isLoggedIn,
-  //   isPublicRoute,
-  //   isPublicNestedRoute,
-  //   isAuthRoute,
-  //   session,
-  // });
-
   if (isAuthRoute) {
     if (isLoggedIn) {
       return NextResponse.redirect(
         new URL(DEFAULT_LOGIN_REDIRECT, request.url)
       );
     }
-    
   }
   // If not logged in and trying to access a protected route, redirect to login
   // if (!isLoggedIn && !isPublicRoute && !isPublicNestedRoute) {
