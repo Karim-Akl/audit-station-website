@@ -8,20 +8,21 @@ import axios from 'axios';
 import { BASE_URL } from '@/lib/actions/actions';
 import { TeamMemberCard } from './teamMemberCard/TeamMemberCard';
 
-
-
 export async function TeamWork() {
-  const ourTeam = await axios.get(`${BASE_URL}/public/our_team`);
-  const locale = await getLocale();
+  let ourTeam = { data: { data: [] } }; 
+  try {
+    ourTeam = await axios.get(`${BASE_URL}/public/our_team`);
+  } catch (error: any) {
+    console.error('Error fetching team data:', error.message);
+  }  const locale = await getLocale();
   const data = ourTeam.data.data;
-   const cards = data.map((member: any, index: any) => (
+  const cards = data.map((member: any, index: any) => (
     <TeamMemberCard
       key={member.id}
       card={member}
       index={index}
     />
   ));
-
 
   return (
     <div className='w-full h-full py-20'>
