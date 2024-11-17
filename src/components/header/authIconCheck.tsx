@@ -17,10 +17,12 @@ export default async function AuthIconCheck({
 }: UserAvatarDropDownProps) {
   const locale = await getLocale();
   return !isAuthenticated ? (
-    <Link href={`/${locale}/login`}>
-      {" "}
-      <CiLogin size={22} />
-    </Link>
+    <div className="rounded-full border border-[#767676] p-2 hover:bg-gray-400 hover:cursor-pointer">
+      <Link href={`/${locale}/login`}>
+        {" "}
+        <CiLogin size={22} />
+      </Link>
+    </div>
   ) : (
     <Link href={`/${locale}/user/dashboard`}>
       {" "}

@@ -4,12 +4,13 @@ import { useLocale } from "next-intl";
 
 import { FC, FormEvent, useState } from "react";
 import { AiOutlineMail, AiOutlineLock } from "react-icons/ai"; // Icons
-import { FaGoogle, FaLinkedin } from "react-icons/fa";
+
 import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 const ResetPassword: FC = () => {
   const locale = useLocale();
-
+  const router = useRouter();
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
@@ -29,6 +30,7 @@ const ResetPassword: FC = () => {
       console.log(data);
       if (data.type === "success") {
         toast.success(data.message);
+        router.push(`/${locale}/login`);
       }
       if (data.type === "error") {
         toast.warning(data.message);
@@ -44,8 +46,10 @@ const ResetPassword: FC = () => {
 
   return (
     <div className="flex justify-center items-center h-screen ">
-      <div className="bg-white p-8 rounded-lg shadow-lg max-w-lg w-full">
-        <h2 className="text-[31px] font-semibold text-center mb-2">Reset Password</h2>
+      <div className=" p-8 rounded-lg shadow-lg max-w-lg w-full">
+        <h2 className="text-[31px] font-semibold text-center mb-2">
+          Reset Password
+        </h2>
 
         <form onSubmit={onSubmit}>
           <div className="mb-4">
@@ -93,9 +97,7 @@ const ResetPassword: FC = () => {
             type="submit"
             className="bg-[#22B9DD] w-full py-2 text-white rounded-md hover:bg-[#22b8dd94] transition duration-300"
           >
-            
             {isLoading ? "Loading..." : " Reset Password"}
-
           </button>
 
           {/* <div className="text-center text-sm">

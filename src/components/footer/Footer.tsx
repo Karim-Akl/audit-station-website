@@ -10,7 +10,7 @@ import Copyright from './Copyright';
 export const Footer: React.FC = async () => {
   const locale = await getLocale();
   return (
-    <div className='relative   w-full '>
+    <footer className='relative  w-full '>
       <div
         className='w-10/12 h-full flex flex-col
        mx-auto'
@@ -89,6 +89,6 @@ export const Footer: React.FC = async () => {
         </div>
       </div>
       <Copyright />
-    </div>
+    </footer>
   );
 };

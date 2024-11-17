@@ -20,3 +20,4 @@ export const logOutAction = async (userStatus: string) => {
     await logout();
   }
 };
+

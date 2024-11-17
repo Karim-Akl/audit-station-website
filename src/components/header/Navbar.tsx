@@ -80,7 +80,7 @@ export const Navbar: React.FC<NavbarProps> = async ({
           <NavLink locale={locale} links={links} />
           <SearchInput />
           <VerifyCertificate locale={locale} />
-          <div className="flex ms-0 ps-0 gap-4 text-[#767676]">
+          <div className="flex items-center ms-0 ps-0 gap-4 text-[#767676]">
             <div className="">
               <ModeToggle />
             </div>
@@ -89,7 +89,7 @@ export const Navbar: React.FC<NavbarProps> = async ({
                 <LiaShoppingBasketSolid size={22} />
               </Link>
             </div>
-            <div className="">
+            <div>
               <AuthIconCheck
                 username={username}
                 image={image}
