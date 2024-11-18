@@ -15,18 +15,11 @@ export async function fetchData({ endPoint, page, perPage, search }: { endPoint:
 
   const queryString = new URLSearchParams(filteredParams).toString();
 
-  try {
-    const response = await fetch(`${BASE_URL}${endPoint}?${queryString}`);
+  const response = await fetch(`${BASE_URL}${endPoint}?${queryString}`);
 
     if (!response.ok) {
       throw new Error(`Failed to fetch data from ${endPoint}. Status: ${response.status}`);
     }
-
     const data = await response.json();
     return data?.data
-    
-  } catch (error) {
-    console.error('API Request Error: ', error);
-    throw new Error('An error occurred while fetching the data.');
-  }
 }

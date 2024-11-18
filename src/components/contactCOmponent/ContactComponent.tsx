@@ -40,13 +40,13 @@ const ContactComponent = () => {
           email: '',
           subject: '',
           message: '',
-        })
+        });
       })
       .catch((error) => {
-        const errorMessage = error.response.data.data
+        const errorMessage = error.response.data.data;
         console.log(errorMessage);
         for (const error in errorMessage) {
-          toast.error(`${error}: ${errorMessage[error]}`, {id: 'error'});
+          toast.error(`${error}: ${errorMessage[error]}`, { id: 'error' });
         }
       });
   };
@@ -55,7 +55,7 @@ const ContactComponent = () => {
     const fetchSettings = async () => {
       try {
         const response = await axios.get(`${BASE_URL}/api/public/settings`);
-        setSettings(response?.data?.data); 
+        setSettings(response?.data?.data);
       } catch (error) {
         console.error('Error fetching settings:', error);
       }
@@ -93,12 +93,7 @@ const ContactComponent = () => {
                 <h3 className='text-lg font-bold'>E-mail Address</h3>
                 <div className='flex flex-col space-y-1'>
                   <div className='flex items-center text-sm text-[#5C5C5C] space-x-2'>
-                    <Link
-                      href='#'
-                      prefetch={false}
-                    >
-                      {settings?.email}
-                    </Link>
+                    <span>{settings?.email}</span>
                   </div>
                 </div>
               </CardContent>

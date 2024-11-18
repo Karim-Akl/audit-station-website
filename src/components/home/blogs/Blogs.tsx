@@ -18,11 +18,11 @@ import { BASE_URL } from '@/lib/actions/actions';
 import { CiCalendarDate } from 'react-icons/ci';
 import { formatDateTime } from '@/lib/date/formatDateTime';
 import { CgProfile } from 'react-icons/cg';
+import { fetchData } from '@/lib/api/fetchData';
 
 export async function Blogs() {
   const locale = await getLocale();
-  const blogs = await axios.get(`${BASE_URL}/api/public/blogs`);
-  const data = blogs?.data?.data;
+  const data = await fetchData({ endPoint: '/api/public/blogs' });
 
   const instructors = [
     {
@@ -104,10 +104,11 @@ export async function Blogs() {
                 className='bg-white  rounded-2xl border-1 border-[#E2E8F0] '
               >
                 <Card className='relative p-0  bg-white hover:border-6 hover:border-[#5C5C5C] hover:border-opacity-5 transition-all'>
-                  <div className='absolute top-4 right-4 text-white bg-[#22B9DD] px-4 py-2 rounded-md  flex items-center justify-center '>
-                    {blog?.category?.name}
-                  </div>
-
+                  {blog?.category?.name && (
+                    <div className='absolute top-4 right-4 text-white bg-[#22B9DD] px-4 py-2 rounded-md  flex items-center justify-center '>
+                      {blog?.category?.name}
+                    </div>
+                  )}
                   <CardContent className='p-2'>
                     <Image
                       src={blog.image}
