@@ -1,21 +1,14 @@
-import Image from 'next/image';
 import React from 'react';
-import { Carousel, Card } from '@/components/ui/apple-cards-carousel';
+import { Carousel } from '@/components/ui/apple-cards-carousel';
 import { MdOutlineArrowRightAlt } from 'react-icons/md';
 import Link from 'next/link';
-import { getLocale } from 'next-intl/server';
-import axios from 'axios';
-import { BASE_URL } from '@/lib/actions/actions';
 import { TeamMemberCard } from './teamMemberCard/TeamMemberCard';
+import { fetchData } from '@/lib/api/fetchData';
+import { getLocale } from 'next-intl/server';
 
 export async function TeamWork() {
-  let ourTeam = { data: { data: [] } }; 
-  try {
-    ourTeam = await axios.get(`${BASE_URL}/public/our_team`);
-  } catch (error: any) {
-    console.error('Error fetching team data:', error.message);
-  }  const locale = await getLocale();
-  const data = ourTeam.data.data;
+  const data = await fetchData({endPoint: '/public/our_team'})
+  const locale = await getLocale()
   const cards = data.map((member: any, index: any) => (
     <TeamMemberCard
       key={member.id}

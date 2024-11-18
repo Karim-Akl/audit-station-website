@@ -1,11 +1,9 @@
 import FormattedText from '@/components/formattedText/FormattedText';
 import HeroBackground from '@/components/helper/HeroBackground';
-import { BASE_URL } from '@/lib/actions/actions';
-import axios from 'axios';
+import { fetchData } from '@/lib/api/fetchData';
 
 const PrivacyPolicy = async () => {
-  const privacyPolicy = await axios.get(`${BASE_URL}/api/public/privacy_policy`);
-  const data = privacyPolicy?.data?.data;
+  const data = await fetchData({endPoint: '/api/public/privacy_policy'})
   return (
     <>
       <HeroBackground title='Conditions and Privacy Policy' />
