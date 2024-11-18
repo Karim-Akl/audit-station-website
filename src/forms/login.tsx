@@ -27,7 +27,6 @@ const Login: FC = () => {
 
     try {
       const formData = new FormData(event.currentTarget);
-      console.log(formData);
 
       const response = await fetch(`${BASE_URL}/auth/login/mobile`, {
         method: "POST",
