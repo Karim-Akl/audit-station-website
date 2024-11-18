@@ -7,7 +7,6 @@ import { FaRegCommentAlt } from 'react-icons/fa';
 import { Textarea } from '@/components/ui/textarea';
 import { fetchData } from '@/lib/api/fetchData';
 import BlogComment from '@/components/blogs/blogComment/BlogComment';
-import dynamic from 'next/dynamic';
 import ServerSideComponentsPagination from '@/components/pagination/ServerSideComponentsPagination';
 
 interface BlogProps {
@@ -23,6 +22,7 @@ export default async function instructorsDetailsPage({
   params: { blogId },
   searchParams: { page = '1' },
 }: BlogProps) {
+
   const pageNumber = parseInt(page, 10);
 
   const commentsData = await fetchData({
