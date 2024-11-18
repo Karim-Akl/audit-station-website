@@ -33,6 +33,7 @@ const Login: FC = () => {
         method: "POST",
         body: formData,
       });
+      console.log('response: ', response);
 
       // Handle response if necessary
       const data = await response.json();

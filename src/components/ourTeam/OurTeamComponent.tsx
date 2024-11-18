@@ -25,7 +25,6 @@ export function OurTeamComponent() {
   const [search, setSearch] = useState('');
   const dispatch = useDispatch<AppDispatch>();
   const ourTeam = useSelector((state: RootState) => state.ourTeam.ourTeam);
-  console.log('ourTeam: ', ourTeam);
 
   useEffect(() => {
     dispatch(getOurTeam({ page: currentPage, search }));
