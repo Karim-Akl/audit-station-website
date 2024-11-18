@@ -105,7 +105,7 @@ export async function Blogs() {
               >
                 <Card className='relative p-0  bg-white hover:border-6 hover:border-[#5C5C5C] hover:border-opacity-5 transition-all'>
                   <div className='absolute top-4 right-4 text-white bg-[#22B9DD] px-4 py-2 rounded-md  flex items-center justify-center '>
-                    {blog.category.name}
+                    {blog?.category?.name}
                   </div>
 
                   <CardContent className='p-2'>

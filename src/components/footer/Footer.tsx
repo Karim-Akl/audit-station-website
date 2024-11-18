@@ -2,12 +2,14 @@ import Image from 'next/image';
 import React from 'react';
 import Logo from '@../../../public/assets/footer.svg';
 import AppStore from '@../../../public/assets/appstore.svg';
-import GooglePlay from '@../../../public/assets/playStore.svg';
+import GooglePlay from '@../../../public/assets/googlePlay.svg';
 import { FloatingDockDemo } from '../helper/FloatingDock';
 import Link from 'next/link';
 import { getLocale } from 'next-intl/server';
 import Copyright from './Copyright';
+import { fetchData } from '@/lib/api/fetchData';
 export const Footer: React.FC = async () => {
+  const data = await fetchData({ endPoint: `/api/public/settings` });
   const locale = await getLocale();
   return (
     <footer className='relative  w-full '>
@@ -26,11 +28,15 @@ export const Footer: React.FC = async () => {
 
             <li className='flex  max-w-60 flex-wrap my-[1rem]'>
               <h6>Head Quarters:</h6>
-              <p>1906, Grosvenor Business Bay Tower, Marasi Drive ,Business Bay, Dubai, UAE</p>
+              {data?.head_quarters?.map((address: string) => {
+                return <p key={address}>{address}</p>;
+              })}
             </li>
             <li className='flex max-w-52 flex-wrap my-[1rem]'>
               <h6>Our Branches:</h6>
-              <p>12, Ooredoo Building, Alhkoud A Tijary st, Alhkoud, Muscat, Oman</p>
+              {data?.our_branches?.map((address: string) => {
+                return <p key={address}>{address}</p>;
+              })}
             </li>
           </ul>
           <ul className='my-[2rem]'>
@@ -62,7 +68,7 @@ export const Footer: React.FC = async () => {
               <li>Blogs</li>
               <li>Careers</li>
               <Link href={`/${locale}/faqs`}>
-              <li>FAQ</li>
+                <li>FAQ</li>
               </Link>
             </div>
           </ul>
@@ -74,17 +80,24 @@ export const Footer: React.FC = async () => {
                 Follow us on social media to get our latest news and updates
               </p>
               <div className='flex text-xl gap-2  items-center'>
-                <FloatingDockDemo />
+                <FloatingDockDemo data={data} />
               </div>
               <div className='flex gap-1 items-center'>
-                <Image
-                  src={AppStore}
-                  alt='logo'
-                />
-                <Image
-                  src={GooglePlay}
-                  alt='logo'
-                />
+                <Link href={data?.app_store}>
+                  <Image
+                    src={AppStore}
+                    alt='logo'
+                  />
+                </Link>
+                <Link
+                  href={data?.google_play}
+                  className='max-w-36'
+                >
+                  <Image
+                    src={GooglePlay}
+                    alt='logo'
+                  />
+                </Link>
               </div>
             </div>
           </div>
