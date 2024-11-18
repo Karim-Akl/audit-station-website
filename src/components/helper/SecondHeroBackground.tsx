@@ -22,12 +22,14 @@ import { BackButton } from "./backButton";
 interface IProps {
   title?: string;
   email?: string;
+  imageSrc?: string
   imageShow?: boolean;
   upgradeshow?: boolean;
 }
 const SecondHeroBackground = async ({
   title,
   email,
+  imageSrc,
   imageShow = true,
   upgradeshow = true,
 }: IProps) => {
@@ -70,7 +72,7 @@ const SecondHeroBackground = async ({
             <div className="flex space-x-3  items-center z-50">
               {imageShow && (
                 <Image
-                  src={Ellipse}
+                  src={imageSrc || Ellipse}
                   alt="yellow circle"
                   width={100}
                   height={100}
