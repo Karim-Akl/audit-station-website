@@ -1,11 +1,12 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { RiDeleteBinFill } from 'react-icons/ri';
 import { MdEdit } from 'react-icons/md';
 import axios from 'axios';
 import { BASE_URL } from '@/lib/actions/actions';
 import toast from 'react-hot-toast';
+import { modifyData } from '@/lib/api/modifyData';
 
 interface BlogCommentActionsProps {
   comment: {
@@ -26,18 +27,12 @@ const BlogCommentActions: React.FC<BlogCommentActionsProps> = ({ comment, token,
   const handleReplyDelete = async () => {
     setIsDeleting(true);
     try {
-      const response = await axios.delete(`${BASE_URL}/api/public/comments?id=${comment?.id}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
+      const response = await modifyData({
+        endPoint: '/api/public/comments',
+        method: 'DELETE',
+        queryParams: {id: String(comment?.id)},
+        token: token,
       });
-      console.log(response)
-      // const response = await modifyData({
-      //   endPoint: '/api/public/comments',
-      //   method: 'DELETE',
-      //   queryParams: {id: commentId},
-      //   token: token,
-      // });
 
       if (response) {
         toast.success('Comment deleted successfully');

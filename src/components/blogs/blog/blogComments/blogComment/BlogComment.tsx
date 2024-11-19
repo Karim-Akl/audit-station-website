@@ -4,10 +4,7 @@ import { getSession } from '@/lib/authSession';
 import BlogCommentContent from './blogCommentContent/BlogCommentContent';
 export const revalidate = 0;
 
-const BlogComment = async ({ comment, blogId }: any) => {
-  const data = await getSession()
-  const userId = data?.user?.data?.id;
-  const token = data?.user?.data?.token;
+const BlogComment = async ({ comment, blogId, userId, token }: any) => {
 
   return (
     <>

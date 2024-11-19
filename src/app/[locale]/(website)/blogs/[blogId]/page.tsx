@@ -1,13 +1,11 @@
 import Image from 'next/image';
 
-import { Textarea } from '@/components/ui/textarea';
 import { fetchData } from '@/lib/api/fetchData';
-import BlogComment from '@/components/blogs/blog/blogComments/blogComment/BlogComment';
-import ServerSideComponentsPagination from '@/components/pagination/ServerSideComponentsPagination';
 import BlogDetails from '@/components/blogs/blog/blogDetails/BlogDetails';
 import BlogContent from '@/components/blogs/blog/blogContent/BlogContent';
 import BlogAuthor from '@/components/blogs/blog/blogAuthor/BlogAuthor';
 import BlogComments from '@/components/blogs/blog/blogComments/BlogComments';
+import { getSession } from '@/lib/authSession';
 
 interface BlogProps {
   params: {
@@ -22,6 +20,10 @@ export default async function instructorsDetailsPage({
   params: { blogId },
   // searchParams: { page = '1' },
 }: BlogProps) {
+
+  const sessionData = await getSession()
+  const userId = sessionData?.user?.data?.id;
+  const token = sessionData?.user?.data?.token;
 
   const commentsData = await fetchData({
     endPoint: `/api/public/comments?commentable_id=${blogId}`,
@@ -44,7 +46,7 @@ export default async function instructorsDetailsPage({
       <BlogDetails data={data} />
       <BlogContent data={data} />
       <BlogAuthor data={data?.author} />
-      <BlogComments commentsData={commentsData} authorImage={data?.author?.image} blogId={blogId} />
+      <BlogComments commentsData={commentsData} authorImage={data?.author?.image} blogId={blogId} userId={userId} token={token} />
     </div>
   );
 }
