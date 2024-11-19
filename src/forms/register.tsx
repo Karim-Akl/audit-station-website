@@ -3,8 +3,7 @@ import { Input } from "@/components/ui/input";
 import { PhoneInput } from "@/components/ui/phone-input";
 import { useLocale } from "next-intl";
 import Link from "next/link";
-// pages/Register.tsx
-import { FC, FormEvent, useState } from "react";
+import { FC, FormEvent, useState, useEffect } from "react";
 import { AiOutlineMail, AiOutlineLock, AiOutlineHome } from "react-icons/ai"; // Icons
 import { FaGoogle, FaLinkedin } from "react-icons/fa";
 import { BASE_URL } from "@/lib/constants/constants";
@@ -17,6 +16,36 @@ const Register: FC = () => {
   const locale = useLocale();
   const router = useRouter();
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [formValid, setFormValid] = useState<boolean>(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    password: "",
+    password_confirmation: "",
+    rememberMe: false,
+  });
+
+  useEffect(() => {
+    const { name, email, phone, password, password_confirmation, rememberMe } =
+      formData;
+    setFormValid(
+      name.trim() !== "" &&
+        email.trim() !== "" &&
+        phone.trim() !== "" &&
+        password.trim() !== "" &&
+        password_confirmation.trim() !== "" &&
+        rememberMe
+    );
+  }, [formData]);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value, type, checked } = e.target;
+    setFormData({
+      ...formData,
+      [name]: type === "checkbox" ? checked : value,
+    });
+  };
 
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -48,6 +77,7 @@ const Register: FC = () => {
       setIsLoading(false); // Set loading to false when the request completes
     }
   }
+
   return (
     <div className="flex justify-center items-center h-screen ">
       <div className=" p-8 rounded-lg shadow-lg max-w-lg w-full">
@@ -71,6 +101,7 @@ const Register: FC = () => {
                 className="outline-none w-full text-sm"
                 placeholder="Enter your Full Name"
                 required
+                onChange={handleChange}
               />
             </div>
           </div>
@@ -87,17 +118,19 @@ const Register: FC = () => {
                 className="outline-none w-full text-sm"
                 placeholder="Enter your email"
                 required
+                onChange={handleChange}
               />
             </div>
           </div>
           <div className="mb-4">
-            <label className="block text-gray-700 text-sm mb-2" htmlFor="email">
+            <label className="block text-gray-700 text-sm mb-2" htmlFor="phone">
               Phone Number<span className="text-red-600">*</span>
             </label>
             <PhoneInput
               placeholder="Enter a phone number"
               name="phone"
               defaultCountry="AE"
+              onChange={(value) => setFormData({ ...formData, phone: value })}
             />
           </div>
           <div className="mb-4">
@@ -117,6 +150,7 @@ const Register: FC = () => {
                 className="outline-none w-full text-sm"
                 placeholder="Enter your password"
                 required
+                onChange={handleChange}
               />
             </div>
           </div>
@@ -137,11 +171,19 @@ const Register: FC = () => {
                 className="outline-none w-full text-sm"
                 placeholder="Enter your password"
                 required
+                onChange={handleChange}
               />
             </div>
           </div>
           <div className="flex items-center mb-4">
-            <input id="rememberMe" type="checkbox" required className="mr-2" />
+            <input
+              id="rememberMe"
+              type="checkbox"
+              name="rememberMe"
+              className="mr-2"
+              required
+              onChange={handleChange}
+            />
             <label htmlFor="rememberMe" className="text-sm text-gray-700">
               By Signing Up, you agree to our{" "}
               <Link
@@ -156,7 +198,8 @@ const Register: FC = () => {
 
           <button
             type="submit"
-            className="bg-[#22B9DD] w-full py-2 text-white rounded-md hover:bg-[#22b8dd94] transition duration-300"
+            className="bg-[#22b8dd94] w-full py-2 text-white rounded-md hover:bg-[#22B9DD] transition duration-300"
+            disabled={!formValid || isLoading}
           >
             {isLoading ? "Loading..." : " Sign Up"}
           </button>

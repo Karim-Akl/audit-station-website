@@ -11,11 +11,17 @@ import { toast } from "sonner";
 import { FormEvent, useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
-export function InputOTPPattern({email}: {email: string}) {
+interface otpProps {
+  email: string;
+  resetpassword?: boolean;
+}
+export function InputOTPPattern({ email, resetpassword }: otpProps) {
+  console.log(email);
   const locale = useLocale();
   const router = useRouter();
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [timer, setTimer] = useState<number>(60);
+  const [otp, setOtp] = useState<string>("");
 
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -46,6 +52,16 @@ export function InputOTPPattern({email}: {email: string}) {
     } finally {
       setIsLoading(false); // Set loading to false when the request completes
     }
+  }
+  async function ResendResetPasswordOtp(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const formData = new FormData(event.currentTarget);
+    setIsLoading(true);
+    router.push(
+      `/${locale}/reset-password?email=${formData.get(
+        "handle"
+      )}&otp=${formData.get("otp")}`
+    );
   }
 
   async function ResendOtp() {
@@ -95,10 +111,10 @@ export function InputOTPPattern({email}: {email: string}) {
           exam***************
         </p>
         <form
-          onSubmit={onSubmit}
+          onSubmit={resetpassword ? ResendResetPasswordOtp : onSubmit}
           className="flex flex-col justify-center items-center space-y-4 "
         >
-          <input  name="handle" type="email" hidden value={email} />
+          <input name="handle" type="email" hidden value={email} />
           <InputOTP
             maxLength={4}
             size={4}
@@ -113,8 +129,13 @@ export function InputOTPPattern({email}: {email: string}) {
               <InputOTPSlot index={3} />
             </InputOTPGroup>
           </InputOTP>
-          <Button type="submit" className="w-full bg-[#22B9DD]">
-            {isLoading ? "...loading" : "Reset Password"}
+
+          <Button
+            type="submit"
+            disabled={isLoading}
+            className="w-full bg-[#22B9DD]"
+          >
+            {isLoading ? "...loading" : "Verify"}
           </Button>
           <div className="flex justify-around w-full items-center">
             <p>
