@@ -1,8 +1,7 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { RiDeleteBinFill } from 'react-icons/ri';
-import { modifyData } from '@/lib/api/modifyData';
 import { MdEdit } from 'react-icons/md';
 import axios from 'axios';
 import { BASE_URL } from '@/lib/actions/actions';
@@ -17,11 +16,13 @@ interface BlogCommentActionsProps {
   isReplyAreaOpen: boolean;
   setIsReplyAreaOpen: React.Dispatch<React.SetStateAction<boolean>>;
   setReplyContent: React.Dispatch<React.SetStateAction<string>>;
+  blogId: number
+  setIsUpdateContent: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-const BlogCommentActions: React.FC<BlogCommentActionsProps> = ({ comment, token, isReplyAreaOpen, setIsReplyAreaOpen, setReplyContent }) => {
+const BlogCommentActions: React.FC<BlogCommentActionsProps> = ({ comment, token, isReplyAreaOpen, setIsReplyAreaOpen, setReplyContent, blogId, setIsUpdateContent }) => {
   const [isDeleting, setIsDeleting] = useState(false);
-  const [isEditing, setIsEditing] = useState(false);
+
   const handleReplyDelete = async () => {
     setIsDeleting(true);
     try {
@@ -30,6 +31,7 @@ const BlogCommentActions: React.FC<BlogCommentActionsProps> = ({ comment, token,
           Authorization: `Bearer ${token}`,
         },
       });
+      console.log(response)
       // const response = await modifyData({
       //   endPoint: '/api/public/comments',
       //   method: 'DELETE',
@@ -38,7 +40,9 @@ const BlogCommentActions: React.FC<BlogCommentActionsProps> = ({ comment, token,
       // });
 
       if (response) {
-        window.location.reload();
+        toast.success('Comment deleted successfully');
+        await axios.get(`${BASE_URL}/api/public/comments?commentable_id=${blogId}`);
+        window.location.reload()
       }
     } catch (err: any) {
       toast.error(err.response.data.message);
@@ -47,27 +51,8 @@ const BlogCommentActions: React.FC<BlogCommentActionsProps> = ({ comment, token,
     }
   };
 
-  // const handleReplyEdit = async () => {
-  //   setIsEditing(true);
-
-  //   try {
-  //     const response = await modifyData({
-  //       endPoint: '/api/public/comments',
-  //       method: 'PATCH',
-  //       token: token,
-  //     });
-
-  //     if (response) {
-  //       window.location.reload();
-  //     }
-  //   } catch (err: any) {
-  //     toast.error(err.response.data.message);
-  //   } finally {
-  //     setIsEditing(false);
-  //   }
-  // };
-
   const handleEditIconClick = () => {
+    setIsUpdateContent(true)
     setIsReplyAreaOpen(!isReplyAreaOpen)
     setReplyContent(comment?.content)
   }
@@ -84,12 +69,10 @@ const BlogCommentActions: React.FC<BlogCommentActionsProps> = ({ comment, token,
       {isDeleting && <span>Deleting...</span>}
       <button
         className='bg-[#22B9DD] p-1 rounded-md'
-        disabled={isDeleting}
         onClick={handleEditIconClick}
       >
         <MdEdit color='#FFFFFF' />
       </button>
-      {isEditing && <span>Editing...</span>}
     </div>
   );
 };

@@ -1,13 +1,15 @@
 'use client';
 
-import BlogCommentReplyArea from '@/components/blogs/blogComment/blogCommentContent/blogCommentReplyArea/BlogCommentReplyArea';
+import BlogCommentReplyArea from '@/components/blogs/blog/blogComments/blogComment/blogCommentContent/blogCommentReplyArea/BlogCommentReplyArea';
 import BlogCommentActions from './blogCommentActions/BlogCommentActions';
 import { formatDateTime } from '@/lib/date/formatDateTime';
 import { useState } from 'react';
 
-const BlogCommentContent = ({ comment, userId, token }: any) => {
+const BlogCommentContent = ({ comment, userId, token, blogId }: any) => {
   const [isReplyAreaOpen, setIsReplyAreaOpen] = useState(false);
   const [replyContent, setReplyContent] = useState('');
+  const [isUpdateContent, setIsUpdateContent] = useState(false);
+
   return (
     <>
       <div className='flex flex-col gap-4 w-full'>
@@ -21,6 +23,8 @@ const BlogCommentContent = ({ comment, userId, token }: any) => {
                 setIsReplyAreaOpen={setIsReplyAreaOpen}
                 isReplyAreaOpen={isReplyAreaOpen}
                 setReplyContent={setReplyContent}
+                blogId={blogId}
+                setIsUpdateContent={setIsUpdateContent}
               />
             )}
           </div>
@@ -38,6 +42,11 @@ const BlogCommentContent = ({ comment, userId, token }: any) => {
             replyContent={replyContent}
             onReplyAreaContentChange={setReplyContent}
             setReplyContent={setReplyContent}
+            token={token}
+            commentId={comment?.id}
+            blogId={blogId}
+            isUpdateContent={isUpdateContent}
+            setIsUpdateContent={setIsUpdateContent}
           />
         </div>
       </div>

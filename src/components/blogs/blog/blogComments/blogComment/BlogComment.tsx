@@ -1,14 +1,11 @@
 // BlogComment.tsx (Server Component)
 import Image from 'next/image';
-import { cookies } from 'next/headers';
-import { decrypt } from '@/lib/authSession';
+import { getSession } from '@/lib/authSession';
 import BlogCommentContent from './blogCommentContent/BlogCommentContent';
 export const revalidate = 0;
 
-const BlogComment = async ({ comment }: any) => {
-  const session = cookies().get('session')?.value;
-  const data = await decrypt(session || '');
-  console.log('data: ', data);
+const BlogComment = async ({ comment, blogId }: any) => {
+  const data = await getSession()
   const userId = data?.user?.data?.id;
   const token = data?.user?.data?.token;
 
@@ -27,7 +24,7 @@ const BlogComment = async ({ comment }: any) => {
               className='rounded-full'
             />
           </div>
-          <BlogCommentContent comment={comment} userId={userId} token={token} />
+          <BlogCommentContent comment={comment} userId={userId} token={token} blogId={blogId} />
         </div>
       </div>
     </>
