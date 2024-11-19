@@ -1,13 +1,20 @@
 import HeroBackground from "@/components/helper/HeroBackground";
 import ForgotPassword from "@/forms/forgot-password";
+import Head from "next/head";
 
-export default function LoginPage() {
+export default function ForgotPasswordPage() {
   return (
-    <main className="relative overflow-hidden">
-      <HeroBackground title="Forgot Password" />
-      <div>
-        <ForgotPassword/>
-      </div>
-    </main>
+    <>
+      <Head>
+        <title>Forgot Password</title>
+        <meta name="description" content="Forgot Password Page" />
+      </Head>
+      <main className="relative overflow-hidden">
+        <HeroBackground title="Forgot Password" />
+        <div>
+          <ForgotPassword />
+        </div>
+      </main>
+    </>
   );
 }

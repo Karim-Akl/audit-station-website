@@ -2,9 +2,7 @@
 import { signInWithSSOProvider } from "@/lib/utils";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-
-// pages/login.tsx
-import { FC, FormEvent, useState } from "react";
+import { FC, FormEvent, useState, useEffect } from "react";
 import { AiOutlineMail, AiOutlineLock } from "react-icons/ai"; // Icons
 import { FaGoogle } from "react-icons/fa";
 import { setSession } from "@/app/[locale]/actions/setSession";
@@ -12,14 +10,25 @@ import { toast } from "sonner";
 import { FaApple } from "react-icons/fa6";
 import { BASE_URL } from "@/lib/constants/constants";
 import { useLocale } from "next-intl";
+
 interface LoginFormValues {
-  username_or_email_or_mobile: string;
+  email: string;
   password: string;
 }
 
 const Login: FC = () => {
   const locale = useLocale();
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [formValues, setFormValues] = useState<LoginFormValues>({
+    email: "",
+    password: "",
+  });
+  const [isFormValid, setIsFormValid] = useState<boolean>(false);
+
+  useEffect(() => {
+    const { email, password } = formValues;
+    setIsFormValid(email !== "" && password !== "");
+  }, [formValues]);
 
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -52,6 +61,15 @@ const Login: FC = () => {
       setIsLoading(false); // Set loading to false when the request completes
     }
   }
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormValues((prevValues) => ({
+      ...prevValues,
+      [name]: value,
+    }));
+  };
+
   return (
     <div className="flex justify-center items-center h-screen ">
       <div className=" p-8 rounded-lg shadow-lg max-w-lg w-full">
@@ -72,6 +90,8 @@ const Login: FC = () => {
                 className="outline-none w-full text-sm"
                 placeholder="Enter your email"
                 required
+                value={formValues.email}
+                onChange={handleInputChange}
               />
             </div>
           </div>
@@ -93,6 +113,8 @@ const Login: FC = () => {
                 className="outline-none w-full text-sm"
                 placeholder="Enter your password"
                 required
+                value={formValues.password}
+                onChange={handleInputChange}
               />
             </div>
             <input id="type" type="number" name="type" value={6} hidden />
@@ -115,7 +137,8 @@ const Login: FC = () => {
 
           <button
             type="submit"
-            className="bg-[#22B9DD] w-full py-2 text-white rounded-md hover:bg-[#22b8dd94] transition duration-300"
+            className="bg-[#22b8dd94] w-full py-2 text-white rounded-md hover:bg-[#22B9DD] transition duration-300"
+            disabled={!isFormValid || isLoading}
           >
             {isLoading ? "Loading..." : "Login"}
           </button>

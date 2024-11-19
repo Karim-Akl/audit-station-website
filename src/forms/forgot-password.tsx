@@ -3,13 +3,15 @@ import { BASE_URL } from "@/lib/constants/constants";
 import { useLocale } from "next-intl";
 import { useRouter } from "next/navigation";
 import { FC, FormEvent, useState } from "react";
-import { AiOutlineMail, AiOutlineLock } from "react-icons/ai"; // Icons
+import { AiOutlineMail } from "react-icons/ai"; // Icons
 import { toast } from "sonner";
 
 const ForgotPassword: FC = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [email, setEmail] = useState<string>("");
   const locale = useLocale();
   const router = useRouter();
+
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setIsLoading(true);
@@ -27,13 +29,16 @@ const ForgotPassword: FC = () => {
       const data = await response.json();
       if (data.type === "success") {
         toast.success(data.message);
-        router.push(`/${locale}/otp?email=${formData.get("handle")}`);
+        router.push(
+          `/${locale}/otp?email=${formData.get("handle")}&resetpassword=true`
+        );
       }
       if (data.type === "error") {
         toast.warning(data.message);
       }
       setIsLoading(false);
     } catch (error) {
+      console.log(error);
       setIsLoading(false);
       toast.error((error as Error).message);
     } finally {
@@ -65,12 +70,15 @@ const ForgotPassword: FC = () => {
                 className="outline-none w-full text-sm"
                 placeholder="Enter your email"
                 required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
           </div>
           <button
             type="submit"
             className="bg-[#22B9DD] w-full py-2 text-white rounded-md hover:bg-[#22b8dd94] transition duration-300"
+            disabled={isLoading || !email}
           >
             {isLoading ? "Loading..." : " Send OTP"}
           </button>
