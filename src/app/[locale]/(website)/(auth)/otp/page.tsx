@@ -1,14 +1,30 @@
 import HeroBackground from "@/components/helper/HeroBackground";
-import Login from "@/forms/login";
-import { OtpInput } from "@/forms/otpInputs";
+import { InputOTPPattern } from "@/forms/otpInputs";
+import Head from "next/head";
 
-export default function OtpPage() {
+interface otpProps {
+  searchParams: {
+    email: string;
+    resetpassword?: boolean;
+  };
+}
+export default function OtpPage({
+  searchParams: { email },
+  searchParams: { resetpassword },
+}: otpProps) {
+ 
   return (
-    <main className="relative overflow-hidden">
-      <HeroBackground title="Otp" />
-      <div>
-        <OtpInput />
-      </div>
-    </main>
+    <>
+      <Head>
+        <title>OTP</title>
+        <meta name="description" content="OTP Page" />
+      </Head>
+      <main className="relative overflow-hidden">
+        <HeroBackground title="Otp" />
+        <div>
+          <InputOTPPattern email={email} resetpassword={resetpassword}  />
+        </div>
+      </main>
+    </>
   );
 }

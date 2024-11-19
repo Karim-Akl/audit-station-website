@@ -1,14 +1,8 @@
-// import { inLocalhost } from "@/utility/routeHelper";
 import axios, { InternalAxiosRequestConfig } from 'axios';
 
 export const axiosInstance = axios.create({
   baseURL: `https://audit-api.doctor-code.net`,
 });
-
-// if (!inLocalhost()) {
-//   axiosInstance.defaults.withCredentials = true;
-//   axiosInstance.defaults.withXSRFToken = true;
-// }
 
 axiosInstance.interceptors.request.use((config: InternalAxiosRequestConfig) => {
   if (localStorage.getItem('token')) {

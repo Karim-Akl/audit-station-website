@@ -8,7 +8,7 @@ export const {
   signOut,
 } = NextAuth({
   pages: {
-    signIn: "/?auth=login",
+    signIn: "/en/login",
   },
   callbacks: {
     async jwt({ token, account }) {

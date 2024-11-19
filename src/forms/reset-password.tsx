@@ -2,15 +2,21 @@
 import { BASE_URL } from "@/lib/constants/constants";
 import { useLocale } from "next-intl";
 
-import { FC, FormEvent, useState } from "react";
+import { FC, FormEvent, useState, ChangeEvent } from "react";
 import { AiOutlineMail, AiOutlineLock } from "react-icons/ai"; // Icons
-import { FaGoogle, FaLinkedin } from "react-icons/fa";
+
 import { toast } from "sonner";
-
-const ResetPassword: FC = () => {
+import { useRouter } from "next/navigation";
+interface resetPasswordProps {
+  email: string;
+  otp: number;
+}
+export function ResetPassword({ email, otp }: resetPasswordProps) {
   const locale = useLocale();
-
+  const router = useRouter();
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [password, setPassword] = useState<string>("");
+  const [confirmPassword, setConfirmPassword] = useState<string>("");
 
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -29,6 +35,7 @@ const ResetPassword: FC = () => {
       console.log(data);
       if (data.type === "success") {
         toast.success(data.message);
+        router.push(`/${locale}/login`);
       }
       if (data.type === "error") {
         toast.warning(data.message);
@@ -42,12 +49,19 @@ const ResetPassword: FC = () => {
     }
   }
 
+  const isFormValid =
+    password && confirmPassword && password === confirmPassword;
+
   return (
     <div className="flex justify-center items-center h-screen ">
-      <div className="bg-white p-8 rounded-lg shadow-lg max-w-lg w-full">
-        <h2 className="text-[31px] font-semibold text-center mb-2">Reset Password</h2>
+      <div className=" p-8 rounded-lg shadow-lg max-w-lg w-full">
+        <h2 className="text-[31px] font-semibold text-center mb-2">
+          Reset Password
+        </h2>
 
         <form onSubmit={onSubmit}>
+          <input name="handle" type="email" hidden value={email} />
+          <input name="code" type="number" hidden value={otp} />
           <div className="mb-4">
             <label
               className="block text-gray-700 text-sm mb-2"
@@ -65,6 +79,10 @@ const ResetPassword: FC = () => {
                 className="outline-none w-full text-sm"
                 placeholder="Enter your password"
                 required
+                value={password}
+                onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                  setPassword(e.target.value)
+                }
               />
             </div>
           </div>
@@ -85,17 +103,20 @@ const ResetPassword: FC = () => {
                 className="outline-none w-full text-sm"
                 placeholder="Enter your Confirm Password"
                 required
+                value={confirmPassword}
+                onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                  setConfirmPassword(e.target.value)
+                }
               />
             </div>
           </div>
 
           <button
             type="submit"
-            className="bg-[#22B9DD] w-full py-2 text-white rounded-md hover:bg-[#22b8dd94] transition duration-300"
+            className=" w-full py-2 text-white rounded-md bg-[#22B9DD]   transition duration-300"
+            disabled={!isFormValid || isLoading}
           >
-            
             {isLoading ? "Loading..." : " Reset Password"}
-
           </button>
 
           {/* <div className="text-center text-sm">
@@ -108,6 +129,6 @@ const ResetPassword: FC = () => {
       </div>
     </div>
   );
-};
+}
 
 export default ResetPassword;

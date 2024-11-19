@@ -3,14 +3,14 @@
  * @type {string[]}
  */
 export const publicRoutes = [
-  "/en",
-  "/services",
-  "/blogs",
-  "/about",
-  "/contact",
-  "/authError",
-  "/privacy-policy",
-  "/api/refresh-token",
+  "/en/",
+  "/en/services",
+  "/en/blogs",
+  "/en/about",
+  "/en/contact",
+  "/en/authError",
+  "/en/privacy-policy",
+  "/en/api/refresh-token",
 ];
 
 /**
@@ -21,10 +21,10 @@ export const publicNestedRoutes = ["/blogs", "/services"];
 
 /**
  * An array of the query params that opens the authentication modals
- * @type {string}
+ * @   {string}
  */
 export const authRoutes = [
-  "/en/login",
+  `/en/login`,
   "/en/registration",
   "/en/forgot-password",
   "/en/reset-password",

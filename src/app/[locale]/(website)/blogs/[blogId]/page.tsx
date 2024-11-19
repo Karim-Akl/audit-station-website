@@ -1,36 +1,46 @@
 import Image from 'next/image';
-import axios from 'axios';
-import { BASE_URL } from '@/lib/actions/actions';
 import { CiCalendarDate } from 'react-icons/ci';
 import { formatDateTime } from '@/lib/date/formatDateTime';
 import { CgProfile } from 'react-icons/cg';
 import { IoMdTime } from 'react-icons/io';
 import { FaRegCommentAlt } from 'react-icons/fa';
 import { Textarea } from '@/components/ui/textarea';
-import Reply from '@/components/reply/Reply';
+import { fetchData } from '@/lib/api/fetchData';
+import BlogComment from '@/components/blogs/blogComment/BlogComment';
+import ServerSideComponentsPagination from '@/components/pagination/ServerSideComponentsPagination';
 
 interface BlogProps {
   params: {
-    blogsId: number;
+    blogId: number;
+  };
+  searchParams: {
+    page: string;
   };
 }
 
-export default async function instructorsDetailsPage({ params: { blogsId } }: BlogProps) {
-  const course = await axios.get(`${BASE_URL}/api/public/blogs/${blogsId}`);
-  const comments = axios.get(`${BASE_URL}/api/public/comments?commentable_id=${blogsId}`);
-  const commentsData = (await comments)?.data?.data;
-  const data = course?.data?.data;
+export default async function instructorsDetailsPage({
+  params: { blogId },
+  searchParams: { page = '1' },
+}: BlogProps) {
+
+  const pageNumber = parseInt(page, 10);
+
+  const commentsData = await fetchData({
+    endPoint: `/api/public/comments?commentable_id=${blogId}`,
+    page: pageNumber,
+  });
+  const data = await fetchData({ endPoint: `/api/public/blogs/${blogId}` });
+
   return (
     <div className='w-full h-full'>
       <div className=''>
-        <div className=''>
+        <div className='w-full h-[500px] relative'>
           <Image
+            loading='lazy'
             src={data?.author?.image}
             alt='topCourse'
-            width={0}
-            height={0}
-            layout='responsive'
-            className='object-cover rounded-lg'
+            layout='fill'
+            className='rounded-2xl'
           />
         </div>
       </div>
@@ -62,8 +72,9 @@ export default async function instructorsDetailsPage({ params: { blogsId } }: Bl
           <FaRegCommentAlt
             color='#22B9DD'
             size={20}
+            className='me-2'
           />
-          <span></span>
+          <span>{data?.comments_count}</span>
         </div>
       </div>
       <h1 className='text-2xl font-bold mb-10'>{data?.title}</h1>
@@ -100,37 +111,19 @@ export default async function instructorsDetailsPage({ params: { blogsId } }: Bl
       <div>
         <h1 className='text-lg my-14'>Comments</h1>
         {commentsData?.map((comment: any) => (
-          <div
+          <BlogComment
             key={comment.id}
-            className='my-4'
-          >
-            <div className='mt-10 mx-6 flex gap-4'>
-              <div className='w-24 h-24 rounded-full'>
-                <Image
-                  src={comment?.user?.avatar}
-                  alt='author'
-                  width={0}
-                  height={0}
-                  layout='responsive'
-                  className='rounded-full'
-                />
-              </div>
-              <div className='flex flex-col gap-4 w-full'>
-                <div className=''>
-                  <h1 className='text-lg'>{comment?.user?.name}</h1>
-                  <p>{comment?.content}</p>
-                </div>
-                <div className='lg:flex gap-2 text-[#22B9DD] w-full'>
-                  <span className='text-[#90949C] me-2 lg:me-0'>
-                    {formatDateTime(comment?.created_at)}
-                  </span>
-                  <span>{comment?.replies_count}</span>Replies
-                  <Reply />
-                </div>
-              </div>
-            </div>
-          </div>
+            comment={comment}
+          />
         ))}
+
+        <div className='w-full flex justify-center mt-8'>
+          <ServerSideComponentsPagination
+            totalPages={commentsData?.meta?.last_page}
+            currentPage={1}
+          />
+        </div>
+
         <div className='mt-12'>
           <h3 className='mb-4'>Leave Your Comment</h3>
           <div className='flex'>
@@ -147,6 +140,7 @@ export default async function instructorsDetailsPage({ params: { blogsId } }: Bl
               name='message'
               placeholder='Enter your message'
               className='min-h-[100px]'
+
               // value={inputsData.message}
               // onChange={handleInputChange}
             />{' '}

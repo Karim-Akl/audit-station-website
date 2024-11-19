@@ -1,4 +1,3 @@
-import { Search } from 'lucide-react';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { BASE_URL } from '@/lib/actions/actions';

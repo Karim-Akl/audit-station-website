@@ -14,7 +14,6 @@ import FormattedText from '@/components/formattedText/FormattedText';
 export const AboutUs: React.FC = () => {
   const dispatch = useDispatch<AppDispatch>();
   const aboutUs = useSelector((state: any) => state.aboutUs.aboutUs);
-  console.log('aboutUs: ', aboutUs);
 
   useEffect(() => {
     dispatch(getAboutUs());

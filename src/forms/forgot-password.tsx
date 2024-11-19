@@ -1,19 +1,20 @@
 "use client";
 import { BASE_URL } from "@/lib/constants/constants";
 import { useLocale } from "next-intl";
-
+import { useRouter } from "next/navigation";
 import { FC, FormEvent, useState } from "react";
-import { AiOutlineMail, AiOutlineLock } from "react-icons/ai"; // Icons
-import { FaGoogle, FaLinkedin } from "react-icons/fa";
+import { AiOutlineMail } from "react-icons/ai"; // Icons
 import { toast } from "sonner";
 
 const ForgotPassword: FC = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [email, setEmail] = useState<string>("");
+  const locale = useLocale();
+  const router = useRouter();
 
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setIsLoading(true);
-
     try {
       const formData = new FormData(event.currentTarget);
       const response = await fetch(
@@ -26,15 +27,18 @@ const ForgotPassword: FC = () => {
 
       // Handle response if necessary
       const data = await response.json();
-      console.log(data);
       if (data.type === "success") {
         toast.success(data.message);
+        router.push(
+          `/${locale}/otp?email=${formData.get("handle")}&resetpassword=true`
+        );
       }
       if (data.type === "error") {
         toast.warning(data.message);
       }
       setIsLoading(false);
     } catch (error) {
+      console.log(error);
       setIsLoading(false);
       toast.error((error as Error).message);
     } finally {
@@ -55,7 +59,7 @@ const ForgotPassword: FC = () => {
         <form onSubmit={onSubmit}>
           <div className="my-6">
             <label className="block text-gray-700 text-sm mb-2" htmlFor="email">
-              Email
+              Email <span className="text-red-600">*</span>
             </label>
             <div className="flex items-center border border-gray-300 rounded-md px-3 py-2">
               <AiOutlineMail className="text-gray-400 mr-2" />
@@ -66,13 +70,15 @@ const ForgotPassword: FC = () => {
                 className="outline-none w-full text-sm"
                 placeholder="Enter your email"
                 required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
           </div>
-
           <button
             type="submit"
             className="bg-[#22B9DD] w-full py-2 text-white rounded-md hover:bg-[#22b8dd94] transition duration-300"
+            disabled={isLoading || !email}
           >
             {isLoading ? "Loading..." : " Send OTP"}
           </button>

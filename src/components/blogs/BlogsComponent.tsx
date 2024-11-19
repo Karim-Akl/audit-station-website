@@ -42,9 +42,9 @@ const BlogsComponent = () => {
                   key={blog.id}
                   className='relative overflow-hidden p-0 bg-white'
                 >
-                  <div className='absolute top-4 right-4 text-white bg-[#22B9DD] px-4 py-2 rounded-md flex items-center justify-center text-xs whitespace-nowrap'>
+                  {blog.category?.name && (<div className='absolute top-4 right-4 text-white bg-[#22B9DD] px-4 py-2 rounded-md flex items-center justify-center text-xs whitespace-nowrap'>
                     {blog.category?.name}
-                  </div>
+                  </div>)}
                   <CardContent className='p-2'>
                     <Image
                       src={blog.image}

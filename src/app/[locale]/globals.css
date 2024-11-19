@@ -2,11 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-[data-theme="dark"] body {
-  background-color: #221f1f;
-  color: #fff;
-}
-
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -37,7 +32,7 @@
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
+    --background: rgba(17, 17, 17, 0.07);
     --foreground: 210 40% 98%;
     --card: 222.2 84% 4.9%;
     --card-foreground: 210 40% 98%;
@@ -61,9 +56,19 @@
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
+    --footer-background: linear-gradient(
+        0deg,
+        rgba(17, 17, 17, 0.07) 0%,
+        rgba(17, 17, 17, 0.07) 100%
+      ),
+      linear-gradient(0deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.2) 100%), #111;
+    --footer-foreground: 210 40% 98%;
   }
 }
-
+footer {
+  background: var(--footer-background);
+  color: var(--footer-foreground);
+}
 @layer base {
   * {
     @apply border-border;
@@ -84,20 +89,20 @@
 
 @layer utilities {
   .background-color {
-    background: linear-gradient(138deg,
-        rgba(34, 185, 221, 1) 0%,
-        rgba(244, 252, 252, 1) 20%,
-        rgba(252, 254, 254, 1) 28%,
-        rgba(243, 253, 253, 1) 72%,
-        rgba(243, 253, 253, 1) 85%,
-        rgba(34, 185, 221, 1) 100%,
-        rgba(255, 255, 255, 0.639093137254902) 100%);
+    background: linear-gradient(
+      138deg,
+      rgba(34, 185, 221, 1) 0%,
+      rgba(244, 252, 252, 1) 20%,
+      rgba(252, 254, 254, 1) 28%,
+      rgba(243, 253, 253, 1) 72%,
+      rgba(243, 253, 253, 1) 85%,
+      rgba(34, 185, 221, 1) 100%,
+      rgba(255, 255, 255, 0.639093137254902) 100%
+    );
   }
 
   .background-team {
-    background: linear-gradient(180deg,
-        rgba(255, 255, 255, 0) 0.24%,
-        #22b9dd 67.86%);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0.24%, #22b9dd 67.86%);
   }
 
   .background-animate {
@@ -109,7 +114,6 @@
 }
 
 @keyframes AnimationName {
-
   0%,
   100% {
     background-position: 0% 50%;
@@ -118,4 +122,8 @@
   50% {
     background-position: 100% 50%;
   }
+}
+
+*::-webkit-scrollbar {
+  display: none;
 }
