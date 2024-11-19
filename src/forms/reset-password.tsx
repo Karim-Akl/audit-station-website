@@ -2,16 +2,21 @@
 import { BASE_URL } from "@/lib/constants/constants";
 import { useLocale } from "next-intl";
 
-import { FC, FormEvent, useState } from "react";
+import { FC, FormEvent, useState, ChangeEvent } from "react";
 import { AiOutlineMail, AiOutlineLock } from "react-icons/ai"; // Icons
 
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
-
-const ResetPassword: FC = () => {
+interface resetPasswordProps {
+  email: string;
+  otp: number;
+}
+export function ResetPassword({ email, otp }: resetPasswordProps) {
   const locale = useLocale();
   const router = useRouter();
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [password, setPassword] = useState<string>("");
+  const [confirmPassword, setConfirmPassword] = useState<string>("");
 
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -44,6 +49,9 @@ const ResetPassword: FC = () => {
     }
   }
 
+  const isFormValid =
+    password && confirmPassword && password === confirmPassword;
+
   return (
     <div className="flex justify-center items-center h-screen ">
       <div className=" p-8 rounded-lg shadow-lg max-w-lg w-full">
@@ -52,6 +60,8 @@ const ResetPassword: FC = () => {
         </h2>
 
         <form onSubmit={onSubmit}>
+          <input name="handle" type="email" hidden value={email} />
+          <input name="code" type="number" hidden value={otp} />
           <div className="mb-4">
             <label
               className="block text-gray-700 text-sm mb-2"
@@ -69,6 +79,10 @@ const ResetPassword: FC = () => {
                 className="outline-none w-full text-sm"
                 placeholder="Enter your password"
                 required
+                value={password}
+                onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                  setPassword(e.target.value)
+                }
               />
             </div>
           </div>
@@ -89,13 +103,18 @@ const ResetPassword: FC = () => {
                 className="outline-none w-full text-sm"
                 placeholder="Enter your Confirm Password"
                 required
+                value={confirmPassword}
+                onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                  setConfirmPassword(e.target.value)
+                }
               />
             </div>
           </div>
 
           <button
             type="submit"
-            className="bg-[#22B9DD] w-full py-2 text-white rounded-md hover:bg-[#22b8dd94] transition duration-300"
+            className=" w-full py-2 text-white rounded-md bg-[#22B9DD]   transition duration-300"
+            disabled={!isFormValid || isLoading}
           >
             {isLoading ? "Loading..." : " Reset Password"}
           </button>
@@ -110,6 +129,6 @@ const ResetPassword: FC = () => {
       </div>
     </div>
   );
-};
+}
 
 export default ResetPassword;

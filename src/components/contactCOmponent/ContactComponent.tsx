@@ -1,7 +1,7 @@
 'use client';
 
 import HeroBackground from '@/components/helper/HeroBackground';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Card, CardContent, CardHeader, CardFooter } from '@/components/ui/card';
 import Link from 'next/link';
 import { Input } from '@/components/ui/input';
@@ -17,6 +17,7 @@ import { BASE_URL } from '@/lib/actions/actions';
 import toast from 'react-hot-toast';
 
 const ContactComponent = () => {
+  const [settings, setSettings] = useState<any>(null);
   const [inputsData, setInputsData] = useState({
     name: '',
     email: '',
@@ -39,16 +40,28 @@ const ContactComponent = () => {
           email: '',
           subject: '',
           message: '',
-        })
+        });
       })
       .catch((error) => {
-        const errorMessage = error.response.data.data
+        const errorMessage = error.response.data.data;
         console.log(errorMessage);
         for (const error in errorMessage) {
-          toast.error(`${error}: ${errorMessage[error]}`, {id: 'error'});
+          toast.error(`${error}: ${errorMessage[error]}`, { id: 'error' });
         }
       });
   };
+
+  useEffect(() => {
+    const fetchSettings = async () => {
+      try {
+        const response = await axios.get(`${BASE_URL}/api/public/settings`);
+        setSettings(response?.data?.data);
+      } catch (error) {
+        console.error('Error fetching settings:', error);
+      }
+    };
+    fetchSettings();
+  }, []);
 
   return (
     <main className='mb-20'>
@@ -65,8 +78,9 @@ const ContactComponent = () => {
               <CardContent className=' p-3'>
                 <h3 className='text-[16px] font-bold'>Phone</h3>
                 <div className='flex flex-col  text-[#5C5C5C] text-sm'>
-                  <span>+1 (123) 456-7890</span>
-                  <span>+1 (123) 456-7890</span>
+                  {settings?.phones?.map((phone: any, index: number) => (
+                    <span key={index}>{phone}</span>
+                  ))}
                 </div>
               </CardContent>
             </Card>
@@ -79,12 +93,7 @@ const ContactComponent = () => {
                 <h3 className='text-lg font-bold'>E-mail Address</h3>
                 <div className='flex flex-col space-y-1'>
                   <div className='flex items-center text-sm text-[#5C5C5C] space-x-2'>
-                    <Link
-                      href='#'
-                      prefetch={false}
-                    >
-                      alma.lawson@example.com
-                    </Link>
+                    <span>{settings?.email}</span>
                   </div>
                 </div>
               </CardContent>
@@ -98,7 +107,7 @@ const ContactComponent = () => {
                 <h3 className='text-lg font-bold'>Address</h3>
                 <div className='flex flex-col space-y-1'>
                   <div className='flex items-center text-sm text-[#5C5C5C] space-x-2'>
-                    <span>1234 Street Name, City, State, 56789</span>
+                    <span>{settings?.address}</span>
                   </div>
                 </div>
               </CardContent>

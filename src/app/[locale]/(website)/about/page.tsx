@@ -11,6 +11,7 @@ import { IoLogoYoutube } from 'react-icons/io';
 import { Link } from 'lucide-react';
 import { VideoPlayer } from '@/components/helper/videoPlayer';
 import aboutUsImage from '@../../../public/assets/aboutus.svg';
+import { fetchData } from '@/lib/api/fetchData';
 
 export const metadata = {
   title: 'About',
@@ -18,7 +19,7 @@ export const metadata = {
 };
 
 export default async function About() {
-  const aboutUs = await axios.get(`${BASE_URL}/api/public/about_us`);
+  const aboutUs = await fetchData({endPoint: '/api/public/about_us'});
   const { data, message } = await GetDataInServerSide({
     End_Point: `/public/about_us`,
     ISAddAuthHeaders: false,
@@ -46,8 +47,8 @@ export default async function About() {
         />
         <div className='mt-10'>
           <TitleSubtitle
-            title={aboutUs?.data?.data?.title}
-            subTitle={aboutUs?.data?.data?.description}
+            title={aboutUs?.title}
+            subTitle={aboutUs?.description}
           />
           <div className='relative w-full h-[350px]'>
             <Image
@@ -70,7 +71,7 @@ export default async function About() {
                 <span className='text-2xl font-bold'>YouTube</span>
               </div> */}
               <div className='absolute inset-0 flex justify-center z-30 items-center'>
-                <VideoPlayer link={aboutUs?.data?.data?.youtube_link} />
+                <VideoPlayer link={aboutUs?.youtube_link} />
               </div>
             </div>
           </div>
