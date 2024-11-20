@@ -5,6 +5,8 @@ import MuiAccordion, { AccordionProps } from '@mui/material/Accordion';
 import MuiAccordionSummary, { AccordionSummaryProps } from '@mui/material/AccordionSummary';
 import MuiAccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
+import { IoPlaySharp } from 'react-icons/io5';
+import { MdLockOutline } from 'react-icons/md';
 
 const Accordion = styled((props: AccordionProps) => (
   <MuiAccordion
@@ -77,11 +79,28 @@ export default function SectionAccordion({ title, lessonsNumber, duration, lesso
             {Array.isArray(lessons) &&
               lessons.length > 0 &&
               lessons.map((lesson: any) => {
-                return <div key={lesson.id}>
-                  <div className=''>
-
+                return (
+                  <div
+                    key={lesson.id}
+                    className=''
+                  >
+                    <div className='bg-[#E9F8FC] flex w-full justify-between items-center px-4 py-2 rounded-md mb-2'>
+                      <div className='flex items-center gap-2'>
+                        <button className='bg-white rounded-full p-2'>
+                          <IoPlaySharp
+                            size={12}
+                            color='#22B9DD'
+                          />
+                        </button>
+                        <span>{lesson.title}</span>
+                      </div>
+                      <div className='flex items-center gap-2'>
+                        <span>{lesson.duration}m</span>
+                        {lesson.isLocked && <MdLockOutline />}
+                      </div>
+                    </div>
                   </div>
-                </div>;
+                );
               })}
           </Typography>
         </AccordionDetails>

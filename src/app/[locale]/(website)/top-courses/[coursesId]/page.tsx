@@ -4,7 +4,7 @@ import { FaStar } from 'react-icons/fa';
 import instructor from '../../../../../../public/assets/top-course/instructor.jpg';
 import { CiCalendarDate } from 'react-icons/ci';
 import { RiGraduationCapLine } from 'react-icons/ri';
-import CourseTabs from './courseTabs/CourseTabs';
+import CourseTabs from '../../../../../components/topCourses/courseTabs/CourseTabs';
 
 interface BlogProps {
   params: {
