@@ -125,12 +125,12 @@ async function GetDataInServerSide<T>({
   const session = await getSession();
   let headers: HeadersInit = ISAddAuthHeaders
     ? {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${session.user.access}`,
-    }
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${session.user.access}`,
+      }
     : {
-      "Content-Type": "application/json",
-    };
+        "Content-Type": "application/json",
+      };
 
   let response = await fetchWrapper(
     BASE_URL + End_Point,

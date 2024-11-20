@@ -51,5 +51,5 @@ export async function modifyData({
   }
 
   const responseData = await response.json();
-  return responseData?.data;
+  return responseData;
 }

@@ -1,5 +1,4 @@
 'use client'
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { PhoneInput } from 'react-international-phone';
 
 import 'react-international-phone/style.css';

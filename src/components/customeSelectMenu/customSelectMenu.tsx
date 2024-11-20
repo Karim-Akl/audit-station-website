@@ -131,7 +131,7 @@ const CustomSelectMenu: FC<CustomSelectMenuProps> = ({
             {error ? (
                 <div className="ps-2 text-red-500">{error}</div>
             ) : (
-                <div className="ps-2 opacity-0 disabled">" "</div>
+                <div className="ps-2 opacity-0 disabled"></div>
             )}
         </div>
     );

@@ -2,6 +2,9 @@ import Image from 'next/image';
 import topCourse from '../../../../../../public/assets/top-course/top-course.jpg';
 import { FaStar } from 'react-icons/fa';
 import instructor from '../../../../../../public/assets/top-course/instructor.jpg';
+import { CiCalendarDate } from 'react-icons/ci';
+import { RiGraduationCapLine } from 'react-icons/ri';
+import CourseTabs from './courseTabs/CourseTabs';
 
 interface BlogProps {
   params: {
@@ -45,11 +48,25 @@ export default async function courseDetailsPage({ params: { id } }: BlogProps) {
                 />
               </div>
               <div className='flex items-center gap-4'>
-                <span>By</span>
-                <span>Ethan Granger</span>
+                <span>By Ethan Granger</span>
+                <div className='flex items-center gap-1'>
+                  <CiCalendarDate
+                    size={24}
+                    color='#767676'
+                  />
+                  <span className='text-[#767676]'>04/Jul/2024</span>
+                </div>
+                <div className='flex items-center gap-2'>
+                  <RiGraduationCapLine
+                    size={24}
+                    color='#767676'
+                  />
+                  <span className='text-[#767676]'>0 Students</span>
+                </div>
               </div>
             </div>
           </div>
+          <CourseTabs />
         </div>
       </div>
 
