@@ -1,4 +1,6 @@
-import { BASE_URL } from "@/lib/actions/actions";
+import { BASE_URL } from '@/lib/actions/actions';
+import { cookies } from 'next/headers';
+import { decrypt } from '../authSession';
 
 export async function fetchData({
   endPoint,
@@ -23,15 +25,19 @@ export async function fetchData({
       .map(([key, value]) => [key, String(value)])
   );
 
+  const cookie = cookies();
+  const session = cookie.get('session');
+  const sessionValue = await decrypt(session?.value || "")
   const queryString = new URLSearchParams(filteredParams).toString();
+  const response = await fetch(`${BASE_URL}${endPoint}?${queryString}`,{
+    headers:{
+      Authorization: `Bearer ${sessionValue?.user?.data?.token}`,
+    }
+  });
 
-  const response = await fetch(`${BASE_URL}${endPoint}?${queryString}`);
-
-  if (!response.ok) {
-    throw new Error(
-      `Failed to fetch data from ${endPoint}. Status: ${response.status}`
-    );
-  }
-  const data = await response.json();
-  return data?.data;
+    if (!response.ok) {
+      console.log(`Failed to fetch data from ${endPoint}. Status: ${response.status}`);
+    }
+    const data = await response.json();
+    return data?.data
 }

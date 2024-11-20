@@ -47,9 +47,8 @@ export function BlogsTabs() {
     >
       <TabsList className="flex flex-col gap-5 items-start justify-end ">
         <h2
-          className={`font-bold text-xl ${
-            theme == "dark" ? " text-white" : "text-[#0F1A29]"
-          }   `}
+          className={`font-bold text-xl ${theme == "dark" ? " text-white" : "text-[#0F1A29]"
+            }   `}
         >
           Category
         </h2>
@@ -79,6 +78,7 @@ const Blogtabs = [
   { id: 6, title: "Strategies", value: "strategies" },
   { id: 6, title: "Technology", value: "technology" },
 ];
+
 export function UserTabs({ Name }: { Name: string }) {
   const { pathname, router } = UseSearchParamsHook();
   const lastRoute = pathname.split("/").pop();
@@ -93,20 +93,18 @@ export function UserTabs({ Name }: { Name: string }) {
     <Tabs className="inline-block " defaultValue={lastRoute}>
       <TabsList className="flex flex-col gap-5 items-start justify-end  ">
         <p
-          className={`text-[16px] ${
-            theme == "dark" ? " text-white" : "text-[#0F1A29]"
-          }   `}
+          className={`text-[16px] ${theme == "dark" ? " text-white" : "text-[#0F1A29]"
+            }   `}
         >
           Hello , <span>{Name}</span>
         </p>
 
         {userTabs.map((tab) => (
-          <Link key={tab.value} href={`/${locale}/user/${tab.value}`}>
+          <Link key={tab.value} href={tab.value === "profile" ? `/${locale}/user/${tab.value}?value=1` : `/${locale}/user/${tab.value}`}>
             <TabsTrigger
               className={`data-[state=active]:border-none data-[state=active]:font-bold data-[state=active]:bg-[#22B9DD] data-[state=active]:text-white w-full  items-center justify-start
-                 bordre-b-0 px-4 gap-2 text-lg font-medium  ${
-                   theme == "dark" ? " text-white" : "text-[#151515]"
-                 } `}
+                 bordre-b-0 px-4 gap-2 text-lg font-medium  ${theme == "dark" ? " text-white" : "text-[#151515]"
+                } `}
               value={tab.value}
             >
               {tab.icon}
@@ -173,9 +171,8 @@ export function InstructorTabs({ Name }: { Name: string }) {
     <Tabs className="inline-block " defaultValue={lastRoute}>
       <TabsList className="flex flex-col gap-5 items-start justify-end  ">
         <p
-          className={`text-[16px] ${
-            theme == "dark" ? " text-white" : "text-[#0F1A29]"
-          }   `}
+          className={`text-[16px] ${theme == "dark" ? " text-white" : "text-[#0F1A29]"
+            }   `}
         >
           Hello , <span>{Name}</span>
         </p>
@@ -184,9 +181,8 @@ export function InstructorTabs({ Name }: { Name: string }) {
           <Link key={tab.value} href={`/${locale}/instructor/${tab.value}`}>
             <TabsTrigger
               className={`data-[state=active]:border-none data-[state=active]:font-bold data-[state=active]:bg-[#22B9DD] data-[state=active]:text-white w-full  items-center justify-start
-    bordre-b-0 px-4 gap-2 text-lg font-medium  ${
-      theme == "dark" ? " text-white" : "text-[#151515]"
-    } `}
+    bordre-b-0 px-4 gap-2 text-lg font-medium  ${theme == "dark" ? " text-white" : "text-[#151515]"
+                } `}
               value={tab.value}
             >
               {tab.icon}

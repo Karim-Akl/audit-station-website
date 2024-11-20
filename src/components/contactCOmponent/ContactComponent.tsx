@@ -44,7 +44,6 @@ const ContactComponent = () => {
       })
       .catch((error) => {
         const errorMessage = error.response.data.data;
-        console.log(errorMessage);
         for (const error in errorMessage) {
           toast.error(`${error}: ${errorMessage[error]}`, { id: 'error' });
         }
