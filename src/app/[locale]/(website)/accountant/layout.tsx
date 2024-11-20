@@ -2,40 +2,33 @@ import React, { Suspense } from "react";
 import dynamic from "next/dynamic";
 import Head from "next/head";
 import SecondHeroBackground from "@/components/helper/SecondHeroBackground";
-import type { Metadata } from "next";
-import { fetchData } from "@/lib/api/fetchData";
 
 // Dynamic import for lazy loading
-const LazyUserTabs = dynamic(() =>
-  import("@/components/helper/Tabs").then((module) => module.UserTabs)
+const LazyAcountantTabs = dynamic(() =>
+  import("@/components/helper/Tabs").then((module) => module.AcountantTabs)
 );
 
-export const metadata: Metadata = {
-  title: "User",
-  description: "User Page",
-};
-export default async function UserLayout({
+export default function InstructorLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  // if (usePathname == "/user") {
-  //   redirect("/user/profile");
-  // }
-  const data = await fetchData({ endPoint: `/auth/profile` });
   return (
     <>
+      <Head>
+        <title>Instructor</title>
+        <meta name="description" content="Instructor Page" />
+      </Head>
       <main className="mb-20 relative">
         <SecondHeroBackground
-          imageSrc={data?.avatar || ""}
-          title={data?.name || "Loading"}
-          email={data?.email || "Loading"}
+          title="Jane Cooper"
+          email="alma.lawson@example.com"
         />
         <section className="container my-4 grid grid-cols-4 gap-4">
           <div className="md:col-span-1 col-span-4 space-y-4 rounded-lg">
-            <div className="shadow-box-shadow rounded-lg p-5">
+            <div className=" shadow-box-shadow  rounded-lg p-5">
               <Suspense fallback={<div>Loading...</div>}>
-                <LazyUserTabs Name={data?.name || "Loading"} />
+                <LazyAcountantTabs Name="John Doe" />
               </Suspense>
             </div>
           </div>
