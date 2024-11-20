@@ -27,15 +27,15 @@ const BlogCommentReplyArea = ({
   const handleReplyUpdate = async () => {
     if (isUpdateContent) {
       try {
-        const response = await axios.patch(`${BASE_URL}/api/public/comments`, {
-          id: commentId,        
-          content: replyContent,
-        }, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          }
+        const response = await modifyData({
+          endPoint: '/api/public/comments',
+          method: 'PATCH',
+          data: {
+            id: commentId,
+            content: replyContent,
+          },
+          token: token,
         });
-  
   
         if (response) {
           toast.success('Comment updated successfully');
@@ -50,16 +50,17 @@ const BlogCommentReplyArea = ({
     
     else {
       try {
-        const response = await axios.post(`${BASE_URL}/api/public/comments`, {
-          id: blogId,        
-          content: replyContent,
-          parent_id: commentId
-        }, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          }
+        const response = await modifyData({
+          endPoint: '/api/public/comments',
+          method: 'POST',
+          data: {
+            id: blogId,
+            content: replyContent,
+            parent_id: commentId
+          },
+          token: token,
         });
-  
+
         if (response) {
           toast.success('Reply Added successfully');
           setIsReplyAreaOpen(false)
