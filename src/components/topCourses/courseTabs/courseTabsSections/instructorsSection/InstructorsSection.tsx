@@ -10,18 +10,19 @@ const InstructorsSection = () => {
   return (
     <>
       <div className='mt-20 mx-6 flex gap-4'>
-        <div className='w-32 h-32 rounded-full relative'>
+        <div className='w-24 h-24 lg:w-32 lg:h-32 rounded-full relative'>
           <Image
             src={instructor}
             alt='author'
             fill
+            objectFit='cover'
             className='rounded-full'
           />
         </div>
         <div className='w-[calc(100%-8rem)]'>
           <h1 className='text-base font-semibold'>Jason Thorne</h1>
           <p className='text-sm my-3'>Developer</p>
-          <div className='flex items-center gap-2'>
+          <div className='flex flex-col lg:flex-row items-start lg:items-center gap-2'>
             <div className='flex items-center gap-2'>
               <FaStar
                 size={16}
@@ -43,7 +44,7 @@ const InstructorsSection = () => {
             error magni nisi dolorum cupiditate, eveniet reiciendis cumque consequatur magnam, enim
             soluta nulla sapiente vel, quaerat alias at consectetur?
           </p>
-          <div className='flex items-center gap-8 mt-6 ms-4'>
+          <div className='grid grid-cols-3 sm:flex sm:items-center sm:justify-center sm:gap-8 gap-2 mt-6 sm:ms-4 p-2 sm:p-0'>
             <button className='border border-gray-100 rounded-full p-2'>
               <FaFacebookF />
             </button>

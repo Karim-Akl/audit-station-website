@@ -13,8 +13,8 @@ const CourseTabs = () => {
   const [isCommentAreaOpen, setIsCommentAreaOpen] = useState(false);
   return (
     <>
-      <div className='flex items-center justify-between'>
-        <div className='flex items-center gap-6 my-10'>
+      <div className='flex flex-col lg:flex-row items-start lg:items-center justify-between mb-8 lg:mb-0'>
+        <div className='grid grid-cols-2 lg:grid-cols-4 gap-6 my-10'>
           <CourseTab
             sectionTitle='overview'
             currentView={currentView}
@@ -45,7 +45,7 @@ const CourseTabs = () => {
       </div>
       {isCommentAreaOpen ? (
         <>
-        <AddCourseReview setIsCommentAreaOpen = {setIsCommentAreaOpen} />
+          <AddCourseReview setIsCommentAreaOpen={setIsCommentAreaOpen} />
         </>
       ) : (
         <>

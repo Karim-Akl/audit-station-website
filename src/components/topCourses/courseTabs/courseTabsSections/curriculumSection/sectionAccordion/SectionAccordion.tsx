@@ -66,9 +66,9 @@ export default function SectionAccordion({ title, lessonsNumber, duration, lesso
           aria-controls='panel1d-content'
           id='panel1d-header'
         >
-          <div className='flex justify-between w-full items-center'>
+          <div className='flex ps-2 lg:ps-0 flex-col lg:flex-row justify-between w-full items-start lg:items-center'>
             <h1 className='font-bold'>{title}</h1>
-            <div className='flex items-center gap-4'>
+            <div className='mt-2 lg:mt-0 flex items-center gap-4'>
               <span>{lessonsNumber} Lessons</span>
               <span>{duration} hour</span>
             </div>

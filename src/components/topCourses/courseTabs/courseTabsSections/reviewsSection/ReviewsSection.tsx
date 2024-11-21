@@ -4,16 +4,7 @@ import { ReviewComment } from './reviewComment/ReviewComment';
 import reviewer from '../../../../../../public/assets/top-course/reviewer.png';
 
 export const ReviewsSection = () => {
-  const linearProgressStyles = {
-    width: '100%',
-    height: '8px',
-    borderRadius: '2px',
-    '& .MuiLinearProgress-bar': {
-      backgroundColor: '#FDB022',
-    },
-    backgroundColor: '#EAEAEA',
-  };
-
+  
   const replies = [
     {
       id: 1,
@@ -47,8 +38,8 @@ export const ReviewsSection = () => {
 
   return (
     <>
-      <div className='flex items-center gap-10'>
-        <div className='bg-[#EAEAEA] py-6 px-10 flex flex-col items-center gap-3 rounded-lg'>
+      <div className='flex flex-col lg:flex-row items-center gap-10'>
+        <div className='bg-[#EAEAEA] py-6 px-10 flex flex-col items-center gap-3 rounded-lg w-full lg:w-fit'>
           <div className='text-[#767676] font-bold text-xl'>4 out of 5</div>
           <Rating
             defaultValue={5}

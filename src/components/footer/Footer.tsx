@@ -28,13 +28,13 @@ export const Footer: React.FC = async () => {
 
             <li className='flex  max-w-60 flex-wrap my-[1rem]'>
               <h6>Head Quarters:</h6>
-              {data?.head_quarters?.map((address: string) => {
+              {Array.isArray(data?.head_quarters) && data?.head_quarters?.map((address: string) => {
                 return <p key={address}>{address}</p>;
               })}
             </li>
             <li className='flex max-w-52 flex-wrap my-[1rem]'>
               <h6>Our Branches:</h6>
-              {data?.our_branches?.map((address: string) => {
+              {Array.isArray(data?.our_branches) && data?.our_branches?.map((address: string) => {
                 return <p key={address}>{address}</p>;
               })}
             </li>
