@@ -1,5 +1,5 @@
 import SecondHeroBackground from "@/components/helper/SecondHeroBackground";
-import BecomeAnInstructor from "@/forms/become-an-instructor";
+import BecomeAnInstructor from "@/forms/become-an-company";
 
 export default function RegistrationPage() {
   return (
@@ -7,8 +7,8 @@ export default function RegistrationPage() {
       <SecondHeroBackground
         imageShow={false}
         upgradeshow={false}
-        title="Upgrade to Instructor"
-        email="upgrad profile"
+        title="Upgrade to Company"
+        email="upgrade profile"
       />
       <div>
         <BecomeAnInstructor />

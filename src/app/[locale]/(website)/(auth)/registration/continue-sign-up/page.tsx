@@ -6,7 +6,7 @@ export default function LoginPage() {
     <main className="relative overflow-hidden">
       <HeroBackground title=" Continue Sign Up" />
       <div>
-        <ContinueSignUp />
+        <ContinueSignUp buttonShow={true} />
       </div>
     </main>
   );
