@@ -43,7 +43,7 @@ export const Navbar: React.FC<NavbarProps> = async ({
     {
       id: 4,
       name: t("commonQuestion"),
-      href: `${locale}/blogs`,
+      href: `${locale}/blogs/blogs`,
       activeLink: "blogs",
     },
     {

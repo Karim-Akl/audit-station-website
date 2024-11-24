@@ -2,7 +2,7 @@
 
 import BlogCommentReplyArea from '@/components/blogs/blog/blogComments/blogComment/blogCommentContent/blogCommentReplyArea/BlogCommentReplyArea';
 import BlogCommentActions from './blogCommentActions/BlogCommentActions';
-import { formatDateTime } from '@/lib/date/formatDateTime';
+import { formatDate } from '@/lib/date/formatDate';
 import { useState } from 'react';
 import { BASE_URL } from '@/lib/actions/actions';
 import Image from 'next/image';
@@ -69,7 +69,7 @@ const BlogCommentContent = ({ comment, userId, token, blogId }: any) => {
           <p>{comment?.content}</p>
         </div>
         <div className='lg:flex gap-2 text-[#22B9DD] w-full'>
-          <span className='text-[#90949C] me-2 lg:me-0'>{formatDateTime(comment?.created_at)}</span>
+          <span className='text-[#90949C] me-2 lg:me-0'>{formatDate(comment?.created_at)}</span>
           <div
             className='cursor-pointer'
             onClick={handleGetCommentReplies}

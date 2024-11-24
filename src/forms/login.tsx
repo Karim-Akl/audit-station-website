@@ -51,6 +51,7 @@ const Login: FC = () => {
       const data = await response.json();
       if (data.type === "success") {
         toast.success(data.message);
+        console.log('data: ',  data)
         setSession(data);
       }
       if (data.type === "error") {
