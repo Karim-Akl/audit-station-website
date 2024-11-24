@@ -40,8 +40,12 @@ const Login: FC = () => {
       const response = await fetch(`${BASE_URL}/auth/login/mobile`, {
         method: "POST",
         body: formData,
+        // credentials: "include",
+        // headers: {
+        //   "X-XSRF-TOKEN": "true", // Replace with actual token
+        // },
       });
-      console.log('response: ', response);
+      console.log("response: ", response);
 
       // Handle response if necessary
       const data = await response.json();
@@ -118,7 +122,6 @@ const Login: FC = () => {
                 onChange={handleInputChange}
               />
             </div>
-            <input id="type" type="number" name="type" value={6} hidden />
             <div className="text-right mt-2">
               <Link
                 href="forgot-password"

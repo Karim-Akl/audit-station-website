@@ -24,12 +24,13 @@ export default async function SignInLayout({ children }: { children: React.React
           imageSrc={data?.avatar || ''}
           title={data?.name || 'Loading'}
           email={data?.email || 'Loading'}
+
         />
         <section className='container my-4 grid grid-cols-4 gap-4'>
           <div className='md:col-span-1 col-span-4 space-y-4 rounded-lg'>
             <div className='shadow-box-shadow rounded-lg p-5'>
               <Suspense fallback={<div>Loading...</div>}>
-                <LazyUserTabs Name={data?.name || 'Loading'} />
+                <LazyUserTabs Name={data?.name || "Loading"} />
               </Suspense>
             </div>
           </div>

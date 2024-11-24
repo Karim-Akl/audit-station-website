@@ -31,6 +31,7 @@ export async function middleware(request: NextRequest) {
     nextUrl.pathname.startsWith(route)
   );
   const isAuthRoute = authRoutes.includes(nextUrl.pathname);
+  // const locale = getLocale(request);
 
   if (isAuthRoute) {
     if (isLoggedIn) {
@@ -38,6 +39,16 @@ export async function middleware(request: NextRequest) {
         new URL(DEFAULT_LOGIN_REDIRECT, request.url)
       );
     }
+  }
+
+  // if (!supportedLocales.includes(locale)) {
+  //   return NextResponse.redirect(
+  //     new URL(`/${defaultLocale}${nextUrl.pathname}`, request.url)
+  //   );
+  // }
+
+  if (isPublicRoute || isPublicNestedRoute) {
+    return intlMiddleware(request);
   }
   // If not logged in and trying to access a protected route, redirect to login
   // if (!isLoggedIn && !isPublicRoute && !isPublicNestedRoute) {
