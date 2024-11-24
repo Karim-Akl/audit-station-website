@@ -15,8 +15,8 @@ export function PopularPosts() {
           href={`${instructor.name}`}
           key={instructor.id}
         >
-          <Card className='  overflow-hidden border-none   bg-F5F5F5 shadow-none'>
-            <CardContent className='p-0 flex w-full '>
+          <Card className='  overflow-hidden border-none bg-F5F5F5 shadow-none'>
+            <CardContent className='p-0 flex w-full flex-col gap-4 lg:flex-row lg:gap-0'>
               <Image
                 src={instructor.imageUrl}
                 width={150}
@@ -24,8 +24,8 @@ export function PopularPosts() {
                 alt={instructor.name}
                 className=' object-cover  '
               />
-              <div className='flex flex-col justify-around ps-1 '>
-                <div className='flex space-x-2 items-center'>
+              <div className='flex flex-col justify-around ps-1 ms-2'>
+                <div className='flex gap-2 items-center'>
                   <CiCalendar
                     color='#22B9DD'
                     size={22}
