@@ -36,17 +36,22 @@ const Login: FC = () => {
 
     try {
       const formData = new FormData(event.currentTarget);
-      console.log(formData);
 
       const response = await fetch(`${BASE_URL}/auth/login/mobile`, {
         method: "POST",
         body: formData,
+        // credentials: "include",
+        // headers: {
+        //   "X-XSRF-TOKEN": "true", // Replace with actual token
+        // },
       });
+      console.log("response: ", response);
 
       // Handle response if necessary
       const data = await response.json();
       if (data.type === "success") {
         toast.success(data.message);
+        console.log('data: ',  data)
         setSession(data);
       }
       if (data.type === "error") {
@@ -117,7 +122,6 @@ const Login: FC = () => {
                 onChange={handleInputChange}
               />
             </div>
-            <input id="type" type="number" name="type" value={6} hidden />
             <div className="text-right mt-2">
               <Link
                 href="forgot-password"

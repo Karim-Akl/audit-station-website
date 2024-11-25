@@ -1,7 +1,7 @@
 'use client';
 
 import { CiCalendarDate } from 'react-icons/ci';
-import { formatDateTime } from '@/lib/date/formatDateTime';
+import { formatDate } from '@/lib/date/formatDate';
 import { CgProfile } from 'react-icons/cg';
 import PaginationComponent from '@/components/pagination/PaginationComponent';
 import Image from 'next/image';
@@ -42,9 +42,11 @@ const BlogsComponent = () => {
                   key={blog.id}
                   className='relative overflow-hidden p-0 bg-white'
                 >
-                  {blog.category?.name && (<div className='absolute top-4 right-4 text-white bg-[#22B9DD] px-4 py-2 rounded-md flex items-center justify-center text-xs whitespace-nowrap'>
-                    {blog.category?.name}
-                  </div>)}
+                  {blog.category?.name && (
+                    <div className='absolute top-4 right-4 text-white bg-[#22B9DD] px-4 py-2 rounded-md flex items-center justify-center text-xs whitespace-nowrap'>
+                      {blog.category?.name}
+                    </div>
+                  )}
                   <CardContent className='p-2'>
                     <Image
                       src={blog.image}
@@ -63,7 +65,7 @@ const BlogsComponent = () => {
                             />
                           </span>
                           <span className='ml-2 text-xs whitespace-nowrap'>
-                            {formatDateTime(blog?.created_at)}
+                            {formatDate(blog?.created_at)}
                           </span>
                         </div>
                         <div className='flex items-center gap-1 md:my-2'>

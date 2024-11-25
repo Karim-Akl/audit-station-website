@@ -17,7 +17,7 @@ import Image, { ImageProps } from "next/image";
 import { useOutsideClick } from "@/hooks/use-outside-click";
 
 interface CarouselProps {
-  items: JSX.Element[];
+  items: false | JSX.Element[];
   initialScroll?: number;
 }
 
@@ -110,7 +110,7 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
               "max-w-7xl mx-auto" // remove max-w-4xl if you want the carousel to span the full width of its container
             )}
           >
-            {items.map((item, index) => (
+            {(Array.isArray(items)) && items?.map((item, index) => (
               <motion.div
                 initial={{
                   opacity: 0,
