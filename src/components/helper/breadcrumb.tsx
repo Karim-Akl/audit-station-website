@@ -1,20 +1,11 @@
 "use client";
-import { FC, ReactNode } from "react";
+import { FC } from "react";
 import {
   Breadcrumb,
-  BreadcrumbEllipsis,
   BreadcrumbItem,
-  BreadcrumbLink,
   BreadcrumbList,
-  BreadcrumbPage,
   BreadcrumbSeparator,
 } from "../ui/breadcrumb";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 import Link from "next/link";
 import UseSearchParamsHook from "@/hooks/UseSearchParamsHook";
 import { Url } from "url";
@@ -49,7 +40,7 @@ const GlobalBreadcrumbHeader: FC<BreadcrumbHeaderProps> = ({
         <BreadcrumbList>
           <BreadcrumbItem>
             {MainLink ? (
-              <Link href={MainLink}>{MainTitle}</Link>
+              <Link href={MainLink ||""}>{MainTitle}</Link>
             ) : (
               <span>{MainTitle}</span>
             )}
@@ -75,7 +66,7 @@ const GlobalBreadcrumbHeader: FC<BreadcrumbHeaderProps> = ({
             <>
               <BreadcrumbSeparator />
               {lastPath ? (
-                <Link href={secondLastPath}>
+                <Link href={secondLastPath || '/'}>
                   <BreadcrumbItem className="capitalize">
                     <span>{secondLastPath}</span>
                   </BreadcrumbItem>

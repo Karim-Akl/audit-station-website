@@ -85,7 +85,7 @@ export const Navbar: React.FC<NavbarProps> = async ({
               <ModeToggle />
             </div>
             <div className="rounded-full border border-[#767676] p-2 hover:bg-gray-400 hover:cursor-pointer">
-              <Link href={`/${locale}/shoppingCart`}>
+              <Link href={`/${locale}/shoppingCart` || '/'}>
                 <LiaShoppingBasketSolid size={22} />
               </Link>
             </div>

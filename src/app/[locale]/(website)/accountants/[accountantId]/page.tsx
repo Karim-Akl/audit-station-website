@@ -80,8 +80,8 @@ const AccountantPage = async ({
             />
           </div>
           <div className='flex flex-col justify-start gap-4 ms-6 text-white md:max-w-[55%] mt-4'>
-            <span>#281093120</span>
-            <span>Accountant</span>
+            <span>Jason Thorne</span>
+            <span>Developer</span>
             <div className='w-full flex flex-col md:flex-row gap-4 md:gap-2 lg:gap-12'>
               <div className='flex items-center gap-1'>
                 <FaStar

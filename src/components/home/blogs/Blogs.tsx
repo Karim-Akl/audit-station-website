@@ -100,7 +100,7 @@ export async function Blogs() {
               className='md:w-full rounded-lg  sm:basis-1/2 md:basis-1/3 xl:basis-1/5'
             >
               <Link
-                href={`/${locale}/blogs/${blog.id}`}
+                href={`/${locale}/blogs/${blog.id}` || '/'}
                 className='bg-white  rounded-2xl border-1 border-[#E2E8F0] '
               >
                 <Card className='relative p-0  bg-white hover:border-6 hover:border-[#5C5C5C] hover:border-opacity-5 transition-all'>
@@ -154,7 +154,7 @@ export async function Blogs() {
         <CarouselNext />
       </Carousel>
       <div className='flex items-center justify-end'>
-        <Link href={`/${locale}/blogs/blogs`}>
+        <Link href={`/${locale}/blogs/blogs` || '/'}>
           {' '}
           <Button className='bg-transparent hover:bg-gray-200 hover:border border pe-0 md:h-14 md:mt-12 justify-between md:w-72 rounded-full border-[#22B9DD] text-[#22B9DD]'>
             <span>See More</span>

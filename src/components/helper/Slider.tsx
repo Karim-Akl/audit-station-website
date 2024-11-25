@@ -28,7 +28,7 @@ const Slider: React.FC<SliderProps> = ({ items }) => {
             >
                 {items.map((item) => (
                     <div key={item.id} className="p-2 flex-shrink-0 w-60">
-                        <Link href={`/`}>
+                        <Link href='/'>
                             <div className="bg-white rounded">
                                 <Image
                                     className="h-full rounded"

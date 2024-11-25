@@ -1,3 +1,5 @@
+"use server";
+
 import { SignJWT, jwtVerify } from "jose";
 import { cookies } from "next/headers";
 const secretKey = process.env.AUTH_SECRET;
