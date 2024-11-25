@@ -11,7 +11,6 @@ import { IoIosArrowRoundForward } from 'react-icons/io';
 import Stars from '@/components/stars/Stars';
 import { LuFileCheck } from 'react-icons/lu';
 import { RiDeleteBinLine } from 'react-icons/ri';
-
 export const metadata = {
   title: 'Shopping Cart',
   description: 'Shopping Cart Page',

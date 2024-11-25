@@ -10,7 +10,7 @@ export default function LoginPage() {
     <main className="relative overflow-hidden">
       <HeroBackground title="Login" />
       <div>
-        <Login />
+        <Login />x
       </div>
     </main>
   );
