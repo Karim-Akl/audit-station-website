@@ -5,6 +5,8 @@ import MuiAccordion, { AccordionProps } from '@mui/material/Accordion';
 import MuiAccordionSummary, { AccordionSummaryProps } from '@mui/material/AccordionSummary';
 import MuiAccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
+import { IoPlaySharp } from 'react-icons/io5';
+import { MdLockOutline } from 'react-icons/md';
 
 const Accordion = styled((props: AccordionProps) => (
   <MuiAccordion
@@ -64,9 +66,9 @@ export default function SectionAccordion({ title, lessonsNumber, duration, lesso
           aria-controls='panel1d-content'
           id='panel1d-header'
         >
-          <div className='flex justify-between w-full items-center'>
+          <div className='flex ps-2 lg:ps-0 flex-col lg:flex-row justify-between w-full items-start lg:items-center'>
             <h1 className='font-bold'>{title}</h1>
-            <div className='flex items-center gap-4'>
+            <div className='mt-2 lg:mt-0 flex items-center gap-4'>
               <span>{lessonsNumber} Lessons</span>
               <span>{duration} hour</span>
             </div>
@@ -77,11 +79,28 @@ export default function SectionAccordion({ title, lessonsNumber, duration, lesso
             {Array.isArray(lessons) &&
               lessons.length > 0 &&
               lessons.map((lesson: any) => {
-                return <div key={lesson.id}>
-                  <div className=''>
-
+                return (
+                  <div
+                    key={lesson.id}
+                    className=''
+                  >
+                    <div className='bg-[#E9F8FC] flex w-full justify-between items-center px-4 py-2 rounded-md mb-2'>
+                      <div className='flex items-center gap-2'>
+                        <button className='bg-white rounded-full p-2'>
+                          <IoPlaySharp
+                            size={12}
+                            color='#22B9DD'
+                          />
+                        </button>
+                        <span>{lesson.title}</span>
+                      </div>
+                      <div className='flex items-center gap-2'>
+                        <span>{lesson.duration}m</span>
+                        {lesson.isLocked && <MdLockOutline />}
+                      </div>
+                    </div>
                   </div>
-                </div>;
+                );
               })}
           </Typography>
         </AccordionDetails>
