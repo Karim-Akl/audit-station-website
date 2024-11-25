@@ -21,14 +21,14 @@ export default function About() {
       <div className=" w-full py-2 mb-2 font-sans">
         <h2 className="text-4xl text-[#333333] font-semibold">Notifications</h2>
 
-        <div className="flex items-center justify-between mt-4">
+        <div className="flex items-center justify-between mt-4 flex-nowrap">
           <p className="  text-[#0F1A29]">13 Notification</p>
           <div className="flex  items-center   ">
-            <p className="text-[#5C5C5C] flex-nowrap ">Sort BY :</p>
+            <p className="text-[#5C5C5C]  ">Sort BY :</p>
             <Select defaultValue="all">
               <SelectTrigger
                 className={cn(
-                  "bg-blue border-none focus:ring-offset-0 focus:ring-0    "
+                  "bg-blue text-bold border-none focus:ring-offset-0 focus:ring-0    "
                 )}
               >
                 <SelectValue />

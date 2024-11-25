@@ -8,7 +8,7 @@ import { getLocale } from "next-intl/server";
 import { Button } from "../ui/button";
 import Link from "next/link";
 
-const ContinueSignUp = async () => {
+const UpgradeToAccountant = async () => {
   const locale = await getLocale();
   return (
     <div className="relative h-full py-20 ">
@@ -24,8 +24,8 @@ const ContinueSignUp = async () => {
             icon={<FaUser className="text-white text-3xl" />}
             title="User"
             description="Browse the platform's sections and increase your experience through our courses."
-            className=" bg-cyan-500 border-cyan-500 text-cyan-500"
-            style={"  hover:shadow-cyan-500 text-cyan-500 border-cyan-500"}
+            className=" bg-[#21A74F] border-[#21A74F] text-[#21A74F] "
+            style={"hover:shadow-[#21A74F] text-[#21A74F] border-[#21A74F]"}
           />
           <div
             dir={`${locale == "ar" ? "ltr" : ""}`}
@@ -104,6 +104,7 @@ const ContinueSignUp = async () => {
             description="Browse the platform's sections and increase your experience through our courses."
             className=" bg-cyan-500 border-cyan-500 text-cyan-500"
             style={" hover:shadow-cyan-500 text-cyan-500 border-cyan-500"}
+            showAlertDialog={true}
           />
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -172,21 +173,9 @@ const ContinueSignUp = async () => {
             style={" hover:shadow-[#C0C0C0]  text-[#C0C0C0] border-[#C0C0C0]"}
           />
         </div>
-
-        <div className="flex flex-col justify-center items-center text-xl font-semibold mt-3 w-full space-y-4">
-          <Button className="bg-[#1FA8C9] text-xl px-18 py-6 w-96 ">
-            <Link href={`/${locale}/registration-as-instructor`}>Become an instructor</Link>
-          </Button>{" "}
-          <Button className="bg-[#1FA8C9] text-xl px-18 py-6 w-96 ">
-            <Link href={`/${locale}/registration-as-instructor`}> Become an assistant</Link>
-          </Button>{" "}
-          <Button className="bg-[#1FA8C9] text-xl px-18 py-6 w-96 ">
-            <Link href={`/${locale}/registration-as-instructor`}> Become a company</Link>
-          </Button>
-        </div>
       </div>
     </div>
   );
 };
 
-export default ContinueSignUp;
+export default UpgradeToAccountant;

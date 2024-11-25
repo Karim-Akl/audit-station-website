@@ -18,7 +18,7 @@ export async function StepsChart() {
           Select Your Next Step To Upgrade Your Profile
         </h2>
       </div>
-      <div className="md:mt-10">
+      <div className="md:mt-10 flex flex-col">
         <CustomCard
           step="1"
           icon={<FaUser className="text-white text-3xl" />}
