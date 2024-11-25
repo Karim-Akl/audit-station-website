@@ -9,7 +9,7 @@ import { getLocale } from 'next-intl/server';
 export async function TeamWork() {
   const data = await fetchData({endPoint: '/public/our_team'})
   const locale = await getLocale()
-  const cards = data.map((member: any, index: any) => (
+  const cards = data?.map((member: any, index: any) => (
     <TeamMemberCard
       key={member.id}
       card={member}
