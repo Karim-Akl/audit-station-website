@@ -12,7 +12,7 @@ export function PopularPosts() {
       <h2 className='font-bold text-xl text-[#0F1A29] '>Popular Posts</h2>
       {instructors.map((instructor) => (
         <Link
-          href={`${instructor.name}`}
+          href={`${instructor.name || ""}`}
           key={instructor.id}
         >
           <Card className='  overflow-hidden border-none bg-F5F5F5 shadow-none'>

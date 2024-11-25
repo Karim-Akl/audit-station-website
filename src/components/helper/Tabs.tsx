@@ -105,7 +105,7 @@ export function UserTabs({ Name }: { Name: string }) {
           Hello , <span>{Name}</span>
         </p>
 
-        {userTabs.map((tab) => (
+        {(userTabs && userTabs.length > 0) && userTabs.map((tab) => (
           <Link
             key={tab.value}
             href={
@@ -193,7 +193,7 @@ export function InstructorTabs({ Name }: { Name: string }) {
         </p>
 
         {instructortabs.map((tab) => (
-          <Link key={tab.value} href={`/${locale}/instructor/${tab.value}`}>
+          <Link key={tab.value} href={`/${locale}/instructor/${tab.value}` || '/'}>
             <TabsTrigger
               className={`data-[state=active]:border-none data-[state=active]:font-bold data-[state=active]:bg-[#22B9DD] data-[state=active]:text-white w-full  items-center justify-start
     bordre-b-0 px-4 gap-2 text-lg font-medium  ${
@@ -289,7 +289,7 @@ export function AcountantTabs({ Name }: { Name: string }) {
         </p>
 
         {acountanttabs.map((tab) => (
-          <Link key={tab.value} href={`/${locale}/accountant/${tab.value}`}>
+          <Link key={tab.value} href={`/${locale}/accountant/${tab.value}` || '/'}>
             <TabsTrigger
               className={`data-[state=active]:border-none data-[state=active]:font-bold data-[state=active]:bg-[#22B9DD] data-[state=active]:text-white w-full  items-center justify-start
     bordre-b-0 px-4 gap-2 text-lg font-medium  ${

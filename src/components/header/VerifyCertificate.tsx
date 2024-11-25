@@ -9,7 +9,7 @@ interface LoacaleProps {
 export const VerifyCertificate: React.FC<LoacaleProps> = ({ locale }) => {
   return (
     <form className="flex items-center ">
-      <Link href={`/${locale}/verify-your-certificate`}>
+      <Link href={`/${locale}/verify-your-certificate` || '/'}>
         {" "}
         <button
           type="submit"

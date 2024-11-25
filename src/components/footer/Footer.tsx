@@ -56,13 +56,13 @@ export const Footer: React.FC = async () => {
               <li>Contact Us</li>
               <li>About Us</li>
               <Link
-                href={`/${locale}/privacy-policy`}
+                href={`/${locale}/privacy-policy` || '/'}
                 target='_blank'
               >
                 <li>Privacy Policy</li>
               </Link>
               <Link
-                href={`/${locale}/terms-and-conditions`}
+                href={`/${locale}/terms-and-conditions` || '/'}
                 target='_blank'
               >
                 <li>Terms and Conditions</li>{' '}
@@ -70,7 +70,7 @@ export const Footer: React.FC = async () => {
               <li>Blogs</li>
               <li>Careers</li>
               <Link
-                href={`/${locale}/faqs`}
+                href={`/${locale}/faqs` || '/'}
                 target='_blank'
               >
                 <li>FAQ</li>
@@ -89,7 +89,7 @@ export const Footer: React.FC = async () => {
               </div>
               <div className='flex gap-1 items-center'>
                 <Link
-                  href={data?.app_store}
+                  href={data?.app_store || '/'}
                   target='_blank'
                 >
                   <Image
@@ -98,7 +98,7 @@ export const Footer: React.FC = async () => {
                   />
                 </Link>
                 <Link
-                  href={data?.google_play}
+                  href={data?.google_play || '/'}
                   target='_blank'
                   className='max-w-36'
                 >

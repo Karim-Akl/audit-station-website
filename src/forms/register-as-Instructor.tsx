@@ -94,7 +94,7 @@ const RegisterAsInstructor: FC = () => {
             <label htmlFor="rememberMe" className="text-sm text-gray-700">
               By Signing Up, you agree to our{" "}
               <Link
-                href={`/${locale}/registration/conditions-and-privacy-policy`}
+                href={`/${locale}/registration/conditions-and-privacy-policy` || '/'}
               >
                 <span className="text-[#1FA8C9]">
                   Conditions and Privacy Policy

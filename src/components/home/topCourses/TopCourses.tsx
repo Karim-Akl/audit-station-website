@@ -139,7 +139,7 @@ export function TopCourses() {
                   className='md:w-full rounded-lg sm:basis-1/2 md:basis-1/3 xl:basis-1/3 '
                 >
                   <Link
-                    href={`/${locale}/top-courses/${instructor.id}`}
+                    href={`/${locale}/top-courses/${instructor.id} || '/'`}
                     className='bg-white  rounded-2xl border-1 border-[#E2E8F0] '
                   >
                     <Card className='relative  p-0  rounded-xl hover:border-8 hover:border-[#5C5C5C] hover:border-opacity-5 transition-all'>

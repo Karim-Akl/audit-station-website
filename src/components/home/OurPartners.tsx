@@ -17,7 +17,7 @@ const Partners: React.FC<OurPartnersProps> = ({ partners }) => {
       <div className="flex md:justify-between justify-center flex-wrap md:flex-nowrap   items-center  ">
         {partners?.map((Item) => (
           <>
-            <Link key={Item.id} href={Item.link}>
+            <Link key={Item.id} href={Item.link || '/'}>
               <Image
                 width={200}
                 height={200}

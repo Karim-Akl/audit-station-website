@@ -4,8 +4,8 @@ import React, { useEffect, useState } from 'react';
 import { FaMapLocationDot } from 'react-icons/fa6';
 import { MdOutlineMail } from 'react-icons/md';
 import { CiFacebook, CiLinkedin, CiYoutube } from 'react-icons/ci';
-import { RiTiktokLine } from "react-icons/ri";
-import { FaSnapchat } from "react-icons/fa6";
+import { RiTiktokLine } from 'react-icons/ri';
+import { FaSnapchat } from 'react-icons/fa6';
 
 import {
   Select,
@@ -68,23 +68,25 @@ export const Header: React.FC = () => {
           <div className='md:justify-start justify-around items-center md:gap-12 md:flex hidden'>
             <div className='md:justify-start justify-center items-center md:gap-2 md:flex'>
               <div className='text-[13px] font-medium font-sans'>Follow Us On :</div>
-              <div className='justify-start items-center gap-1 flex'>
-                <Link href={settings ? settings.facebook : ''}>
-                  <CiFacebook size={24} />
-                </Link>
-                <Link href={settings ? settings.linkedin : ''}>
-                  <CiLinkedin size={24} />
-                </Link>
-                <Link href={settings ? settings.tiktok : ''}>
-                  <RiTiktokLine size={24} />
-                </Link>
-                <Link href={settings ? settings.snapchat : ''}>
-                  <FaSnapchat size={24} />
-                </Link>
-                <Link href={settings ? settings.youtube : ''}>
-                  <CiYoutube size={24} />
-                </Link>
-              </div>
+              {settings.facebook && (
+                <div className='justify-start items-center gap-1 flex'>
+                  <Link href={settings.facebook || '/'}>
+                    <CiFacebook size={24} />
+                  </Link>
+                  <Link href={settings.linkedin || '/'}>
+                    <CiLinkedin size={24} />
+                  </Link>
+                  <Link href={settings.tiktok || '/'}>
+                    <RiTiktokLine size={24} />
+                  </Link>
+                  <Link href={settings.snapchat || '/'}>
+                    <FaSnapchat size={24} />
+                  </Link>
+                  <Link href={settings.youtube || '/'}>
+                    <CiYoutube size={24} />
+                  </Link>
+                </div>
+              )}
             </div>
             <div className='md:justify-start justify-center items-center gap-4 flex'>
               <div className='justify-start items-center gap-2 flex border-e'>
