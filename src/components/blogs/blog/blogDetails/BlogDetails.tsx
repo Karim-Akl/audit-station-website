@@ -1,20 +1,19 @@
-
 import { CiCalendarDate } from 'react-icons/ci';
-import { formatDateTime } from '@/lib/date/formatDateTime';
+import { formatDate } from '@/lib/date/formatDate';
 import { CgProfile } from 'react-icons/cg';
 import { IoMdTime } from 'react-icons/io';
 import { FaRegCommentAlt } from 'react-icons/fa';
 
-const BlogDetails = ({data}: any) => {
-    return (
-        <>
-        <div className='w-full flex flex-col md:flex-row gap-4 my-4'>
+const BlogDetails = ({ data }: any) => {
+  return (
+    <>
+      <div className='w-full flex flex-col md:flex-row gap-4 my-4'>
         <div className='flex items-center'>
           <CiCalendarDate
             color='#22B9DD'
             size={24}
           />
-          <span className='ml-2 text-xs whitespace-nowrap'>{formatDateTime(data?.created_at)}</span>
+          <span className='ml-2 text-xs whitespace-nowrap'>{formatDate(data?.created_at)}</span>
         </div>
         <div className='flex items-center'>
           <CgProfile
@@ -41,8 +40,8 @@ const BlogDetails = ({data}: any) => {
           <span>{data?.comments_count}</span>
         </div>
       </div>
-        </>
-    )
-}
+    </>
+  );
+};
 
-export default BlogDetails
+export default BlogDetails;

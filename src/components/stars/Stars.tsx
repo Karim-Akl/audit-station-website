@@ -21,7 +21,7 @@ export default function Stars({
               key={index}
               className='my-auto pb-1'
             >
-              <FaStar className='text-yellow-500 my-auto text-xs md:text-base lg:text-base' />
+              <FaStar className='text-[#FEC84B] my-auto text-xs md:text-base lg:text-base' />
             </span>
           );
         } else {
