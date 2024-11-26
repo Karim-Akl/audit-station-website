@@ -1,6 +1,6 @@
 import { Footer } from "@/components/footer/Footer";
 import { Navbar } from "@/components/header/Navbar";
-import React, { Suspense } from "react";
+import React from "react";
 import { getSession } from "@/lib/authSession";
 
 interface LayoutProps {
