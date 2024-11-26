@@ -22,7 +22,8 @@ export const NavLink: React.FC<NavLinkProps> = ({ links }) => {
 
   const renderLinks = (links: NavLinkItem[]) => {
     return links.map((link) => (
-      <div key={link.id} className="relative  group">
+
+      <div key={link.id} className="relative  group  ml-2">
         <div className="flex items-center   transition duration-800 delay-150 hover:delay-300">
           <Link
             href={`/${link.href}`}

@@ -1,9 +1,8 @@
 import Link from "next/link";
 import { GoPerson } from "react-icons/go";
-import { CiLogin } from "react-icons/ci";
 import { getLocale } from "next-intl/server";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
-
+import Image from "next/image";
 interface UserAvatarDropDownProps {
   username: string;
   image: string | undefined;
@@ -17,10 +16,11 @@ export default async function AuthIconCheck({
 }: UserAvatarDropDownProps) {
   const locale = await getLocale();
   return !isAuthenticated ? (
-    <div className="rounded-full border border-[#767676] p-2 hover:bg-gray-400 hover:cursor-pointer">
-      <Link href={`/${locale}/login`}>
-        {" "}
-        <CiLogin size={22} />
+    <div className="rounded-full border border-[#767676] p-2 hover:bg-gray-400 hover:cursor-pointer ">
+      <Link href={`/${locale}/login`} className="">
+
+        <Image src="/assets/home/mian.png" alt="x" width={22} height={22}  className=""/>
+
       </Link>
     </div>
   ) : (

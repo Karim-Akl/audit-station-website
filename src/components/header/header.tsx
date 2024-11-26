@@ -21,7 +21,7 @@ import { useTheme } from 'next-themes';
 import axios from 'axios';
 import { BASE_URL } from '@/lib/actions/actions';
 import Link from 'next/link';
-
+import Image from 'next/image';
 export const Header: React.FC = () => {
   const [settings, setSettings] = useState<any>(null);
   const { router } = UseSearchParamsHook();
@@ -57,7 +57,10 @@ export const Header: React.FC = () => {
         <div className='md:container self-stretch md:justify-between items-center md:inline-flex'>
           <div className='justify-start items-center gap-8 flex'>
             <div className='md:justify-start justify-center items-center gap-1 flex'>
-              <FaMapLocationDot size={20} />
+              {/* <FaMapLocationDot size={20} /> */}
+              <Link href={settings ? settings.snapchat : ''}>
+                <Image src="/assets/home/Vector.jpg" alt="instagram"  width={20} height={20} />
+                </Link>
               <div className='md:text-[13px] text-[10px] md:font-medium'>{settings?.address}</div>
             </div>
             <div className='md:justify-start justify-center items-center gap-1 flex'>
@@ -75,14 +78,14 @@ export const Header: React.FC = () => {
                 <Link href={settings ? settings.linkedin : ''}>
                   <CiLinkedin size={24} />
                 </Link>
-                <Link href={settings ? settings.tiktok : ''}>
+                {/* <Link href={settings ? settings.tiktok : ''}>
                   <RiTiktokLine size={24} />
-                </Link>
+                </Link> */}
                 <Link href={settings ? settings.snapchat : ''}>
-                  <FaSnapchat size={24} />
+                <Image src="/assets/home/ins.png" alt="instagram"  width={15} height={15} />
                 </Link>
                 <Link href={settings ? settings.youtube : ''}>
-                  <CiYoutube size={24} />
+                  <Image src="/assets/home/x.png" alt="x"  width={15} height={15} />
                 </Link>
               </div>
             </div>

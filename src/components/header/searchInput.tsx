@@ -12,11 +12,11 @@ export const SearchInput: React.FC = () => {
         >
           Your Email
         </label>
-        <div className="relative w-full">
+        <div className="relative w-full rounded-full">
           <Input
             type="search"
             id="search-dropdown"
-            className=" p-2 md:pe-20 w-full z-20 text-sm rounded-xl focus:outline-none bg-none "
+            className=" p-2 md:pe-20 w-full z-20 text-sm rounded-full focus:outline-none bg-none "
             style={{ background: "none" }}
             placeholder="Search Here . . ."
             required

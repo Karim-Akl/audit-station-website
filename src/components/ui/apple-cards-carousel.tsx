@@ -274,7 +274,7 @@ export const Card = ({
 export const BlurImage = ({
   height,
   width,
-  src = "/images/placeholder.jpg",
+  src = "/assets/6a96305205d7524fbf24147ebae9b5a4.jpeg",
   className,
   alt,
   ...rest
