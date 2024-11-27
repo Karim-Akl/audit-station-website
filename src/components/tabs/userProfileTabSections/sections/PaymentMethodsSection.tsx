@@ -39,7 +39,7 @@ const PaymentMethodsSection = () => {
               </div>
             </div>
           </div>
-          <div className='mt-4 flex items-center gap-4 ps-2'>
+          <div className='mt-4 flex items-center gap-4 lg:ps-2'>
             <button
               className='flex items-center gap-2 py-4 px-12 rounded-full bg-white text-[#22B9DD] border border-[#22B9DD]'
               onClick={() => setIsAddPaymentMethodArea(false)}
@@ -64,10 +64,10 @@ const PaymentMethodsSection = () => {
         </>
       ) : (
         <>
-          <div className='my-8 flex items-center justify-between'>
+          <div className='my-8 flex flex-col lg:flex-row items-start lg:items-center justify-between'>
             <h1 className='text-3xl font-semibold'>PaymentMethods</h1>
             <button
-              className='flex items-center gap-2 px-8 py-4 bg-[#22B9DD] text-[#FFFFFF] rounded-xl'
+              className='mt-4 lg:mt-0 flex items-center gap-2 px-8 py-4 bg-[#22B9DD] text-[#FFFFFF] rounded-xl'
               onClick={() => setIsAddPaymentMethodArea(true)}
             >
               <IoAdd
@@ -77,16 +77,20 @@ const PaymentMethodsSection = () => {
               Add New Method
             </button>
           </div>
-          <table className='w-full'>
-            <tr className='bg-[#E9F8FC] text-center'>
-              <td className='p-2'>NO.</td>
-              <td>Payout Account</td>
-              <td>Card Num.</td>
-              <td>Expire Date</td>
-              <td>Cvv</td>
-              <td>Action</td>
-            </tr>
-          </table>
+          <div className='overflow-x-auto'>
+            <table className='w-full'>
+              <thead className='border-collapse'>
+                <tr className='bg-[#E9F8FC] text-center'>
+                  <td className='p-2 min-w-36 border border-gray-300'>NO.</td>
+                  <td className='p-2 min-w-36 border border-gray-300'>Payout Account</td>
+                  <td className='p-2 min-w-36 border border-gray-300'>Card Num.</td>
+                  <td className='p-2 min-w-36 border border-gray-300'>Expire Date</td>
+                  <td className='p-2 min-w-36 border border-gray-300'>Cvv</td>
+                  <td className='p-2 min-w-36 border border-gray-300'>Action</td>
+                </tr>
+              </thead>
+            </table>
+          </div>
         </>
       )}
     </div>

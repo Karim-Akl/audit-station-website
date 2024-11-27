@@ -17,7 +17,6 @@ interface LoginFormValues {
 }
 
 const Login: FC = () => {
-  const locale = useLocale();
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [formValues, setFormValues] = useState<LoginFormValues>({
     email: '',

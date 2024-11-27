@@ -14,7 +14,7 @@ export const metadata = {
 
 export default function VerifyCertificate() {
   return (
-    <main className="mb-20 relitive ">
+    <main className="mb-20 relative ">
       <HeroBackground title="Verify your certificate" />
       <section className="container flex flex-col justify-center w-full gap-2 border border-[#eee] p-8 my-8 shadow-md ">
         <h1 className="text-[31px] font-semibold">

@@ -44,7 +44,7 @@ const BlogsComponent = () => {
                 >
                   {blog.category?.name && (
                     <div className='absolute top-4 right-4 text-white bg-[#22B9DD] px-4 py-2 rounded-md flex items-center justify-center text-xs whitespace-nowrap'>
-                      {blog.category?.name}
+                      {blog.category?.name.slice(0, 10)}
                     </div>
                   )}
                   <CardContent className='p-2'>
