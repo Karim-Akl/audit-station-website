@@ -4,10 +4,10 @@ import { encrypt } from "@/lib/authSession";
 import { redirect } from "next/navigation";
 import { cookies } from "next/headers";
 import { DEFAULT_LOGIN_REDIRECT } from "@/routes";
-import { LoginResponse } from "@/lib/types";
+// import { LoginResponse } from "@/lib/types";
 
 export async function setSession(
-  user: LoginResponse | null,
+  user: any,
   callbackUrl = DEFAULT_LOGIN_REDIRECT
 ) {
   // Create the session

@@ -14,10 +14,10 @@ export interface LoginResponse {
     token: string;
     user: {
       id: number;
-      full_name: string;
+      name: string;
       email: string;
       phone: string;
-      image: string;
+      avatar: string;
       role: string;
     };
   };

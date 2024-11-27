@@ -63,15 +63,19 @@ const LocationSection = () => {
               Add New Location
             </button>
           </div>
-          <table className='w-full'>
-            <tr className='bg-[#E9F8FC] text-center'>
-              <td className='p-2'>NO.</td>
-              <td>Country</td>
-              <td>City</td>
-              <td>Full Address</td>
-              <td>Action</td>
-            </tr>
-          </table>
+          <div className='overflow-x-auto'>
+            <table className='w-full'>
+              <thead className='border-collapse'>
+                <tr className='bg-[#E9F8FC] text-center'>
+                  <td className='p-2 min-w-36 border border-gray-300'>NO.</td>
+                  <td className='p-2 min-w-36 border border-gray-300'>Country</td>
+                  <td className='p-2 min-w-36 border border-gray-300'>City</td>
+                  <td className='p-2 min-w-36 border border-gray-300'>Full Address</td>
+                  <td className='p-2 min-w-36 border border-gray-300'>Action</td>
+                </tr>
+              </thead>
+            </table>
+          </div>
         </>
       )}
     </div>

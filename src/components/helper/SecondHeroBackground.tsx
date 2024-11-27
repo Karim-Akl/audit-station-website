@@ -94,15 +94,13 @@ const SecondHeroBackground = async ({
               </div>
             </div>
             {upgradeshow && (
-
-              <div className=" z-50">
-                <Link href={`/${locale}/upgrade-to-company`}>
-                <Button className="bg-[#22B9DD] space-x-2 text-white rounded-full" >
-                  <span>Upgrade Profile</span>
-                  <FaArrowRight className='' />
-                </Button>
+              <div className=' z-50 mt-6 md:mt-0'>
+                <Link href={`/${locale}/map-upgrade-profile`}>
+                  <Button className='bg-[#22B9DD] gap-2 text-white rounded-full'>
+                    <span>Upgrade Profile</span>
+                    <FaArrowRight className='' />
+                  </Button>
                 </Link>
-
               </div>
             )}
           </div>

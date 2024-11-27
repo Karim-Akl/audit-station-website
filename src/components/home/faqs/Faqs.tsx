@@ -12,7 +12,10 @@ import unspalch from '@../../../public/assets/unsplash.svg';
 import vector from '@../../../public/assets/vector3.svg';
 import Link from 'next/link';
 import { getLocale } from 'next-intl/server';
+import { fetchData } from '@/lib/api/fetchData';
+import FormattedText from '@/components/formattedText/FormattedText';
 export const Faqs: React.FC = async () => {
+  const data = await fetchData({ endPoint: '/api/public/faqs' });
   const locale = await getLocale();
   return (
     <div className='w-full relative block md:flex md:gap-40 items-center py-20 px-4 md:px-0'>
@@ -25,34 +28,26 @@ export const Faqs: React.FC = async () => {
           Most Common Questions
         </h2>
         <div className='flex flex-col max-w-lg space-y-4 text-[#5C5C5C] gap-10 my-10 pl-4 text-md md:text-2xl font-normal font-sans'>
-          <Accordion
-            type='single'
-            collapsible
-            className='w-full'
-          >
-            <AccordionItem value='item-1'>
-              <AccordionTrigger className='text-xl font-normal text-[#1C1C1C]'>
-                Is it accessible?
-              </AccordionTrigger>
-              <AccordionContent>Yes. It adheres to the WAI-ARIA design pattern.</AccordionContent>
-            </AccordionItem>
-            <AccordionItem value='item-2'>
-              <AccordionTrigger className='text-xl font-normal text-[#1C1C1C]'>
-                Is it styled?
-              </AccordionTrigger>
-              <AccordionContent>
-                Yes. It comes with default styles that matches the other components&apos; aesthetic.
-              </AccordionContent>
-            </AccordionItem>
-            <AccordionItem value='item-3'>
-              <AccordionTrigger className='text-xl font-normal text-[#1C1C1C]'>
-                Is it animated?
-              </AccordionTrigger>
-              <AccordionContent>
-                Yes. It&apos;s animated by default, but you can disable it if you prefer.
-              </AccordionContent>
-            </AccordionItem>
-          </Accordion>
+          {Array.isArray(data) &&
+            data?.length > 0 &&
+            data?.map((item: any) => (
+              <>
+                <Accordion
+                  type='single'
+                  collapsible
+                  className='w-full'
+                >
+                  <AccordionItem value='item-1'>
+                    <AccordionTrigger className='text-xl font-normal text-[#1C1C1C]'>
+                      {item?.question}
+                    </AccordionTrigger>
+                    <AccordionContent>
+                      <FormattedText htmlText={item?.answer} />
+                    </AccordionContent>
+                  </AccordionItem>
+                </Accordion>
+              </>
+            ))}
         </div>
       </div>
       <div className='w-full md:w-1/4  md:mt-0  '>

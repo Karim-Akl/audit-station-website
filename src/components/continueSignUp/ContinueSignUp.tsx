@@ -11,7 +11,7 @@ import Link from 'next/link';
 interface IProps {
   title?: string;
   email?: string;
-  imageSrc?: string
+  imageSrc?: string;
   buttonShow?: boolean;
   upgradeshow?: boolean;
 }
@@ -22,7 +22,6 @@ const ContinueSignUp = async ({
   buttonShow = true,
   upgradeshow = true,
 }: IProps) => {
-
   const locale = await getLocale();
   return (
     <div className="relative h-full py-20 container ">
@@ -41,7 +40,7 @@ const ContinueSignUp = async ({
           <h2 className="text-lg md:text-2xl text-center   font-bold text-[#242424] dark:text-neutral-200 font-sans bg-[#E9F8FC]">
             Upgrade Profile
           </h2>
-          <h2 className="text-lg md:text-2xl text-center   font-bold text-[#242424] dark:text-neutral-200 font-sans bg-[#E9F8FC]">
+          <h2 className='text-lg md:text-2xl text-center   font-bold text-[#242424] dark:text-neutral-200 font-sans bg-[#E9F8FC]'>
             Select Your Next Step To Upgrade Your Profile
           </h2>
         </div>
@@ -205,9 +204,8 @@ const ContinueSignUp = async ({
             icon={<FaPersonChalkboard className='text-white text-3xl' />}
             title='Accountant'
             description="Browse the platform's sections and increase your experience through our courses."
-
-            className=" bg-[#21A74F] border-cyan-500 text-cyan-500"
-            style={"hover:shadow-cyan-500 text-cyan-500 border-cyan-500"}
+            className=' bg-[#21A74F] border-cyan-500 text-cyan-500'
+            style={'hover:shadow-cyan-500 text-cyan-500 border-cyan-500'}
           />
           <svg
             xmlns='http://www.w3.org/2000/svg'
@@ -279,17 +277,17 @@ const ContinueSignUp = async ({
 
         <div className='flex flex-col justify-center items-center text-xl font-semibold mt-3 w-full space-y-4'>
           <Button className='bg-[#1FA8C9] text-xl px-18 py-6 w-96 '>
-            <Link href={`/${locale}/registration-as-instructor` || '/'}>Become an instructor</Link>
+            <Link href={`/${locale}/upgrade-to-instructor` || '/'}>Become an instructor</Link>
           </Button>{' '}
           <Button className='bg-[#1FA8C9] text-xl px-18 py-6 w-96 '>
-            <Link href={`/${locale}/registration-as-instructor` || '/'}> Become an assistant</Link>
+            <Link href={`/${locale}/upgrade-to-accountant` || '/'}> Become an accountant</Link>
           </Button>{' '}
           <Button className='bg-[#1FA8C9] text-xl px-18 py-6 w-96 '>
-            <Link href={`/${locale}/registration-as-instructor` || '/'}> Become a company</Link>
+            <Link href={`/${locale}/upgrade-to-company`}> Become a company</Link>
           </Button>
         </div>
       </div>
-    </div >
+    </div>
   );
 };
 
