@@ -1,6 +1,7 @@
 import { BASE_URL } from '@/lib/actions/actions';
 import { getSession } from '../authSession';
 import { setSession } from '@/app/[locale]/actions/setSession';
+import { cookies } from 'next/headers';
 
 export async function fetchData({
   endPoint,
@@ -39,6 +40,9 @@ export async function fetchData({
       try {
         const response = await fetch(`${BASE_URL}/auth/refresh_tokens/rotate`, {
           method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
           body: JSON.stringify({
             token: refreshToken,
           }),
@@ -70,6 +74,9 @@ export async function fetchData({
     try {
       const response = await fetch(`${BASE_URL}/auth/refresh_tokens/refresh`, {
         method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
         body: JSON.stringify({
           token: refreshToken,
         }),
@@ -96,6 +103,12 @@ export async function fetchData({
     }
   }
 
+  let xsrfToken = '';
+
+  if (typeof window !== 'undefined' && window.location.hostname !== 'localhost') {
+    xsrfToken = cookies().get('XSRF-TOKEN')?.value || '';
+  }
+
   const params = {
     page,
     per_page: perPage,
@@ -113,7 +126,9 @@ export async function fetchData({
   const response = await fetch(`${BASE_URL}${endPoint}?${queryString}`, {
     headers: {
       Authorization: `Bearer ${token}`,
+      'XSRF-TOKEN': xsrfToken,
     },
+    credentials: 'include',
   });
 
   if (!response.ok) {

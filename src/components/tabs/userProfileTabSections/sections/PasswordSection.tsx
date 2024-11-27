@@ -15,28 +15,23 @@ const PasswordSection = () => {
   });
 
   const handleChangePassword = async () => {
-    try {
-      const response = await modifyData({
-        endPoint: '/auth/password/change_password',
-        method: 'PUT',
-        data: {
-          old_password: inputsData.currentPassword,
-          new_password: inputsData.newPassword,
-          new_password_confirmation: inputsData.confirmPassword,
-        },
-      });
-      if (response && response.type === 'success') {
-        toast.success(response.message);
+    const response = await modifyData({
+      endPoint: '/auth/password/change_password',
+      method: 'PUT',
+      data: {
+        old_password: inputsData.currentPassword,
+        new_password: inputsData.newPassword,
+        new_password_confirmation: inputsData.confirmPassword,
+      },
+    });
+    if (response && response.type === 'success') {
+      toast.success(response.message);
+    } else if (response.data) {
+      for (const key in response.data) {
+        toast.error(`${key}: ${response.data[key]}`);
       }
-    } catch (error: any) {
-      const parsedError = JSON.parse(error.message);
-      if (parsedError.data) {
-        for (const key in parsedError.data) {
-          toast.error(`${key}: ${parsedError.data[key]}`);
-        }
-      } else if (parsedError.message) {
-        toast.error(parsedError.message);
-      }
+    } else if (response.message) {
+      toast.error(response.message);
     }
   };
 
@@ -63,7 +58,7 @@ const PasswordSection = () => {
           onChange={(e) => setInputsData({ ...inputsData, confirmPassword: e.target.value })}
         />
       </div>
-      <div className='mt-4 flex items-center gap-4 ps-2'>
+      <div className='mt-4 flex items-center gap-4 lg:ps-2'>
         <button className='flex items-center gap-2 py-4 px-12 rounded-full bg-white text-[#22B9DD] border border-[#22B9DD]'>
           <BsArrowLeft
             size={20}

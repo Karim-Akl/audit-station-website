@@ -1,14 +1,14 @@
 // src/app/[locale]/(website)/faqs/page.tsx
 
+import FormattedText from '@/components/formattedText/FormattedText';
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion';
-import { BASE_URL } from '@/lib/actions/actions';
 import { fetchData } from '@/lib/api/fetchData';
-import { formatDate } from '@/lib/date/formatDate';
+import { formatDateTime } from '@/lib/date/formatDateTime';
 
 export default async function FAQs() {
   const data = await fetchData({ endPoint: '/api/public/faqs' });
@@ -29,8 +29,10 @@ export default async function FAQs() {
                 </AccordionTrigger>
                 <AccordionContent>
                   <div className='flex flex-col gap-2'>
-                    <span>{faq.answer}</span>
-                    <span>{formatDate(faq.created_at)}</span>
+                    <span>
+                      <FormattedText htmlText={faq?.answer} />
+                    </span>
+                    <span>{formatDateTime(faq?.created_at)}</span>
                   </div>
                 </AccordionContent>
               </AccordionItem>

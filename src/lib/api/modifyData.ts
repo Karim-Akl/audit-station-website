@@ -53,8 +53,11 @@ export async function modifyData({
         const response = await fetch(`${BASE_URL}/auth/refresh_tokens/rotate`, {
           method: 'POST',
           headers: {
-            Authorization: `Bearer ${refreshToken}`,
+            'Content-Type': 'application/json',
           },
+          body: JSON.stringify({
+            token: refreshToken,
+          }),
         });
         if (response.ok) {
           const data = await response.json();
@@ -84,8 +87,11 @@ export async function modifyData({
       const response = await fetch(`${BASE_URL}/auth/refresh_tokens/refresh`, {
         method: 'POST',
         headers: {
-          Authorization: `Bearer ${refreshToken}`,
+          'Content-Type': 'application/json',
         },
+        body: JSON.stringify({
+          token: refreshToken,
+        }),
       });
 
       if (response.ok) {
@@ -110,9 +116,15 @@ export async function modifyData({
     }
   }
 
+  // let xsrfToken = '';
+
+  // if (typeof window !== 'undefined' && window.location.hostname !== 'localhost') {
+  //   xsrfToken = cookies().get('XSRF-TOKEN')?.value || '';
+  // }
+
   const headers: Record<string, string> = {
-    'Content-Type': 'application/json',
     Authorization: `Bearer ${token}`,
+    // 'XSRF-TOKEN': xsrfToken,
   };
 
   let url = `${BASE_URL}${endPoint}`;
@@ -129,10 +141,7 @@ export async function modifyData({
   const requestOptions: RequestInit = {
     method,
     headers,
-    body:
-      method === 'POST' || method === 'PUT' || method === 'PATCH'
-        ? JSON.stringify(data)
-        : undefined,
+    body: method === 'POST' || method === 'PUT' || method === 'PATCH' ? data : undefined,
   };
 
   try {
@@ -140,7 +149,7 @@ export async function modifyData({
 
     if (!response.ok) {
       const errorDetails = await response.text();
-      throw new Error(errorDetails);
+      return JSON.parse(errorDetails);
     }
 
     try {
@@ -149,7 +158,7 @@ export async function modifyData({
     } catch (jsonError: any) {
       throw new Error(`Failed to parse JSON response: ${jsonError.message}`);
     }
-  } catch (error) {
-    throw error;
+  } catch (error: any) {
+    return JSON.parse(error);
   }
 }
