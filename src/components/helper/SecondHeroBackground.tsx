@@ -25,6 +25,7 @@ interface IProps {
   imageSrc?: string
   imageShow?: boolean;
   upgradeshow?: boolean;
+  step?: string | boolean;
 }
 const SecondHeroBackground = async ({
   title,
@@ -32,6 +33,7 @@ const SecondHeroBackground = async ({
   imageSrc,
   imageShow = true,
   upgradeshow = true,
+  step = true,
 }: IProps) => {
   const locale = await getLocale();
   return (
@@ -95,10 +97,13 @@ const SecondHeroBackground = async ({
             </div>
             {upgradeshow && (
               <div className=" z-50">
-                <Button className="bg-[#22B9DD] space-x-2 text-white rounded-full ">
+                <Link href="/en/upgrade-to-company">
+                <Button className="bg-[#22B9DD] space-x-2 text-white rounded-full" >
                   <span>Upgrade Profile</span>
                   <FaArrowRight className="" />
                 </Button>
+                </Link>
+
               </div>
             )}
           </div>

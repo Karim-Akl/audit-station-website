@@ -1,5 +1,5 @@
 import SecondHeroBackground from "@/components/helper/SecondHeroBackground";
-import BecomeAnInstructor from "@/forms/become-an-Instructor";
+import BecomeAnInstructor from "@/forms/become-an-instructor";
 
 export default function RegistrationPage() {
   return (

@@ -90,7 +90,7 @@ export async function StepsChart() {
             />
           </svg>
           <CustomCard
-            icon={<GiArchiveRegister className="text-white text-3xl" />}
+            icon={<GiArchiveRegister className="text-white text-3xl p-4" />}
             title="Company"
             description="Register your company today on our leading accounting platform, and expand your business by accessing the best global competencies and expertise approved by us."
             className=" bg-cyan-500 border-cyan-500 text-cyan-500"
