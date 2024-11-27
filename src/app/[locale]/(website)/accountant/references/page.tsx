@@ -47,7 +47,7 @@ export default async function References() {
         <h2 className="text-4xl text-[#333333] font-semibold">References</h2>
 
         <Link
-          href={`/${locale}/accountant/references/add-reference`}
+          href={`/${locale}/accountant/references/add-reference` || ''}
           className="flex items-center bg-[#22B9DD] gap-2 p-2 rounded-md text-white"
         >
           {" "}

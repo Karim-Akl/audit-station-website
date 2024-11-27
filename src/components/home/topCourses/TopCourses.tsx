@@ -115,7 +115,7 @@ export function TopCourses() {
               </TabsTrigger>
             ))}
           </TabsList>
-          <Link href={`/${locale}/top-courses/courses`}>
+          <Link href={`/${locale}/top-courses/courses` || ''}>
             <Button className='bg-transparent hover:bg-gray-200 hover:border border pe-0 md:h-14 md:mt-12 justify-between md:w-48 rounded-full border-[#22B9DD] text-[#22B9DD]'>
               <span>See More</span>
               <span className='rounded-full border p-4 border-[#22B9DD]'>

@@ -1,4 +1,3 @@
-import HeroBackground from '@/components/helper/HeroBackground';
 import Image from 'next/image';
 // import accountant from '../../../public/assets/accountant/accountant.jpg';
 import { FaStar } from 'react-icons/fa';
@@ -7,6 +6,7 @@ import { PiCurrencyDollarSimple } from 'react-icons/pi';
 import { IoMdTime } from 'react-icons/io';
 import ProfileSection from '@/components/profileSection/ProfileSection';
 import Link from 'next/link';
+import { getLocale } from 'next-intl/server';
 
 const AccountantPage = async ({
   params: { accountantId },
@@ -16,6 +16,8 @@ const AccountantPage = async ({
     accountantId: number;
   };
 }) => {
+
+  const locale = await getLocale()
   const experienceSteps = [
     {
       date: '06 Jun, 2023 - Present',
@@ -146,7 +148,7 @@ const AccountantPage = async ({
             label='Professional Certifications'
           />
         </div>
-          <Link href="/en/accountant/send-offer">
+          <Link href={`/${locale}/accountant/send-offer` || ''}>
         <button className='w-full my-12 p-4 bg-[#22B9DD] text-[#FFFFFF] rounded-xl'>
             Send Offer
 

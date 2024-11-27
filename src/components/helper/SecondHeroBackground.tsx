@@ -31,6 +31,7 @@ const SecondHeroBackground = async ({
   upgradeshow = true,
   step = true,
 }: IProps) => {
+  const locale = await getLocale();
   return (
     <main className='relative overflow-hidden max-w-screen'>
       <div className='w-[100vw]  h-[270px]'>
@@ -95,7 +96,7 @@ const SecondHeroBackground = async ({
             {upgradeshow && (
 
               <div className=" z-50">
-                <Link href="/en/upgrade-to-company">
+                <Link href={`/${locale}/upgrade-to-company`}>
                 <Button className="bg-[#22B9DD] space-x-2 text-white rounded-full" >
                   <span>Upgrade Profile</span>
                   <FaArrowRight className='' />

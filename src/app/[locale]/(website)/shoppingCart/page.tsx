@@ -30,7 +30,7 @@ export default async function ShoppingCart() {
               {shopping.map((cart: any) => (
                 <Link
                   key={cart?.id}
-                  href={`/${locale}/top-courses/${cart?.id}`}
+                  href={`/${locale}/top-courses/${cart?.id}` || '/'}
                   className='bg-white rounded-2xl border-1 border-[#E2E8F0] '
                 >
                   <Card className='p-0 rounded-xl mb-2'>

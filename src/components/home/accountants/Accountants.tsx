@@ -6,11 +6,9 @@ import Image from 'next/image';
 import { Card, CardContent } from '@/components/ui/card';
 import accountant from '@../../../public/assets/accountant/accountant.jpg';
 import { SearchInput } from '@/components/header/searchInput';
-import FilteringSelectMenu from '@/components/filteringSelectMenu/FilteringSelectMenu';
 import { SelectChangeEvent } from '@mui/material';
 import { SlLocationPin } from 'react-icons/sl';
 import { MdOutlineArrowRightAlt } from 'react-icons/md';
-import HeroBackground from '@/components/helper/HeroBackground';
 import PaginationComponent from '@/components/pagination/PaginationComponent';
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '@/lip/redux/store';
@@ -24,8 +22,10 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { cn } from "@/lib/utils";
+import { useLocale } from 'next-intl';
 
 export default function Accountants() {
+  const locale = useLocale();
   const dispatch = useDispatch<AppDispatch>();
   const [currentPage, setCurrentPage] = useState(1);
   const [search, setSearch] = useState("");
@@ -276,7 +276,7 @@ export default function Accountants() {
                     <hr />
 
                     <div className='flex justify-center p-2'>
-                      <Link href={`/en/accountant/accountants/${instructor.id}`}>
+                      <Link href={`/${locale}/accountant/accountants/${instructor.id}`}>
                         <button className='w-full py-3 bg-[#22B9DD] text-white rounded-full flex items-center justify-center gap-2 p-4'>
                           View More Info
                           <MdOutlineArrowRightAlt size={20} />

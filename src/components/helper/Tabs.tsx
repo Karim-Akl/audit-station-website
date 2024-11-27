@@ -116,7 +116,7 @@ export function UserTabs({ Name }: { Name: string }) {
                  bordre-b-0 px-4 gap-2 text-lg font-medium  ${theme == "dark" ? " text-white" : "text-[#151515]"
                 } `}
               value={tab.value}
-            >
+            />
               <TabsTrigger
                 className={`data-[state=active]:border-none data-[state=active]:font-bold data-[state=active]:bg-[#22B9DD] data-[state=active]:text-white w-full  items-center justify-start
                  border-b-0 px-4 gap-2 text-lg font-medium whitespace-normal  ${

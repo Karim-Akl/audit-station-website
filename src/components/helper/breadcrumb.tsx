@@ -40,7 +40,7 @@ const GlobalBreadcrumbHeader: FC<BreadcrumbHeaderProps> = ({
         <BreadcrumbList>
           <BreadcrumbItem>
             {MainLink ? (
-              <Link href={MainLink ||""}>{MainTitle}</Link>
+              <Link href={MainLink || "/"}>{MainTitle}</Link>
             ) : (
               <span>{MainTitle}</span>
             )}
