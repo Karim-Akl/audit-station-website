@@ -17,7 +17,7 @@ const WebsiteLayout = async ({ children }: LayoutProps) => {
       <Navbar
         isAuthenticated={!!session}
         username={session?.user?.data?.username}
-        image={data.avatar}
+        image={data?.avatar || ''}
       />
       {children}
       <Footer />
