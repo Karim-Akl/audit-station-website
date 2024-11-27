@@ -1,18 +1,29 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
-import Image from "next/image";
-import { Card, CardContent } from "@/components/ui/card";
-import accountant from "@../../../public/assets/accountant/accountant.jpg";
-import { SearchInput } from "@/components/header/searchInput";
-import FilteringSelectMenu from "@/components/filteringSelectMenu/FilteringSelectMenu";
-import { SelectChangeEvent } from "@mui/material";
-import { SlLocationPin } from "react-icons/sl";
-import { MdOutlineArrowRightAlt } from "react-icons/md";
-import HeroBackground from "@/components/helper/HeroBackground";
-import PaginationComponent from "@/components/pagination/PaginationComponent";
-import { useDispatch } from "react-redux";
-import { AppDispatch } from "@/lip/redux/store";
+
+import React, { useEffect, useState } from 'react';
+import Image from 'next/image';
+import { Card, CardContent } from '@/components/ui/card';
+import accountant from '@../../../public/assets/accountant/accountant.jpg';
+import { SearchInput } from '@/components/header/searchInput';
+import FilteringSelectMenu from '@/components/filteringSelectMenu/FilteringSelectMenu';
+import { SelectChangeEvent } from '@mui/material';
+import { SlLocationPin } from 'react-icons/sl';
+import { MdOutlineArrowRightAlt } from 'react-icons/md';
+import HeroBackground from '@/components/helper/HeroBackground';
+import PaginationComponent from '@/components/pagination/PaginationComponent';
+import { useDispatch } from 'react-redux';
+import { AppDispatch } from '@/lip/redux/store';
+import Link from 'next/link';
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { cn } from "@/lib/utils";
 
 export default function Accountants() {
   const dispatch = useDispatch<AppDispatch>();
@@ -165,30 +176,45 @@ export default function Accountants() {
 
   return (
     <>
-      <HeroBackground title="accountant" />
-      <div className="grid grid-cols-2 lg:grid-cols-4 px-10 max-w-screen  pt-14">
-        <div className="col-span-1 pt-4">
-          <SearchInput />
-        </div>
-        <div className="col-span-1 lg:col-span-3 relative w-full h-full">
-          <div className="flex items-center justify-between space-x-2 pl-4">
-            <div className="flex items-center  space-x-2 ">
-              <span className=" text-sm">
+      {/* <HeroBackground title='accountant' /> */}
+      <div className='grid lg:grid-cols-2 grid-cols-1 px-10 max-w-screen  pt-14'>
+        <div className='col-span-1 lg:col-span-3 relative w-full h-full'>
+          <div className='flex items-center justify-between space-x-2 pl-4 mb-4'>
+            <div className='flex flex-col justify-center space-x-2  '>
+              <h2 className='text-xl font-bold ml-2'>Accountants</h2>
+              <span className=' text-sm'>
                 Total <span>120</span> accountant found
               </span>
             </div>
-            <div className="flex items-center gap-4 w-48">
-              <span>sort By:</span>
-              <FilteringSelectMenu
-                value={value}
-                onChange={handleValueChange}
-                options={[
-                  { value: "bought-desc", label: "option1" },
-                  { value: "bought-asc", label: "option2" },
-                  { value: "rating-desc", label: "option3" },
-                ]}
-                ariaLabel="filter"
-              />
+            <div className=" flex gap-2 m-auto justify-center items-center text-center">
+              <label
+                className="block text-gray-700 text-sm mb-2"
+                htmlFor="fullname"
+              >
+                Sort By:
+              </label>
+              <div className="flex items-center border border-gray-300 rounded-md ps-3 ">
+                <Select defaultValue="Ae">
+                  <SelectTrigger
+                    className={cn(
+                      "bg-blue border-none focus:ring-offset-0 focus:ring-0    "
+                    )}
+                  >
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectGroup>
+                      <SelectItem value="Ae">United Arab Emirates</SelectItem>
+                      <SelectItem value="Sa">Saudi Arabia</SelectItem>
+                      <SelectItem value="Qa">Qatar</SelectItem>
+                      <SelectItem value="Om">Oman</SelectItem>
+                    </SelectGroup>
+                  </SelectContent>
+                </Select>
+              </div>
+            </div>
+            <div className='col-span-1 '>
+              <SearchInput />
             </div>
           </div>
 
@@ -248,18 +274,22 @@ export default function Accountants() {
                       </div>
                     </div>
                     <hr />
-                    <div className="flex justify-center p-2">
-                      <button className="w-full py-3 bg-[#22B9DD] text-white rounded-full flex items-center justify-center gap-2">
-                        View More Info
-                        <MdOutlineArrowRightAlt size={20} />
-                      </button>
+
+                    <div className='flex justify-center p-2'>
+                      <Link href={`/en/accountant/accountants/${instructor.id}`}>
+                        <button className='w-full py-3 bg-[#22B9DD] text-white rounded-full flex items-center justify-center gap-2 p-4'>
+                          View More Info
+                          <MdOutlineArrowRightAlt size={20} />
+                        </button>
+                      </Link>
                     </div>
                   </CardContent>
                 </Card>
-              </div>
-            ))}
-          </div>
-        </div>
+              </div >
+            ))
+            }
+          </div >
+        </div >
         <div className="w-screen flex justify-center items-center mt-16 mb-12">
           <PaginationComponent
             // totalPages={blogs?.meta?.last_page}
@@ -268,7 +298,7 @@ export default function Accountants() {
             onPageChange={handlePageChange}
           />
         </div>
-      </div>
+      </div >
     </>
   );
 }

@@ -1,4 +1,4 @@
-import { Background } from '@/components/background/Background';
+import { Background } from '@/components/home/SliderBackgroundTopHomePage/Background';
 import { AnalyticsStats } from '@/components/home/analytics/analytics';
 import { Faqs } from '@/components/home/faqs/Faqs';
 import { AboutUs } from '@/components/home/aboutUs/AboutUs';

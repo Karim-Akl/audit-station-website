@@ -8,13 +8,30 @@ import { getLocale } from 'next-intl/server';
 import { Button } from '../ui/button';
 import Link from 'next/link';
 
-const ContinueSignUp = async () => {
+interface IProps {
+  title?: string;
+  email?: string;
+  imageSrc?: string
+  buttonShow?: boolean;
+  upgradeshow?: boolean;
+}
+const ContinueSignUp = async ({
+  title,
+  email,
+  imageSrc,
+  buttonShow = true,
+  upgradeshow = true,
+}: IProps) => {
+
   const locale = await getLocale();
   return (
-    <div className='relative h-full py-20 '>
-      <div className=' items-center justify-center content-center '>
-        <div className=' mx-auto ms-10 flex'>
-          <h2 className='text-lg md:text-2xl text-center   font-bold text-[#242424] dark:text-neutral-200 font-sans bg-[#E9F8FC]'>
+    <div className="relative h-full py-20 container ">
+      <div className=" items-center justify-center content-center ">
+        <div className=" mx-auto ms-10 flex">
+          <h2 className="text-lg md:text-2xl text-center   font-bold text-[#242424] dark:text-neutral-200 font-sans bg-[#E9F8FC]">
+            Upgrade Profile
+          </h2>
+          <h2 className="text-lg md:text-2xl text-center   font-bold text-[#242424] dark:text-neutral-200 font-sans bg-[#E9F8FC]">
             Select Your Next Step To Upgrade Your Profile
           </h2>
         </div>
@@ -102,8 +119,9 @@ const ContinueSignUp = async () => {
             icon={<FaPersonChalkboard className='text-white text-3xl' />}
             title='Accountant'
             description="Browse the platform's sections and increase your experience through our courses."
-            className=' bg-cyan-500 border-cyan-500 text-cyan-500'
-            style={' hover:shadow-cyan-500 text-cyan-500 border-cyan-500'}
+
+            className=" bg-[#21A74F] border-cyan-500 text-cyan-500"
+            style={"hover:shadow-cyan-500 text-cyan-500 border-cyan-500"}
           />
           <svg
             xmlns='http://www.w3.org/2000/svg'
@@ -185,7 +203,7 @@ const ContinueSignUp = async () => {
           </Button>
         </div>
       </div>
-    </div>
+    </div >
   );
 };
 

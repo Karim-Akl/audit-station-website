@@ -47,6 +47,7 @@ export function BlogsTabs() {
       <TabsList className='flex flex-col gap-5 items-start justify-end '>
         <h2
           className={`font-bold text-xl ${theme == 'dark' ? ' text-white' : 'text-[#0F1A29]'}   `}
+
         >
           Category
         </h2>
@@ -91,25 +92,30 @@ export function UserTabs({ Name }: { Name: string }) {
     await logOutAction(status);
   };
   return (
-    <Tabs
-      className='inline-block'
-      defaultValue={lastRoute}
-    >
-      <TabsList className='flex flex-col gap-5 items-start justify-end'>
-        <p className={`text-[16px] ${theme == 'dark' ? ' text-white' : 'text-[#0F1A29]'}   `}>
+    <Tabs className="inline-block  w-full" defaultValue={lastRoute} >
+      <TabsList className="flex flex-col gap-5 items-start justify-end   ">
+        <p
+          className={`text-[16px] ${theme == "dark" ? " text-white" : "text-[#0F1A29]"
+            }   `}
+        >
           Hello , <span>{Name}</span>
         </p>
 
-        {userTabs &&
-          userTabs.length > 0 &&
-          userTabs.map((tab) => (
-            <Link
-              key={tab.value}
-              href={
-                tab.value === 'profile'
-                  ? `/${locale}/user/${tab.value}?value=1`
-                  : `/${locale}/user/${tab.value}`
-              }
+        {(userTabs && userTabs.length > 0) && userTabs.map((tab) => (
+          <Link
+            key={tab.value}
+            href={
+              tab.value === "profile"
+                ? `/${locale}/user/${tab.value}?value=1`
+                : `/${locale}/user/${tab.value}`
+            }
+            className="w-full"
+          >
+            <TabsTrigger
+              className={`data-[state=active]:border-none data-[state=active]:font-bold data-[state=active]:bg-[#22B9DD] data-[state=active]:text-white w-full  items-center justify-start
+                 bordre-b-0 px-4 gap-2 text-lg font-medium  ${theme == "dark" ? " text-white" : "text-[#151515]"
+                } `}
+              value={tab.value}
             >
               <TabsTrigger
                 className={`data-[state=active]:border-none data-[state=active]:font-bold data-[state=active]:bg-[#22B9DD] data-[state=active]:text-white w-full  items-center justify-start
@@ -179,12 +185,12 @@ export function InstructorTabs({ Name }: { Name: string }) {
     router.push('/');
   };
   return (
-    <Tabs
-      className='inline-block '
-      defaultValue={lastRoute}
-    >
-      <TabsList className='flex flex-col gap-5 items-start justify-end   '>
-        <p className={`text-[16px] ${theme == 'dark' ? ' text-white' : 'text-[#0F1A29]'}   `}>
+    <Tabs className="inline-block w-full " defaultValue={lastRoute}>
+      <TabsList className="flex flex-col gap-5 items-start justify-end w-full   ">
+        <p
+          className={`text-[16px] ${theme == "dark" ? " text-white" : "text-[#0F1A29]"
+            }   `}
+        >
           Hello , <span>{Name}</span>
         </p>
 
@@ -194,10 +200,9 @@ export function InstructorTabs({ Name }: { Name: string }) {
             href={`/${locale}/instructor/${tab.value}` || '/'}
           >
             <TabsTrigger
-              className={`data-[state=active]:border-none data-[state=active]:font-bold data-[state=active]:bg-[#22B9DD] data-[state=active]:text-white w-full  items-center justify-start
-    bordre-b-0 px-4 gap-2 text-lg font-medium  ${
-      theme == 'dark' ? ' text-white' : 'text-[#151515]'
-    } `}
+              className={`data-[state=active]:border-none data-[state=active]:font-bold  data-[state=active]:bg-[#22B9DD] data-[state=active]:text-white w-full  items-center justify-start
+    bordre-b-0 px-4 gap-2 text-lg font-medium  ${theme == "dark" ? " text-white" : "text-[#151515]"
+                } `}
               value={tab.value}
             >
               {tab.icon}
@@ -277,25 +282,22 @@ export function AcountantTabs({ Name }: { Name: string }) {
     router.push('/');
   };
   return (
-    <Tabs
-      className='inline-block '
-      defaultValue={lastRoute}
-    >
-      <TabsList className='flex flex-col gap-5 items-start justify-end   '>
-        <p className={`text-[16px] ${theme == 'dark' ? ' text-white' : 'text-[#0F1A29]'}   `}>
+    <Tabs className="inline-block w-full " defaultValue={lastRoute}>
+      <TabsList className="flex flex-col gap-5 items-start justify-end w-full   ">
+        <p
+          className={`text-[16px] ${theme == "dark" ? " text-white" : "text-[#0F1A29]"
+            }   `}
+        >
           Hello , <span>{Name}</span>
         </p>
 
         {acountanttabs.map((tab) => (
-          <Link
-            key={tab.value}
-            href={`/${locale}/accountant/${tab.value}` || '/'}
-          >
+          <Link key={tab.value} href={`/${locale}/accountant/${tab.value}` || '/'} className="w-full" >
+
             <TabsTrigger
               className={`data-[state=active]:border-none data-[state=active]:font-bold data-[state=active]:bg-[#22B9DD] data-[state=active]:text-white w-full  items-center justify-start
-    bordre-b-0 px-4 gap-2 text-lg font-medium  ${
-      theme == 'dark' ? ' text-white' : 'text-[#151515]'
-    } `}
+    bordre-b-0 px-4 gap-2 text-lg font-medium  ${theme == "dark" ? " text-white" : "text-[#151515]"
+                } `}
               value={tab.value}
             >
               {tab.icon}
@@ -325,6 +327,17 @@ const acountanttabs = [
     icon: <BsPersonVideo3 />,
   },
   {
+    id: 3,
+    title: "Accountants",
+    value: "accountants",
+    icon: <GoBookmark />,
+  },
+  {
+    id: 2,
+    title: "Offers",
+    value: "offers",
+    icon: <PiBagSimple />,
+  }, {
     id: 2,
     title: 'Job Offers',
     value: 'jobOffers',
@@ -346,6 +359,11 @@ const acountanttabs = [
     id: 5,
     title: 'Payments',
     value: 'payments',
+    icon: <PiCoins />,
+  }, {
+    id: 5,
+    title: "  References",
+    value: "  references",
     icon: <PiCoins />,
   },
   {

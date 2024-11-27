@@ -92,18 +92,18 @@ export const InfiniteMovingCards = ({
                 aria-hidden='true'
                 className='user-select-none -z-1 pointer-events-none absolute -left-0.5 -top-0.5 h-[calc(100%_+_4px)] w-[calc(100%_+_4px)'
               ></div>
-              <div className='shadow-md shadow-slate-400  rounded-lg p-6 text-center bg-white h-[250px]'>
-                <div className='absolute  m-auto left-0 right-0 top-0 bottom-0'>
+              <div className='shadow-md shadow-slate-400  rounded-lg p-6 text-center bg-white h-[250px] justify-center items-center'>
+                <div className='absolute  m-auto left-0 right-0 top-0 bottom-0  mb-8' >
                   <Image
                     src={item.image}
-                    className='bg-green-500 p-2  mx-auto rounded-full'
+                    className='bg-[#22B9DD] p-2  mx-auto rounded-full'
                     alt='step1'
-                    width={50}
-                    height={50}
+                    width={80}
+                    height={80}
                   />
                 </div>
-                <div className='my-8'>
-                  <p className='mx-auto max-w-40 text-xl flex-wrap font-semibold text-[#2F327D]'>
+                <div className='my-8 mt-20'>
+                  <p className='mx-auto max-w-[90%] text-xl flex-wrap font-semibold text-[#2F327D]'>
                     {item.content}
                   </p>
                 </div>

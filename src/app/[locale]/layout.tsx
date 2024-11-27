@@ -4,12 +4,19 @@ import { getMessages } from "next-intl/server";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider/theme-provider";
 import { cn } from "@/lib/utils";
-import { Saira, Tajawal } from "@/fonts";
 import { Toaster as ReactHotToast } from "react-hot-toast";
 import { Toaster as SonnerToaster } from "@/components/ui/sonner";
-
 import Providers from "@/lib/query-provider";
 import ReduxProvider from "@/lip/redux/ReduxProvider";
+import { Cairo, Saira } from "next/font/google";
+const cairo = Cairo({
+  subsets: ["latin", "arabic"],
+  variable: "--font-cairo",
+});
+const saira = Saira({
+  subsets: ["latin"],
+  variable: "--font-saira",
+});
 
 export const metadata: Metadata & {
   title: { template: string; default: string };
@@ -32,7 +39,7 @@ export default async function LocaleLayout({
 
   return (
     <html
-      className={locale === "ar" ? cn(Tajawal.variable) : cn(Saira.variable)}
+    className={cn(locale === "ar" ? cairo.className : saira.className)}
       dir={locale === "ar" ? "rtl" : "ltr"}
       lang={locale}
     >

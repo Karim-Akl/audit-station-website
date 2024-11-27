@@ -21,6 +21,7 @@ interface IProps {
   imageSrc?: string;
   imageShow?: boolean;
   upgradeshow?: boolean;
+  step?: string | boolean;
 }
 const SecondHeroBackground = async ({
   title,
@@ -28,6 +29,7 @@ const SecondHeroBackground = async ({
   imageSrc,
   imageShow = true,
   upgradeshow = true,
+  step = true,
 }: IProps) => {
   return (
     <main className='relative overflow-hidden max-w-screen'>
@@ -91,11 +93,15 @@ const SecondHeroBackground = async ({
               </div>
             </div>
             {upgradeshow && (
-              <div className=' z-50'>
-                <Button className='bg-[#22B9DD] space-x-2 text-white rounded-full '>
+
+              <div className=" z-50">
+                <Link href="/en/upgrade-to-company">
+                <Button className="bg-[#22B9DD] space-x-2 text-white rounded-full" >
                   <span>Upgrade Profile</span>
                   <FaArrowRight className='' />
                 </Button>
+                </Link>
+
               </div>
             )}
           </div>
