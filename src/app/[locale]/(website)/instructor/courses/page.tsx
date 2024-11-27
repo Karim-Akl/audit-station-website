@@ -54,7 +54,7 @@ export default async function Courses() {
                     <div className='font-normal border rounded-3xl px-10 py-1 bg-[#22B9DD]  text-xl  text-wrap '>
                       {cart.category}
                     </div>
-                    <div className='flex items-center gap-3   '>
+                    <div className='flex items-center gap-3'>
                       <Link
                         href={`/${locale}/instructor/courses/${cart.id}` || '/'}
                         className='   hover:bg-blue-700 rounded-full shadow-sm p-1 transition-all'

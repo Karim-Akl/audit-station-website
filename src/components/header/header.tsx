@@ -58,7 +58,7 @@ export const Header: React.FC = () => {
           <div className='justify-start items-center gap-8 flex'>
             <div className='md:justify-start justify-center items-center gap-1 flex'>
               {/* <FaMapLocationDot size={20} /> */}
-              <Link href={settings ? settings.snapchat : ''}>
+              <Link href={settings ? settings.snapchat : '/'}>
                 <Image src="/assets/home/Vector.jpg" alt="instagram" width={20} height={20} />
               </Link>
               <div className='md:text-[13px] text-[10px] md:font-medium'>{settings?.address}</div>

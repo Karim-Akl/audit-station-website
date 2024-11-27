@@ -93,7 +93,7 @@ export const Footer: React.FC = async () => {
               </div>
               <div className='flex gap-1 items-center'>
                 <Link
-                  href={data && data?.app_store}
+                  href={data && data?.app_store || '/'}
                   target='_blank'
                 >
                   <Image
