@@ -25,9 +25,9 @@ export const SliderTow: React.FC = () => {
   };
   return (
     <div className="swiper-2 w-full">
-      <div className=" background-color relative h-[calc(100vh-50px)] text-white overflow-hidden   ">
-        <div className="flex  justify-between m-auto  items-center h-full ">
-          <div className="p-10 my-10 flex flex-col gap-4 max-w-xl   ">
+      <div className="w-full background-color relative h-[calc(100vh-10px)] text-white overflow-hidden   ">
+        <div className="flex  justify-between m-auto items-center h-full">
+          <div className="p-20 my-10 flex flex-col gap-4 max-w-xl   ">
             <h1 className="text-4xl text-[#666] font-bold flex-wrap">
               Become a certified accountant at Audit Station..
             </h1>
@@ -47,7 +47,7 @@ export const SliderTow: React.FC = () => {
               </p>
             </div>
           </div>
-          <div className="mt-5 relative hidden md:block top-36 w-[479.06px]  mr-10  ">
+          <div className="mt-5 p-20 relative hidden lg:block top-36 w-[479.06px]  mr-10  ">
             <Image
               src={Logo1}
               alt="logo"
@@ -95,12 +95,7 @@ export const SliderTow: React.FC = () => {
             </div>
           </div>
         </div>
-        <Image
-          src={dots}
-          alt="logo"
-          loading="lazy"
-          className="absolute bottom-2 p-0 m-0 left-28  "
-        />
+
       </div>
 
     </div>

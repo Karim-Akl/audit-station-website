@@ -62,7 +62,10 @@ export function BlogsTabs() {
               color='#22B9DD'
               className='inline-block mr-2'
             />
-            {tab.title}
+            <div className='md:text-sm lg:text-lg'>
+
+              {tab.title}
+            </div>
           </TabsTrigger>
         ))}
       </TabsList>
@@ -92,7 +95,7 @@ export function UserTabs({ Name }: { Name: string }) {
     await logOutAction(status);
   };
   return (
-    <Tabs className="inline-block  w-full" defaultValue={lastRoute} >
+    <Tabs className="inline-block  w-full " defaultValue={lastRoute} >
       <TabsList className="flex flex-col gap-5 items-start justify-end   ">
         <p
           className={`text-[16px] ${theme == "dark" ? " text-white" : "text-[#0F1A29]"
@@ -113,22 +116,21 @@ export function UserTabs({ Name }: { Name: string }) {
           >
             <TabsTrigger
               className={`data-[state=active]:border-none data-[state=active]:font-bold data-[state=active]:bg-[#22B9DD] data-[state=active]:text-white w-full  items-center justify-start
-                 bordre-b-0 px-4 gap-2 text-lg font-medium  ${theme == "dark" ? " text-white" : "text-[#151515]"
+                 border-b-0 px-4 gap-2 text-lg font-medium whitespace-normal  ${theme == 'dark' ? ' text-white' : 'text-[#151515]'
                 } `}
               value={tab.value}
-            />
-              <TabsTrigger
-                className={`data-[state=active]:border-none data-[state=active]:font-bold data-[state=active]:bg-[#22B9DD] data-[state=active]:text-white w-full  items-center justify-start
-                 border-b-0 px-4 gap-2 text-lg font-medium whitespace-normal  ${
-                   theme == 'dark' ? ' text-white' : 'text-[#151515]'
-                 } `}
-                value={tab.value}
-              >
-                {tab.icon}
-                {tab.title}
-              </TabsTrigger>
-            </Link>
-          ))}
+            >
+              {tab.icon}
+              <div className='md:text-sm lg:text-lg'>
+
+                <div className='md:text-sm lg:text-lg'>
+
+                  {tab.title}
+                </div>
+              </div>
+            </TabsTrigger>
+          </Link>
+        ))}
         <Button
           className='bg-white hover:bg-white items-center justify-start bordre-b-0 px-4 gap-2 text-lg font-medium  text-[#F55157]'
           value='logout'
@@ -206,7 +208,10 @@ export function InstructorTabs({ Name }: { Name: string }) {
               value={tab.value}
             >
               {tab.icon}
-              {tab.title}
+              <div className='md:text-sm lg:text-lg'>
+
+                {tab.title}
+              </div>
             </TabsTrigger>
           </Link>
         ))}
@@ -301,7 +306,10 @@ export function AcountantTabs({ Name }: { Name: string }) {
               value={tab.value}
             >
               {tab.icon}
-              {tab.title}
+              <div className='md:text-sm lg:text-lg'>
+
+                {tab.title}
+              </div>
             </TabsTrigger>
           </Link>
         ))}
