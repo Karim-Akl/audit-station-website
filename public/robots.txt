@@ -1,0 +1,11 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://audit-station-website.vercel.app
+
+# Sitemaps
+Sitemap: https://audit-station-website.vercel.app/sitemap.xml
+Sitemap: https://audit-station-website.vercel.app/ar
+Sitemap: https://audit-station-website.vercel.app/en

@@ -119,13 +119,13 @@ export async function AccountantSection() {
         opts={{
           align: 'start',
         }}
-        className='overflow-hidden my-6  '
+        className='overflow-hidden my-6 p-4 m-auto   '
       >
-        <CarouselContent className='ml-0'>
+        <CarouselContent className=''>
           {instructors.map((instructor) => (
             <CarouselItem
               key={instructor.id}
-              className='md:w-full rounded-lg sm:basis-1/2 md:basis-1/3 xl:basis-1/3 '
+              className='md:w-full rounded-lg sm:basis-1/2 lg:basis-1/3 xl:basis-1/3 '
             >
               <Card className='relative  overflow-hidden p-0  bg-white'>
                 <div className='absolute top-4 left-4 text-white bg-[#22B9DD] px-4 py-2 rounded-md  flex items-center justify-center '>

@@ -25,17 +25,12 @@ export const SliderThree: React.FC = () => {
   };
   return (
     <div className="swiper-3">
-      <Swiper
-        modules={[Navigation, Pagination, Autoplay, Thumbs]}
-        loop={true}
-        slidesPerView={1}
-        pagination={{ clickable: true }}
-        autoplay={{ delay: 6000 }}
-      >
 
-        <div className="w-full background-color relative h-[calc(100vh-50px)] text-white overflow-hidden">
-          <div className="flex justify-between m-auto  items-center h-full">
-            <div className="p-20 my-10 flex flex-col gap-4 max-w-3xl ">
+
+<div className="w-full background-color relative h-[calc(100vh-10px)] text-white overflow-hidden">
+          <div className="flex  justify-between m-auto items-center h-full">
+          <div className="p-20 my-10 flex flex-col gap-4 max-w-xl ">
+
               <h1 className="text-4xl text-[#666] font-bold flex-wrap">
                 Get a job in the country of your choice with the right salary!
               </h1>
@@ -55,12 +50,12 @@ export const SliderThree: React.FC = () => {
                 </p>
               </div>
             </div>
-            <div className="p-20 relative hidden md:block top-36 mr-5">
+            <div className=" relative hidden lg:block top-60  mr-10">
               <Image
                 src={Logo1}
                 alt="logo"
                 loading="lazy"
-                className="absolute z-30 right-44 bottom-32"
+                className="absolute z-30 -right-20  md:right-44 bottom-32 object-contain w-[479.06px] h-[479.06px] "
               />
               <div className="relative z-10">
                 <svg
@@ -69,7 +64,7 @@ export const SliderThree: React.FC = () => {
                   height="240"
                   viewBox="0 0 636 240"
                   fill="none"
-                  className="z-20"
+                  className="z-20 w-[80%]"
                 >
                   <path
                     d="M329.214 235.669C504.662 218.495 641.817 152.742 635.558 88.8048C629.3 24.8681 481.998 -13.0406 306.55 4.13346C131.102 21.3075 -6.05262 87.0608 0.205949 150.998C6.46452 214.934 153.767 252.843 329.214 235.669Z"
@@ -82,7 +77,7 @@ export const SliderThree: React.FC = () => {
                   height="240"
                   viewBox="0 0 636 240"
                   fill="none"
-                  className="absolute  -z-10 top-4  "
+                  className="absolute  -z-10 top-4  w-[80%] md:w-[80%]"
                 >
                   <path
                     d="M329.214 235.669C504.662 218.495 641.817 152.742 635.558 88.8048C629.3 24.8681 481.998 -13.0406 306.55 4.13346C131.102 21.3075 -6.05262 87.0608 0.205949 150.998C6.46452 214.934 153.767 252.843 329.214 235.669Z"
@@ -121,20 +116,14 @@ export const SliderThree: React.FC = () => {
 
                 <div className="flex flex-col space-y-6">
                   <span className="text-[20px] font-medium">Congratulations</span>
-                  <span className="text-xl font-semibold">Your promotion completed</span>
+                  <span className="text-sm font-semibold">Your promotion completed</span>
                 </div>
               </div>
             </div>
             </div>
           </div>
-          <Image
-            src={dots}
-            alt="logo"
-            loading="lazy"
-            className="absolute bottom-2 p-0 m-0 left-28  "
-          />
+
         </div>
-      </Swiper>
     </div>
   );
 };

@@ -86,7 +86,7 @@ export function TopInstructors() {
 
   return (
     <div className=' relative w-full h-full py-20'>
-      <div className='flex items-center space-x-2 pl-4 py-6'>
+      <div className='flex items-center space-x-2  py-6 m-auto '>
         <span className='block w-12 h-[2px] bg-blue-200'></span>
         <span className='text-blue-400 text-sm'>Top Instructors</span>
       </div>
@@ -96,9 +96,10 @@ export function TopInstructors() {
       <Tabs
         defaultValue={tabs[0].value}
         onValueChange={setSelectedTab}
+        className=''
       >
         <div className='md:flex items-center justify-between'>
-          <TabsList className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4 md:border-b pt-14 md:pb-20 pb-36 md:my-10'>
+          <TabsList className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4 md:border-b pt-14 md:pb-20 pb-36 md:my-10 '>
             {tabs.map((tab) => (
               <TabsTrigger
                 key={tab.value}
@@ -113,9 +114,9 @@ export function TopInstructors() {
           opts={{
             align: 'start',
           }}
-          className='overflow-hidden md:my-6 my-2 '
+          className='overflow-hidden md:my-6 my-2 pr-3  m-auto '
         >
-          <CarouselContent className='ml-0 '>
+          <CarouselContent className='m-auto '>
             {instructors
               .filter((instructor) => selectedTab === 'all' || instructor.category === selectedTab)
               .map((instructor) => (
