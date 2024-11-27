@@ -4,8 +4,6 @@ import React from "react";
 import banner from "@/../public/assets/about/logoBanner.svg";
 import TitleSubtitle from "@/components/aboutUs/TitleSubtitle";
 import yellowCircle from "@/../public/assets/leftYellowCircle.svg";
-import { revalidateTime } from "@/lib/constants/constants";
-import { GetDataInServerSide } from "@/lib/actions/ServerActions";
 import { VideoPlayer } from "@/components/helper/videoPlayer";
 import aboutUsImage from "@../../../public/assets/aboutus.svg";
 import { fetchData } from "@/lib/api/fetchData";
@@ -17,13 +15,7 @@ export const metadata = {
 
 export default async function About() {
   const aboutUs = await fetchData({ endPoint: "/api/public/about_us" });
-  const { data, message } = await GetDataInServerSide({
-    End_Point: `/public/about_us`,
-    ISAddAuthHeaders: false,
-    ExtraMethod: {
-      next: { revalidate: revalidateTime }, // Revalidate every 5 minutes
-    },
-  });
+
 
   // if (!data) {
   //   return (

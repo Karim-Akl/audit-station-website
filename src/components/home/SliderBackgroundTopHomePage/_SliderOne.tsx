@@ -49,12 +49,12 @@ export const SliderOne: React.FC = () => {
                 </p>
               </div>
             </div>
-            <div className="relative hidden md:block top-36  mr-10">
+            <div className="relative hidden lg:block top-36  md:mr-10 ">
               <Image
                 src={Logo1}
                 alt="logo"
                 loading="lazy"
-                className="absolute z-30 right-14 bottom-16"
+                className="absolute z-30 right-14 bottom-16 object-contain"
               />
               <div className="relative z-10">
                 <svg
@@ -128,12 +128,7 @@ export const SliderOne: React.FC = () => {
               </div>
             </div>
           </div>
-          <Image
-            src={dots}
-            alt="logo"
-            loading="lazy"
-            className="absolute bottom-2 p-0 m-0 left-28  "
-          />
+
         </div>
 
     </div>

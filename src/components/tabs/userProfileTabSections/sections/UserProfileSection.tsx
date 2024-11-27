@@ -7,11 +7,10 @@ import { IoAdd } from 'react-icons/io5';
 import { BsArrowLeft } from 'react-icons/bs';
 import { useEffect, useState } from 'react';
 import PhoneInputComponent from '../../phoneInput/PhoneInput';
-import toast from 'react-hot-toast';
-import { BASE_URL } from '@/lib/actions/actions';
-import axios from 'axios';
 import InputAndLabel from '@/components/InputAndLabel/inputAndLabel';
 import { parsePhoneNumberFromString, PhoneNumber } from 'libphonenumber-js';
+import { modifyData } from '@/lib/api/modifyData';
+import toast from 'react-hot-toast';
 
 interface ProfileDataTypes {
   name: string | undefined;
@@ -20,7 +19,7 @@ interface ProfileDataTypes {
   avatar: File | undefined;
 }
 
-const UserProfileSection = ({ profileData, token }: any) => {
+const UserProfileSection = ({ profileData }: any) => {
   const [inputsData, setInputsData] = useState<ProfileDataTypes>({
     name: '',
     email: '',
@@ -28,12 +27,7 @@ const UserProfileSection = ({ profileData, token }: any) => {
     avatar: undefined,
   });
 
-  const [errors, setErrors] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    avatar: '',
-  });
+  const [image, setImage] = useState('');
 
   useEffect(() => {
     const loadData = async () => {
@@ -61,8 +55,6 @@ const UserProfileSection = ({ profileData, token }: any) => {
       loadData();
     }
   }, [profileData]);
-
-  const [image, setImage] = useState('');
 
   const convertUrlToFile = async (url: string) => {
     try {
@@ -102,31 +94,28 @@ const UserProfileSection = ({ profileData, token }: any) => {
       formData.append('avatar', inputsData.avatar);
     }
 
-    const response = await axios
-      .post(`${BASE_URL}/auth/profile`, formData, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      .then(() => {
-        toast.success('profile updated successfully');
-        location.reload();
-      })
-      .catch((error) => {
-        for (const key in error.response.data.data) {
-          toast.error(`${key}: ${error.response.data.data[key]}`);
-        }
-        console.log('error: ', error);
+    try {
+      const response = await modifyData({
+        endPoint: '/auth/profile',
+        data: formData,
       });
+      console.log('response: ', response);
+      if (response && response.code === 200) {
+        toast.success('profile updated successfully');
+      } else if (response.data)  {
+        for (const key in response.data) {
+          toast.error(`${key}: ${response.data[key]}`);
+        }
+      } else if (response.message) {
+        toast.error(response.message);
+      }
+    } catch (error) {
+      console.log('error: ', error);
+    }
   };
 
   const handleChangeNumber = (e: string) => {
     const phoneNumberObj: PhoneNumber | undefined = parsePhoneNumberFromString(e);
-    if (phoneNumberObj?.isValid() === false) {
-      setErrors({ ...errors, phone: 'Please enter a valid phone number' });
-    } else {
-      setErrors({ ...errors, phone: '' });
-    }
     setInputsData({ ...inputsData, phone: phoneNumberObj?.number || '' });
   };
 

@@ -26,13 +26,14 @@ export const SliderFour: React.FC = () => {
 
   return (
     <div className="swiper-2 w-full">
-    <div className=" background-color relative h-[calc(100vh-50px)] text-white overflow-hidden   ">
-      <div className="flex  justify-between m-auto  items-center h-full ">
-        <div className="p-10 my-10 flex flex-col gap-4 max-w-3xl   ">
-          <h1 className="text-4xl text-[#666] font-bold flex-wrap">
-            Become a certified accountant at Audit Station..
+<div className="w-full background-color relative h-[calc(100vh-10px)] text-white overflow-hidden">
+<div className="flex  justify-between m-auto items-center h-full">
+            <div className="p-20 my-10 flex flex-col gap-4 w-full sm:max-w-lg md:max-w-2xl lg:max-w-4xl ">
+
+          <h1 className="text-4xl text-[#666] font-bold flex-wrap w-full ">
+          Become an Instructor
           </h1>
-          <p className="text-[#22B9DD] text-md">
+          <p className="text-[#767676] text-md">
             To increase your dependability and reliability with companies in their search results and increase your chances of obtaining a job tenfold, obtain our accreditation certificate.
           </p>
           <div className="flex items-center gap-4 ">
@@ -48,12 +49,12 @@ export const SliderFour: React.FC = () => {
             </p>
           </div>
         </div>
-        <div className=" relative hidden md:block top-60 w-[479.06px]  mr-4  mt-20  ">
+        <div className=" relative hidden lg:block top-60 w-[479.06px]  mr-4  mt-20   ">
           <Image
             src={Logo1}
             alt="logo"
             loading="lazy"
-            className="absolute z-30 object-contain  right-14 bottom-4  rounded-xl   "
+            className="absolute z-30 object-contain  right-14 bottom-4  rounded-xl w-[479.06px] h-[479.06px] "
           />
           <div className="relative z-10">
             <Image
@@ -72,7 +73,7 @@ export const SliderFour: React.FC = () => {
               src={arrow}
               alt="logo"
               loading="lazy"
-              className="absolute bottom-96 -left-full"
+              className="absolute bottom-80 -left-full"
             />
           </div>
 
@@ -102,18 +103,18 @@ export const SliderFour: React.FC = () => {
 
               <div className="flex flex-col space-y-6">
                 <span className="text-[20px] font-medium">Congratulations</span>
-                <span className="text-xl font-semibold">Your promotion completed</span>
+                <span className="text-xl font-semibold">100,000+</span>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <Image
+      {/* <Image
         src={dots}
         alt="logo"
         loading="lazy"
         className="absolute bottom-2 p-0 m-0 left-28  "
-      />
+      /> */}
     </div>
 
   </div>

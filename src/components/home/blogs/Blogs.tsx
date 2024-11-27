@@ -24,59 +24,6 @@ export async function Blogs() {
   const locale = await getLocale();
   const data = await fetchData({ endPoint: '/api/public/blogs' });
 
-  const instructors = [
-    {
-      id: 1,
-      name: 'Lorem ipsum dolor sit amet.',
-      title: 'Software Engineer',
-      rating: 4.5,
-      students: 1200,
-      imageUrl: instractor,
-      category: 'NEWS',
-      flag: true,
-    },
-    {
-      id: 2,
-      name: 'Lorem ipsum dolor sit amet.',
-      title: 'Product Manager',
-      rating: 4.7,
-      students: 1500,
-      imageUrl: instractor,
-      category: 'NEWS',
-      flag: false,
-    },
-    {
-      id: 3,
-      name: 'Lorem ipsum dolor sit amet.',
-      title: 'IT Specialist',
-      rating: 4.6,
-      students: 1100,
-      imageUrl: instractor,
-      category: 'NEWS',
-      flag: false,
-    },
-    {
-      id: 4,
-      name: 'Lorem ipsum dolor sit amet.',
-      title: 'Business Analyst',
-      rating: 4.8,
-      students: 1300,
-      imageUrl: instractor,
-      category: 'NEWS',
-      flag: false,
-    },
-    {
-      id: 5,
-      name: 'Lorem ipsum dolor sit amet.',
-      title: 'Accountant',
-      rating: 4.9,
-      students: 1400,
-      imageUrl: instractor,
-      category: 'NEWS',
-      flag: true,
-    },
-  ];
-
   return (
     <div className=' relative w-full h-full py-20'>
       <div className='flex items-center space-x-2 pl-4 py-6'>
@@ -105,8 +52,8 @@ export async function Blogs() {
               >
                 <Card className='relative p-0  bg-white hover:border-6 hover:border-[#5C5C5C] hover:border-opacity-5 transition-all'>
                   {blog?.category?.name && (
-                    <div className='absolute top-4 right-4 text-white bg-[#22B9DD] px-4 py-2 rounded-md  flex items-center justify-center '>
-                      {blog?.category?.name}
+                    <div className='absolute top-4 right-4 text-white bg-[#22B9DD] px-4 py-2 rounded-md  flex items-center justify-center'>
+                      {blog?.category?.name.slice(0,10)}
                     </div>
                   )}
                   <CardContent className='p-2'>

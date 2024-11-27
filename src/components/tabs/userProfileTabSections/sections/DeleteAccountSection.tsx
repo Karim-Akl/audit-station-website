@@ -14,7 +14,7 @@ const DeleteAccountSection = () => {
       <div className='mt-6 flex items-center gap-4 ps-2'>
         <button
           className='flex items-center gap-2 py-3 px-12 rounded-full bg-[#22B9DD] text-white'
-          // onClick={handleAddPaymentMethod}
+          // onClick={handleDeleteAccount}
         >
           <BsArrowLeft
             size={20}
