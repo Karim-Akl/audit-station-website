@@ -4,8 +4,8 @@ import React, { useEffect, useState } from 'react';
 import { FaMapLocationDot } from 'react-icons/fa6';
 import { MdOutlineMail } from 'react-icons/md';
 import { CiFacebook, CiLinkedin, CiYoutube } from 'react-icons/ci';
-import { RiTiktokLine } from "react-icons/ri";
-import { FaSnapchat } from "react-icons/fa6";
+import { RiTiktokLine } from 'react-icons/ri';
+import { FaSnapchat } from 'react-icons/fa6';
 
 import {
   Select,
@@ -21,7 +21,7 @@ import { useTheme } from 'next-themes';
 import axios from 'axios';
 import { BASE_URL } from '@/lib/actions/actions';
 import Link from 'next/link';
-
+import Image from 'next/image';
 export const Header: React.FC = () => {
   const [settings, setSettings] = useState<any>(null);
   const { router } = UseSearchParamsHook();
@@ -57,7 +57,10 @@ export const Header: React.FC = () => {
         <div className='md:container self-stretch md:justify-between items-center md:inline-flex'>
           <div className='justify-start items-center gap-8 flex'>
             <div className='md:justify-start justify-center items-center gap-1 flex'>
-              <FaMapLocationDot size={20} />
+              {/* <FaMapLocationDot size={20} /> */}
+              <Link href={settings ? settings.snapchat : '/'}>
+                <Image src="/assets/home/Vector.jpg" alt="instagram" width={20} height={20} />
+              </Link>
               <div className='md:text-[13px] text-[10px] md:font-medium'>{settings?.address}</div>
             </div>
             <div className='md:justify-start justify-center items-center gap-1 flex'>
@@ -69,20 +72,20 @@ export const Header: React.FC = () => {
             <div className='md:justify-start justify-center items-center md:gap-2 md:flex'>
               <div className='text-[13px] font-medium font-sans'>Follow Us On :</div>
               <div className='justify-start items-center gap-1 flex'>
-                <Link href={settings ? settings.facebook : ''}>
+                <Link href={settings.facebook || '/'}>
                   <CiFacebook size={24} />
                 </Link>
-                <Link href={settings ? settings.linkedin : ''}>
+                <Link href={settings.linkedin || '/'}>
                   <CiLinkedin size={24} />
                 </Link>
-                <Link href={settings ? settings.tiktok : ''}>
+                {/* <Link href={settings ? settings.tiktok : ''}>
                   <RiTiktokLine size={24} />
+                </Link> */}
+                <Link href={settings.snapchat || '/'}>
+                  <Image src="/assets/home/ins.png" alt="instagram" width={15} height={15} />
                 </Link>
-                <Link href={settings ? settings.snapchat : ''}>
-                  <FaSnapchat size={24} />
-                </Link>
-                <Link href={settings ? settings.youtube : ''}>
-                  <CiYoutube size={24} />
+                <Link href={settings.youtube || '/'}>
+                  <Image src="/assets/home/x.png" alt="x" width={15} height={15} />
                 </Link>
               </div>
             </div>

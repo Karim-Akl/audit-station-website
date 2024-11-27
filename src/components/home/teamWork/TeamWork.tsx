@@ -29,7 +29,7 @@ export async function TeamWork() {
         </h2>
         <div className='flex justify-center p-2'>
           <Link
-            href={`${locale}/our-team`}
+            href={`${locale}/our-team` || '/'}
             className='w-full py-3 bg-[#22B9DD] text-white rounded-full flex items-center justify-center gap-2 px-4'
           >
             View More Info

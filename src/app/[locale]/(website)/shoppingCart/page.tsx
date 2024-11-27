@@ -11,7 +11,6 @@ import { IoIosArrowRoundForward } from 'react-icons/io';
 import Stars from '@/components/stars/Stars';
 import { LuFileCheck } from 'react-icons/lu';
 import { RiDeleteBinLine } from 'react-icons/ri';
-
 export const metadata = {
   title: 'Shopping Cart',
   description: 'Shopping Cart Page',
@@ -31,7 +30,7 @@ export default async function ShoppingCart() {
               {shopping.map((cart: any) => (
                 <Link
                   key={cart?.id}
-                  href={`/${locale}/top-courses/${cart?.id}`}
+                  href={`/${locale}/top-courses/${cart?.id}` || '/'}
                   className='bg-white rounded-2xl border-1 border-[#E2E8F0] '
                 >
                   <Card className='p-0 rounded-xl mb-2'>

@@ -3,13 +3,15 @@ import React from 'react';
 import Logo from '@../../../public/assets/footer.svg';
 import AppStore from '@../../../public/assets/appstore.svg';
 import GooglePlay from '@../../../public/assets/googlePlay.svg';
-import { FloatingDockDemo } from '../helper/FloatingDock';
 import Link from 'next/link';
 import { getLocale } from 'next-intl/server';
 import Copyright from './Copyright';
 import { fetchData } from '@/lib/api/fetchData';
 export const Footer: React.FC = async () => {
-  const data = await fetchData({ endPoint: `/api/public/settings` });
+  const data = await fetchData({
+    endPoint: `/api/public/settings`,
+  });
+  
   const locale = await getLocale();
   return (
     <footer className='relative  w-full '>
@@ -26,18 +28,16 @@ export const Footer: React.FC = async () => {
               />
             </li>
 
-            <li className='flex  max-w-60 flex-wrap my-[1rem]'>
+            {/* <li className="flex  max-w-60 flex-wrap my-[1rem]">
               <h6>Head Quarters:</h6>
-              {Array.isArray(data?.head_quarters) && data?.head_quarters?.map((address: string) => {
-                return <p key={address}>{address}</p>;
-              })}
+              <p className='ms-2'>{data?.head_quarters}</p>
             </li>
-            <li className='flex max-w-52 flex-wrap my-[1rem]'>
+            <li className="flex max-w-52 flex-wrap my-[1rem]">
               <h6>Our Branches:</h6>
               {Array.isArray(data?.our_branches) && data?.our_branches?.map((address: string) => {
                 return <p key={address}>{address}</p>;
               })}
-            </li>
+            </li> */}
           </ul>
           <ul className='my-[2rem]'>
             <div className=' flex flex-col gap-4 '>
@@ -59,15 +59,24 @@ export const Footer: React.FC = async () => {
               <div className='border-2 w-7 border-[#1C1C1C]'></div>
               <li>Contact Us</li>
               <li>About Us</li>
-              <Link href={`/${locale}/privacy-policy`}>
+              <Link
+                href={`/${locale}/privacy-policy` || '/'}
+                target='_blank'
+              >
                 <li>Privacy Policy</li>
               </Link>
-              <Link href={`/${locale}/terms-and-conditions`}>
+              <Link
+                href={`/${locale}/terms-and-conditions` || '/'}
+                target='_blank'
+              >
                 <li>Terms and Conditions</li>{' '}
               </Link>
               <li>Blogs</li>
               <li>Careers</li>
-              <Link href={`/${locale}/faqs`}>
+              <Link
+                href={`/${locale}/faqs` || '/'}
+                target='_blank'
+              >
                 <li>FAQ</li>
               </Link>
             </div>
@@ -80,17 +89,21 @@ export const Footer: React.FC = async () => {
                 Follow us on social media to get our latest news and updates
               </p>
               <div className='flex text-xl gap-2  items-center'>
-                <FloatingDockDemo data={data} />
+                {/* <FloatingDockDemo data={data} /> */}
               </div>
               <div className='flex gap-1 items-center'>
-                <Link href={data?.app_store}>
+                <Link
+                  href={data && data?.app_store || '/'}
+                  target='_blank'
+                >
                   <Image
                     src={AppStore}
                     alt='logo'
                   />
                 </Link>
                 <Link
-                  href={data?.google_play}
+                  href={data?.google_play || '/'}
+                  target='_blank'
                   className='max-w-36'
                 >
                   <Image

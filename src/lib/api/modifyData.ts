@@ -1,12 +1,16 @@
+'use client';
+
 // lib/api/modifyData.ts
+import { setSession } from '@/app/[locale]/actions/setSession';
 import { BASE_URL } from '../actions/actions';
+import { getSession } from '../authSession';
 
 interface ParamsProps {
   endPoint: string;
-  method: 'POST' | 'PUT' | 'PATCH' | 'DELETE';
+  method?: 'POST' | 'PUT' | 'PATCH' | 'DELETE';
   data?: any;
   id?: string;
-  queryParams?: Record<string, string>;  
+  queryParams?: Record<string, string>;
   token?: string;
 }
 
@@ -15,11 +19,95 @@ export async function modifyData({
   method = 'POST',
   data,
   id,
-  queryParams = {},  
-  token,
+  queryParams = {},
 }: ParamsProps) {
+  const cookiesSessionData = await getSession();
+  const token = cookiesSessionData?.user?.data?.token;
+
   if (!token) {
     throw new Error('Authorization required: No session token found.');
+  }
+
+  const refreshToken = cookiesSessionData?.user?.data?.refresh_token;
+  const tokenExpiryTime = new Date(cookiesSessionData?.user?.data?.token_expires_at);
+  const refreshTokenExpiryTime = new Date(cookiesSessionData?.user?.data?.refresh_token_expires_at);
+
+  if (isNaN(tokenExpiryTime.getTime())) {
+    console.error(
+      'Invalid session expiration time:',
+      cookiesSessionData?.user?.data?.token_expires_at,
+    );
+    return null;
+  }
+
+  const currentTime = new Date();
+  const tokenExpirationTimeRemaining = tokenExpiryTime.getTime() - currentTime.getTime();
+  const refreshTokenExpirationTimeRemaining =
+    refreshTokenExpiryTime.getTime() - currentTime.getTime();
+  const timeThreshold = 5 * 60 * 1000;
+  const refreshTimeThreshold = 6 * 60 * 60 * 1000;
+
+  if (tokenExpirationTimeRemaining <= timeThreshold && refreshToken) {
+    if (refreshTokenExpirationTimeRemaining <= refreshTimeThreshold) {
+      try {
+        const response = await fetch(`${BASE_URL}/auth/refresh_tokens/rotate`, {
+          method: 'POST',
+          headers: {
+            Authorization: `Bearer ${refreshToken}`,
+          },
+        });
+        if (response.ok) {
+          const data = await response.json();
+          const newRefreshToken = data?.data?.token;
+          const newRefreshTokenExpiryTime = data?.data?.token_expires_at;
+
+          const updatedSession = {
+            ...cookiesSessionData,
+            user: {
+              ...cookiesSessionData.user,
+              data: {
+                ...data,
+                refresh_token: newRefreshToken,
+                refresh_token_expires_at: newRefreshTokenExpiryTime,
+              },
+            },
+          };
+          setSession(updatedSession);
+        } else {
+          console.log('Failed to refresh token');
+        }
+      } catch (error) {
+        console.error('Error refreshing token:', error);
+      }
+    }
+    try {
+      const response = await fetch(`${BASE_URL}/auth/refresh_tokens/refresh`, {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${refreshToken}`,
+        },
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        const newToken = data?.data?.token;
+        const newExpiryTime = data?.data?.token_expires_at;
+
+        const updatedSession = {
+          ...cookiesSessionData,
+          user: {
+            ...cookiesSessionData.user,
+            data: { ...data, token: newToken, token_expires_at: newExpiryTime },
+          },
+        };
+        setSession(updatedSession);
+      } else {
+        console.log('Failed to refresh token');
+      }
+    } catch (error) {
+      console.error('Error refreshing token:', error);
+      return error;
+    }
   }
 
   const headers: Record<string, string> = {
@@ -28,7 +116,7 @@ export async function modifyData({
   };
 
   let url = `${BASE_URL}${endPoint}`;
-  
+
   if (id) {
     url += `/${id}`;
   }
@@ -41,15 +129,27 @@ export async function modifyData({
   const requestOptions: RequestInit = {
     method,
     headers,
-    body: method === 'POST' || method === 'PUT' || method === 'PATCH' ? JSON.stringify(data) : undefined,
+    body:
+      method === 'POST' || method === 'PUT' || method === 'PATCH'
+        ? JSON.stringify(data)
+        : undefined,
   };
 
-  const response = await fetch(url, requestOptions);
+  try {
+    const response = await fetch(url, requestOptions);
 
-  if (!response.ok) {
-    throw new Error(`Failed to ${method.toLowerCase()} data from ${endPoint}. Status: ${response.status}`);
+    if (!response.ok) {
+      const errorDetails = await response.text();
+      throw new Error(errorDetails);
+    }
+
+    try {
+      const responseData = await response.json();
+      return responseData;
+    } catch (jsonError: any) {
+      throw new Error(`Failed to parse JSON response: ${jsonError.message}`);
+    }
+  } catch (error) {
+    throw error;
   }
-
-  const responseData = await response.json();
-  return responseData;
 }

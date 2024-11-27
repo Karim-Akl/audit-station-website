@@ -42,7 +42,7 @@ const MobileMenu: React.FC<NavLinkMobileProps> = ({ locale, links, icon }) => {
             <ModeToggle />
           </div>
           <div className="rounded-full border border-[#767676] p-2 hover:bg-gray-400 hover:cursor-pointer">
-            <Link href={`/${locale}/shoppingCart`}>
+            <Link href={`/${locale}/shoppingCart` || '/'}>
               {" "}
               <LiaShoppingBasketSolid size={20} />
             </Link>
@@ -64,7 +64,7 @@ const MobileMenu: React.FC<NavLinkMobileProps> = ({ locale, links, icon }) => {
                 key={item.id}
                 onClick={() => setOpen(!open)}
                 className="font-medium text-base text-white"
-                href={item.href}
+                href={item.href || '/'}
               >
                 {item.name}
               </Link>

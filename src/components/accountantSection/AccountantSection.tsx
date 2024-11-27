@@ -100,7 +100,7 @@ export async function AccountantSection() {
           <span className='block w-12 h-[2px] bg-blue-200'></span>
           <span className='text-blue-400 text-sm'>Accountants</span>
         </div>
-        <Link href={`/${locale}/accountants`}>
+        <Link href={`/${locale}/accountants` || '/'}>
           {' '}
           <Button className='bg-transparent hover:bg-gray-200 hover:border border w-32 pe-0 md:h-14 md:mt-12 justify-between md:w-44 rounded-full border-[#22B9DD] text-[#22B9DD]'>
             <span>See More</span>

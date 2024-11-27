@@ -1,27 +1,14 @@
 import { Footer } from "@/components/footer/Footer";
 import { Navbar } from "@/components/header/Navbar";
-import React, { Suspense } from "react";
+import React from "react";
 import { getSession } from "@/lib/authSession";
 
 interface LayoutProps {
   children: React.ReactNode;
 }
 
-const SessionLoader = async () => {
+const WebsiteLayout = async ({ children }: LayoutProps) => {
   const session = await getSession();
-  return session;
-};
-
-const WebsiteLayout = ({ children }: LayoutProps) => {
-  return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <SessionComponent>{children}</SessionComponent>
-    </Suspense>
-  );
-};
-
-const SessionComponent = async ({ children }: LayoutProps) => {
-  const session = await SessionLoader();
 
   return (
     <>

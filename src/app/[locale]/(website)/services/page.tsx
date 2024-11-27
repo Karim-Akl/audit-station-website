@@ -40,7 +40,7 @@ export default async function Services() {
             return (
               <>
                 <Link
-                  href={`/${locale}/services/${service.id}`}
+                  href={`/${locale}/services/${service.id}` || '/'}
                   key={service?.id}
                 >
                   <div

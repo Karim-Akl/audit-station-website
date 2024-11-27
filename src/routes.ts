@@ -3,32 +3,32 @@
  * @type {string[]}
  */
 export const publicRoutes = [
-  "/en/",
-  "/en/services",
-  "/en/blogs",
-  "/en/about",
-  "/en/contact",
-  "/en/authError",
-  "/en/privacy-policy",
-  "/en/api/refresh-token",
+  "",
+  "services",
+  "blogs",
+  "about",
+  "contact",
+  "authError",
+  "privacy-policy",
+  "api/refresh-token",
 ];
 
 /**
  * An array of nested routes that are public
  * @type {string[]}
  */
-export const publicNestedRoutes = ["/blogs", "/services"];
+export const publicNestedRoutes = ["blogs", "services"];
 
 /**
  * An array of the query params that opens the authentication modals
  * @   {string}
  */
 export const authRoutes = [
-  `/en/login`,
-  "/en/registration",
-  "/en/forgot-password",
-  "/en/reset-password",
-  "/en/otp",
+  `login`,
+  "registration",
+  "forgot-password",
+  "reset-password",
+  "otp",
 ];
 
 /**

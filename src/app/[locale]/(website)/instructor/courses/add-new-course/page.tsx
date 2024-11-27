@@ -7,15 +7,10 @@ interface BlogProps {
   };
 }
 
-
 export default async function AddNewCoursePage() {
-
-
   return (
     <div>
       <h1>Top Instructors</h1>
-      <p></p>
     </div>
   );
-};
-
+}

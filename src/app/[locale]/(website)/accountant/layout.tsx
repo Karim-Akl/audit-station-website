@@ -7,7 +7,6 @@ import SecondHeroBackground from "@/components/helper/SecondHeroBackground";
 const LazyAcountantTabs = dynamic(() =>
   import("@/components/helper/Tabs").then((module) => module.AcountantTabs)
 );
-
 export default function InstructorLayout({
   children,
 }: {
@@ -16,8 +15,8 @@ export default function InstructorLayout({
   return (
     <>
       <Head>
-        <title>Instructor</title>
-        <meta name="description" content="Instructor Page" />
+        <title>Accountant</title>
+        <meta name="description" content="Accountant Page" />
       </Head>
       <main className="mb-20 relative">
         <SecondHeroBackground
