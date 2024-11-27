@@ -1,3 +1,5 @@
+'use client';
+
 // lib/api/modifyData.ts
 import { setSession } from '@/app/[locale]/actions/setSession';
 import { BASE_URL } from '../actions/actions';
@@ -8,7 +10,7 @@ interface ParamsProps {
   method?: 'POST' | 'PUT' | 'PATCH' | 'DELETE';
   data?: any;
   id?: string;
-  queryParams?: Record<string, string>;  
+  queryParams?: Record<string, string>;
   token?: string;
 }
 
@@ -17,7 +19,7 @@ export async function modifyData({
   method = 'POST',
   data,
   id,
-  queryParams = {},  
+  queryParams = {},
 }: ParamsProps) {
   const cookiesSessionData = await getSession();
   const token = cookiesSessionData?.user?.data?.token;
@@ -31,7 +33,10 @@ export async function modifyData({
   const refreshTokenExpiryTime = new Date(cookiesSessionData?.user?.data?.refresh_token_expires_at);
 
   if (isNaN(tokenExpiryTime.getTime())) {
-    console.error('Invalid session expiration time:', cookiesSessionData?.user?.data?.token_expires_at);
+    console.error(
+      'Invalid session expiration time:',
+      cookiesSessionData?.user?.data?.token_expires_at,
+    );
     return null;
   }
 
@@ -60,7 +65,11 @@ export async function modifyData({
             ...cookiesSessionData,
             user: {
               ...cookiesSessionData.user,
-              data: { ...data, refresh_token: newRefreshToken, refresh_token_expires_at: newRefreshTokenExpiryTime, },
+              data: {
+                ...data,
+                refresh_token: newRefreshToken,
+                refresh_token_expires_at: newRefreshTokenExpiryTime,
+              },
             },
           };
           setSession(updatedSession);
@@ -88,7 +97,7 @@ export async function modifyData({
           ...cookiesSessionData,
           user: {
             ...cookiesSessionData.user,
-            data: { ...data, token: newToken, token_expires_at: newExpiryTime, },
+            data: { ...data, token: newToken, token_expires_at: newExpiryTime },
           },
         };
         setSession(updatedSession);
@@ -97,9 +106,9 @@ export async function modifyData({
       }
     } catch (error) {
       console.error('Error refreshing token:', error);
+      return error;
     }
   }
-
 
   const headers: Record<string, string> = {
     'Content-Type': 'application/json',
@@ -107,7 +116,7 @@ export async function modifyData({
   };
 
   let url = `${BASE_URL}${endPoint}`;
-  
+
   if (id) {
     url += `/${id}`;
   }
@@ -120,15 +129,27 @@ export async function modifyData({
   const requestOptions: RequestInit = {
     method,
     headers,
-    body: method === 'POST' || method === 'PUT' || method === 'PATCH' ? JSON.stringify(data) : undefined,
+    body:
+      method === 'POST' || method === 'PUT' || method === 'PATCH'
+        ? JSON.stringify(data)
+        : undefined,
   };
 
-  const response = await fetch(url, requestOptions);
+  try {
+    const response = await fetch(url, requestOptions);
 
-  if (!response.ok) {
-    throw new Error(`Failed to ${method.toLowerCase()} data from ${endPoint}. Status: ${response.status}`);
+    if (!response.ok) {
+      const errorDetails = await response.text();
+      throw new Error(errorDetails);
+    }
+
+    try {
+      const responseData = await response.json();
+      return responseData;
+    } catch (jsonError: any) {
+      throw new Error(`Failed to parse JSON response: ${jsonError.message}`);
+    }
+  } catch (error) {
+    throw error;
   }
-
-  const responseData = await response.json();
-  return responseData;
 }

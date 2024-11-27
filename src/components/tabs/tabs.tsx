@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import React from 'react';
-import ProfileTabsSections from './userProfileTabSections/UserProfileTabSections';
+import ProfileTabsSections from './userProfileTabSections/sections/UserProfileSection';
 
 export default function Tabs({
   tabs,

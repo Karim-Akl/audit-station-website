@@ -2,16 +2,16 @@
 
 import Image from 'next/image';
 import { CiCamera } from 'react-icons/ci';
-import NameAndInput from './nameAndInput/NameAndInput';
-import SelectMenu from './selectMenu/SelectMenu';
+import SelectMenu from '../selectMenu/SelectMenu';
 import { IoAdd } from 'react-icons/io5';
 import { BsArrowLeft } from 'react-icons/bs';
 import { useEffect, useState } from 'react';
-import PhoneInputComponent from '../phoneInput/PhoneInput';
-import { modifyData } from '@/lib/api/modifyData';
+import PhoneInputComponent from '../../phoneInput/PhoneInput';
 import toast from 'react-hot-toast';
 import { BASE_URL } from '@/lib/actions/actions';
 import axios from 'axios';
+import InputAndLabel from '@/components/InputAndLabel/inputAndLabel';
+import { parsePhoneNumberFromString, PhoneNumber } from 'libphonenumber-js';
 
 interface ProfileDataTypes {
   name: string | undefined;
@@ -20,7 +20,7 @@ interface ProfileDataTypes {
   avatar: File | undefined;
 }
 
-const UserProfileTabSections = ({ profileData, token }: any) => {
+const UserProfileSection = ({ profileData, token }: any) => {
   const [inputsData, setInputsData] = useState<ProfileDataTypes>({
     name: '',
     email: '',
@@ -28,14 +28,56 @@ const UserProfileTabSections = ({ profileData, token }: any) => {
     avatar: undefined,
   });
 
+  const [errors, setErrors] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    avatar: '',
+  });
+
   useEffect(() => {
+    const loadData = async () => {
+      setInputsData({
+        name: profileData.name || '',
+        email: profileData.email || '',
+        phone: profileData.phone || '',
+        avatar: undefined,
+      });
+
+      if (profileData && profileData.avatar) {
+        setImage(profileData.avatar);
+        try {
+          const avatarFile = await convertUrlToFile(profileData.avatar);
+          setInputsData((prevState) => ({
+            ...prevState,
+            avatar: avatarFile,
+          }));
+        } catch (error) {
+          console.log('Error converting URL to file', error);
+        }
+      }
+    };
     if (profileData) {
-      setImage(profileData.avatar);
-      setInputsData(profileData);
+      loadData();
     }
   }, [profileData]);
 
   const [image, setImage] = useState('');
+
+  const convertUrlToFile = async (url: string) => {
+    try {
+      const response = await fetch(url);
+      if (!response.ok) {
+        throw new Error(`Failed to fetch image: ${response.status}`);
+      }
+      const blob = await response.blob();
+      const file = new File([blob], 'avatar.jpg', { type: blob.type });
+      return file;
+    } catch (error) {
+      console.error('Error fetching image: ', error);
+      throw error;
+    }
+  };
 
   const handleImageChange = (e: any) => {
     const file = e.target.files?.[0];
@@ -60,27 +102,36 @@ const UserProfileTabSections = ({ profileData, token }: any) => {
       formData.append('avatar', inputsData.avatar);
     }
 
-    console.log('formData: ', formData);
-    return;
-
     const response = await axios
       .post(`${BASE_URL}/auth/profile`, formData, {
         headers: {
           Authorization: `Bearer ${token}`,
-          'Content-Type': 'application/json',
         },
       })
-      .then((response) => {
-        console.log('response: ', response);
-        toast.success('updated successfully');
+      .then(() => {
+        toast.success('profile updated successfully');
+        location.reload();
       })
       .catch((error) => {
+        for (const key in error.response.data.data) {
+          toast.error(`${key}: ${error.response.data.data[key]}`);
+        }
         console.log('error: ', error);
       });
   };
 
+  const handleChangeNumber = (e: string) => {
+    const phoneNumberObj: PhoneNumber | undefined = parsePhoneNumberFromString(e);
+    if (phoneNumberObj?.isValid() === false) {
+      setErrors({ ...errors, phone: 'Please enter a valid phone number' });
+    } else {
+      setErrors({ ...errors, phone: '' });
+    }
+    setInputsData({ ...inputsData, phone: phoneNumberObj?.number || '' });
+  };
+
   return (
-    <div className='flex flex-col'>
+    <div className='flex flex-col lg:ps-4'>
       <div className='w-24 h-24 relative my-10'>
         <Image
           src={image || ''}
@@ -107,18 +158,22 @@ const UserProfileTabSections = ({ profileData, token }: any) => {
         />
       </div>
       <div className='w-full flex flex-col gap-4'>
-        <NameAndInput
+        <InputAndLabel
           label='Full Name'
           value={inputsData?.name}
           onChange={(e: any) => setInputsData({ ...inputsData, name: e.target.value })}
         />
 
-        <NameAndInput
+        <InputAndLabel
           label='Email'
           value={inputsData?.email}
           onChange={(e: any) => setInputsData({ ...inputsData, email: e.target.value })}
         />
-        <PhoneInputComponent label='Phone Number' />
+        <PhoneInputComponent
+          label='Phone Number'
+          value={inputsData?.phone}
+          onChange={handleChangeNumber}
+        />
       </div>
       <div className='my-6 grid grid-cols-2'>
         <div className='col-span-1'>
@@ -135,7 +190,7 @@ const UserProfileTabSections = ({ profileData, token }: any) => {
             options={[32, 34]}
           />
         </div>
-        <div className='mt-4 flex items-center gap-4 ps-2'>
+        <div className='mt-4 flex items-center gap-4 lg:ps-2 max-w-screen'>
           <button className='flex items-center gap-2 py-4 px-12 rounded-full bg-white text-[#22B9DD] border border-[#22B9DD]'>
             <BsArrowLeft
               size={20}
@@ -159,4 +214,4 @@ const UserProfileTabSections = ({ profileData, token }: any) => {
   );
 };
 
-export default UserProfileTabSections;
+export default UserProfileSection;
