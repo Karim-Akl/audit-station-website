@@ -17,7 +17,7 @@ interface BlogProps {
   // };
 }
 
-export default async function instructorsDetailsPage({
+export default async function Blog({
   params: { blogId },
 }: // searchParams: { page = '1' },
 BlogProps) {
@@ -37,7 +37,7 @@ BlogProps) {
           <Image
             loading='lazy'
             src={data?.author?.image}
-            alt='topCourse'
+            alt='blog'
             layout='fill'
             className='rounded-2xl'
           />

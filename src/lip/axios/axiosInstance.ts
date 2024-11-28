@@ -4,6 +4,11 @@ export const axiosInstance = axios.create({
   baseURL: `https://audit-api.doctor-code.net`,
 });
 
+if (typeof window !== 'undefined' && window.location.hostname !== 'localhost') {
+  axiosInstance.defaults.withCredentials = true;
+  axiosInstance.defaults.withXSRFToken = true;
+}
+
 axiosInstance.interceptors.request.use((config: InternalAxiosRequestConfig) => {
   if (localStorage.getItem('token')) {
     config.headers.Authorization = `Bearer ${localStorage.getItem('token')}`;
