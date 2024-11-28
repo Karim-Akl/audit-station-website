@@ -2,10 +2,10 @@ import BlogsComponent from '@/components/blogs/BlogsComponent';
 import React from 'react';
 
 export const metadata = {
-  title: 'Blogs',
+  title: 'All Blogs',
   description: 'Blogs Page',
 };
-export default async function Blogs() {
+export default async function AllBlogs() {
 
   return (
     <>

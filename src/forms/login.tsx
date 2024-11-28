@@ -9,7 +9,6 @@ import { setSession } from '@/app/[locale]/actions/setSession';
 import { toast } from 'sonner';
 import { FaApple } from 'react-icons/fa6';
 import { BASE_URL } from '@/lib/constants/constants';
-import { useLocale } from 'next-intl';
 
 interface LoginFormValues {
   email: string;
@@ -32,26 +31,32 @@ const Login: FC = () => {
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setIsLoading(true);
-
+  
     try {
-      await fetch('/sanctum/csrf-cookie')
+      await fetch('/sanctum/csrf-cookie', {
+        credentials: 'include',
+      });
+  
+      const xsrfToken = document.cookie
+        .split('; ')
+        .find((row) => row.startsWith('XSRF-TOKEN='))
+        ?.split('=')[1];
+  
       const response = await fetch(`${BASE_URL}/auth/login/mobile`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          ...(xsrfToken && { 'X-XSRF-TOKEN': decodeURIComponent(xsrfToken) }),
         },
         body: JSON.stringify({
           email: formValues.email,
-          password: formValues.password
-        })
-        // credentials: "include",
-        // headers: {
-        //   "X-XSRF-TOKEN": "true", // Replace with actual token
-        // },
+          password: formValues.password,
+        }),
+        credentials: 'include', 
       });
+  
       console.log('response: ', response);
-
-      // Handle response if necessary
+  
       const data = await response.json();
       if (data.type === 'success') {
         toast.success(data.message);
@@ -61,15 +66,16 @@ const Login: FC = () => {
       if (data.type === 'error') {
         toast.warning(data.message);
       }
-
+  
       setIsLoading(false);
     } catch (error) {
       setIsLoading(false);
       toast.error((error as Error).message);
     } finally {
-      setIsLoading(false); // Set loading to false when the request completes
+      setIsLoading(false)
     }
   }
+  
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
