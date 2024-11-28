@@ -177,7 +177,7 @@ export default function Accountants() {
   return (
     <>
       {/* <HeroBackground title='accountant' /> */}
-      <div className='grid lg:grid-cols-2 grid-cols-1 px-10 max-w-screen  pt-14'>
+      <div className='grid lg:grid-cols-2 grid-cols-1 px-10 max-w-screen  pt-14 '>
         <div className='col-span-1 lg:col-span-3 relative w-full h-full'>
           <div className='flex items-center justify-between space-x-2 pl-4 mb-4'>
             <div className='flex flex-col justify-center space-x-2  '>
@@ -272,8 +272,8 @@ export default function Accountants() {
                     </div>
                     <hr />
                     <div className='flex justify-center p-2'>
-                      <Link href={`/${locale}/accountant/accountants/${instructor.id}`}>
-                        <button className='w-full py-3 bg-[#22B9DD] text-white rounded-full flex items-center justify-center gap-2 p-4'>
+                      <Link href={`/${locale}/accountants/${instructor.id}`} className='w-full'>
+                        <button className='w-full py-3 bg-[#22B9DD] text-white rounded-full flex font-bold items-center justify-center gap-2 p-4'>
                           View More Info
                           <MdOutlineArrowRightAlt size={20} />
                         </button>

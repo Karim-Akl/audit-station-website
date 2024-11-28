@@ -11,6 +11,7 @@ import { TopCourses } from '@/components/home/topCourses/TopCourses';
 import { Testimonial } from '@/components/home/testimonials/Testimonial'; // Updated path
 import NavigationControls from '@/components/home/navigationControls/NavigationControls';
 import { AccountantSection } from '@/components/accountantSection/AccountantSection';
+import CustomerService from '@/components/socialapp/customerService';
 
 export default async function Home() {
   return (
@@ -22,9 +23,9 @@ export default async function Home() {
     to-white
     background-animate'
     >
-      {/* <CustomerService /> */}
+      {/* <CustomerService/> */}
       <Background />
-      <div className='md:container mx-auto z-0'>
+      <div className='md:container mx-auto z-0 overflow-hidden'>
         <AnalyticsStats />
         <Steps />
         <StepsChart />

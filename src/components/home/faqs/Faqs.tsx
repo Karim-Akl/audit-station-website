@@ -50,25 +50,25 @@ export const Faqs: React.FC = async () => {
             ))}
         </div>
       </div>
-      <div className='w-full md:w-1/4  md:mt-0  '>
+      <div className='w-full md:w-1/2  md:mt-0'>
         <div className='relative'>
           <Image
             src={unspalch}
-            className=' w-full h-80 z-10 '
+            className=' w-full h-96 z-10  '
             alt='pesone'
             width={100}
             height={100}
           />
           <Image
             src={vector}
-            className='absolute -bottom-5 -right-5 overflow-hidden  '
+            className='absolute -bottom-5 right-16 overflow-hidden  '
             alt='pesone'
             width={200}
             height={200}
           />
         </div>
         <Link href={`/${locale}/faqs` || '/'}>
-          <Button className='bg-transparent hover:bg-gray-200 hover:border border pe-0 md:h-14 md:mt-12 justify-between md:w-52 mt-5 rounded-full border-[#22B9DD] text-[#22B9DD]'>
+          <Button className='!translate-x-80 bg-transparent hover:bg-gray-200 hover:border border pe-0 md:h-14 md:mt-12 justify-between md:w-52 mt-5 rounded-full border-[#22B9DD] text-[#22B9DD]'>
             <span>See More</span>
             <span className='rounded-full border p-3 border-[#22B9DD]'>
               <ArrowRight />

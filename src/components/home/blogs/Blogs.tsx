@@ -25,12 +25,12 @@ export async function Blogs() {
   const data = await fetchData({ endPoint: '/api/public/blogs' });
 
   return (
-    <div className=' relative w-full h-full py-20'>
-      <div className='flex items-center space-x-2 pl-4 py-6'>
+    <div className=' relative w-full h-full py-20  m-auto border-red-500 '>
+      <div className='flex items-center space-x-2 pl-4 pr-4 py-6'>
         <span className='block w-12 h-[2px] bg-blue-200'></span>
         <span className='text-blue-400 text-sm'>Blogs</span>
       </div>
-      <h2 className='md:max-w-7xl pl-4 mx-auto text-xl md:text-5xl font-bold text-neutral-800 dark:text-neutral-200 font-sans'>
+      <h2 className='md:max-w-7xl pl-4 pr-4 mx-auto text-xl md:text-5xl font-bold text-neutral-800 dark:text-neutral-200 font-sans'>
         Latest News and Resources
       </h2>
 
@@ -40,11 +40,11 @@ export async function Blogs() {
         }}
         className='overflow-hidden my-6  '
       >
-        <CarouselContent className='ml-0'>
+        <CarouselContent className='ml-0 mr-0 '>
           {data?.map((blog: any) => (
             <CarouselItem
               key={blog.id}
-              className='md:w-full rounded-lg  sm:basis-1/2 md:basis-1/3 xl:basis-1/5'
+              className='md:w-full px-4  rounded-lg  sm:basis-1/2 md:basis-1/3 xl:basis-1/5'
             >
               <Link
                 href={`/${locale}/blogs/${blog.id}` || '/'}

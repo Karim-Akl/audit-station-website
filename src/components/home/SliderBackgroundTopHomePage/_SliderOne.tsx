@@ -15,20 +15,26 @@ import dots from "@../../../public/assets/dots.png";
 import { Button } from "../../ui/button";
 import Image from "next/image";
 import { VideoPlayer } from "../../helper/videoPlayer";
+import { useLocale } from 'next-intl';
+import { getLocale } from 'next-intl/server';
 
 export const SliderOne: React.FC = () => {
+  const locale = useLocale();
+
   const [isOpen, setIsOpen] = useState(false);
 
   const openVideo = () => {
     setIsOpen(true);
     document.body.style.overflow = "hidden";
   };
+  const headerStyle = locale === 'en' ? 'mr-20' : locale === 'ar' ? 'ml-52' : 'bg-gray text-center';
+
   return (
     <div className="swiper-1">
 
-        <div className="w-full background-color relative h-[calc(100vh-10px)] text-white overflow-hidden">
-          <div className="flex  justify-between m-auto items-center h-full">
-            <div className="p-20 my-10 flex flex-col gap-4 max-w-xl ">
+        <div className="w-full background-color relative h-[calc(100vh-10px)] text-white overflow-hidden ">
+          <div className={`flex  justify-between m-auto items-center h-full w-full `}>
+            <div className="p-20 my-10 flex flex-col gap-4 max-w-xl items-start ">
               <h1 className="text-4xl text-[#666] font-bold flex-wrap">
                 Register your company today on our leading accounting platform..
               </h1>
@@ -49,12 +55,12 @@ export const SliderOne: React.FC = () => {
                 </p>
               </div>
             </div>
-            <div className="relative hidden lg:block top-36  md:mr-10 ">
+            <div className={`relative hidden lg:flex top-36 `}>
               <Image
                 src={Logo1}
                 alt="logo"
                 loading="lazy"
-                className="absolute z-30 right-14 bottom-16 object-contain"
+                className="absolute z-30 right-14 bottom-16 object-contain "
               />
               <div className="relative z-10">
                 <svg
