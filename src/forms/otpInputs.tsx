@@ -1,16 +1,12 @@
-"use client";
-import { REGEXP_ONLY_DIGITS_AND_CHARS } from "input-otp";
-import { BASE_URL } from "@/lib/constants/constants";
-import { useLocale } from "next-intl";
-import {
-  InputOTP,
-  InputOTPGroup,
-  InputOTPSlot,
-} from "@/components/ui/input-otp";
-import { toast } from "sonner";
-import { FormEvent, useEffect, useState } from "react";
-import { Button } from "@/components/ui/button";
-import { useRouter } from "next/navigation";
+'use client';
+import { REGEXP_ONLY_DIGITS_AND_CHARS } from 'input-otp';
+import { BASE_URL } from '@/lib/constants/constants';
+import { useLocale } from 'next-intl';
+import { InputOTP, InputOTPGroup, InputOTPSlot } from '@/components/ui/input-otp';
+import { toast } from 'sonner';
+import { FormEvent, useEffect, useState } from 'react';
+import { Button } from '@/components/ui/button';
+import { useRouter } from 'next/navigation';
 interface otpProps {
   email: string;
   resetpassword?: boolean;
@@ -21,7 +17,7 @@ export function InputOTPPattern({ email, resetpassword }: otpProps) {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [timer, setTimer] = useState<number>(60);
-  const [otp, setOtp] = useState<string>("");
+  const [otp, setOtp] = useState<string>('');
 
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -31,18 +27,18 @@ export function InputOTPPattern({ email, resetpassword }: otpProps) {
       const formData = new FormData(event.currentTarget);
 
       const response = await fetch(`${BASE_URL}/auth/password/validate_code`, {
-        method: "POST",
+        method: 'POST',
         body: formData,
       });
 
       // Handle response if necessary
       const data = await response.json();
       console.log(data);
-      if (data.type === "success") {
+      if (data.type === 'success') {
         toast.success(data.message);
         router.push(`/${locale}/login`);
       }
-      if (data.type === "error") {
+      if (data.type === 'error') {
         toast.warning(data.message);
       }
       setIsLoading(false);
@@ -58,28 +54,23 @@ export function InputOTPPattern({ email, resetpassword }: otpProps) {
     const formData = new FormData(event.currentTarget);
     setIsLoading(true);
     router.push(
-      `/${locale}/reset-password?email=${formData.get(
-        "handle"
-      )}&otp=${formData.get("otp")}`
+      `/${locale}/reset-password?email=${formData.get('handle')}&code=${formData.get('otp')}`,
     );
   }
 
   async function ResendOtp() {
     setIsLoading(true);
     try {
-      const response = await fetch(
-        `${BASE_URL}/auth/password/forgot_password`,
-        {
-          method: "POST",
-          body: JSON.stringify({ email: "" }),
-        }
-      );
+      const response = await fetch(`${BASE_URL}/auth/password/forgot_password`, {
+        method: 'POST',
+        body: JSON.stringify({ email: '' }),
+      });
       const data = await response.json();
-      if (data.type === "success") {
+      if (data.type === 'success') {
         toast.success(data.message);
         router.push(`/${locale}/otp`);
       }
-      if (data.type === "error") {
+      if (data.type === 'error') {
         toast.warning(data.message);
       }
       setIsLoading(false);
@@ -99,31 +90,35 @@ export function InputOTPPattern({ email, resetpassword }: otpProps) {
   }, []);
 
   return (
-    <div className="flex justify-center items-center h-screen space-y-4 ">
-      <div className="bg-white p-8 rounded-lg shadow-lg max-w-lg w-full">
-        <h2 className="text-[31px] font-semibold text-center text-[#333] mb-2">
-          OTP
-        </h2>
-        <p className="text-[16px] font-medium text-center text-[#767676]">
+    <div className='flex justify-center items-center h-screen space-y-4 '>
+      <div className='bg-white p-8 rounded-lg shadow-lg max-w-lg w-full'>
+        <h2 className='text-[31px] font-semibold text-center text-[#333] mb-2'>OTP</h2>
+        <p className='text-[16px] font-medium text-center text-[#767676]'>
           An account activation code has been sent to your email
         </p>
-        <p className="text-[16px] font-medium text-center text-[#1D748B]">
-          exam***************
-        </p>
+        <p className='text-[16px] font-medium text-center text-[#1D748B]'>exam***************</p>
         <form
           onSubmit={resetpassword ? ResendResetPasswordOtp : onSubmit}
-          className="flex flex-col justify-center items-center space-y-4 "
+          className='flex flex-col justify-center items-center space-y-4 '
         >
-          <input name="handle" type="email" hidden value={email} />
+          <input
+            name='handle'
+            type='email'
+            hidden
+            value={email}
+          />
           <InputOTP
             maxLength={4}
             size={4}
-            name="otp"
+            name='code'
             pattern={REGEXP_ONLY_DIGITS_AND_CHARS}
-            className="flex justify-center items-center space-x-4"
+            className='flex justify-center items-center space-x-4'
           >
-            <InputOTPGroup className="gap-2 p-2">
-              <InputOTPSlot className="border-[#1FA8C9]" index={0} />
+            <InputOTPGroup className='gap-2 p-2'>
+              <InputOTPSlot
+                className='border-[#1FA8C9]'
+                index={0}
+              />
               <InputOTPSlot index={1} />
               <InputOTPSlot index={2} />
               <InputOTPSlot index={3} />
@@ -131,21 +126,21 @@ export function InputOTPPattern({ email, resetpassword }: otpProps) {
           </InputOTP>
 
           <Button
-            type="submit"
+            type='submit'
             disabled={isLoading}
-            className="w-full bg-[#22B9DD]"
+            className='w-full bg-[#22B9DD]'
           >
-            {isLoading ? "...loading" : "Verify"}
+            {isLoading ? '...loading' : 'Verify'}
           </Button>
-          <div className="flex justify-around w-full items-center">
+          <div className='flex justify-around w-full items-center'>
             <p>
-              Your code will expire in{" "}
-              <span className="text-[#F55157]">
-                00:{timer ? timer : timer == 0 ? "00" : timer}seconds
+              Your code will expire in{' '}
+              <span className='text-[#F55157]'>
+                00:{timer ? timer : timer == 0 ? '00' : timer}seconds
               </span>
             </p>
             <button
-              className="text-[#1FA8C9]"
+              className='text-[#1FA8C9]'
               onClick={ResendOtp}
               disabled={timer > 0}
             >

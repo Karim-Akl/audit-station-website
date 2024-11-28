@@ -56,7 +56,7 @@ const BlogsComponent = () => {
                       className='w-full h-auto'
                     />
                     <div className='flex flex-col'>
-                      <div className='flex flex-row md:flex-col lg:flex-row justify-between'>
+                      <div className='flex flex-row md:flex-col lg:flex-row justify-between gap-4'>
                         <div className='flex items-center'>
                           <span>
                             <CiCalendarDate
@@ -73,8 +73,8 @@ const BlogsComponent = () => {
                             color='#22B9DD'
                             size={20}
                           />
-                          <span className='text-xs whitespace-nowrap'>
-                            By: {blog?.author?.name}
+                          <span className='text-xs whitespace-nowrap truncate'>
+                            By: {blog?.author?.name.slice(0, 10)}
                           </span>
                         </div>
                       </div>

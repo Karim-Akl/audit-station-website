@@ -9,7 +9,7 @@ import { setSession } from '@/app/[locale]/actions/setSession';
 import { toast } from 'sonner';
 import { FaApple } from 'react-icons/fa6';
 import { BASE_URL } from '@/lib/constants/constants';
-import { useLocale } from 'next-intl';
+import axiosInstance from '@/lip/axios/axiosInstance';
 
 interface LoginFormValues {
   email: string;
@@ -33,42 +33,20 @@ const Login: FC = () => {
     event.preventDefault();
     setIsLoading(true);
 
-    try {
-      await fetch('/sanctum/csrf-cookie')
-      const response = await fetch(`${BASE_URL}/auth/login/mobile`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          email: formValues.email,
-          password: formValues.password
+    axiosInstance.get(`/sanctum/csrf-cookie`).then(() => {
+      axiosInstance
+        .post(`/auth/login/mobile`, { ...formValues })
+        .then((response) => {
+          const data = response.data;
+          toast.success(data.message);
+          setSession(data);
+          setIsLoading(false);
         })
-        // credentials: "include",
-        // headers: {
-        //   "X-XSRF-TOKEN": "true", // Replace with actual token
-        // },
-      });
-      console.log('response: ', response);
-
-      // Handle response if necessary
-      const data = await response.json();
-      if (data.type === 'success') {
-        toast.success(data.message);
-        console.log('data: ', data);
-        setSession(data);
-      }
-      if (data.type === 'error') {
-        toast.warning(data.message);
-      }
-
-      setIsLoading(false);
-    } catch (error) {
-      setIsLoading(false);
-      toast.error((error as Error).message);
-    } finally {
-      setIsLoading(false); // Set loading to false when the request completes
-    }
+        .catch((error) => {
+          const errorMessage = error.response.data.message;
+          toast.error(errorMessage);
+        });
+    });
   }
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
