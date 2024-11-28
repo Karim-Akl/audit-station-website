@@ -40,17 +40,20 @@ export const AboutUs: React.FC = () => {
             <FormattedText htmlText={aboutUs?.description} />
           </p>
           <div className='w-full text-[#161439] flex flex-col gap-4 text-sm md:text-lg  font-semibold font-poppins'>
-            {aboutUs?.items.map((item: any, index: number) => (
-              <>
-                <div
-                  key={index}
-                  className='flex items-center gap-2 '
-                >
-                  <ChevronRight className='p-1 text-black rounded-full bg-[#22B9DD]' />
-                  {item}
-                </div>
-              </>
-            ))}
+            {aboutUs &&
+              Array.isArray(aboutUs?.items) &&
+              aboutUs?.items.length > 0 &&
+              aboutUs?.items.map((item: any, index: number) => (
+                <>
+                  <div
+                    key={index}
+                    className='flex items-center gap-2 '
+                  >
+                    <ChevronRight className='p-1 text-black rounded-full bg-[#22B9DD]' />
+                    {item}
+                  </div>
+                </>
+              ))}
           </div>
         </div>
         <Button className='bg-white hover:bg-gray-200 hover:border border pe-0 h-12   justify-between  w-72 rounded-full border-[#22B9DD] text-[#22B9DD]'>

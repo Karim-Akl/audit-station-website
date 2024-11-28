@@ -2,6 +2,7 @@ import { BASE_URL } from '@/lib/actions/actions';
 import { getSession } from '../authSession';
 import { setSession } from '@/app/[locale]/actions/setSession';
 import { cookies } from 'next/headers';
+import { inLocalhost } from '@/lip/axios/axiosInstance';
 
 export async function fetchData({
   endPoint,
@@ -110,7 +111,7 @@ export async function fetchData({
 
   let xsrfToken = '';
 
-  if (typeof window !== 'undefined' && window.location.hostname !== 'localhost') {
+  if (inLocalhost()) {
     xsrfToken = cookies().get('XSRF-TOKEN')?.value || '';
   }
 

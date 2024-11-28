@@ -1,10 +1,18 @@
 import axios, { InternalAxiosRequestConfig } from 'axios';
 
+export const inLocalhost = () => {
+  if (typeof window !== 'undefined') {
+    return location.hostname === 'localhost';
+  } else {
+    return null;
+  }
+};
+
 export const axiosInstance = axios.create({
   baseURL: `https://audit-api.doctor-code.net`,
 });
 
-if (typeof window !== 'undefined' && window.location.hostname !== 'localhost') {
+if (!inLocalhost()) {
   axiosInstance.defaults.withCredentials = true;
   axiosInstance.defaults.withXSRFToken = true;
 }

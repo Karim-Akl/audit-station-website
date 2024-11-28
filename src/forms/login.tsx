@@ -9,6 +9,7 @@ import { setSession } from '@/app/[locale]/actions/setSession';
 import { toast } from 'sonner';
 import { FaApple } from 'react-icons/fa6';
 import { BASE_URL } from '@/lib/constants/constants';
+import axiosInstance from '@/lip/axios/axiosInstance';
 
 interface LoginFormValues {
   email: string;
@@ -31,51 +32,28 @@ const Login: FC = () => {
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setIsLoading(true);
-  
+
     try {
-      await fetch('/sanctum/csrf-cookie', {
-        credentials: 'include',
+      axiosInstance.get(`/sanctum/csrf-cookie`).then(() => {
+        axiosInstance.post(`/auth/login/mobile`, { ...formValues }).then((response) => {
+          const data = response.data;
+          if (data.type === 'success') {
+            toast.success(data.message);
+            setSession(data);
+          }
+          if (data.type === 'error') {
+            toast.warning(data.message);
+          }
+          setIsLoading(false);
+        });
       });
-  
-      const xsrfToken = document.cookie
-        .split('; ')
-        .find((row) => row.startsWith('XSRF-TOKEN='))
-        ?.split('=')[1];
-  
-      const response = await fetch(`${BASE_URL}/auth/login/mobile`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          ...(xsrfToken && { 'X-XSRF-TOKEN': decodeURIComponent(xsrfToken) }),
-        },
-        body: JSON.stringify({
-          email: formValues.email,
-          password: formValues.password,
-        }),
-        credentials: 'include', 
-      });
-  
-      console.log('response: ', response);
-  
-      const data = await response.json();
-      if (data.type === 'success') {
-        toast.success(data.message);
-        console.log('data: ', data);
-        setSession(data);
-      }
-      if (data.type === 'error') {
-        toast.warning(data.message);
-      }
-  
-      setIsLoading(false);
     } catch (error) {
       setIsLoading(false);
       toast.error((error as Error).message);
     } finally {
-      setIsLoading(false)
+      setIsLoading(false);
     }
   }
-  
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
