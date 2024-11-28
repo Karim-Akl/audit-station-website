@@ -33,26 +33,20 @@ const Login: FC = () => {
     event.preventDefault();
     setIsLoading(true);
 
-    try {
-      axiosInstance.get(`/sanctum/csrf-cookie`).then(() => {
-        axiosInstance.post(`/auth/login/mobile`, { ...formValues }).then((response) => {
+    axiosInstance.get(`/sanctum/csrf-cookie`).then(() => {
+      axiosInstance
+        .post(`/auth/login/mobile`, { ...formValues })
+        .then((response) => {
           const data = response.data;
-          if (data.type === 'success') {
-            toast.success(data.message);
-            setSession(data);
-          }
-          if (data.type === 'error') {
-            toast.warning(data.message);
-          }
+          toast.success(data.message);
+          setSession(data);
           setIsLoading(false);
+        })
+        .catch((error) => {
+          const errorMessage = error.response.data.message;
+          toast.error(errorMessage);
         });
-      });
-    } catch (error) {
-      setIsLoading(false);
-      toast.error((error as Error).message);
-    } finally {
-      setIsLoading(false);
-    }
+    });
   }
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
