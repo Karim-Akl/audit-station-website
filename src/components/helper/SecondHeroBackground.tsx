@@ -79,16 +79,15 @@ const SecondHeroBackground = async ({
                   />
                 </div>
               )}
-
               <div className='flex flex-col gap-2'>
                 <h2 className='text-4xl font-semibold capitalize'>{title}</h2>
                 <div className='flex items-center gap-2'>
                   <BackButton />
-
                   <span className='flex items-center gap-1'>
                     {' '}
                     <MdOutlineEmail />
                     {email}
+                    {step}
                   </span>
                 </div>
               </div>

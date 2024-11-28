@@ -40,7 +40,7 @@ export const AboutUs: React.FC = () => {
             <FormattedText htmlText={aboutUs?.description} />
           </p>
           <div className='w-full text-[#161439] flex flex-col gap-4 text-sm md:text-lg  font-semibold font-poppins'>
-            {aboutUs?.items.map((item: any, index: number) => (
+            {aboutUs?.items?.map((item: any, index: number) => (
               <>
                 <div
                   key={index}

@@ -15,14 +15,19 @@ import dots from "@../../../public/assets/Frame-3.png";
 import { Button } from "../../ui/button";
 import Image from "next/image";
 import { VideoPlayer } from "../../helper/videoPlayer";
+import { useLocale } from 'next-intl';
+
 
 export const SliderThree: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const locale = useLocale();
 
   const openVideo = () => {
     setIsOpen(true);
     document.body.style.overflow = "hidden";
   };
+  const headerStyle = locale === 'en' ? 'mr-0 md:mr-10' : locale === 'ar' ? 'ml-32 mr-0' : 'bg-gray text-center';
+
   return (
     <div className="swiper-3">
 
@@ -50,7 +55,7 @@ export const SliderThree: React.FC = () => {
                 </p>
               </div>
             </div>
-            <div className=" relative hidden lg:block top-60  mr-10">
+            <div className={`relative hidden lg:block top-60  mr-10 ${headerStyle} `}>
               <Image
                 src={Logo1}
                 alt="logo"

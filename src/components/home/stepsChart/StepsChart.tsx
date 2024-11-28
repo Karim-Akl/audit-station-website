@@ -28,7 +28,7 @@ export async function StepsChart() {
           Select Your Next Step To Upgrade Your Profile
         </h2>
       </div>
-      <div className="md:mt-10 flex flex-col  map">
+      <div className="md:mt-10 flex flex-col  map border ">
         <CustomCard
           step="1"
           icon={<FaUser className="text-white text-2xl" />}
@@ -127,6 +127,7 @@ export async function StepsChart() {
         </div>
         <div className="lg:flex items-center !justify-between">
           <CustomCard
+          step="2"
             icon={<PiVideoFill className="text-white text-3xl" />}
             title="Instructor"
             description="Become an instructor on our famous platform in a famous world, and share your experience with partners around the world. Easily upload your courses and achieve agreement while establishing yourself as an expert in your field."
@@ -176,6 +177,7 @@ export async function StepsChart() {
             />
           </svg>
           <CustomCard
+          step="3"
             icon={<GiArchiveRegister className="text-white text-3xl " />}
             title="Company"
             description="Register your company today on our leading accounting platform, and expand your business by accessing the best global competencies and expertise approved by us."
@@ -184,7 +186,7 @@ export async function StepsChart() {
           />
         </div>
         <CustomCard
-          step="2"
+          step="4"
           icon={<FaPersonChalkboard className="text-white text-3xl" />}
           title="Accountant"
           description="Browse the platform's sections and increase your experience through our courses."
@@ -217,7 +219,7 @@ export async function StepsChart() {
           />
         </svg>
         <CustomCard
-          step="3"
+          step="5"
           icon={<PiVideoFill className="text-white text-3xl" />}
           title="Certified"
           description="Browse the platform's sections and increase your experience through our courses."
@@ -250,7 +252,7 @@ export async function StepsChart() {
           />
         </svg>
         <CustomCard
-          step="4"
+          step="6"
           icon={<HiOutlineVideoCamera className="text-white text-3xl" />}
           title="Interviewer"
           description="Browse the platform's sections and increase your experience through our courses."

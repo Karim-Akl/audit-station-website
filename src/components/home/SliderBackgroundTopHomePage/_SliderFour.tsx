@@ -15,14 +15,17 @@ import dots from "@../../../public/assets/Frame-2.png";
 import { Button } from "../../ui/button";
 import Image from "next/image";
 import { VideoPlayer } from "../../helper/videoPlayer";
+import { useLocale } from 'next-intl';
 
 export const SliderFour: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const locale = useLocale();
 
   const openVideo = () => {
     setIsOpen(true);
     document.body.style.overflow = "hidden";
   };
+  const headerStyle = locale === 'en' ? 'mr-0 md:mr-4' : locale === 'ar' ? 'ml-44 mr-0' : 'bg-gray text-center';
 
   return (
     <div className="swiper-2 w-full">
@@ -49,7 +52,7 @@ export const SliderFour: React.FC = () => {
             </p>
           </div>
         </div>
-        <div className=" relative hidden lg:block top-60 w-[479.06px]  mr-4  mt-20   ">
+        <div className={`relative hidden lg:block top-60 w-[479.06px]   mt-20  ${headerStyle}  `}>
           <Image
             src={Logo1}
             alt="logo"

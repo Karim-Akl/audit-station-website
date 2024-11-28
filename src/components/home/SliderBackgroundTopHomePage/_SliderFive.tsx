@@ -21,20 +21,24 @@ import dots from "@../../../public/assets/Frame-2.png";
 import { Button } from "../../ui/button";
 import Image from "next/image";
 import { VideoPlayer } from "../../helper/videoPlayer";
+import { useLocale } from 'next-intl';
 
 export const SliderFive: React.FC = () => {
+  const locale = useLocale();
+
   const [isOpen, setIsOpen] = useState(false);
 
   const openVideo = () => {
     setIsOpen(true);
     document.body.style.overflow = "hidden";
   };
+  const headerStyle = locale === 'en' ? 'mr-0 md:mr-10' : locale === 'ar' ? 'ml-80 mr-0' : 'bg-gray text-center';
 
   return (
     <div className="swiper-2 w-full">
       <div className="w-full background-color relative h-[calc(100vh-10px)] text-white overflow-hidden ">
         <div className="flex  justify-between m-auto items-center h-full">
-          <div className="p-20 my-10 flex flex-col gap-4 max-w-lg md:max-w-2xl ">
+          <div className="p-20 my-10 flex z-50 flex-col gap-4 max-w-lg md:max-w-2xl ">
             <h1 className="text-4xl text-[#666] font-bold flex-wrap">
               Develop your skills through the courses on the platform!
             </h1>
@@ -54,7 +58,7 @@ export const SliderFive: React.FC = () => {
               </p>
             </div>
           </div>
-          <div className="relative hidden lg:block top-36  mr-0 md:mr-10 md:px-5 px-0 mt-32">
+          <div className={`relative hidden lg:block top-36   md:px-5 px-0 mt-32 `}>
             <div className="flex  justify-center items-center text-center rounded-full w-full  h-full relative m-auto">
 
 

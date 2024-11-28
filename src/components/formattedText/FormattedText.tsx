@@ -1,5 +1,5 @@
 export default function FormattedText({ htmlText }: { htmlText: string }) {
-  const formattedText = htmlText.replace(/(\d+)/g, (match, p1, offset) => {
+  const formattedText = htmlText?.replace(/(\d+)/g, (match, p1, offset) => {
     return `${match}.`;
   });
 
