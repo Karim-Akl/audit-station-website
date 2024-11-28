@@ -111,7 +111,7 @@ export async function fetchData({
 
   let xsrfToken = '';
 
-  if (inLocalhost()) {
+  if (!inLocalhost()) {
     xsrfToken = cookies().get('XSRF-TOKEN')?.value || '';
   }
 

@@ -4,6 +4,7 @@
 import { setSession } from '@/app/[locale]/actions/setSession';
 import { BASE_URL } from '../actions/actions';
 import { getSession, getXSRFToken } from '../authSession';
+import { inLocalhost } from '@/lip/axios/axiosInstance';
 
 interface ParamsProps {
   endPoint: string;
@@ -124,7 +125,7 @@ export async function modifyData({
 
   let xsrfToken: string | null = null;
 
-  if (typeof window !== 'undefined' && window.location.hostname !== 'localhost') {
+  if (!inLocalhost()) {
     xsrfToken = await getXSRFToken();
   }
 
