@@ -6,6 +6,7 @@ import { MdOutlineMail } from 'react-icons/md';
 import { CiFacebook, CiLinkedin, CiYoutube } from 'react-icons/ci';
 import { RiTiktokLine } from 'react-icons/ri';
 import { FaSnapchat } from 'react-icons/fa6';
+import { useLocale } from 'next-intl';
 
 import {
   Select,
@@ -26,6 +27,7 @@ export const Header: React.FC = () => {
   const [settings, setSettings] = useState<any>(null);
   const { router } = UseSearchParamsHook();
   const { theme } = useTheme();
+  const locale = useLocale();
 
   useEffect(() => {
     const fetchSettings = async () => {
@@ -50,6 +52,7 @@ export const Header: React.FC = () => {
   if (!settings) {
     return <div>Loading...</div>;
   }
+  const headerStyle = locale === 'en' ? 'en' : locale === 'ar' ? 'ar' : 'fr';
 
   return (
     <div className={`w-full ${theme === 'dark' ? 'bg-[#1A1A1A]' : 'bg-[#eee]'}`}>
@@ -93,7 +96,7 @@ export const Header: React.FC = () => {
               <div className='justify-start items-center gap-2 flex border-e'>
                 <Select
                   onValueChange={handleChangeLanguage}
-                  defaultValue='en'
+                  defaultValue={headerStyle ||'en'}
                 >
                   <SelectTrigger
                     className={cn('bg-blue border-none focus:ring-offset-0 focus:ring-0')}

@@ -15,14 +15,18 @@ import dots from "@../../../public/assets/Frame-2.png";
 import { Button } from "../../ui/button";
 import Image from "next/image";
 import { VideoPlayer } from "../../helper/videoPlayer";
+import { useLocale } from 'next-intl';
 
 export const SliderTow: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const locale = useLocale();
 
   const openVideo = () => {
     setIsOpen(true);
     document.body.style.overflow = "hidden";
   };
+  const headerStyle = locale === 'en' ? 'mr-0 md:mr-10' : locale === 'ar' ? 'ml-32 mr-0' : 'bg-gray text-center';
+
   return (
     <div className="swiper-2 w-full">
       <div className="w-full background-color relative h-[calc(100vh-10px)] text-white overflow-hidden   ">
@@ -47,7 +51,7 @@ export const SliderTow: React.FC = () => {
               </p>
             </div>
           </div>
-          <div className="mt-5 p-20 relative hidden lg:block top-36 w-[479.06px]  mr-10  ">
+          <div className={`mt-5 p-20 relative hidden lg:block top-36 w-[479.06px]  mr-10 ${headerStyle}   `}>
             <Image
               src={Logo1}
               alt="logo"
